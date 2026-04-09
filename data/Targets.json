@@ -8731,7 +8731,7 @@
     },
     "Storm Cannon Destroyed Husk": {
         "Name": "Storm Cannon Destroyed Husk",
-        "Additional Names": "stormcannon husk",
+        "Additional Names": "stormcannon husk;sc husk;storm cannon husk",
         "Dev Name": "LRArtilleryDestroyed",
         "Health": "4250",
         "Mitigation Type": "Tier3Structure",
