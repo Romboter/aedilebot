@@ -1,0 +1,86 @@
+[
+  {
+    "message": "How many 40mm to kill Border base",
+    "result": {
+      "weapon": " 40mm",
+      "target": "border base",
+      "operation": "kill"
+    }
+  },
+  {
+    "message": "how much 150mm to destroy a Safe House",
+    "result": {
+      "weapon": " 150mm",
+      "target": "a safe house",
+      "operation": "kill"
+    }
+  },
+  {
+    "message": "How many 68mm to disable HTD",
+    "result": {
+      "weapon": " 68mm",
+      "target": "htd",
+      "operation": "disable"
+    }
+  },
+  {
+    "message": "how many satchels to dehusk core husk",
+    "result": {
+      "weapon": " satchels",
+      "target": "core husk",
+      "operation": "dehusk"
+    }
+  },
+  {
+    "message": "How many tremola to kill a size 15 t3 bunker with 2 mg 3 atg 3 howi 1 ramp",
+    "result": {
+      "weapon": " tremola",
+      "target": "a size 15 t3 bunker with 2 mg 3 atg 3 howi 1 ramp",
+      "operation": "bunker"
+    }
+  },
+  {
+    "message": "How MUCH 40mm to KILL entrenched bb 3x2",
+    "result": {
+      "weapon": " 40mm",
+      "target": "entrenched bb 3x2",
+      "operation": "kill"
+    }
+  },
+  {
+    "message": "hello world, this does not match anything",
+    "result": null
+  },
+  {
+    "message": "how many 40mm to kill tier 3 trench",
+    "result": {
+      "weapon": " 40mm",
+      "target": "tier 3 trench",
+      "operation": "kill"
+    }
+  },
+  {
+    "message": "how many tier 3 atg to kill border base",
+    "result": {
+      "weapon": " tier 3 atg",
+      "target": "border base",
+      "operation": "kill"
+    }
+  },
+  {
+    "message": "how many tier 3 atg to disable tier 2 tank",
+    "result": {
+      "weapon": "  atg t3",
+      "target": " tank t2",
+      "operation": "disable"
+    }
+  },
+  {
+    "message": "how many tier 3 atg to dehusk concrete core husk",
+    "result": {
+      "weapon": "  atg t3",
+      "target": " core husk t3",
+      "operation": "dehusk"
+    }
+  }
+]

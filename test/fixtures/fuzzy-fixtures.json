@@ -1,0 +1,50 @@
+[
+  {
+    "id": "fuzzy_weapon_exact_alias",
+    "kind": "weapon",
+    "query": "silverhand",
+    "canonical": "40mm"
+  },
+  {
+    "id": "fuzzy_weapon_typo",
+    "kind": "weapon",
+    "query": "silverhnad",
+    "canonical": "40mm"
+  },
+  {
+    "id": "fuzzy_weapon_partial",
+    "kind": "weapon",
+    "query": "150",
+    "canonical": "150mm"
+  },
+  {
+    "id": "fuzzy_target_slang",
+    "kind": "target",
+    "query": "hades net",
+    "canonical": "DAE 3b-2 “Hades Net” (Unemplaced)"
+  },
+  {
+    "id": "fuzzy_target_typo",
+    "kind": "target",
+    "query": "boarder base",
+    "canonical": "Border base"
+  },
+  {
+    "id": "fuzzy_target_partial_multiword",
+    "kind": "target",
+    "query": "alekto cannon",
+    "canonical": "40-250 “Alekto“ Heavy Cannon"
+  },
+  {
+    "id": "fuzzy_husk_alias",
+    "kind": "husk",
+    "query": "power plant husk",
+    "canonical": "Power Plant Husk"
+  },
+  {
+    "id": "fuzzy_vehicle_only",
+    "kind": "vehicle",
+    "query": "alekto",
+    "canonical": "40-250 “Alekto“ Heavy Cannon"
+  }
+]
