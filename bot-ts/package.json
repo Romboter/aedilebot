@@ -16,10 +16,12 @@
   },
   "dependencies": {
     "discord.js": "^14.16.3",
-    "fuzzysort": "^3.1.0"
+    "fuzzysort": "^3.1.0",
+    "pluralize": "^8.0.0"
   },
   "devDependencies": {
     "@types/node": "^22.10.2",
+    "@types/pluralize": "^0.0.33",
     "tsx": "^4.19.2",
     "typescript": "^5.7.2",
     "vitest": "^4.1.11"
