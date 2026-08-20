@@ -1,0 +1,362 @@
+[
+  {
+    "kind": "target",
+    "query": "naval hullsegments",
+    "source_name": "Naval Hull Segments",
+    "canonical": "Naval Hull Segments"
+  },
+  {
+    "kind": "target",
+    "query": "dae  2a-1 “ruptura” (emplaced)",
+    "source_name": "DAE 2a-1 “Ruptura” (Emplaced)",
+    "canonical": "DAE 2a-1 “Ruptura” (Emplaced)"
+  },
+  {
+    "kind": "target",
+    "query": "rinnspeir ornitie-rclass gunship",
+    "source_name": "Rinnspeir Ornitier-Class Gunship",
+    "canonical": "Rinnspeir Ornitier-Class Gunship"
+  },
+  {
+    "kind": "target",
+    "query": "aircrat maintenance factory husk",
+    "source_name": "Aircraft Maintenance Factory Husk",
+    "canonical": "Factory"
+  },
+  {
+    "kind": "target",
+    "query": "bms - mineeeker (small locomotive)",
+    "source_name": "BMS - Mineseeker (Small Locomotive)",
+    "canonical": "BMS Black Bolt"
+  },
+  {
+    "kind": "target",
+    "query": "battle tank jugernaut",
+    "source_name": "Battle Tank Juggernaut",
+    "canonical": "Battle Tank Juggernaut"
+  },
+  {
+    "kind": "target",
+    "query": "r-12 - “salus” ambulanec",
+    "source_name": "R-12 - “Salus” Ambulance",
+    "canonical": "R-12 - “Salus” Ambulance"
+  },
+  {
+    "kind": "target",
+    "query": "artillery garrison (t)1 breached husk",
+    "source_name": "Artillery Garrison (T1) Breached Husk",
+    "canonical": "Artillery Garrison (T1) Breached Husk"
+  },
+  {
+    "kind": "target",
+    "query": "water ump",
+    "source_name": "Water Pump",
+    "canonical": "Water Pump"
+  },
+  {
+    "kind": "target",
+    "query": "forward base (hussk) (t1)",
+    "source_name": "Forward Base (Husk) (T1)",
+    "canonical": "Forward Base (Husk) (T1)"
+  },
+  {
+    "kind": "target",
+    "query": "at gun garrison (t2) destroyed  husk",
+    "source_name": "AT Gun Garrison (T2) Destroyed Husk",
+    "canonical": "AT Gun Garrison (T2) Destroyed Husk"
+  },
+  {
+    "kind": "target",
+    "query": "bms stwoheel (small shipping container cart)",
+    "source_name": "BMS Stowheel (small shipping container cart)",
+    "canonical": "BMS Stowheel (small shipping container cart)"
+  },
+  {
+    "kind": "target",
+    "query": "structur parts",
+    "source_name": "Structure Parts",
+    "canonical": "Structure Parts"
+  },
+  {
+    "kind": "target",
+    "query": "smalltrainenngine",
+    "source_name": "SmallTrainEngine",
+    "canonical": "SmallTrainEngine"
+  },
+  {
+    "kind": "target",
+    "query": "bm s- class 2 mobile auto-crane",
+    "source_name": "BMS - Class 2 Mobile Auto-Crane",
+    "canonical": "BMS - Class 2 Mobile Auto-Crane"
+  },
+  {
+    "kind": "target",
+    "query": "half-track (javelin, ht//mght)",
+    "source_name": "Half-Track (Javelin, HT/MGHT)",
+    "canonical": "Half-Track (Javelin, HT/MGHT)"
+  },
+  {
+    "kind": "target",
+    "query": "balfour wolfhound 40m (fc)",
+    "source_name": "Balfour Wolfhound 40mm (FC)",
+    "canonical": "Balfour Wolfhound 40mm (FC)"
+  },
+  {
+    "kind": "target",
+    "query": "stationary harvester (ssulfur)",
+    "source_name": "Stationary Harvester (Sulfur)",
+    "canonical": "Harvester"
+  },
+  {
+    "kind": "target",
+    "query": "artillery garrison t1) destroyed husk",
+    "source_name": "Artillery Garrison (T1) Destroyed Husk",
+    "canonical": "Artillery Garrison (T1) Destroyed Husk"
+  },
+  {
+    "kind": "target",
+    "query": "bunker square  (t2)",
+    "source_name": "Bunker Square (T2)",
+    "canonical": "Bunker Square (T2)"
+  },
+  {
+    "kind": "target",
+    "query": "gallagher thoornfall mk. vi",
+    "source_name": "Gallagher Thornfall Mk. VI",
+    "canonical": "Gallagher Thornfall Mk. VI"
+  },
+  {
+    "kind": "target",
+    "query": "artillery garrison (t2) destroeyd husk",
+    "source_name": "Artillery Garrison (T2) Destroyed Husk",
+    "canonical": "Artillery Garrison (T2)"
+  },
+  {
+    "kind": "target",
+    "query": "rooste lamploader (fuel trailer)",
+    "source_name": "Rooster Lamploader (Fuel Trailer)",
+    "canonical": "Rooster Lamploader (Fuel Trailer)"
+  },
+  {
+    "kind": "target",
+    "query": "aircrraft radar parts",
+    "source_name": "Aircraft Radar Parts",
+    "canonical": "SC-3 Aerial Interceptor Array 1x1"
+  },
+  {
+    "kind": "target",
+    "query": "galagher highwayman mk. iii",
+    "source_name": "Gallagher Highwayman Mk. III",
+    "canonical": "Gallagher Highwayman Mk. III"
+  },
+  {
+    "kind": "target",
+    "query": "aircraft hangra",
+    "source_name": "Aircraft Hangar",
+    "canonical": "Aircraft Hangar"
+  },
+  {
+    "kind": "target",
+    "query": "concrte foundation (all sizes)",
+    "source_name": "Concrete Foundation (all sizes)",
+    "canonical": "Foundation (NOT concrete) (all sizes)"
+  },
+  {
+    "kind": "target",
+    "query": "m925 austtringer man-o-war wing",
+    "source_name": "M925 Austringer Man-O-War Wing",
+    "canonical": "M925 Austringer Man-O-War Wing"
+  },
+  {
+    "kind": "target",
+    "query": "smalltrainresurceplatform",
+    "source_name": "SmallTrainResourcePlatform",
+    "canonical": "SmallTrainResourcePlatform"
+  },
+  {
+    "kind": "target",
+    "query": "crow’sfoot minefield (ap minefield)",
+    "source_name": "Crow’s Foot Minefield (AP minefield)",
+    "canonical": "Crow’s Foot Minefield (AP minefield)"
+  },
+  {
+    "kind": "target",
+    "query": "bunker hearth (2t)",
+    "source_name": "Bunker Hearth (T2)",
+    "canonical": "Bunker Hearth (T1)"
+  },
+  {
+    "kind": "target",
+    "query": "medical rom (t1)",
+    "source_name": "Medical Room (T1)",
+    "canonical": "Medical Room (T1)"
+  },
+  {
+    "kind": "target",
+    "query": "dunca's coin (atr field gun)",
+    "source_name": "Duncan's Coin (ATR Field Gun)",
+    "canonical": "Duncan's Coin (ATR Field Gun)"
+  },
+  {
+    "kind": "target",
+    "query": "bunker base (t)",
+    "source_name": "Bunker Base (T3)",
+    "canonical": "Bunker Base (T3)"
+  },
+  {
+    "kind": "target",
+    "query": "dunne respponder 3e (ambulance)",
+    "source_name": "Dunne Responder 3e (Ambulance)",
+    "canonical": "Dunne Transport (Truck)"
+  },
+  {
+    "kind": "target",
+    "query": "rr-3 “stolon” tanker (fuel ttanker)",
+    "source_name": "RR-3 “Stolon” Tanker (Fuel Tanker)",
+    "canonical": "RR-3 “Stolon” Tanker (Fuel Tanker)"
+  },
+  {
+    "kind": "target",
+    "query": "blackstele",
+    "source_name": "Blacksteele",
+    "canonical": "Blacksteele"
+  },
+  {
+    "kind": "target",
+    "query": "artilelry garrison (t3)",
+    "source_name": "Artillery Garrison (T3)",
+    "canonical": "Artillery Garrison (T3)"
+  },
+  {
+    "kind": "target",
+    "query": "artillrey garrison (t2)",
+    "source_name": "Artillery Garrison (T2)",
+    "canonical": "Artillery Garrison (T2)"
+  },
+  {
+    "kind": "target",
+    "query": "fiel dhospital",
+    "source_name": "Field Hospital",
+    "canonical": "Hospital"
+  },
+  {
+    "kind": "weapon",
+    "query": "havoc chaarge detonator",
+    "source_name": "Havoc Charge Detonator",
+    "canonical": "Havoc Charge Detonator"
+  },
+  {
+    "kind": "weapon",
+    "query": "rifleautomaticwsnigleshotammo",
+    "source_name": "RifleAutomaticWSingleShotAmmo",
+    "canonical": "RifleAutomaticWSingleShotAmmo"
+  },
+  {
+    "kind": "weapon",
+    "query": "incendiiary mortar shell",
+    "source_name": "Incendiary Mortar Shell",
+    "canonical": "Incendiary Mortar Shell"
+  },
+  {
+    "kind": "weapon",
+    "query": "daimon ak-5 “harpy”20mm (+25% hv)",
+    "source_name": "Daimon aK-5 “Harpy” 20mm (+25% HV)",
+    "canonical": "Daimon aK-5 “Harpy” 20mm (+25% HV)"
+  },
+  {
+    "kind": "weapon",
+    "query": "tulka i1.9w hite raven 20mm (+25% hv)",
+    "source_name": "Tulka I1.9 White Raven 20mm (+25% HV)",
+    "canonical": "Tulka I1.9 White Raven 20mm (+25% HV)"
+  },
+  {
+    "kind": "weapon",
+    "query": "blakerow 71 ammo",
+    "source_name": "Blakerow 871 ammo",
+    "canonical": "Blakerow 871 ammo"
+  },
+  {
+    "kind": "weapon",
+    "query": "flame backpck ammo",
+    "source_name": "Flame Backpack Ammo",
+    "canonical": "Flame Ammo"
+  },
+  {
+    "kind": "weapon",
+    "query": "luminary mk. iv herald 20mm (-33%l v)",
+    "source_name": "Luminary Mk. IV Herald 20mm (-33% LV)",
+    "canonical": "Luminary Mk. IV Herald 20mm (-33% LV)"
+  },
+  {
+    "kind": "weapon",
+    "query": "fllame ammo",
+    "source_name": "Flame Ammo",
+    "canonical": "Flame Ammo"
+  },
+  {
+    "kind": "weapon",
+    "query": "catara mo.ii amo",
+    "source_name": "Catara mo.II ammo",
+    "canonical": "Catara mo.II ammo"
+  },
+  {
+    "kind": "weapon",
+    "query": "balfour rampart 68mm (hvfc)) ammo",
+    "source_name": "Balfour Rampart 68mm (HVFC) ammo",
+    "canonical": "Balfour Rampart 68mm (HVFC) ammo"
+  },
+  {
+    "kind": "weapon",
+    "query": "alligatoor charge",
+    "source_name": "Alligator Charge",
+    "canonical": "Alligator Charge"
+  },
+  {
+    "kind": "weapon",
+    "query": "“dawn” e.ii ammo",
+    "source_name": "“Dawn” Ve.II ammo",
+    "canonical": "“Dawn” Ve.II ammo"
+  },
+  {
+    "kind": "weapon",
+    "query": "9mm",
+    "source_name": "9mm",
+    "canonical": "9mm"
+  },
+  {
+    "kind": "weapon",
+    "query": "shtter missile",
+    "source_name": "Shatter Missile",
+    "canonical": "Shatter Missile"
+  },
+  {
+    "kind": "weapon",
+    "query": "30m",
+    "source_name": "30mm",
+    "canonical": "30mm"
+  },
+  {
+    "kind": "weapon",
+    "query": "luminary mk. ii harbinger 14.5mm (+50% hv)",
+    "source_name": "Luminary Mk. II Harbinger 14.5mm (+50% HV)",
+    "canonical": "Luminary Mk. II Harbinger 14.5mm (+50% HV)"
+  },
+  {
+    "kind": "weapon",
+    "query": "igniifst 30",
+    "source_name": "Ignifist 30",
+    "canonical": "Ignifist 30"
+  },
+  {
+    "kind": "weapon",
+    "query": "bookerstorm rifle model 838 ammo",
+    "source_name": "Booker Storm Rifle Model 838 ammo",
+    "canonical": "Booker Storm Rifle Model 838 ammo"
+  },
+  {
+    "kind": "weapon",
+    "query": "silverhand olrdscar mk. x ammo",
+    "source_name": "Silverhand Lordscar Mk. X ammo",
+    "canonical": "40mm"
+  }
+]

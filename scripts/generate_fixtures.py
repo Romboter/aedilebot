@@ -249,6 +249,91 @@ def main():
         json.dump(singular_map, f, ensure_ascii=False)
     print(f"Wrote {len(singular_map)} singularize fixtures to {singularize_out_path}")
 
+    # Programmatic typo-query -> ground-truth-winner fixtures. fuzzball (the
+    # JS fuzzywuzzy port used for the TS matcher) diverges from fuzzywuzzy's
+    # raw scores by a few points on ~8% of pairs (rounding/algorithm
+    # differences deep in partial_ratio), so the TS port is validated on
+    # WHICH canonical name wins, not exact score values - matching the
+    # plan's own stated bar for fuzzy-match parity.
+    import random
+
+    random.seed(7)
+
+    def make_typo(word, rng):
+        chars = list(word)
+        if len(chars) < 4:
+            return "".join(chars)
+        kind = rng.choice(["swap", "drop", "dup"])
+        i = rng.randrange(1, len(chars) - 1)
+        if kind == "swap":
+            chars[i], chars[i + 1] = chars[i + 1], chars[i]
+        elif kind == "drop":
+            del chars[i]
+        else:
+            chars.insert(i, chars[i])
+        return "".join(chars)
+
+    canonical_targets = sorted({v for v in parse.targets_dictionary.values()})
+    canonical_weapons = sorted({v for v in parse.weapons_dictionary.values()})
+    sample_targets = random.sample(canonical_targets, 40)
+    sample_weapons = random.sample(canonical_weapons, 20)
+
+    winner_results = []
+    for name in sample_targets:
+        query = make_typo(name.lower(), random)
+        try:
+            canonical, _ = fuzzy.fuzzy_match_target_name(query)
+            winner_results.append({"kind": "target", "query": query, "source_name": name, "canonical": canonical})
+        except Exception as e:
+            winner_results.append({"kind": "target", "query": query, "source_name": name, "error": type(e).__name__})
+    for name in sample_weapons:
+        query = make_typo(name.lower(), random)
+        try:
+            canonical = fuzzy.fuzzy_match_weapon_name(query)
+            winner_results.append({"kind": "weapon", "query": query, "source_name": name, "canonical": canonical})
+        except Exception as e:
+            winner_results.append({"kind": "weapon", "query": query, "source_name": name, "error": type(e).__name__})
+
+    winner_out_path = os.path.join(os.path.dirname(__file__), "..", "test", "fixtures", "fuzzy-winner-fixtures.json")
+    with open(winner_out_path, "w", encoding="utf-8") as f:
+        json.dump(winner_results, f, indent=2, ensure_ascii=False)
+    print(f"Wrote {len(winner_results)} fuzzy winner-parity fixtures to {winner_out_path}")
+
+    # Raw score comparison across a broad (query, key) sample - documents the
+    # fuzzball/fuzzywuzzy scoring divergence for future reference (e.g. if
+    # fuzzball is upgraded and scores drift further from this baseline).
+    from fuzzywuzzy import fuzz as fw
+
+    scoring_queries = [
+        "silverhnad", "hades net", "boarder base", "alekto cannon", "power plant husk",
+        "tremola", "howitzer", "safe hous", "infantry support gun", "watch tower",
+        "a3 harpa", "150", "garrison hous", "bt pad", "aegoceru fortres",
+    ]
+    scoring_target_keys = list(parse.targets_dictionary.keys())
+    scoring_weapon_keys = list(parse.weapons_dictionary.keys())
+    scoring_pairs = []
+    for q in scoring_queries:
+        for k in random.sample(scoring_target_keys, 15):
+            scoring_pairs.append((q, k))
+        for k in random.sample(scoring_weapon_keys, 5):
+            scoring_pairs.append((q, k))
+
+    scoring_results = [
+        {
+            "a": a,
+            "b": b,
+            "ratio": fw.ratio(a, b),
+            "partial_ratio": fw.partial_ratio(a, b),
+            "token_sort_ratio": fw.token_sort_ratio(a, b),
+            "token_set_ratio": fw.token_set_ratio(a, b),
+        }
+        for a, b in scoring_pairs
+    ]
+    scoring_out_path = os.path.join(os.path.dirname(__file__), "..", "test", "fixtures", "fuzzy-scoring-fixtures.json")
+    with open(scoring_out_path, "w", encoding="utf-8") as f:
+        json.dump(scoring_results, f, ensure_ascii=False)
+    print(f"Wrote {len(scoring_results)} fuzzy scoring fixtures to {scoring_out_path}")
+
 
 if __name__ == "__main__":
     main()

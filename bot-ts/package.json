@@ -16,7 +16,7 @@
   },
   "dependencies": {
     "discord.js": "^14.16.3",
-    "fuzzysort": "^3.1.0",
+    "fuzzball": "^2.2.6",
     "pluralize": "^8.0.0"
   },
   "devDependencies": {
