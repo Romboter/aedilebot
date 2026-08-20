@@ -196,6 +196,59 @@ def main():
         json.dump(fuzzy_results, f, indent=2, ensure_ascii=False)
     print(f"Wrote {len(fuzzy_results)} fuzzy fixtures to {fuzzy_out_path}")
 
+    # Full alias-index dumps (not just spot samples) for the TS port's
+    # data/aliasIndex.ts to compare against wholesale, since collision
+    # resolution depends on dictionary iteration order and is easy to get
+    # subtly wrong for a handful of entries out of ~2000.
+    import parse
+
+    alias_dicts = {
+        "targets_dictionary": parse.targets_dictionary,
+        "weapons_dictionary": parse.weapons_dictionary,
+        "all_dictionary": parse.all_dictionary,
+        "husk_dictionary": parse.husk_dictionary,
+        "vehicle_dictionary": parse.vehicle_dictionary,
+    }
+    alias_out_path = os.path.join(os.path.dirname(__file__), "..", "test", "fixtures", "alias-index-fixtures.json")
+    with open(alias_out_path, "w", encoding="utf-8") as f:
+        json.dump(alias_dicts, f, ensure_ascii=False)
+    sizes = ", ".join(f"{k}={len(v)}" for k, v in alias_dicts.items())
+    print(f"Wrote alias-index fixtures ({sizes}) to {alias_out_path}")
+
+    # Every distinct word that can ever reach utils.singularize() in
+    # production (post Locations.csv merge, since that adds town/relic
+    # vocabulary too) -> inflect's actual output. inflect's fallback for
+    # unrecognized words is more aggressive than most JS pluralize libraries
+    # (naively strips trailing "s"), so this is the ground truth the TS port
+    # validates its singularize() against, word by word.
+    import re
+
+    words = set()
+    for d in (parse.targets, parse.weapons):
+        for key, value in d.items():
+            candidates = [value.get("Name", ""), key]
+            if "Additional Names" in value:
+                candidates.extend(value["Additional Names"].split(";"))
+            for c in candidates:
+                c = re.sub(r"[^\w\s]", "", c.lower().strip(), flags=re.UNICODE)
+                c = re.sub(r"\s+", " ", c)
+                words.update(c.split())
+
+    import inflect
+
+    inflector = inflect.engine()
+    singular_map = {}
+    for w in sorted(words):
+        result = inflector.singular_noun(w)
+        singular_map[w] = result if result else w
+
+    singularize_out_path = os.path.join(
+        os.path.dirname(__file__), "..", "test", "fixtures", "singularize-fixtures.json"
+    )
+    with open(singularize_out_path, "w", encoding="utf-8") as f:
+        json.dump(singular_map, f, ensure_ascii=False)
+    print(f"Wrote {len(singular_map)} singularize fixtures to {singularize_out_path}")
+
 
 if __name__ == "__main__":
     main()
