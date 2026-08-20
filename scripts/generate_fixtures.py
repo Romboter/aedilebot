@@ -8,6 +8,7 @@ identical before/after the port. Run from the repo root:
 import copy
 import json
 import os
+import re
 import sys
 
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), "..", "src"))
@@ -16,6 +17,7 @@ import bot
 import calculator
 import fuzzy
 import parse
+import utils
 
 # (case id, operation, args-for-handler, kwargs)
 CASES = [
@@ -142,6 +144,51 @@ def run_fuzzy_case(kind, query):
         name, _tokens = fuzzy.fuzzy_match_target_name(query, parse.vehicle_dictionary)
         return name
     raise ValueError(f"unknown fuzzy kind {kind}")
+
+
+# --- free-text query dispatch: bot.handle_response's regex routing, factored
+# out (line-for-line copy of its dispatch logic) so it can run without a full
+# calculator round-trip - only the (weapon, target, operation) extraction is
+# under test here, not calculator handler execution. Ground truth for
+# domain/textParsing/freeTextQuery.ts.
+def parse_free_text_query(message):
+    p_message = message.lower()
+    token_pair = re.findall(
+        "how (many|much)(.*) to (kill|destroy) (.*)",
+        utils.move_string_to_rear(p_message),
+    )
+    if len(token_pair) >= 1:
+        weapon, target = token_pair[0][1], token_pair[0][3]
+        if "size" in target:
+            return {"weapon": weapon, "target": target, "operation": "bunker"}
+        return {"weapon": weapon, "target": target, "operation": "kill"}
+
+    token_pair = re.findall("how (many|much)(.*) to disable (.*)", p_message)
+    if len(token_pair) >= 1:
+        weapon, target = token_pair[0][1], token_pair[0][2]
+        return {"weapon": weapon, "target": target, "operation": "disable"}
+
+    token_pair = re.findall(
+        "how (many|much)(.*) to dehusk (.*)",
+        utils.move_string_to_rear(p_message),
+    )
+    if len(token_pair) >= 1:
+        weapon, target = token_pair[0][1], token_pair[0][2]
+        return {"weapon": weapon, "target": target, "operation": "dehusk"}
+
+    return None
+
+
+FREETEXT_CASES = [
+    "How many 40mm to kill Border base",
+    "how much 150mm to destroy a Safe House",
+    "How many 68mm to disable HTD",
+    "how many satchels to dehusk core husk",
+    "How many tremola to kill a size 15 t3 bunker with 2 mg 3 atg 3 howi 1 ramp",
+    "How MUCH 40mm to KILL entrenched bb 3x2",
+    "hello world, this does not match anything",
+    "how many 40mm to kill tier 3 trench",
+]
 
 
 def main():
@@ -339,6 +386,16 @@ def main():
     with open(scoring_out_path, "w", encoding="utf-8") as f:
         json.dump(scoring_results, f, ensure_ascii=False)
     print(f"Wrote {len(scoring_results)} fuzzy scoring fixtures to {scoring_out_path}")
+
+    freetext_results = [
+        {"message": message, "result": parse_free_text_query(message)} for message in FREETEXT_CASES
+    ]
+    freetext_out_path = os.path.join(
+        os.path.dirname(__file__), "..", "test", "fixtures", "freetext-query-fixtures.json"
+    )
+    with open(freetext_out_path, "w", encoding="utf-8") as f:
+        json.dump(freetext_results, f, indent=2, ensure_ascii=False)
+    print(f"Wrote {len(freetext_results)} free-text query fixtures to {freetext_out_path}")
 
 
 if __name__ == "__main__":
