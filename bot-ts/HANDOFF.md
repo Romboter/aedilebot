@@ -29,7 +29,7 @@ It writes to `test/fixtures/*.json` (repo root, shared — `bot-ts/test/fixtures
 
 ## Status: Phase 1 (core engine) is done
 
-Run from `bot-ts/`: `npm install && npm run typecheck && npm test` — currently **140 tests passing, 0 failures**.
+Run from `bot-ts/`: `npm install && npm run typecheck && npm test` — currently **154 tests passing, 0 failures**.
 
 All of `data/*`, `domain/errors.ts`, `domain/normalize.ts`, `domain/fuzzy/*`, `domain/textParsing/*`, and `domain/calculator/*` are ported and fixture-verified. Zero discord.js dependency anywhere in `domain/*`/`data/*`, per the plan.
 
@@ -62,18 +62,38 @@ All of `data/*`, `domain/errors.ts`, `domain/normalize.ts`, `domain/fuzzy/*`, `d
 - `parseFreeTextQuery` (in `freeTextQuery.ts`) is a **pure parser only** — `{weapon, target, operation} | null`. It deliberately does NOT port `handle_response_inner`'s try/except-to-string conversion + `error_log.txt` file write — that's presentation/logging with I/O side effects, which belongs in `gateway/errorPresenter.ts` (Phase 2), not `domain/*`. Whoever wires up the gateway needs to: call `parseFreeTextQuery`, dispatch to the matching `domain/calculator/handlers.ts` function based on `operation` (`"bunker"` → `generalBunkerKillHandler`, others map 1:1), then catch domain errors and turn them into reply strings + log them, mirroring `handle_response_inner`'s except chain (see `src/bot.py` lines ~517-559 in the Python original for the exact message text expected per exception type).
 - The "disable" free-text regex quirk is preserved as-is: it does NOT run `moveStringToRear` first, unlike "kill"/"dehusk" — matches `bot.py`'s inconsistency exactly, not fixed.
 
-## Next: Phase 2 (gateway/commands/discord.js wiring)
+## Status: Phase 2 (gateway/commands/discord.js wiring) is built, not yet live-tested
 
-Phase 1 is complete — all core engine fixtures pass. Per the plan's phase breakdown, Phase 2 is:
+All of Phase 2's structural pieces are in place and typecheck/build/test clean, but **nothing has been run against a real Discord token yet** — there's no dev-server token available in this environment. Whoever has one needs to do the actual dev-server side-by-side validation the plan calls for before cutover.
 
-- `gateway/client.ts` — discord.js `Client` singleton, intents, `on_ready`
-- `gateway/commandSync.ts` — slash command registration (`/kill`, `/disable`, `/dehusk`, `/custom_kill`, `/bunker_kill`, `/statsheet`, `/help`)
-- `gateway/commandRouter.ts` + `commands/*.ts` — one file per slash command, each calling into `domain/calculator/handlers.ts`
-- `gateway/messageListener.ts` — `on_message` free-text handling via `domain/textParsing/freeTextQuery.ts`
-- `gateway/errorPresenter.ts` — domain-error → user-facing string conversion + logging (see design note above)
-- Autocomplete for `kill`/`disable`/`dehusk`/`custom_kill`'s target/weapon fields — note the O(n²) bug in the Python original (`bot.py`'s `kill_autocompletion_target` rescans on every alias/tie resolution) should NOT be reproduced; `domain/fuzzy/match.ts` was already redesigned to do one pass (see the plan's "Fuzzy Matching Redesign" section) — the autocomplete callback just needs to call it correctly (single pass, no follow-up rescans).
+Built:
+- `domain/fuzzy/autocomplete.ts` — the O(n²) autocomplete fix (see below)
+- `config/env.ts` — `DEPLOYMENT_TOKEN`/`DEV_SERVER_TOKEN`/`https_proxy` via Node's native `process.loadEnvFile()`, no dotenv dependency
+- `gateway/errorPresenter.ts` — `handle_response_inner`'s except-chain → reply string + `error_log.txt` logging (logger is injectable, tests don't touch the filesystem)
+- `gateway/client.ts`, `commandRouter.ts`, `commandSync.ts`, `command.ts` (shared `SlashCommand` interface), `messageListener.ts`
+- `commands/{kill,disable,dehusk,customKill,bunkerKill,statsheet,help}.ts` + `autocompleteHandlers.ts` (shared autocomplete responders) + `index.ts`
+- `main.ts` wired end-to-end (verified with a throwaway smoke script that builds the calculator context and constructs+wires the discord.js `Client` without calling `.login()` — this doesn't require a token and did work)
 
-Validate against the dev server (separate Discord app/token) with a fixed regression query list compared to the Python bot's live output — this is the cutover gate per the plan.
+### The autocomplete O(n²) fix
+
+Confirmed root cause reading `fuzzy.py`/`bot.py`: `kill_autocompletion_target` (and its weapon/disable/dehusk/statsheet siblings) did one O(n) scan to collect candidate alias **keys**, then for every one of those candidates re-ran a **full single-winner fuzzy match** just to resolve the key back to its canonical name — even though that key came straight out of the alias dictionary, so `dictionary.get(key)` gives the identical answer in O(1). That redundant per-candidate rescan was the O(n²), not the choice of fuzzy library.
+
+User decided (asked directly, see conversation): reuse `fuzzball` (already a dependency, already used by `domain/fuzzy/match.ts`) instead of adding `fuzzysort` as the plan's "Fuzzy Matching Redesign" section literally names — the fix is eliminating the redundant rescan, which `fuzzball` already supports in one O(n) pass. No `tokenSetRatio.ts` was needed either, for the same reason.
+
+One deliberate, documented behavior change from the Python original: the old rescan-per-candidate code incidentally handled a rare edge case (two different alias keys that are exact word-set permutations of each other) via its own internal tie-break; direct map lookup doesn't replicate that coincidence. Not worth an O(n²) to preserve — see the `ponytail:` comment in `autocomplete.ts`.
+
+### Deliberate deviations from the Python original (all documented in-file)
+
+- `statsheet.ts`: `statsheet_handler`'s Python caller has no not-found guard — indexing the returned `EntityNotFoundError` instance as `data[1]` would crash the interaction with no reply at all (Discord shows "This interaction failed"). Fixed to reply with the error message instead; not a parity requirement, a straightforward bug people would want fixed.
+- `statsheet.ts`: the "Structures" embed branch's "Repair Cost" field is **preserved as buggy** — it reads `data[5]` (actually `DecayStartHours`) instead of `data[4]` (actual `RepairCost`), matching bot.py's live (mislabeled) output exactly. Commented in-file so it isn't "fixed" by accident later.
+- `gateway/client.ts`: intents are the actual minimal set the code subscribes to (`Guilds`, `GuildMessages`, `MessageContent`) rather than blindly replicating Python's `Intents.default()` (which enables a bunch of non-privileged intents this bot never reads, like presences/bans/invites). `MessageContent` is still the only *privileged* intent, matching the existing memory note on this.
+- `main.ts`: preserves bot.py's own inconsistency of reading both `DEPLOYMENT_TOKEN` and `DEV_SERVER_TOKEN` but only ever logging in with `DEV_SERVER_TOKEN` — not fixed here per the plan's explicit "resolve at cutover, not incidentally" guidance.
+
+### Not yet done / still open
+
+- **Live validation against a dev-server token** — nobody has run this against real Discord yet. This is the actual Phase 2 completion gate per the plan (side-by-side query comparison against the live Python bot).
+- Slash command registration is guild-agnostic (`client.application.commands.set(...)`, i.e. global commands) — same as `bot.py`'s `client.tree.sync()` with no guild argument. Global command propagation can take up to an hour on Discord's side; if testing on a dev server, consider a guild-scoped sync for faster iteration (not built — flag if wanted).
+- Phase 3 (hot-swap) and Phase 4 (admin data pipeline) haven't been started — see the plan file for scope.
 
 ## Workflow reminders for this session
 

@@ -50,3 +50,14 @@ export function presentError(error: unknown, query?: string, logger: ErrorLogger
   logger("Exception", query);
   return "Inner error happened during processing of your request. Please, contact bot's devs about this.";
 }
+
+/** Port of handle_response_inner's outer try/except wrapping every
+ * calculator handler call — runs `fn`, converting any thrown domain error
+ * into its reply string via presentError instead of letting it propagate. */
+export function runCalculatorOperation(fn: () => string, query: string): string {
+  try {
+    return fn();
+  } catch (error) {
+    return presentError(error, query);
+  }
+}
