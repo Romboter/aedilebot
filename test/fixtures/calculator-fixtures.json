@@ -1,0 +1,307 @@
+[
+  {
+    "id": "kill_vehicle",
+    "operation": "kill",
+    "input": [
+      "40mm",
+      "40-250 “Alekto” Heavy Cannon"
+    ],
+    "output": "It takes 8 40mm to kill a 40-250 “Alekto“ Heavy Cannon"
+  },
+  {
+    "id": "kill_structure",
+    "operation": "kill",
+    "input": [
+      "150mm",
+      "Border base"
+    ],
+    "output": "It takes 12 150mm to kill a Border base"
+  },
+  {
+    "id": "kill_emplacement",
+    "operation": "kill",
+    "input": [
+      "68mm",
+      "20mm Anti Infantry Flak Gun (EMG) (Emplaced)"
+    ],
+    "output": "It takes 40 68mm to kill a 20mm Anti Infantry Flak Gun (EMG) (Emplaced)"
+  },
+  {
+    "id": "kill_tripod",
+    "operation": "kill",
+    "input": [
+      "150mm",
+      "Infantry Support Gun (ISG)"
+    ],
+    "output": "It takes 5 150mm to kill a Infantry Support Gun (ISG)"
+  },
+  {
+    "id": "kill_aircraft_part",
+    "operation": "kill",
+    "input": [
+      "40mm",
+      "V-1 Tzykalia Engine"
+    ],
+    "output": "It takes 5 40mm to kill a V-1 Tzykalia Engine"
+  },
+  {
+    "id": "kill_multitier",
+    "operation": "kill",
+    "input": [
+      "150mm",
+      "Safe House"
+    ],
+    "output": "It takes 3 (Tier 1) 6 (Tier 2) 23 (Tier 3) 150mm to kill a Safe House"
+  },
+  {
+    "id": "kill_impact_fuse_range",
+    "operation": "kill",
+    "input": [
+      "RPG",
+      "40-250 “Alekto” Heavy Cannon"
+    ],
+    "output": "It takes 9 RPG to kill a 40-250 “Alekto“ Heavy Cannon"
+  },
+  {
+    "id": "disable_vehicle",
+    "operation": "disable",
+    "input": [
+      "40mm",
+      "40-250 “Alekto” Heavy Cannon"
+    ],
+    "output": "It takes 6 40mm to disable a 40-250 “Alekto“ Heavy Cannon"
+  },
+  {
+    "id": "disable_invalid_type",
+    "operation": "disable",
+    "input": [
+      "40mm",
+      "Border base"
+    ],
+    "error": "TargetOfTypeNotFoundError",
+    "message": "The detected target for this operation is not found in my data set. Please try again."
+  },
+  {
+    "id": "dehusk_structure",
+    "operation": "dehusk",
+    "input": [
+      "150mm",
+      "Power Plant Husk"
+    ],
+    "output": "It takes 3 150mm to kill a Power Plant Husk"
+  },
+  {
+    "id": "custom_kill_needs_both",
+    "operation": "custom_kill",
+    "input": [
+      "7.62mm",
+      1,
+      "150mm",
+      "40-250 “Alekto” Heavy Cannon"
+    ],
+    "output": "It takes 14 150mm to kill a 40-250 “Alekto“ Heavy Cannon after 1 7.62mm hits."
+  },
+  {
+    "id": "custom_kill_weapon1_alone_kills",
+    "operation": "custom_kill",
+    "input": [
+      "300mm",
+      5,
+      "7.62mm",
+      "Border base"
+    ],
+    "output": "It takes 4 300mm to kill a Border base"
+  },
+  {
+    "id": "bunker_kill_basic",
+    "operation": "bunker_direct",
+    "input": [
+      "Tremola Grenade GPb-1",
+      {
+        "size": 15,
+        "tier": 3,
+        "green": 22,
+        "red": 16,
+        "rg": 0,
+        "mg": 2,
+        "atg": 3,
+        "hg": 3,
+        "shelter": 0,
+        "obs": 0,
+        "core": 0,
+        "ic": 0,
+        "sc": 0,
+        "ws": 0,
+        "fortress": 0,
+        "radar": 0,
+        "wet": 24
+      }
+    ],
+    "output": "It takes 140 to 148 Tremola Grenade GPb-1 to kill a meta with **14000 health** (74.57% breachable) and **1800 bmat repair cost** (7.78 health/bmat) (tier 3, 15 pieces, 22 green, 16 red, 2 mg, 3 atg, 3 hg) (red or green estimated due to not being specified)"
+  },
+  {
+    "id": "bunker_kill_wet_and_shelter",
+    "operation": "bunker_direct",
+    "input": [
+      "Tremola Grenade GPb-1",
+      {
+        "size": 10,
+        "tier": 2,
+        "green": 13,
+        "red": 14,
+        "rg": 0,
+        "mg": 0,
+        "atg": 5,
+        "hg": 0,
+        "shelter": 2,
+        "obs": 0,
+        "core": 0,
+        "ic": 0,
+        "sc": 0,
+        "ws": 0,
+        "fortress": 0,
+        "radar": 0,
+        "wet": 6
+      }
+    ],
+    "output": "It takes 6 Tremola Grenade GPb-1 to kill a meta that is 6 hour wet with **5396 health** (70.03% breachable) and **750 bmat repair cost** (7.19 health/bmat) (tier 2, 10 pieces, 13 green, 14 red, 5 atg, 2 shelter) (red or green estimated due to not being specified)"
+  },
+  {
+    "id": "bunker_kill_explicit_red_green",
+    "operation": "bunker_direct",
+    "input": [
+      "300mm",
+      {
+        "size": 20,
+        "tier": 3,
+        "green": 30,
+        "red": 20,
+        "rg": 0,
+        "mg": 0,
+        "atg": 0,
+        "hg": 0,
+        "shelter": 0,
+        "obs": 0,
+        "core": 1,
+        "ic": 0,
+        "sc": 0,
+        "ws": 0,
+        "fortress": 0,
+        "radar": 0,
+        "wet": 24
+      }
+    ],
+    "output": "It takes 49 300mm to kill a meta with **36062 health** (51.76% breachable) and **2480 bmat repair cost** (14.54 health/bmat) (tier 3, 20 pieces, 30 green, 20 red, 1 core)"
+  },
+  {
+    "id": "bunker_kill_freetext",
+    "operation": "bunker_freetext",
+    "input": [
+      "Tremola Grenade GPb-1",
+      "size 15 t3 bunker with 2 mg 3 atg 3 howi 1 ramp"
+    ],
+    "output": "It takes 140 to 148 Tremola Grenade GPb-1 to kill a meta with **14000 health** (74.57% breachable) and **1800 bmat repair cost** (7.78 health/bmat) (tier 3, 15 pieces, 2 mg, 3 atg, 3 hg, 1 ramp, 22 green, 16 red) (red or green estimated due to not being specified)"
+  },
+  {
+    "id": "statsheet_weapon",
+    "operation": "statsheet",
+    "input": [
+      "40mm"
+    ],
+    "output": [
+      "Weapons",
+      "40mm",
+      "600.0",
+      "Explosive"
+    ]
+  },
+  {
+    "id": "statsheet_vehicle",
+    "operation": "statsheet",
+    "input": [
+      "40-250 “Alekto” Heavy Cannon"
+    ],
+    "output": [
+      "Vehicles",
+      "40-250 “Alekto” Heavy Cannon",
+      "3750",
+      "Tier2Tank",
+      100,
+      100,
+      "0",
+      "5.5s",
+      "250mm “Fury“ Shell (30m-40m)",
+      0,
+      0
+    ]
+  },
+  {
+    "id": "statsheet_structure",
+    "operation": "statsheet",
+    "input": [
+      "Border base"
+    ],
+    "output": [
+      "Structures",
+      "Border base",
+      "2500",
+      "Tier3Structure",
+      "100",
+      "60",
+      "60"
+    ]
+  },
+  {
+    "id": "statsheet_multitier",
+    "operation": "statsheet",
+    "input": [
+      "Safe House"
+    ],
+    "output": [
+      "Multitier_structures",
+      "Safe House",
+      "2000",
+      "250",
+      "250"
+    ]
+  },
+  {
+    "id": "easter_egg",
+    "operation": "kill",
+    "input": [
+      "Watch Tower",
+      "Scout Plane"
+    ],
+    "output": "It takes 1 Watch Tower to kill a Scout Plane"
+  },
+  {
+    "id": "error_zero_damage",
+    "operation": "kill",
+    "input": [
+      "7.62mm",
+      "DAE 3b-2 “Hades Net” (Unemplaced)"
+    ],
+    "error": "ZeroDivisionError",
+    "message": "This weapon (7.62mm) does no damage to this entity (DAE 3b-2 “Hades Net” (Unemplaced))."
+  },
+  {
+    "id": "error_weapon_not_found",
+    "operation": "kill",
+    "input": [
+      "totally-not-a-real-weapon-xyz",
+      "Border base"
+    ],
+    "error": "WeaponNotFoundError",
+    "message": "The detected weapon is not found in my data set. Please try again."
+  },
+  {
+    "id": "error_target_not_found",
+    "operation": "kill",
+    "input": [
+      "40mm",
+      "totally-not-a-real-target-xyz"
+    ],
+    "error": "TargetNotFoundError",
+    "message": "The detected target is not found in my data set. Please try again."
+  }
+]
