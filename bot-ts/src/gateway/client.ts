@@ -15,7 +15,7 @@
 // is privileged — must also be toggled on in the Discord Developer Portal's
 // Bot settings for this application before Discord will allow it).
 import { Client, Events } from "discord.js";
-import type { CalculatorContext } from "../domain/calculator/handlers.js";
+import type { LiveHosts } from "./liveContext.js";
 import { commands } from "../commands/index.js";
 import { createCommandRouter } from "./commandRouter.js";
 import { syncCommands } from "./commandSync.js";
@@ -25,7 +25,7 @@ export function createClient(): Client {
   return new Client({ intents: [] });
 }
 
-export function wireClient(client: Client, ctx: CalculatorContext, testGuildId?: string): void {
+export function wireClient(client: Client, hosts: LiveHosts, testGuildId?: string): void {
   const routeInteraction = createCommandRouter(commands);
 
   client.once(Events.ClientReady, (readyClient) => {
@@ -42,7 +42,7 @@ export function wireClient(client: Client, ctx: CalculatorContext, testGuildId?:
       }
     }
 
-    const handleMessage = createMessageListener(ctx, readyClient.user.id);
+    const handleMessage = createMessageListener(hosts, readyClient.user.id);
     client.on(Events.MessageCreate, (message) => {
       handleMessage(message).catch((error: unknown) => {
         console.error(error);
@@ -51,7 +51,7 @@ export function wireClient(client: Client, ctx: CalculatorContext, testGuildId?:
   });
 
   client.on(Events.InteractionCreate, (interaction) => {
-    routeInteraction(interaction, ctx).catch((error: unknown) => {
+    routeInteraction(interaction, hosts).catch((error: unknown) => {
       console.error(error);
     });
   });

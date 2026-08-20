@@ -4,10 +4,18 @@
 // easter_egg_check) — these are what bot.py's command/message handlers called.
 // Bundles the data snapshot + alias dictionaries a caller needs into a single
 // CalculatorContext instead of reaching into parse.py-style module globals.
+//
+// CalculatorContext.fuzzy is an injected FuzzyApi (defaulting to
+// domain/fuzzy/plugin.ts's static implementation), not a hardcoded import of
+// domain/fuzzy/match.ts — this is what makes a domain/fuzzy PluginHost swap
+// (Phase 3) actually change calculator behavior, rather than the swap
+// silently doing nothing because handlers.ts kept calling the old code.
 import { buildLocationNameIndex, getAllNames, getHuskNames, getVehicleNames, isLocationName } from "../../data/aliasIndex.js";
 import type { DataSnapshot } from "../../data/loader.js";
 import { BunkerSpecParseError, EntityNotFoundError } from "../errors.js";
-import { fuzzyMatchAny, fuzzyMatchTargetName, fuzzyMatchWeaponName, normalizedPartialRatioEqual, normalizedRatioEqual } from "../fuzzy/match.js";
+import type { FuzzyApi } from "../fuzzy/plugin.js";
+import { defaultFuzzyApi } from "../fuzzy/plugin.js";
+import { normalizedPartialRatioEqual, normalizedRatioEqual } from "../fuzzy/match.js";
 import { parseBunkerSpec } from "../textParsing/bunkerSpecParser.js";
 import type { BunkerSpec } from "./bunkerMath.js";
 import type { DamageCalculatorArgs } from "./damageCalculator.js";
@@ -21,9 +29,16 @@ export interface CalculatorContext {
   vehicleDictionary: Map<string, string>;
   allDictionary: Map<string, string>;
   locationNameIndex: Set<string>;
+  /** Fuzzy-matching implementation, injected rather than statically
+   * imported — this is what makes a domain/fuzzy PluginHost swap actually
+   * observable through calculator handlers. Defaults to the current
+   * built-in fuzzball-based implementation, so every existing call site
+   * that doesn't care about hot-swap can keep calling
+   * buildCalculatorContext(data) unchanged. */
+  fuzzy: FuzzyApi;
 }
 
-export function buildCalculatorContext(data: DataSnapshot): CalculatorContext {
+export function buildCalculatorContext(data: DataSnapshot, fuzzy: FuzzyApi = defaultFuzzyApi): CalculatorContext {
   const targetsDictionary = getAllNames(data.targets);
   return {
     data,
@@ -33,11 +48,12 @@ export function buildCalculatorContext(data: DataSnapshot): CalculatorContext {
     vehicleDictionary: getVehicleNames(data.targets),
     allDictionary: getAllNames(data.all),
     locationNameIndex: buildLocationNameIndex(data.locations),
+    fuzzy,
   };
 }
 
 function resolveWeaponName(ctx: CalculatorContext, weaponFuzzyName: string): string {
-  return ctx.weaponsDictionary.get(weaponFuzzyName) ?? fuzzyMatchWeaponName(weaponFuzzyName, ctx.weaponsDictionary);
+  return ctx.weaponsDictionary.get(weaponFuzzyName) ?? ctx.fuzzy.fuzzyMatchWeaponName(weaponFuzzyName, ctx.weaponsDictionary);
 }
 
 /** Direct-hit-or-fuzzy resolution shared by kill/dehusk/custom_kill against an
@@ -54,10 +70,16 @@ function resolveTargetName(
     const args = isLocationName(targetFuzzyName, ctx.locationNameIndex) ? { locationName: targetFuzzyName } : undefined;
     return { targetName: direct, args };
   }
-  const result = fuzzyMatchTargetName(targetFuzzyName, targetsDictionary, ctx.locationNameIndex, isDefaultDictionary);
+  const result = ctx.fuzzy.fuzzyMatchTargetName(targetFuzzyName, targetsDictionary, ctx.locationNameIndex, isDefaultDictionary);
   return { targetName: result.canonical, args: result.tokens };
 }
 
+// Deliberately still a static import, not routed through CalculatorContext:
+// easter_egg_check runs before any dictionary/ctx is resolved in
+// generalKillHandler (matching the Python original's own call order), and
+// isn't itself a fuzzy *match* against the alias dictionaries — just two
+// direct ratio/partial_ratio comparisons against a hardcoded pair. Not worth
+// threading a ctx through for a whimsy feature with no data dependency.
 export function easterEggCheck(weaponFuzzyName: string, targetFuzzyName: string): string | null {
   const easterEggs: Array<[weapon: string, target: string, hits: number, threshold: number]> = [
     ["Watch Tower", "Scout Plane", 1, 95],
@@ -124,14 +146,14 @@ export function commandBunkerKillHandler(ctx: CalculatorContext, weaponFuzzyName
  * rather than throwing on the not-found path — callers must check the type. */
 export function statsheetHandler(ctx: CalculatorContext, entityName: string): Array<string | number> | EntityNotFoundError {
   try {
-    const entity = fuzzyMatchAny(entityName, ctx.allDictionary, ctx.data.all);
+    const entity = ctx.fuzzy.fuzzyMatchAny(entityName, ctx.allDictionary, ctx.data.all);
 
     if (entity.type === "Weapons") {
-      const weapon = ctx.data.weapons[fuzzyMatchWeaponName(entityName, ctx.weaponsDictionary)]!;
+      const weapon = ctx.data.weapons[ctx.fuzzy.fuzzyMatchWeaponName(entityName, ctx.weaponsDictionary)]!;
       return [weapon.ObjectType, weapon.Name, weapon.Damage, weapon.DamageType];
     }
 
-    const target = ctx.data.targets[fuzzyMatchTargetName(entityName, ctx.targetsDictionary, ctx.locationNameIndex, true).canonical]!;
+    const target = ctx.data.targets[ctx.fuzzy.fuzzyMatchTargetName(entityName, ctx.targetsDictionary, ctx.locationNameIndex, true).canonical]!;
 
     if (target.ObjectType === "Structures") {
       return [

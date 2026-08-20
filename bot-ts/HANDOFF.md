@@ -29,7 +29,7 @@ It writes to `test/fixtures/*.json` (repo root, shared — `bot-ts/test/fixtures
 
 ## Status: Phase 1 (core engine) is done
 
-Run from `bot-ts/`: `npm install && npm run typecheck && npm test` — currently **171 tests passing, 0 failures**.
+Run from `bot-ts/`: `npm install && npm run typecheck && npm test` — currently **176 tests passing, 0 failures**.
 
 All of `data/*`, `domain/errors.ts`, `domain/normalize.ts`, `domain/fuzzy/*`, `domain/textParsing/*`, and `domain/calculator/*` are ported and fixture-verified. Zero discord.js dependency anywhere in `domain/*`/`data/*`, per the plan.
 
@@ -98,7 +98,7 @@ One deliberate, documented behavior change from the Python original: the old res
 - `messageListener.ts` (free-text on_message parsing) is currently untestable live since gateway intents are zeroed out — see the client.ts note above for how to re-enable it when that's wanted.
 - Phase 4 (admin data pipeline) hasn't been started — see the plan file for scope.
 
-## Status: Phase 3 (hot-swap) is started — core mechanism done, not fully wired
+## Status: Phase 3 (hot-swap) is DONE and LIVE-VERIFIED
 
 Built:
 - `plugins/pluginHost.ts` — the generic `PluginHost<T>` from the plan: `swap(path)` dynamically imports a module (cache-busted via a `?v=...` query string, since Node's ESM loader otherwise caches by resolved specifier and would silently keep serving a stale module after a rebuild), runs its `validate()`, and only on success does the atomic `this.current` reassignment. `rollback()` reverts to the most recent prior module via a bounded history (default 5). Any import/validate failure leaves `current` completely untouched.
@@ -109,11 +109,19 @@ Built:
 - `validate()` deliberately does **not** replay all 24 `calculator-fixtures.json` cases or assert exact output strings — those would go stale the instant a game patch changes damage/health numbers, and that's what the build-time test suite is for anyway, before a swap candidate is even built. Instead it's a cheap smoke test: run `generalKillHandler`/`generalDisableHandler`/`generalDehuskHandler`/`statsheetHandler` against a few reasonably-permanent real entities ("40mm", "Border base", "Power Plant Husk", the Alekto tank) and confirm they don't throw and return non-empty strings. `ponytail:`-commented in-file as a known v1 limitation if those specific entities ever get renamed/removed by a patch.
 - Verified end-to-end with a throwaway smoke script: built it, constructed a real `PluginHost<CalculatorApi>`, ran a kill query before and after a successful swap (same result, code path proven live), then attempted a swap to a nonexistent path and confirmed it was rejected (`ok: false`) with the working module completely untouched afterward.
 
-### Not yet done / open design question
+### domain/fuzzy wrapped, and wired for real (this session, follow-up to the above)
 
-- **`domain/fuzzy` is not yet wrapped in `PluginHost`.** Lower priority than it looks: `domain/calculator/handlers.ts` currently imports `domain/fuzzy/match.ts` **statically**, so wrapping fuzzy alone wouldn't be observable through the calculator's kill/disable/etc. functions unless handlers.ts is also changed to take its fuzzy-matching functions as an injected dependency instead of a hardcoded import. That's a real signature/DI change to `domain/calculator/handlers.ts`, bigger than "add one more plugin.ts file" — flagging it as its own follow-up decision rather than bundling it in unannounced.
-- Nothing is wired into `main.ts`/`gateway/*` yet — `main.ts` still calls `loadDataSnapshot()`/the calculator handlers directly, not through a `PluginHost`. Matches the plan's own "purely additive, production behavior unchanged until first used" for this phase, but it does mean there's no admin-facing trigger command yet to actually invoke a swap in production.
-- No admin trigger command/CLI (`scripts/admin-cli.ts`, or a Discord admin command) to call `.swap()` in a running process — everything above is invoked directly in tests/smoke scripts only.
+- `domain/fuzzy/plugin.ts` — `PluginModule<FuzzyApi>` bundling `match.ts` + `autocomplete.ts`'s exports (grouped as one swappable unit, matching the plan's "domain/fuzzy/\*" listing). Same live-data smoke-test `validate()` pattern as the calculator plugin.
+- **The DI change flagged as a follow-up decision was made**: `CalculatorContext` gained a `fuzzy: FuzzyApi` field (`buildCalculatorContext(data, fuzzy = defaultFuzzyApi)` — default keeps every existing call site working unchanged). `domain/calculator/handlers.ts`'s internal fuzzy calls (`resolveWeaponName`, `resolveTargetName`, `statsheetHandler`) now go through `ctx.fuzzy.*` instead of a static import — this is what makes a `domain/fuzzy` swap actually change calculator behavior. `commands/autocompleteHandlers.ts` was updated the same way, so autocomplete observes fuzzy swaps too. `easterEggCheck` deliberately stays on the static import (documented in-file: it runs before `ctx` exists and has no data dependency — not worth threading a ctx through for a whimsy feature).
+- `test/domain/calculator/fuzzyInjection.spec.ts` proves this is a real seam, not a type-level no-op: swaps in a stub `FuzzyApi` and confirms `generalKillHandler`'s output changes accordingly.
+- **`main.ts`/`gateway/*` are now wired to the real hosts.** `gateway/liveContext.ts` is new: constructs the three `PluginHost`s (`data`, `calculator`, `fuzzy`) once at startup and exposes `currentCalculatorContext(hosts)`, which `commandRouter.ts` and `messageListener.ts` now call **fresh per incoming interaction/message** (not once at startup) — this is what actually satisfies the plan's "read `get()` fresh per invocation" rule end-to-end, for all three hosts at once, rather than baking a `CalculatorContext` snapshot at boot and never refreshing it.
+- **Admin trigger built**: `/admin_swap target:<data|calculator|fuzzy> path:<optional> rollback:<optional bool>` (new, not in the Python original). Gated by `setDefaultMemberPermissions(Administrator)` (Discord's own native command-permission system, not an in-code check). `path` defaults to the current build's own path per target (`hosts.defaultPaths`), so the common case is just `/admin_swap target:data` to reload after a rebuild. `SlashCommand.execute` gained a third `hosts: LiveHosts` parameter for this — every other command ignores it (structurally valid; a callback with fewer declared params still satisfies a wider function type).
+- Verified end-to-end with a throwaway smoke script: swapped all three hosts live in sequence (data → calculator → fuzzy), confirmed a kill query gives the same result before/after, then proved a broken-path swap through the exact `hostFor()` helper `/admin_swap` uses is rejected without disruption, and rollback restores the prior version. Then ran the real bot (`npx tsx src/main.ts`) and confirmed `/admin_swap` registers alongside the other 8 commands (9 total now).
+
+### Not yet done
+
+- `/admin_swap` hasn't been exercised by a human clicking through Discord yet — only via the smoke script and command registration. Worth an actual manual click-test.
+- No CLI equivalent (`scripts/admin-cli.ts`) — only the Discord command exists. The plan mentions "command/CLI" (either); a CLI would need its own IPC/signal mechanism to reach a *running* process's live `PluginHost`s (a separate CLI process can't call `.swap()` on another process's in-memory object directly) — not attempted, flagging as a real design gap if a CLI is wanted later, not silently deferred without a reason.
 
 ## Workflow reminders for this session
 

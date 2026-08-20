@@ -7,17 +7,16 @@
 // decision. deploymentToken is loaded (matching Python's own dead read) but
 // unused below.
 import { loadEnv } from "./config/env.js";
-import { buildCalculatorContext } from "./domain/calculator/handlers.js";
-import { defaultDataDir, loadDataSnapshot } from "./data/loader.js";
 import { createClient, wireClient } from "./gateway/client.js";
+import { createLiveHosts } from "./gateway/liveContext.js";
 
 const env = loadEnv();
 if (env.devServerToken === undefined) {
   throw new Error("DEV_SERVER_TOKEN is not set");
 }
 
-const ctx = buildCalculatorContext(loadDataSnapshot(defaultDataDir()));
+const hosts = createLiveHosts();
 const client = createClient();
-wireClient(client, ctx, env.testGuildId);
+wireClient(client, hosts, env.testGuildId);
 
 await client.login(env.devServerToken);

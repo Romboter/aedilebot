@@ -5,11 +5,12 @@
 // matched (mirrors bot.handle_response's implicit `None` return on no match
 // -> `if response:` guard in main.message_handler).
 import type { Message } from "discord.js";
-import type { CalculatorContext } from "../domain/calculator/handlers.js";
+import type { LiveHosts } from "./liveContext.js";
+import { currentCalculatorContext } from "./liveContext.js";
 import { parseFreeTextQuery } from "../domain/textParsing/freeTextQuery.js";
 import { dispatchFreeTextQuery } from "./freeTextDispatch.js";
 
-export function createMessageListener(ctx: CalculatorContext, botUserId: string) {
+export function createMessageListener(hosts: LiveHosts, botUserId: string) {
   return async function handleMessage(message: Message): Promise<void> {
     if (message.author.id === botUserId) {
       return;
@@ -18,6 +19,8 @@ export function createMessageListener(ctx: CalculatorContext, botUserId: string)
     if (parsed === null) {
       return;
     }
+    // Resolved fresh per message, same reasoning as commandRouter.ts.
+    const ctx = currentCalculatorContext(hosts);
     const reply = dispatchFreeTextQuery(ctx, parsed, message.content);
     await message.reply({ content: reply, allowedMentions: { repliedUser: false } });
   };
