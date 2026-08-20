@@ -29,7 +29,7 @@ It writes to `test/fixtures/*.json` (repo root, shared — `bot-ts/test/fixtures
 
 ## Status: Phase 1 (core engine) is done
 
-Run from `bot-ts/`: `npm install && npm run typecheck && npm test` — currently **167 tests passing, 0 failures**.
+Run from `bot-ts/`: `npm install && npm run typecheck && npm test` — currently **171 tests passing, 0 failures**.
 
 All of `data/*`, `domain/errors.ts`, `domain/normalize.ts`, `domain/fuzzy/*`, `domain/textParsing/*`, and `domain/calculator/*` are ported and fixture-verified. Zero discord.js dependency anywhere in `domain/*`/`data/*`, per the plan.
 
@@ -62,16 +62,18 @@ All of `data/*`, `domain/errors.ts`, `domain/normalize.ts`, `domain/fuzzy/*`, `d
 - `parseFreeTextQuery` (in `freeTextQuery.ts`) is a **pure parser only** — `{weapon, target, operation} | null`. It deliberately does NOT port `handle_response_inner`'s try/except-to-string conversion + `error_log.txt` file write — that's presentation/logging with I/O side effects, which belongs in `gateway/errorPresenter.ts` (Phase 2), not `domain/*`. Whoever wires up the gateway needs to: call `parseFreeTextQuery`, dispatch to the matching `domain/calculator/handlers.ts` function based on `operation` (`"bunker"` → `generalBunkerKillHandler`, others map 1:1), then catch domain errors and turn them into reply strings + log them, mirroring `handle_response_inner`'s except chain (see `src/bot.py` lines ~517-559 in the Python original for the exact message text expected per exception type).
 - The "disable" free-text regex quirk is preserved as-is: it does NOT run `moveStringToRear` first, unlike "kill"/"dehusk" — matches `bot.py`'s inconsistency exactly, not fixed.
 
-## Status: Phase 2 (gateway/commands/discord.js wiring) is built, not yet live-tested
+## Status: Phase 2 (gateway/commands/discord.js wiring) is built and LIVE-VALIDATED
 
-All of Phase 2's structural pieces are in place and typecheck/build/test clean, but **nothing has been run against a real Discord token yet** — there's no dev-server token available in this environment. Whoever has one needs to do the actual dev-server side-by-side validation the plan calls for before cutover.
+Confirmed working against a real Discord dev bot (`bot-ts/.env` has a `DEV_SERVER_TOKEN` for a throwaway test application — **gitignored, do not commit it**, user said they'll rotate it eventually anyway). Run with `npx tsx src/main.ts` from `bot-ts/`. Observed live: successful login, guild connection ("Bot test server"), and global slash-command registration (`Synced 8 commands: help, kill, disable, dehusk, custom_kill, bunker_kill, statsheet, how`). User has manually exercised slash commands against it and confirmed it works.
 
 Built:
 - `domain/fuzzy/autocomplete.ts` — the O(n²) autocomplete fix (see below)
 - `config/env.ts` — `DEPLOYMENT_TOKEN`/`DEV_SERVER_TOKEN`/`https_proxy` via Node's native `process.loadEnvFile()`, no dotenv dependency
-- `gateway/errorPresenter.ts` — `handle_response_inner`'s except-chain → reply string + `error_log.txt` logging (logger is injectable, tests don't touch the filesystem)
+- `gateway/errorPresenter.ts` — `handle_response_inner`'s except-chain → reply string + `error_log.txt` logging (logger is injectable; `error_log.txt` is now gitignored since real runs — including tests that exercise the real default logger — do write it)
 - `gateway/client.ts`, `commandRouter.ts`, `commandSync.ts`, `command.ts` (shared `SlashCommand` interface), `messageListener.ts`
-- `commands/{kill,disable,dehusk,customKill,bunkerKill,statsheet,help}.ts` + `autocompleteHandlers.ts` (shared autocomplete responders) + `index.ts`
+- `gateway/freeTextDispatch.ts` — shared by `messageListener.ts` and the `/how` command: dispatches a parsed free-text query to the right calculator handler + converts thrown domain errors to reply strings
+- `commands/{kill,disable,dehusk,customKill,bunkerKill,statsheet,help,how}.ts` + `autocompleteHandlers.ts` (shared autocomplete responders) + `index.ts`
+- **`/how` — new, not in the Python original.** User asked for a slash-command wrapper around the free-text prompt: `/how query:"many mammons to kill a ghouse"` behaves like typing `how many mammons to kill a ghouse` in chat (the command name supplies the implied "how"). Implemented by prepending `"how "` to the `query` option and running it through the exact same `parseFreeTextQuery` + `dispatchFreeTextQuery` on_message uses — same parser, same handlers, same error presentation, zero duplicated logic.
 - `main.ts` wired end-to-end (verified with a throwaway smoke script that builds the calculator context and constructs+wires the discord.js `Client` without calling `.login()` — this doesn't require a token and did work)
 
 ### The autocomplete O(n²) fix
@@ -86,13 +88,14 @@ One deliberate, documented behavior change from the Python original: the old res
 
 - `statsheet.ts`: `statsheet_handler`'s Python caller has no not-found guard — indexing the returned `EntityNotFoundError` instance as `data[1]` would crash the interaction with no reply at all (Discord shows "This interaction failed"). Fixed to reply with the error message instead; not a parity requirement, a straightforward bug people would want fixed.
 - `statsheet.ts`: the "Structures" embed branch's "Repair Cost" field is **preserved as buggy** — it reads `data[5]` (actually `DecayStartHours`) instead of `data[4]` (actual `RepairCost`), matching bot.py's live (mislabeled) output exactly. Commented in-file so it isn't "fixed" by accident later.
-- `gateway/client.ts`: intents are the actual minimal set the code subscribes to (`Guilds`, `GuildMessages`, `MessageContent`) rather than blindly replicating Python's `Intents.default()` (which enables a bunch of non-privileged intents this bot never reads, like presences/bans/invites). `MessageContent` is still the only *privileged* intent, matching the existing memory note on this.
+- `gateway/client.ts`: intents are **currently `[]` (zero gateway intents), by explicit user request for dev-bot testing** — a deliberate step down from an earlier version of this file that requested `Guilds`/`GuildMessages`/`MessageContent` (the actual-use minimal set vs. Python's `Intents.default()`). Slash-command interactions work fine with zero intents (they're delivered regardless of `GatewayIntentBits`), but `readyClient.guilds.cache` stays empty and `messageCreate` never fires — `messageListener.ts`'s free-text "how many X to kill Y" chat parsing is wired but **currently inert**. To restore it: add back `GatewayIntentBits.Guilds`, `GuildMessages`, `MessageContent` in `createClient()` (`MessageContent` is privileged — also needs toggling on in the Discord Developer Portal's Bot settings for the application in use). Full reasoning is in the file's own header comment.
 - `main.ts`: preserves bot.py's own inconsistency of reading both `DEPLOYMENT_TOKEN` and `DEV_SERVER_TOKEN` but only ever logging in with `DEV_SERVER_TOKEN` — not fixed here per the plan's explicit "resolve at cutover, not incidentally" guidance.
+- **Guild-scoped command sync for fast dev iteration — new, not in the Python original.** `config/env.ts` gained `testGuildId` (`TEST_GUILD_ID` env var); when set, `commandSync.ts` registers commands to that one guild (near-instant propagation) instead of globally (up to an hour). `bot-ts/.env` currently has `TEST_GUILD_ID` set to the user's test server. Leave unset in production — global registration is what `bot.py`'s `client.tree.sync()` did.
 
 ### Not yet done / still open
 
-- **Live validation against a dev-server token** — nobody has run this against real Discord yet. This is the actual Phase 2 completion gate per the plan (side-by-side query comparison against the live Python bot).
-- Slash command registration is guild-agnostic (`client.application.commands.set(...)`, i.e. global commands) — same as `bot.py`'s `client.tree.sync()` with no guild argument. Global command propagation can take up to an hour on Discord's side; if testing on a dev server, consider a guild-scoped sync for faster iteration (not built — flag if wanted).
+- **Live login/connect/sync confirmed** (see above — including guild-scoped sync), but a full **side-by-side query comparison against the live Python bot** — the plan's actual Phase 2 cutover gate — hasn't been done yet. Manual spot-checking via `/how`/`/kill`/etc. has happened, not a systematic regression pass.
+- `messageListener.ts` (free-text on_message parsing) is currently untestable live since gateway intents are zeroed out — see the client.ts note above for how to re-enable it when that's wanted.
 - Phase 4 (admin data pipeline) hasn't been started — see the plan file for scope.
 
 ## Status: Phase 3 (hot-swap) is started — core mechanism done, not fully wired

@@ -18,6 +18,6 @@ if (env.devServerToken === undefined) {
 
 const ctx = buildCalculatorContext(loadDataSnapshot(defaultDataDir()));
 const client = createClient();
-wireClient(client, ctx);
+wireClient(client, ctx, env.testGuildId);
 
 await client.login(env.devServerToken);

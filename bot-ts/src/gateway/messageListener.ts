@@ -6,33 +6,8 @@
 // -> `if response:` guard in main.message_handler).
 import type { Message } from "discord.js";
 import type { CalculatorContext } from "../domain/calculator/handlers.js";
-import {
-  generalBunkerKillHandler,
-  generalDehuskHandler,
-  generalDisableHandler,
-  generalKillHandler,
-} from "../domain/calculator/handlers.js";
 import { parseFreeTextQuery } from "../domain/textParsing/freeTextQuery.js";
-import { runCalculatorOperation } from "./errorPresenter.js";
-
-function runParsedQuery(
-  ctx: CalculatorContext,
-  parsed: NonNullable<ReturnType<typeof parseFreeTextQuery>>,
-  query: string,
-): string {
-  return runCalculatorOperation(() => {
-    switch (parsed.operation) {
-      case "kill":
-        return generalKillHandler(ctx, parsed.weapon, parsed.target);
-      case "disable":
-        return generalDisableHandler(ctx, parsed.weapon, parsed.target);
-      case "dehusk":
-        return generalDehuskHandler(ctx, parsed.weapon, parsed.target);
-      case "bunker":
-        return generalBunkerKillHandler(ctx, parsed.weapon, parsed.target);
-    }
-  }, query);
-}
+import { dispatchFreeTextQuery } from "./freeTextDispatch.js";
 
 export function createMessageListener(ctx: CalculatorContext, botUserId: string) {
   return async function handleMessage(message: Message): Promise<void> {
@@ -43,7 +18,7 @@ export function createMessageListener(ctx: CalculatorContext, botUserId: string)
     if (parsed === null) {
       return;
     }
-    const reply = runParsedQuery(ctx, parsed, message.content);
+    const reply = dispatchFreeTextQuery(ctx, parsed, message.content);
     await message.reply({ content: reply, allowedMentions: { repliedUser: false } });
   };
 }

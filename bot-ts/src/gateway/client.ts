@@ -2,17 +2,19 @@
 // on_ready (sync commands), interactionCreate (slash commands +
 // autocomplete), and messageCreate (free-text parsing).
 //
-// Intents: bot.py used `discord.Intents.default()` (every non-privileged
-// intent) plus the one privileged intent this bot actually needs
-// (message_content, to read on_message text). Rather than blindly
-// replicating "every non-privileged intent" — most of which this bot
-// doesn't use (presences, bans, invites, etc.) — only the intents the code
-// actually subscribes to are requested: Guilds (required for any
-// interaction/slash-command traffic) and GuildMessages + MessageContent (for
-// on_message free-text parsing). Keeping the privileged-intent surface
-// minimal matches the existing memory note that MessageContent is the only
-// privileged intent meant to be in use.
-import { Client, Events, GatewayIntentBits } from "discord.js";
+// Intents: deliberately requesting ZERO gateway intents right now (user
+// decision, dev-bot testing) — slash-command interactions are delivered
+// regardless of intents (they're not gated by GatewayIntentBits at all), so
+// /help, /kill, /how, etc. all keep working. The cost: no Guilds intent
+// means readyClient.guilds.cache stays empty (the "Current discords:"
+// logging below prints nothing), and no GuildMessages/MessageContent means
+// messageCreate events never arrive, so createMessageListener's free-text
+// "how many X to kill Y" chat parsing is wired below but effectively inert
+// until intents are restored. To bring it back: add
+// GatewayIntentBits.Guilds, GuildMessages, and MessageContent (the last one
+// is privileged — must also be toggled on in the Discord Developer Portal's
+// Bot settings for this application before Discord will allow it).
+import { Client, Events } from "discord.js";
 import type { CalculatorContext } from "../domain/calculator/handlers.js";
 import { commands } from "../commands/index.js";
 import { createCommandRouter } from "./commandRouter.js";
@@ -20,22 +22,24 @@ import { syncCommands } from "./commandSync.js";
 import { createMessageListener } from "./messageListener.js";
 
 export function createClient(): Client {
-  return new Client({
-    intents: [GatewayIntentBits.Guilds, GatewayIntentBits.GuildMessages, GatewayIntentBits.MessageContent],
-  });
+  return new Client({ intents: [] });
 }
 
-export function wireClient(client: Client, ctx: CalculatorContext): void {
+export function wireClient(client: Client, ctx: CalculatorContext, testGuildId?: string): void {
   const routeInteraction = createCommandRouter(commands);
 
   client.once(Events.ClientReady, (readyClient) => {
     console.log(`${readyClient.user.tag} is now running`);
-    syncCommands(readyClient, commands).catch((error: unknown) => {
+    syncCommands(readyClient, commands, testGuildId).catch((error: unknown) => {
       console.error(`Sync error: ${String(error)}`);
     });
     console.log("Current discords:");
     for (const guild of readyClient.guilds.cache.values()) {
-      console.log(`${guild.name} `);
+      // Without the Guilds intent, READY only includes unavailable guild
+      // stubs (no name) — skip those rather than logging "undefined".
+      if (guild.name) {
+        console.log(`${guild.name} `);
+      }
     }
 
     const handleMessage = createMessageListener(ctx, readyClient.user.id);

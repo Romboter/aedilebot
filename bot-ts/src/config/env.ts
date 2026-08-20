@@ -10,6 +10,11 @@ export interface EnvConfig {
   deploymentToken: string | undefined;
   devServerToken: string | undefined;
   httpsProxy: string | undefined;
+  /** Not in the Python original. When set, slash commands sync to this one
+   * guild instead of globally — near-instant propagation for dev-server
+   * testing, vs. global registration's up-to-an-hour delay. Leave unset in
+   * production. */
+  testGuildId: string | undefined;
 }
 
 export function loadEnv(): EnvConfig {
@@ -24,5 +29,6 @@ export function loadEnv(): EnvConfig {
     deploymentToken: process.env.DEPLOYMENT_TOKEN,
     devServerToken: process.env.DEV_SERVER_TOKEN,
     httpsProxy: process.env.https_proxy,
+    testGuildId: process.env.TEST_GUILD_ID,
   };
 }

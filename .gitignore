@@ -179,4 +179,5 @@ pyrightconfig.json
 ### Node (bot-ts rewrite) ###
 node_modules/
 *.tsbuildinfo
+error_log.txt
 
