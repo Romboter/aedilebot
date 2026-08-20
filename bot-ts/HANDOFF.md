@@ -29,7 +29,7 @@ It writes to `test/fixtures/*.json` (repo root, shared — `bot-ts/test/fixtures
 
 ## Status: Phase 1 (core engine) is done
 
-Run from `bot-ts/`: `npm install && npm run typecheck && npm test` — currently **154 tests passing, 0 failures**.
+Run from `bot-ts/`: `npm install && npm run typecheck && npm test` — currently **164 tests passing, 0 failures**.
 
 All of `data/*`, `domain/errors.ts`, `domain/normalize.ts`, `domain/fuzzy/*`, `domain/textParsing/*`, and `domain/calculator/*` are ported and fixture-verified. Zero discord.js dependency anywhere in `domain/*`/`data/*`, per the plan.
 
@@ -93,7 +93,20 @@ One deliberate, documented behavior change from the Python original: the old res
 
 - **Live validation against a dev-server token** — nobody has run this against real Discord yet. This is the actual Phase 2 completion gate per the plan (side-by-side query comparison against the live Python bot).
 - Slash command registration is guild-agnostic (`client.application.commands.set(...)`, i.e. global commands) — same as `bot.py`'s `client.tree.sync()` with no guild argument. Global command propagation can take up to an hour on Discord's side; if testing on a dev server, consider a guild-scoped sync for faster iteration (not built — flag if wanted).
-- Phase 3 (hot-swap) and Phase 4 (admin data pipeline) haven't been started — see the plan file for scope.
+- Phase 4 (admin data pipeline) hasn't been started — see the plan file for scope.
+
+## Status: Phase 3 (hot-swap) is started — core mechanism done, not fully wired
+
+Built:
+- `plugins/pluginHost.ts` — the generic `PluginHost<T>` from the plan: `swap(path)` dynamically imports a module (cache-busted via a `?v=...` query string, since Node's ESM loader otherwise caches by resolved specifier and would silently keep serving a stale module after a rebuild), runs its `validate()`, and only on success does the atomic `this.current` reassignment. `rollback()` reverts to the most recent prior module via a bounded history (default 5). Any import/validate failure leaves `current` completely untouched.
+- `test/plugins/pluginHost.spec.ts` (7 tests) — proves the actual atomicity claim the plan calls out as the primary risk, not just "swap() works": a broken module's `validate()` throwing leaves `current` untouched; an import of a nonexistent path leaves `current` untouched; bounded history evicts old rollback targets; and critically, **an in-flight call that read `get()` before a swap started keeps its old reference throughout the swap's pending `await`, and only calls to `get()` made *after* `swap()` resolves see the new module** — this is what "call sites read `get()` fresh, never cache across an await" actually buys you, demonstrated with a real dynamic import (not mocked) against `.mjs` fixture files in `test/fixtures/plugins/`.
+- `data/dataStore.ts` — the first concrete `PluginModule<DataSnapshot>`: re-importing this file (through `PluginHost.swap()`) re-runs `loadDataSnapshot()` from disk, picking up whatever an admin data pipeline (Phase 4) wrote there since the process started. `validate()` does a cheap sanity check (non-empty weapons/targets) before letting a swap commit. Verified end-to-end with a throwaway smoke script: built it, swapped a real `PluginHost<DataSnapshot>` to the compiled `dist/data/dataStore.js`, confirmed the swap succeeds and the snapshot comes back intact.
+
+### Not yet done / open design question
+
+- **`domain/calculator` and `domain/fuzzy` are not yet wrapped in `PluginHost`.** The plan's `validate()` signature is `() => Promise<void> | void` — no parameters — but a meaningful validate for the calculator would need to replay `calculator-fixtures.json` against a **live** data snapshot (per the plan's own risk #5: fixtures must be computed fresh at swap time, not hardcoded, or they go stale after a game-data patch). Since `validate()` takes no arguments, the candidate module would have to reach for "the current data" some other way — e.g. importing `data/dataStore.ts` itself inside its own `validate()`. That's workable but has a real cross-plugin-dependency wrinkle worth deciding deliberately (does the calculator plugin's validate() import the *currently swapped-in* data host, or always the on-disk default?) rather than guessing an answer — flagging this for explicit direction before building it, not silently picking one.
+- Nothing is wired into `main.ts`/`gateway/*` yet — `main.ts` still calls `loadDataSnapshot()`/the calculator handlers directly, not through a `PluginHost`. Matches the plan's own "purely additive, production behavior unchanged until first used" for this phase, but it does mean there's no admin-facing trigger command yet to actually invoke a swap in production.
+- No admin trigger command/CLI (`scripts/admin-cli.ts`, or a Discord admin command) to call `.swap()` in a running process — everything above is invoked directly in tests/smoke scripts only.
 
 ## Workflow reminders for this session
 
