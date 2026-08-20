@@ -45,7 +45,20 @@ Run from `bot-ts/`: `npm install && npm run typecheck && npm test` — currently
 - **`fuzzball` vs `fuzzywuzzy` scoring**: `fuzzball` (JS fuzzywuzzy port) diverges from Python's `fuzzywuzzy` by a few points on ~8% of (query, key) pairs — rounding/algorithm differences inside `partial_ratio`, not something worth patching a third-party lib for. Per the plan's own stated bar, `domain/fuzzy/match.ts` is validated on **which canonical name wins**, not exact scores (60 programmatic typo-query fixtures prove this holds).
 - **Mojibake in `Targets.json`**: some keys (e.g. the "Alekto" vehicle) have mismatched left-curly-quote characters (`“` used on both sides instead of `“...”`) — a pre-existing data encoding quirk. Don't reference these names as source-file string literals in new tests; look them up by `ObjectType` or via a fixture instead.
 
-## Next task: `domain/calculator/`
+## Status: `domain/calculator/` is done (this session)
+
+All 24 `calculator-fixtures.json` cases pass exactly (`test/domain/calculator/handlers.spec.ts`), plus 5 targeted unit tests for the trickiest bunker-math sub-functions (`bunkerMath.spec.ts`). 132 tests total, 0 failures, typecheck clean.
+
+Files added: `src/domain/calculator/{bunkerMath,multitier,damageCalculator,handlers}.ts`, `src/domain/textParsing/bunkerSpecParser.ts`.
+
+**Fixture-generator bug fixed along the way:** `scripts/generate_fixtures.py` recorded `"input"` in each fixture entry *after* `run_case()` ran, but `command_bunker_kill_handler`/`general_bunker_kill_handler` mutate the `bunker_spec` dict in place (red/green estimation) — so the two `bunker_direct` cases with `green: -1, red: -1` were silently recording the post-mutation values (`green: 22, red: 16` etc.) as if that had been the input all along. Fixed by deep-copying `args` before `run_case()` runs; fixtures regenerated. If you regenerate fixtures again in the future, this is already fixed — no action needed, just noting it in case old fixture JSON is lying around from before this fix.
+
+**Design notes for whoever wires up Phase 2 (gateway):**
+- `handlers.ts` needs a `CalculatorContext` (built once via `buildCalculatorContext(loadDataSnapshot(dataDir))`) — this is the thing Phase 3's `PluginHost`/hot-swap will eventually wrap.
+- `statsheetHandler` returns `Array<string|number> | EntityNotFoundError` (not throwing on not-found) — same asymmetric-return quirk as the Python original; callers must check `instanceof EntityNotFoundError`.
+- `domain/textParsing/freeTextQuery.ts` (port of `bot.handle_response`'s regex dispatch) is still **not built** — needed for `on_message` parity in Phase 2, but wasn't required for calculator fixture parity since `general_bunker_kill_handler` only needed `bunkerSpecParser.ts`.
+
+## Original next-task notes (kept for context, now done above)
 
 This is the big one — Python's `calculator.py` (487 lines), the `DamageCalculator` class + handler functions (`general_kill_handler`, `custom_kill_handler`, `general_disable_handler`, `general_dehusk_handler`, `general_bunker_kill_handler`, `command_bunker_kill_handler`, `statsheet_handler`, `easter_egg_check`). This is the primary Phase 1 parity gate per the plan — **all 24 `calculator-fixtures.json` cases must match exactly** before Phase 2 (Discord wiring) starts.
 
