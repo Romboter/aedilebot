@@ -3,6 +3,14 @@
 **Branch:** `rewrite/node-ts` (off `main` @ `90f4d16`)
 **Plan file:** `C:\Users\Jason\.claude\plans\ok-i-have-more-iterative-ladybug.md` — read this first for full context (why Node/TS, hot-swap design, admin data pipeline, phasing, testing approach).
 
+## Current status at a glance (read this first)
+
+- **Phases 1–3 are done.** Core engine (data/domain, fixture-verified), Discord gateway/commands (9 slash commands, live-verified against a real dev bot), and hot-swap (3 `PluginHost`s wired end-to-end + `/admin_swap`) all work. **176 tests passing, 0 failures.** Nothing has been pushed to origin yet — all commits are local on `rewrite/node-ts`.
+- **Phase 4 (admin data pipeline) has not been started.** That's the natural next task — see the plan file's "Admin Data Pipeline" section and "Migration & Phasing" step 4.
+- **To run the live dev bot**: `cd bot-ts && npx tsx src/main.ts`. Needs `bot-ts/.env` (gitignored, already present on this machine) with `DEV_SERVER_TOKEN` (a throwaway test bot application's token — user said they'll rotate it eventually) and `TEST_GUILD_ID` (for near-instant guild-scoped command sync instead of global's up-to-an-hour delay). If `.env` is ever missing (fresh clone), main.ts throws `DEV_SERVER_TOKEN is not set` immediately — that's expected, not a bug.
+- **Gateway intents are currently `[]` (zero)** by explicit user request for dev testing — slash commands all work, but free-text `on_message` chat parsing is inert until intents are restored (see `gateway/client.ts`'s header comment for exactly what to add back).
+- **Not yet done that matters most**: a systematic side-by-side regression pass against the live Python bot (the plan's actual Phase 2 cutover gate — only manual spot-checks have happened), and a human actually clicking through `/admin_swap` in Discord (only smoke-tested via script + registration so far).
+
 ## What this is
 
 Rewriting aedilebot (Python Discord damage-calculator bot for Foxhole) into Node/TypeScript, living at `bot-ts/` alongside the untouched Python `src/` (which keeps running in production throughout Phases 1–2). Three drivers: hot-swappable code/data modules ("bot never goes offline for updates"), an admin pipeline to update weapon/vehicle/location data after game patches, and — secondary — raw speed.
@@ -74,7 +82,7 @@ Built:
 - `gateway/freeTextDispatch.ts` — shared by `messageListener.ts` and the `/how` command: dispatches a parsed free-text query to the right calculator handler + converts thrown domain errors to reply strings
 - `commands/{kill,disable,dehusk,customKill,bunkerKill,statsheet,help,how}.ts` + `autocompleteHandlers.ts` (shared autocomplete responders) + `index.ts`
 - **`/how` — new, not in the Python original.** User asked for a slash-command wrapper around the free-text prompt: `/how query:"many mammons to kill a ghouse"` behaves like typing `how many mammons to kill a ghouse` in chat (the command name supplies the implied "how"). Implemented by prepending `"how "` to the `query` option and running it through the exact same `parseFreeTextQuery` + `dispatchFreeTextQuery` on_message uses — same parser, same handlers, same error presentation, zero duplicated logic.
-- `main.ts` wired end-to-end (verified with a throwaway smoke script that builds the calculator context and constructs+wires the discord.js `Client` without calling `.login()` — this doesn't require a token and did work)
+- `main.ts` wired end-to-end at the time (this file was reworked again in Phase 3 to use `gateway/liveContext.ts`'s `PluginHost`s instead of building a `CalculatorContext` directly — see the Phase 3 section below for the current shape).
 
 ### The autocomplete O(n²) fix
 
