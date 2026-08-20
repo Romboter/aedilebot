@@ -120,8 +120,8 @@
       {
         "size": 15,
         "tier": 3,
-        "green": 22,
-        "red": 16,
+        "green": -1,
+        "red": -1,
         "rg": 0,
         "mg": 2,
         "atg": 3,
@@ -147,8 +147,8 @@
       {
         "size": 10,
         "tier": 2,
-        "green": 13,
-        "red": 14,
+        "green": -1,
+        "red": -1,
         "rg": 0,
         "mg": 0,
         "atg": 5,

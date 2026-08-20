@@ -5,6 +5,7 @@ identical before/after the port. Run from the repo root:
 
     venv/Scripts/python.exe scripts/generate_fixtures.py
 """
+import copy
 import json
 import os
 import sys
@@ -146,7 +147,12 @@ def run_fuzzy_case(kind, query):
 def main():
     results = []
     for case_id, operation, args in CASES:
-        entry = {"id": case_id, "operation": operation, "input": args}
+        # deep-copy args for the recorded "input" BEFORE running the case:
+        # command_bunker_kill_handler/general_bunker_kill_handler mutate the
+        # bunker_spec dict in place (DamageCalculator's red/green estimation),
+        # so recording `args` by reference after run_case() would silently
+        # capture post-mutation values instead of what was actually passed in.
+        entry = {"id": case_id, "operation": operation, "input": copy.deepcopy(args)}
         try:
             output = run_case(operation, args)
             # statsheet_handler returns tuples of raw field values, everything
