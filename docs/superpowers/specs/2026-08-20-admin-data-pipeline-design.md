@@ -41,9 +41,16 @@ the Town Base types directly with no local export step:
   the existing row `ORIGIN,Arise,Medium Relic` in `Locations.csv` — the
   location name comes straight from this field.
 - `GET /api/worldconquest/maps/{hex}/dynamic/public` → `mapItems`:
-  structure icons (`iconType`, `x`, `y`, `teamId`, `flags`). Per community
-  documentation (clapfoot War API docs), `iconType` 56/57/58 = Town Base
-  tiers 1–3, and 45/46/47 = Relic Base tiers 1–3.
+  structure icons (`iconType`, `x`, `y`, `teamId`, `flags`). Per the
+  **official** War API docs (`github.com/clapfoot/warapi`, confirmed via
+  `gh`, not just community inference), `iconType` 56/57/58 = Town Base
+  tiers 1–3 (added Update 46), and 45/46/47 = Relic Base tiers 1–3 —
+  **but 46 and 47 were removed in Update 52 "until further notice (use
+  Relic Base 1)"**, i.e. every relic base currently reports as iconType
+  45 regardless of actual size. This kills the earlier idea of
+  cross-checking relic size tier against the live API — size has to come
+  from the UE export / admin judgment alone, iconType can't help. See the
+  Relic Base component section below, updated accordingly.
 
 This means Town Base rows (School/Post Office/Town Center TH) can be
 derived entirely from the live API: no manual export, no attachment
@@ -112,6 +119,17 @@ getDynamicMapItems(hex: string): Promise<MapItem[]>     // { iconType, x, y, tea
 Timeout + single retry on failure; a failed hex fails that hex's slice of
 the poll cleanly (reported in the summary), never partially written.
 
+Per the official docs: `listHexes()` includes `HomeRegionC`/`HomeRegionW`,
+which have no map data available — skip these two, don't treat their
+404s as poll failures. The API supports `ETag`/`If-None-Match` and asks
+callers to respect cache lifetime; `getStaticMarkers`/`getDynamicMapItems`
+should send the last-seen `ETag` per hex and treat `304` as "no change,"
+both to be a good API citizen and because it's a free signal (a `304` on
+dynamic data is itself evidence nothing changed, no diff needed). Static
+data is documented as needing only one fetch per hex per World Conquest
+("things that never change over the lifecycle of a map") — cache it for
+the process lifetime rather than refetching every poll.
+
 ### `admin/gameFileParser/locations.ts`
 Implements the plan's generic parser interface:
 
@@ -153,8 +171,11 @@ Two entry points feeding it:
   ```
 
   then matches each relic's converted position to the nearest *live*
-  `mapTextItems` entry (not a hardcoded marker list) for both name and
-  sanity-checking size tier.
+  `mapTextItems` entry (not a hardcoded marker list) for the name. Size
+  tier (Small/Medium/Large) can **not** be cross-checked against the live
+  API — iconType 46/47 were collapsed into 45 as of Update 52 (see above)
+  — so it's sourced from the UE export / admin judgment and taken as-is;
+  `/admin-data-edit` is the correction path if a parser guess is wrong.
 
 ### `admin/diffEngine.ts`
 Generic: `IntermediateEntity<T>[]` in, `ChangeSet` out (added / removed /
@@ -311,6 +332,14 @@ tested manually like `/admin_swap` was, not fixture-tested.
    JSON parser needs any behavior changes when ported to TS, or is a
    direct line-for-line port — decide when writing that file, it's a
    small self-contained algorithm either way.
+5. The official docs describe `static` data as covering "map text labels,
+   resource nodes, and world structures" — worth a quick empirical check
+   (poll a hex known to contain a relic base) for whether relic
+   structures already show up in `static`'s `mapItems` now, independent
+   of the UE export. Doesn't change the design (the UE-export path stays,
+   per the user's explicit call that live data alone isn't reliable
+   enough for relic position), but if static already has them it could
+   simplify or cross-validate the relic pipeline later.
 
 ## Non-goals (explicit, so they don't creep back in)
 
