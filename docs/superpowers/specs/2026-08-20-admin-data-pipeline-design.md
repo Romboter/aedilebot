@@ -1,6 +1,8 @@
 # Phase 4: Admin Data Pipeline — Design Spec
 
-**Status:** Approved for planning
+**Status:** Reviewed — Risk #1 (dynamic map state vs. patch state) needs
+a decision before `parseTownBases` implementation starts; everything else
+approved for planning.
 **Date:** 2026-08-20
 **Branch:** `rewrite/node-ts`
 **Depends on:** Phase 3 hot-swap (`PluginHost<DataSnapshot>`, `data/dataStore.ts`) — done.
@@ -171,13 +173,24 @@ interface ChangeSet {
 }
 ```
 
+Match key is `locationName` alone — this mirrors `loadLocationsFromCsv`'s
+own semantics (`Map<locationName, locationType>`, last-row-wins, no
+composite key). A row is "modified" when the same `locationName` now has
+a different `locationType` and/or `hexName`; "added"/"removed" are
+`locationName`s present in only one side. This needs stating explicitly
+since `LocationRow` has no id field of its own to diff by.
+
 ### `admin/reviewStore.ts`
 Pending `ChangeSet`s persisted as one JSON file per id under
-`bot-ts/data/pending/<id>.json`. No database in this project and this
-doesn't need one — matches the existing plain-file storage pattern
-`data/dataStore.ts` already uses. `approve()` deletes the pending file
-after a successful `Locations.csv` rewrite + swap; `reject()` deletes it
-without writing anything.
+`data/pending/<id>.json` — repo-root `data/`, the same directory
+`loader.ts`'s `dataDir` already resolves to (confirmed:
+`loadDataSnapshot`'s default path walks up from `bot-ts/src/data/loader.ts`
+to the repo root's `data/`, four levels — `bot-ts/data/` is not a thing
+this codebase uses anywhere else, and would be a second, inconsistent data
+root). No database in this project and this doesn't need one — matches
+the existing plain-file storage pattern `data/dataStore.ts` already uses.
+`approve()` deletes the pending file after a successful `Locations.csv`
+rewrite + swap; `reject()` deletes it without writing anything.
 
 ### `admin/steamWatcher.ts`
 Uses the `steam-user` npm package (anonymous Steam login, subscribes to
@@ -245,6 +258,47 @@ tested manually like `/admin_swap` was, not fixture-tested.
 - Out of scope for automated testing (per the original plan's own
   carve-out, still holds): full gateway/e2e testing of the new commands
   beyond a manual click-through.
+
+## Risks
+
+1. **Dynamic mapItems reflect live war state, not patch state — this is
+   the biggest open risk in the design.** `/dynamic/public` shows what's
+   *currently built* in the *current war instance*; Foxhole wars reset
+   periodically and Town Bases get destroyed/rebuilt during normal play,
+   independent of any patch. `Locations.csv`'s existing rows look like a
+   static per-town categorization (a fixed alias so "how many rockets to
+   kill Teichotima" resolves to a target type), not a live snapshot of
+   what's standing right now. Polling `dynamic/public` directly and
+   diffing against `Locations.csv` risks constant added/removed noise
+   from ordinary gameplay (a town destroyed mid-war looks identical, in
+   this data, to a town a patch removed) — the opposite of what
+   `/admin-data-poll` is for. **Needs resolving before `parseTownBases`
+   ships**, e.g.: only propose a change when a `locationName`'s tier is
+   stable across N consecutive polls (debounces war-state churn), only
+   treat "modified" as signal and never auto-propose "removed" for towns
+   (a town temporarily unbuilt isn't a town that stopped existing), or
+   confirm with the user that a different data source/endpoint is more
+   appropriate for "did a patch change this." Flagged here rather than
+   guessed at, since getting this wrong means the poll trains the admin
+   to ignore its own diffs.
+2. **`steam-user`'s PICS surface is unverified in this codebase.** The
+   design leans on community knowledge (SteamDB uses this mechanism) and
+   a same-author sibling project (`steam-pics-api`), not a confirmed
+   working integration — feasibility of anonymous-login + per-app
+   changelist filtering needs a throwaway spike before committing to it
+   as a dependency.
+3. **Running a persistent Steam client connection alongside the Discord
+   gateway connection is new operational surface** for a bot whose only
+   dependencies today are `discord.js`/`fuzzball`/`pluralize` — worth
+   weighing against the "park it" alternative from brainstorming (poll
+   the War API on a plain interval; Steam-watching only shaves detection
+   latency, per the original discussion) if the PICS spike above turns up
+   friction.
+4. **The live War API is third-party and undocumented-by-Valve** (its
+   docs are community-maintained, e.g. clapfoot's). Field names/iconType
+   values could change without notice; `warApi.ts`'s parsing should fail
+   loudly (not silently produce empty/wrong `LocationRow[]`) if response
+   shape changes.
 
 ## Open items to resolve during implementation, not blocking this spec
 
