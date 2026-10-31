@@ -31,6 +31,13 @@ jobs:
           python-version: '3.12'
       - name: Inventory unit tests
         run: python -m unittest discover -s tools/map-extraction -p 'test_*.py' -v
+      - name: PowerShell extraction script syntax check
+        shell: pwsh
+        run: |
+          $tokens = $null
+          $errors = $null
+          [System.Management.Automation.Language.Parser]::ParseFile('tools/map-extraction/Invoke-SteamExport.ps1', [ref]$tokens, [ref]$errors) | Out-Null
+          if ($errors.Count -gt 0) { $errors | ForEach-Object { Write-Error $_ }; exit 1 }
 
   extract:
     name: SteamCMD download + Windows CUE4Parse export
