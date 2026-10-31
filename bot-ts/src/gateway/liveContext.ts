@@ -39,8 +39,8 @@ export function createLiveHosts(): LiveHosts {
   };
   return {
     dataHost: new PluginHost(dataPlugin, defaultPaths.data),
-    calculatorHost: new PluginHost(calculatorPlugin, defaultPaths.calculator),
-    fuzzyHost: new PluginHost(fuzzyPlugin, defaultPaths.fuzzy),
+    calculatorHost: new PluginHost(calculatorPlugin, defaultPaths.calculator, 5, "isolated-dist"),
+    fuzzyHost: new PluginHost(fuzzyPlugin, defaultPaths.fuzzy, 5, "isolated-dist"),
     defaultPaths,
   };
 }
