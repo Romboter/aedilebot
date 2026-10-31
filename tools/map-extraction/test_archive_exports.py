@@ -1,4 +1,4 @@
-import gzip
+import zstandard as zstd
 import hashlib
 import json
 import tempfile
@@ -46,10 +46,13 @@ class ArchiveTests(unittest.TestCase):
         self.assertEqual(manifest["map_count"], 2)
         self.assertFalse(manifest["full_actor_property_coverage_verified"])
         self.assertEqual(manifest["source_format"], "fh_map_exporter-processed-json-v1")
+        self.assertEqual(manifest["compression"], "zstd")
+        self.assertEqual(manifest["compression_level"], 15)
+        self.assertTrue(all(entry["blob"].endswith(".json.zst") for entry in manifest["maps"]))
         for item in manifest["maps"]:
             archived = self.archive / item["blob"]
-            with gzip.open(archived, "rb") as handle:
-                self.assertEqual(handle.read(), self.contents[item["name"]])
+            with archived.open("rb") as handle, zstd.ZstdDecompressor().stream_reader(handle) as reader:
+                self.assertEqual(reader.read(), self.contents[item["name"]])
         latest = json.loads((self.archive / "latest.json").read_text(encoding="utf-8"))
         self.assertTrue((self.archive / latest["run_manifest"]).is_file())
         self.assertEqual(len(list((self.archive / "runs").glob("*.json"))), 1)
@@ -57,7 +60,7 @@ class ArchiveTests(unittest.TestCase):
     def test_unchanged_runs_share_blobs_but_retain_separate_manifests(self):
         self.run_archive()
         self.run_archive()
-        self.assertEqual(len(list((self.archive / "blobs").rglob("*.json.gz"))), 2)
+        self.assertEqual(len(list((self.archive / "blobs").rglob("*.json.zst"))), 2)
         self.assertEqual(len(list((self.archive / "runs").glob("*.json"))), 2)
 
     def test_changed_map_creates_new_blob_without_overwriting_old_map(self):
@@ -65,13 +68,13 @@ class ArchiveTests(unittest.TestCase):
         self.contents["AcrithiaHex"] = b'{"blueprints":{"BPDestroyedRelicBase_C":[{"_self":[7,8,9]}]}}'
         self.refresh_inventory()
         changed = self.run_archive()
-        self.assertEqual(len(list((self.archive / "blobs").rglob("*.json.gz"))), 3)
+        self.assertEqual(len(list((self.archive / "blobs").rglob("*.json.zst"))), 3)
         previous = next(m for m in original["maps"] if m["name"] == "AcrithiaHex")
         current = next(m for m in changed["maps"] if m["name"] == "AcrithiaHex")
-        with gzip.open(self.archive / previous["blob"], "rb") as f:
-            self.assertNotEqual(f.read(), self.contents["AcrithiaHex"])
-        with gzip.open(self.archive / current["blob"], "rb") as f:
-            self.assertEqual(f.read(), self.contents["AcrithiaHex"])
+        with (self.archive / previous["blob"]).open("rb") as f, zstd.ZstdDecompressor().stream_reader(f) as reader:
+            self.assertNotEqual(reader.read(), self.contents["AcrithiaHex"])
+        with (self.archive / current["blob"]).open("rb") as f, zstd.ZstdDecompressor().stream_reader(f) as reader:
+            self.assertEqual(reader.read(), self.contents["AcrithiaHex"])
 
     def test_stale_inventory_does_not_publish_latest_or_manifest(self):
         (self.export / "AcrithiaHex.json").write_text('{"changed": true}', encoding="utf-8")
