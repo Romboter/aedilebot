@@ -42,7 +42,7 @@ The original Windows proof-of-concept is retained as `Invoke-SteamExport.ps1`; t
 3. Use a dedicated non-root account and separate Steam account entitled to download Foxhole (where licensing allows). Complete Steam Guard login interactively under the same account that will run subsequent automated jobs.
 4. Never mount `/var/run/docker.sock`, game-server data folders or host SSH keys into this environment. Keep only explicitly required output paths writable.
 
-The current `.github/workflows/foxhole-map-extract.yml` contains a manual-dispatch demonstration job labelled `foxhole-extract`. **Do not attach the live persistent runner to this public-repo workflow.** Move the actual extract job into the private automation repository first. Public-repo PR validation builds the Linux exporter on an ordinary hosted runner without any credentials or game download.
+The public `.github/workflows/foxhole-map-extract.yml` now contains **only safe offline validation jobs** (inventory/archival tests, Bash/PowerShell syntax, and a native Linux exporter build). The real SteamCMD job belongs in the **separate private automation repository**, using the reviewed `private-runner-workflow.example.yml` template and an isolated authenticated runner. Never attach the persistent runner to this public repository.
 
 ## Installing prerequisites on a dedicated Ubuntu 24.04 environment
 
