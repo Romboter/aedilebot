@@ -181,3 +181,6 @@ node_modules/
 *.tsbuildinfo
 error_log.txt
 
+
+# Versioned ESM module-graph snapshots (retain only while bot is running)
+bot-ts/dist-hotswap-*/
