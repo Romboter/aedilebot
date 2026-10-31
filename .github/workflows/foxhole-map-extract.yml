@@ -17,8 +17,8 @@ permissions:
   contents: read
 
 concurrency:
-  group: foxhole-map-export
-  cancel-in-progress: false
+  group: foxhole-map-export-${{ github.event_name }}-${{ github.ref }}
+  cancel-in-progress: true
 
 jobs:
   validate:
