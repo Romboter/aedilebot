@@ -34,7 +34,7 @@ def main() -> int:
         if file.parent.name == "runbooks":
             if "Status" not in content[:1200]:
                 errors.append(f"{file.relative_to(ROOT)}: missing status/scope in opening")
-            if not any(word in content.lower() for word in ("verify", "success criteria", "verification")):
+            if not any(word in content.lower() for word in ("verify", "success criteria", "verification", "validation")):
                 errors.append(f"{file.relative_to(ROOT)}: missing verification or success check")
 
         for match in LINK.finditer(content):
