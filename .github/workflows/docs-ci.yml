@@ -1,0 +1,33 @@
+name: Docs validation
+
+on:
+  pull_request:
+    branches: [rewrite/node-ts]
+    paths:
+      - 'docs/**'
+      - '.github/workflows/docs-ci.yml'
+      - 'README.md'
+      - 'bot-ts/HANDOFF.md'
+  push:
+    branches: [docs/32-operator-handbook, rewrite/node-ts]
+    paths:
+      - 'docs/**'
+      - '.github/workflows/docs-ci.yml'
+      - 'README.md'
+      - 'bot-ts/HANDOFF.md'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  docs:
+    name: Validate docs and local links
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Check headings, runbooks, and relative links
+        run: python docs/check_docs.py

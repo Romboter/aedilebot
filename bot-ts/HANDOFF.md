@@ -1,4 +1,8 @@
-# Rewrite Handoff — resume here
+# Rewrite Handoff — historical development notes
+
+> **Current operational documentation:** [../docs/README.md](../docs/README.md), [../docs/STATUS.md](../docs/STATUS.md), and [../docs/architecture.md](../docs/architecture.md).
+>
+> **This file is a historical working handoff.** Earlier local paths, fixture counts, "nothing pushed" claims, comments about unwired PluginHosts, and the preserved parser quirk below are stale. Source code, GitHub CI, and the current docs/STATUS.md take precedence. See roadmap issue #33 and documentation issue #32; do not assume this text authorizes deployment.
 
 **Branch:** `rewrite/node-ts` (off `main` @ `90f4d16`)
 **Plan file:** `C:\Users\Jason\.claude\plans\ok-i-have-more-iterative-ladybug.md` — read this first for full context (why Node/TS, hot-swap design, admin data pipeline, phasing, testing approach).

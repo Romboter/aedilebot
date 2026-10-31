@@ -1,5 +1,9 @@
 # AedileBot 🏛️
 
+> **Operator handbook:** [docs/README.md](docs/README.md) — architecture, actual implementation status, setup, CI, Discord, deployments, security, SteamCMD/map exports, backups and incident runbooks.
+>
+> **Branch note:** This root README documents the original Python service; the Node rewrite is on `rewrite/node-ts`. The full map-export pipeline is in draft PR #39 and has not been run end-to-end with licensed game content. Consult [docs/STATUS.md](docs/STATUS.md) before following deployment instructions.
+
 > **A Discord bot for Foxhole damage calculations**
 
 AedileBot is a Discord bot designed for the Foxhole gaming community, providing damage calculations and bunker health analysis tools.
