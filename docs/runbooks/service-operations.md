@@ -1,10 +1,10 @@
 # Runbook: Day-to-day service checks and safe restart
 
-**Status:** Python Docker/Compose definitions exist; live AMP/container placement and Linux service names are **not verified**. Node supervision/health checks are pending #26. **Use for:** bot appears offline, no slash responses, maintenance restart.
+**Status:** Python Docker/Compose definitions exist; live container/service placement and Linux service names are **not verified**. Node supervision/health checks are pending #26. **Use for:** bot appears offline, no slash responses, maintenance restart.
 
 ## First identify the actual runtime
 
-1. Check the host and deployment inventory privately (AMP instance, Docker Compose folder, systemd unit or bare process). Never assume an instance name.
+1. Check the host and deployment inventory privately (container, Docker Compose folder, systemd unit or bare process). Never assume an instance name.
 2. On Ubuntu, read-only triage:
    ~~~bash
    uptime
@@ -48,4 +48,4 @@ Admin plugin swaps avoid downtime for supported code/data changes; they are **no
 
 Check expected bot identity, successful login, command sync to intended guild and a known /kill and /help response. If commands fail after a code release, follow [release rollback](release-cutover.md); if data is wrong follow [data change](data-change.md). Preserve service logs with sensitive queries/tokens redacted.
 
-**Stop** if two production clients are active, token identity mismatches, disk is full, or the service restart would affect other AMP games. Do not use system-wide reboots to diagnose a single bot. Escalate to host owner if the runtime cannot be confidently identified.
+**Stop** if two production clients are active, token identity mismatches, disk is full, or the service restart would affect other services. Do not use system-wide reboots to diagnose a single bot. Escalate to host owner if the runtime cannot be confidently identified.

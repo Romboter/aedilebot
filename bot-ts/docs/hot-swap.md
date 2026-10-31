@@ -31,4 +31,4 @@ Do not modify or delete dist-hotswap-* directories while the bot process is runn
 - Use the committed bot-ts/.env.example as a configuration template. ADMIN_USER_IDS is a comma/space/semicolon-separated list of Discord snowflake user IDs; ADMIN_GUILD_ID is one guild ID. If either is missing or invalid, no caller can swap or roll back.
 - Operator actions and denials are logged as structured JSON (time, actor, guild, action, target, outcome and version), without filesystem paths or tokens. Retention/secure log shipping remains part of the operations hardening work in issue #25.
 - Permission and path authorization have automated tests, but Discord-side visibility and actual operator click-through are still covered by issue #12.
-- Issue #12 covers actual Discord click-through and rollback; issue #26 covers AMP/container deployment and cleanup procedures.
+- Issue #12 covers actual Discord click-through and rollback; issue #26 covers container/service deployment and cleanup procedures.

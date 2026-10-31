@@ -5,14 +5,14 @@
 ## Identify and classify source data
 
 - **Public Git sources:** reviewed source/fixtures; Git history is not a backup of runtime state.
-- **Operational config:** bot dev/prod environment, Discord application settings, guild/operator allowlists, Docker/AMP unit definitions. Store secrets separately with restricted access.
+- **Operational config:** bot dev/prod environment, Discord application settings, guild/operator allowlists, container/service unit definitions. Store secrets separately with restricted access.
 - **Mutable runtime data:** deployed data/*.json and Locations.csv (may differ from checked-in copies).
 - **Logs:** error_log.txt can contain queries; retain only as permitted by documented privacy policy.
 - **Private extraction state:** SteamCMD authenticated account state, downloaded game PAKs, archive/blobs, archive/runs and latest.json; preserve backup/manifest consistency.
 
 ## Pre-change backup checklist
 
-1. Identify real deployed paths and running instances; do not guess based on repository example. Capture repo SHA, image digest/AMP configuration and UTC date.
+1. Identify real deployed paths and running instances; do not guess based on repository example. Capture repo SHA, image digest/deployment configuration and UTC date.
 2. Stop writes to changed files or use filesystem snapshot. For private map archive, wait until no archive run is committing latest.json.
 3. Copy reviewed data to a **restricted off-host location**. Example from the repository root for a development data snapshot (not the whole production backup):
    ~~~bash

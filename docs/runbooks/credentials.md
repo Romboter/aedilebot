@@ -22,7 +22,7 @@
    ~~~
    Replace placeholders locally; never paste the actual values in tickets.
 3. Use real Discord snowflake IDs for the trusted bot operator and guild. Configure Discord Integration command permissions in that trusted guild; all other guilds must remain unauthorized.
-4. Use a **private** repository for authenticated extraction workflow. The AedileBot repo is public; do not register a credentialed self-hosted runner against it, and do not mount Docker sockets or unrelated AMP game-server storage.
+4. Use a **private** repository for authenticated extraction workflow. The AedileBot repo is public; do not register a credentialed self-hosted runner against it, and do not mount Docker sockets or unrelated application storage.
 5. Grant the runner only read/write access to its private work/archive volume. Perform Steam Guard bootstrap locally under the same non-root identity that runs the jobs.
 
 ## Rotation or compromise response

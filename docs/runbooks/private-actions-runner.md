@@ -4,13 +4,13 @@
 
 ## Why a private runner
 
-The AedileBot source repository is **public**. A persistent GitHub Actions runner holding a Steam session on a shared AMP host is sensitive infrastructure. A malicious/unreviewed public pull request must not be allowed to execute arbitrary code on that host.
+The AedileBot source repository is **public**. A persistent GitHub Actions runner holding a Steam session on a shared host is sensitive infrastructure. A malicious/unreviewed public pull request must not be allowed to execute arbitrary code on that host.
 
 ## Separation of duties
 
 - **Public source repo:** C# extractor and tests, Node bot, offline CI on ephemeral GitHub-hosted runners; no game files or access to Steam credentials.
 - **Private dispatch repo:** workflow entrypoint, allowed operators, approvals, pinned source revision. No untrusted pull_request execution on this runner.
-- **Isolated Ubuntu VM:** private SteamCMD auth/session, persistent archive volume, .NET runtime, Python packaging and runner registration. No production bot token, Docker host socket or shared AMP game-server directories.
+- **Isolated Ubuntu VM:** private SteamCMD auth/session, persistent private archive directory, .NET runtime, Python packaging and runner registration. No production bot token, Docker host socket or unrelated application directories.
 
 ## Procedure
 

@@ -6,7 +6,7 @@
 |---|---|---|
 | Before each merge | Latest head SHA, both Node CI and Python fixture jobs green, security-sensitive diff and docs updated | Stop merge if red/stale or required status enforcement absent |
 | After any release | Expected Discord bot identity, 9 slash commands, sample known and invalid inputs, logs, rollback path | Follow release/cutover or incident runbook |
-| Daily when service operates | Service supervisor, duplicate bot process, errors, disk/memory, blocked permissions | Log actions; do not restart whole AMP host |
+| Daily when service operates | Service supervisor, duplicate bot process, errors, disk/memory, blocked permissions | Log actions; do not restart the entire host |
 | On each Foxhole update | Steam update outcome, PAK fingerprint, map count, archived run manifest, known relic coverage | Reject partial export or missing actors; preserve old archive |
 | Weekly | Archive growth, logs, failed CI, out-of-date pending issues, backup copies | Adjust capacity; never prune content-addressed blobs without reference analysis |
 | Monthly | Restore a historical archived map and verify SHA, restore a data backup in staging, review failed swap audit events | Record restore evidence |

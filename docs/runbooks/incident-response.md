@@ -7,7 +7,7 @@
 1. Record time (UTC), impact, observer, bot/host identity, last known good commit and recent deployment/extraction jobs. Identify whether this is **dev** or **production** before touching anything.
 2. For a **credential/security incident**, stop the impacted service/runner and revoke tokens/sessions using vendor controls. If the persistent extraction host is suspected compromised, **disable private runner registration and isolate the VM**; preserve forensic evidence. Do not run cleanup that destroys logs.
 3. For **wrong answers/data**, stop new approvals and catalog edits; retain the last good data backup and game archive. If an in-memory swap caused the issue, invoke permitted rollback; restore files on disk too if they changed.
-4. For **offline bot**, check the actual process supervisor, disk, memory, time, network, Discord service reachability and single-production-token ownership. Never reboot the shared AMP host as first response.
+4. For **offline bot**, check the actual process supervisor, disk, memory, time, network, Discord service reachability and single-production-token ownership. Never reboot the entire host as the first response.
 
 ## Diagnostic matrix
 
