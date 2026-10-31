@@ -8,13 +8,13 @@ separate format identifier and pass coverage tests before being called complete.
 from __future__ import annotations
 
 import argparse
-import gzip
 import hashlib
 import json
 import os
 import re
 import shutil
-import tempfile
+
+import zstandard as zstd
 import uuid
 from datetime import datetime, timezone
 from pathlib import Path
@@ -45,41 +45,46 @@ def atomic_json(path: Path, payload: dict) -> None:
         temporary.unlink(missing_ok=True)
 
 
+COMPRESSION_LEVEL = 15  # High-ratio, lossless cold storage. Benchmark real maps before increasing.
+
+
+def archived_sha256(blob: Path) -> str:
+    """Read compressed bytes as a stream; never load a full map into memory."""
+    digest = hashlib.sha256()
+    with blob.open("rb") as source:
+        with zstd.ZstdDecompressor().stream_reader(source) as reader:
+            for chunk in iter(lambda: reader.read(1024 * 1024), b""):
+                digest.update(chunk)
+    return digest.hexdigest()
+
+
 def archive_blob(source: Path, expected_sha: str, root: Path) -> str:
-    """Store exact bytes in deterministic gzip, only once per SHA256."""
-    blob_relative = f"blobs/sha256/{expected_sha[:2]}/{expected_sha}.json.gz"
+    """Store the exact unmodified JSON bytes as a SHA256-addressed zstd frame."""
+    blob_relative = f"blobs/sha256/{expected_sha[:2]}/{expected_sha}.json.zst"
     target = root / blob_relative
     target.parent.mkdir(parents=True, exist_ok=True)
     if target.exists():
-        # Never trust an archive blob merely because its name is correct.
-        with gzip.open(target, "rb") as archived:
-            digest = hashlib.sha256()
-            for block in iter(lambda: archived.read(1024 * 1024), b""):
-                digest.update(block)
-        if digest.hexdigest() != expected_sha:
-            raise ValueError(f"Archive blob has a checksum mismatch: {target}")
+        if archived_sha256(target) != expected_sha:
+            raise ValueError(f"Archived blob has a checksum mismatch: {target}")
         return blob_relative
 
     temporary = target.parent / ("." + target.name + "." + uuid.uuid4().hex + ".tmp")
     try:
         with source.open("rb") as original, temporary.open("wb") as raw:
-            with gzip.GzipFile(fileobj=raw, mode="wb", filename="", compresslevel=3, mtime=0) as archive:
+            compressor = zstd.ZstdCompressor(level=COMPRESSION_LEVEL, write_checksum=True)
+            with compressor.stream_writer(raw, closefd=False) as archive:
                 shutil.copyfileobj(original, archive, length=1024 * 1024)
             raw.flush()
             os.fsync(raw.fileno())
-        # Source might have changed while compressing; do not publish it
-        # unless the recorded digest is still accurate.
-        with gzip.open(temporary, "rb") as archived:
-            digest = hashlib.sha256()
-            for block in iter(lambda: archived.read(1024 * 1024), b""):
-                digest.update(block)
-        if digest.hexdigest() != expected_sha:
+
+        if archived_sha256(temporary) != expected_sha:
             raise ValueError(f"Map changed during archival: {source.name}")
+        # Never overwrite a historical blob intentionally. The job serializes
+        # runs, and its caller must prevent parallel archive writers.
         os.replace(temporary, target)
     finally:
         temporary.unlink(missing_ok=True)
     return blob_relative
-
 
 def archive_run(
     input_dir: Path,
@@ -134,6 +139,8 @@ def archive_run(
 
     run_manifest = {
         "format_version": 1,
+        "compression": "zstd",
+        "compression_level": COMPRESSION_LEVEL,
         "source_format": FORMAT,
         "full_actor_property_coverage_verified": False,
         "recorded_utc": datetime.now(timezone.utc).isoformat(),
