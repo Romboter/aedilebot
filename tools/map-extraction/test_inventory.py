@@ -2,7 +2,9 @@ import json
 import tempfile
 import unittest
 from pathlib import Path
-from .inventory import make_inventory, inventory_map
+import sys
+sys.path.insert(0, str(Path(__file__).parent))
+from inventory import make_inventory, inventory_map
 
 
 class InventoryTests(unittest.TestCase):
