@@ -137,7 +137,7 @@
         "wet": 24
       }
     ],
-    "output": "It takes 140 to 148 Tremola Grenade GPb-1 to kill a meta with **14000 health** (74.57% breachable) and **1800 bmat repair cost** (7.78 health/bmat) (tier 3, 15 pieces, 22 green, 16 red, 2 mg, 3 atg, 3 hg) (red or green estimated due to not being specified)"
+    "output": "It takes 140 to 149 Tremola Grenade GPb-1 to kill a meta with **14000 health** (74.57% breachable) and **1800 bmat repair cost** (7.78 health/bmat) (tier 3, 15 pieces, 22 green, 16 red, 2 mg, 3 atg, 3 hg) (red or green estimated due to not being specified)"
   },
   {
     "id": "bunker_kill_wet_and_shelter",
@@ -200,7 +200,7 @@
       "Tremola Grenade GPb-1",
       "size 15 t3 bunker with 2 mg 3 atg 3 howi 1 ramp"
     ],
-    "output": "It takes 140 to 148 Tremola Grenade GPb-1 to kill a meta with **14000 health** (74.57% breachable) and **1800 bmat repair cost** (7.78 health/bmat) (tier 3, 15 pieces, 2 mg, 3 atg, 3 hg, 1 ramp, 22 green, 16 red) (red or green estimated due to not being specified)"
+    "output": "It takes 140 to 149 Tremola Grenade GPb-1 to kill a meta with **14000 health** (74.57% breachable) and **1800 bmat repair cost** (7.78 health/bmat) (tier 3, 15 pieces, 2 mg, 3 atg, 3 hg, 1 ramp, 22 green, 16 red) (red or green estimated due to not being specified)"
   },
   {
     "id": "statsheet_weapon",

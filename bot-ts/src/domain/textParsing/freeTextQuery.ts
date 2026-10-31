@@ -11,9 +11,10 @@
 // themselves (choosing general_kill_handler vs. general_bunker_kill_handler
 // etc. based on `operation`).
 //
-// Quirk preserved as-is (not a bug to fix silently): the "disable" pattern
-// does NOT run moveStringToRear first, unlike "kill"/"dehusk" — this matches
-// bot.py's handle_response exactly, inconsistency and all.
+// September 2026 Python fix: split the query FIRST. For disable/dehusk,
+// normalize each extracted weapon/target separately; kill/destroy deliberately
+// passes the original segments through unchanged. Normalizing the entire
+// message previously moved a tier name across the "to ..." boundary.
 import { moveStringToRear } from "./moveStringToRear.js";
 
 export type FreeTextOperation = "kill" | "bunker" | "disable" | "dehusk";
@@ -34,7 +35,7 @@ const DEHUSK_PATTERN = /how (?:many|much)(.*) to dehusk (.*)/;
 export function parseFreeTextQuery(message: string): ParsedFreeTextQuery | null {
   const lower = message.toLowerCase();
 
-  const killMatch = KILL_PATTERN.exec(moveStringToRear(lower));
+  const killMatch = KILL_PATTERN.exec(lower);
   if (killMatch !== null) {
     const weapon = killMatch[1]!;
     const target = killMatch[2]!;
@@ -43,12 +44,12 @@ export function parseFreeTextQuery(message: string): ParsedFreeTextQuery | null 
 
   const disableMatch = DISABLE_PATTERN.exec(lower);
   if (disableMatch !== null) {
-    return { weapon: disableMatch[1]!, target: disableMatch[2]!, operation: "disable" };
+    return { weapon: moveStringToRear(disableMatch[1]!), target: moveStringToRear(disableMatch[2]!), operation: "disable" };
   }
 
-  const dehuskMatch = DEHUSK_PATTERN.exec(moveStringToRear(lower));
+  const dehuskMatch = DEHUSK_PATTERN.exec(lower);
   if (dehuskMatch !== null) {
-    return { weapon: dehuskMatch[1]!, target: dehuskMatch[2]!, operation: "dehusk" };
+    return { weapon: moveStringToRear(dehuskMatch[1]!), target: moveStringToRear(dehuskMatch[2]!), operation: "dehusk" };
   }
 
   return null;

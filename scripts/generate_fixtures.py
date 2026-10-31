@@ -155,7 +155,7 @@ def parse_free_text_query(message):
     p_message = message.lower()
     token_pair = re.findall(
         "how (many|much)(.*) to (kill|destroy) (.*)",
-        utils.move_string_to_rear(p_message),
+        p_message,
     )
     if len(token_pair) >= 1:
         weapon, target = token_pair[0][1], token_pair[0][3]
@@ -166,15 +166,15 @@ def parse_free_text_query(message):
     token_pair = re.findall("how (many|much)(.*) to disable (.*)", p_message)
     if len(token_pair) >= 1:
         weapon, target = token_pair[0][1], token_pair[0][2]
-        return {"weapon": weapon, "target": target, "operation": "disable"}
+        return {"weapon": utils.move_string_to_rear(weapon), "target": utils.move_string_to_rear(target), "operation": "disable"}
 
     token_pair = re.findall(
         "how (many|much)(.*) to dehusk (.*)",
-        utils.move_string_to_rear(p_message),
+        p_message,
     )
     if len(token_pair) >= 1:
         weapon, target = token_pair[0][1], token_pair[0][2]
-        return {"weapon": weapon, "target": target, "operation": "dehusk"}
+        return {"weapon": utils.move_string_to_rear(weapon), "target": utils.move_string_to_rear(target), "operation": "dehusk"}
 
     return None
 
@@ -188,6 +188,11 @@ FREETEXT_CASES = [
     "How MUCH 40mm to KILL entrenched bb 3x2",
     "hello world, this does not match anything",
     "how many 40mm to kill tier 3 trench",
+    # Regression: never move the weapon's tier to the target side.
+    "how many tier 3 atg to kill border base",
+    # Disable/dehusk normalize each captured segment, not the whole query.
+    "how many tier 3 atg to disable tier 2 tank",
+    "how many tier 3 atg to dehusk concrete core husk",
 ]
 
 

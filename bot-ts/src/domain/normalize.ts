@@ -39,20 +39,23 @@ export function normalize(text: string): string {
 
 // Python's inflect.singular_noun() is more aggressive than the `pluralize`
 // package: for a word it doesn't recognize (many proper nouns/technical
-// terms — "Daedalus", "class", "bus", "Icarus"...), its fallback naively
+// terms — "Daedalus", "bus", "Icarus"...), its fallback naively
 // strips a trailing "s" rather than leaving the word alone. `pluralize`
 // leaves such words unchanged instead. Verified empirically against every
 // distinct word (1531, including town/relic names merged in from
 // Locations.csv) appearing in the actual game data: pluralize.singular alone
 // diverges from inflect on this pattern — replicated here as a fallback.
 //
-// inflect also recognizes a small set of genuinely invariant nouns that
-// LOOK like plurals but aren't ("gallows" stays "gallows", not "gallow") —
-// unlike similar-looking words that inflect DOES strip ("crossroads" ->
-// "crossroad", "downs" -> "down", "barracks" -> "barrack", all verified).
-// Only entries individually confirmed against live Python inflect output are
-// listed; this is not a guessed general-purpose invariant-noun table.
-const INFLECT_INVARIANT_NOUNS = new Set(["gallows", "headquarters"]);
+// Some words ending in "s" are left unchanged by Python inflect 7.6.0,
+// including common nouns and compounds/proper names. This exception set is
+// measured against the 1531 real-game-data vocabulary fixtures, NOT guessed.
+// inflect 7.6 changed six entries versus the older local Python environment;
+// pin the fixture generator's inflect version to keep parity reproducible.
+// Other words such as "crossroads"/"downs"/"barracks" still lose their "s".
+const INFLECT_INVARIANT_NOUNS = new Set([
+  "gallows", "headquarters", "class", "fortress", "mass",
+  "ornitierclass", "pass", "sess",
+]);
 
 export function singularize(word: string): string {
   if (INFLECT_INVARIANT_NOUNS.has(word)) {
