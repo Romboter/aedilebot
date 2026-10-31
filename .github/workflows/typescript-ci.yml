@@ -1,0 +1,78 @@
+name: TypeScript CI
+
+on:
+  push:
+    branches:
+      - rewrite/node-ts
+      - ci/31-rewrite-quality-gates
+  pull_request:
+    branches:
+      - rewrite/node-ts
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  node22:
+    name: Node 22 - typecheck, tests, build, plugin smoke
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: bot-ts
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: npm
+          cache-dependency-path: bot-ts/package-lock.json
+      - name: Install locked dependencies
+        run: npm ci
+      - name: Typecheck
+        run: npm run typecheck
+      - name: Run tests
+        run: npm test
+      - name: Compile
+        run: npm run build
+      - name: Validate compiled calculator and fuzzy swaps
+        run: |
+          node --input-type=module <<'NODE'
+          import { resolve } from "node:path";
+          import { PluginHost } from "./dist/plugins/pluginHost.js";
+          import calculator from "./dist/domain/calculator/plugin.js";
+          import fuzzy from "./dist/domain/fuzzy/plugin.js";
+          for (const [plugin, relativePath] of [
+            [calculator, "dist/domain/calculator/plugin.js"],
+            [fuzzy, "dist/domain/fuzzy/plugin.js"],
+          ]) {
+            const path = resolve(relativePath);
+            const host = new PluginHost(plugin, path, 5, "isolated-dist");
+            const result = await host.swap(path);
+            if (!result.ok) throw result.error;
+            if (host.get() === undefined) throw new Error("Missing plugin API");
+            const rolledBack = host.rollback();
+            if (!rolledBack.ok) throw rolledBack.error;
+            console.log("PASS", relativePath);
+          }
+          NODE
+      - name: Record tested revision
+        run: echo "Validated commit $GITHUB_SHA"
+
+  python_fixtures:
+    name: Python golden fixtures - detect drift
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install pinned Python reference dependencies
+        run: |
+          python -m pip install "discord.py==2.7.1" "fuzzywuzzy==0.18.0" "python-Levenshtein==0.27.5" "inflect==7.6.0" "python-dotenv==1.2.4"
+      - name: Regenerate all reference fixtures
+        run: python scripts/generate_fixtures.py
+      - name: Fail if Python fixtures differ from checked-in snapshots
+        run: git diff --exit-code -- test/fixtures/
+      - name: Record Python baseline
+        run: echo "Verified golden fixtures for commit $GITHUB_SHA"
