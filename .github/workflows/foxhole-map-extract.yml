@@ -31,6 +31,9 @@ jobs:
           python-version: '3.12'
       - name: Inventory unit tests
         run: python -m unittest discover -s tools/map-extraction -p 'test_*.py' -v
+      - name: Linux runner script syntax check
+        shell: bash
+        run: bash -n tools/map-extraction/steam_export.sh
       - name: PowerShell extraction script syntax check
         shell: pwsh
         run: |
@@ -68,11 +71,11 @@ jobs:
           echo "$output" | grep -qi 'pak path does not exist'
 
   extract:
-    name: SteamCMD download + Windows CUE4Parse export
+    name: SteamCMD download + native Linux CUE4Parse export
     if: github.event_name == 'workflow_dispatch'
-    needs: validate
-    runs-on: [self-hosted, windows, x64, foxhole-extract]
-    timeout-minutes: 180
+    needs: [validate, linux_exporter_build]
+    runs-on: [self-hosted, linux, x64, foxhole-extract]
+    timeout-minutes: 240
     environment: foxhole-extraction
     env:
       FOXHOLE_WORK_ROOT: ${{ vars.FOXHOLE_WORK_ROOT }}
@@ -86,10 +89,10 @@ jobs:
       - uses: actions/setup-dotnet@v4
         with:
           dotnet-version: '10.0.x'
-      - name: Download Foxhole and export all map JSON
-        shell: pwsh
-        run: ./tools/map-extraction/Invoke-SteamExport.ps1
-      - name: Upload diagnostic inventory only (not licensed PAK or raw maps)
+      - name: Download Foxhole Windows depot and export map JSON on Ubuntu
+        shell: bash
+        run: bash tools/map-extraction/steam_export.sh
+      - name: Upload diagnostic inventory only (not game PAK or raw map JSON)
         uses: actions/upload-artifact@v4
         with:
           name: foxhole-map-inventory-${{ github.run_id }}
