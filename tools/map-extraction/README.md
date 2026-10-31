@@ -36,9 +36,9 @@ SteamCMD supports `+@sSteamCmdForcePlatformType windows` to download Windows gam
 
 The original Windows proof-of-concept is retained as `Invoke-SteamExport.ps1`; the preferred pipeline is `steam_export.sh` on Ubuntu 24.04, running directly in Linux with Python 3.12, .NET 10 and SteamCMD.
 
-**Important: Romboter/aedilebot is a PUBLIC GitHub repository.** GitHub advises against persistent self-hosted runners for public repositories. A runner with Steam authentication must **not** have unrestricted access to the shared AMP game-server host, the Docker daemon/socket or other servers. Preferred production arrangement:
+**Important: Romboter/aedilebot is a PUBLIC GitHub repository.** GitHub advises against persistent self-hosted runners for public repositories. A runner with Steam authentication must **not** have unrestricted access to unrelated services, privileged container sockets or host credentials. Preferred production arrangement:
 
-1. A dedicated, isolated Ubuntu VM or properly constrained container hosted by one of the existing AMP Ubuntu machines, with a persistent volume of ~80 GiB available for game, export and Steam session cache.
+1. An isolated Ubuntu worker with one private working directory on existing storage; no separate disk or filesystem is required. Monitor at least the provisional 50–60 GiB free starting range (game/update/working data) and additional growth from archived map revisions.
 2. A **private repository for the actual GitHub Actions runner/dispatch workflow** (not this public repository), restricted to trusted commits and operators; checkout this code at a pinned commit. Do not run public PRs on the private runner.
 3. Use a dedicated non-root account and separate Steam account entitled to download Foxhole (where licensing allows). Complete Steam Guard login interactively under the same account that will run subsequent automated jobs.
 4. Never mount `/var/run/docker.sock`, game-server data folders or host SSH keys into this environment. Keep only explicitly required output paths writable.
