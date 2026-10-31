@@ -21,6 +21,10 @@ The current Tsekho/fh_map_exporter writes mesh-oriented blueprints/symbols/group
 6. Validate raw JSON can be archived and restored byte-for-byte using Zstd, with a new source_format identifier and immutable run manifest. Only after covered should full_actor_property_coverage_verified become true, based on a documented audit.
 7. Ensure derived catalog extraction consumes the raw data without mutating it and flags unrecognized actors and labels for review.
 
+## Verification
+
+For every fixture hex, verify that required actor IDs, component relationships, property fields and transforms exist in the raw JSON; check schema version and exporter commit against the recorded game build. Re-import and compare representative actor records before approving catalog outputs.
+
 ## Gate and rollback
 
 **Pass:** known actor counts/transforms match the reference build, unknown properties are either represented or explicitly reported, every region exported, and no silent filtering. **Fail:** any fixture actor missing, unknown classes discarded, inconsistent transform or parser crash. Keep the old exporter pinned, preserve archived JSON and reject new catalog proposals. See issue #40 and [map troubleshooting](map-troubleshooting.md).
