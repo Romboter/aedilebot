@@ -65,4 +65,7 @@ if ($maps.Count -lt 2) { throw 'Exporter produced fewer than 2 map JSON files.' 
 if ([string]::IsNullOrWhiteSpace($env:GITHUB_WORKSPACE)) { throw 'GITHUB_WORKSPACE is missing.' }
 & python (Join-Path $env:GITHUB_WORKSPACE 'tools/map-extraction/inventory.py') --input $jsonDir --output $outputs --state $state --exporter-sha $exporterSha --pak $pak
 if ($LASTEXITCODE -ne 0) { throw 'Map inventory generation failed.' }
-Write-Host "Exported $($maps.Count) maps. Relic/Town Base classification is NOT yet validated."
+$archive = Join-Path $root 'archive'
+& python (Join-Path $env:GITHUB_WORKSPACE 'tools/map-extraction/archive_exports.py') --input $jsonDir --inventory (Join-Path $outputs 'map-inventory.json') --archive-root $archive --exporter-sha $exporterSha --pak $pak
+if ($LASTEXITCODE -ne 0) { throw 'Complete map JSON archival failed.' }
+Write-Host "Exported and archived $($maps.Count) maps. Relic/Town Base classification is NOT yet validated."
