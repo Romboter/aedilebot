@@ -9,15 +9,16 @@ The intended pipeline is **SteamCMD on Ubuntu → Windows Foxhole depot → nati
 Both acquisition scripts now run `archive_exports.py` after successful export and validation:
 
 - `<work-root>/export/_json/<map>.json` is the *current working export*, regenerated each run.
-- `<work-root>/archive/blobs/sha256/<prefix>/<sha256>.json.gz` stores exact, losslessly gzip-compressed exported JSON bytes. Unchanged maps deduplicate across runs; a changed map gets an additional blob rather than overwriting history.
+- `<work-root>/archive/blobs/sha256/<prefix>/<sha256>.json.zst` stores exact, losslessly Zstandard-compressed exported JSON bytes (streaming level 15). Unchanged maps deduplicate across runs; a changed map gets an additional blob rather than overwriting history.
 - `<work-root>/archive/runs/<timestamp>-<run-id>-<random>.json` is an immutable manifest for each successful run: all map names, source SHA-256, byte sizes, content-addressed blob paths, exporter SHA, and source PAK SHA-256.
 - `<work-root>/archive/latest.json` identifies the last fully committed run. A failed/incomplete archive does **not** advance this pointer.
 - Nothing in the archive directory is automatically deleted. Capacity monitoring and independent backups are the operator's responsibility; 80 GiB is only a starting allocation, not guaranteed lifetime capacity.
+- Zstd level **15** is a starting point for high-ratio archival. Run compression benchmarks on the real map JSON before raising it; retaining data exactly is more important than achieving a specific ratio. Compression choice does not certify actor/property fidelity. Historical `.json.gz` archives, if any, are left untouched and can still be restored with gzip.
 
 To restore one archived map:
 
 ```bash
-gzip -dc /srv/foxhole-extract/archive/blobs/sha256/<prefix>/<sha256>.json.gz > restored-map.json
+zstd -dc /srv/foxhole-extract/archive/blobs/sha256/<prefix>/<sha256>.json.zst > restored-map.json
 sha256sum restored-map.json
 ```
 
@@ -52,8 +53,10 @@ Ubuntu's SteamCMD package is 32-bit and located in `multiverse`. In the isolated
 sudo dpkg --add-architecture i386
 sudo add-apt-repository -y multiverse
 sudo apt-get update
-sudo apt-get install -y steamcmd:i386 git python3
+sudo apt-get install -y steamcmd:i386 git python3 python3-venv zstd
 ```
+
+Use the private runner's Python 3.12 environment (or a virtual environment) to install the pinned compressor with `python -m pip install -r tools/map-extraction/requirements.txt`; on Ubuntu the system Python may be externally managed, so install into a virtual environment or use the `actions/setup-python` interpreter provided by GitHub Actions.
 
 Install .NET 10 SDK for Linux (or use GitHub `actions/setup-dotnet@v4` for a runner job). Confirm `/usr/games/steamcmd` is available. Keep the game install in a persistent writable directory; do **not** execute the pipeline as root.
 
@@ -85,6 +88,7 @@ The complete exported JSON is retained in the private local archive, not uploade
 ## Local test without game content
 
 ```bash
+python3 -m pip install -r tools/map-extraction/requirements.txt  # In venv or Actions Python
 python3 -m unittest discover -s tools/map-extraction -p 'test_*.py' -v
 bash -n tools/map-extraction/steam_export.sh
 ```
