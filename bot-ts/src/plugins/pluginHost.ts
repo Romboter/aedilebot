@@ -15,6 +15,8 @@
 // This is NOT fault tolerance — pair with a process supervisor (e.g. Docker
 // `restart: unless-stopped`) for actual crash recovery. Hot-swap only avoids
 // *planned* downtime.
+import { cp, mkdtemp, rm } from "node:fs/promises";
+import path from "node:path";
 import { pathToFileURL } from "node:url";
 
 export interface PluginModule<T> {
@@ -35,17 +37,53 @@ interface HistoryEntry<T> {
 
 const DEFAULT_HISTORY_LIMIT = 5;
 
+// "entry" reloads just the plugin wrapper, appropriate for data-only changes.
+// "isolated-dist" snapshots the entire compiled dist tree to a unique sibling,
+// giving every static relative ESM dependency a fresh resolved module URL.
+export type PluginImportStrategy = "entry" | "isolated-dist";
+
+async function stageIsolatedDist(entryPath: string): Promise<{ entryPath: string; stageRoot: string }> {
+  const absolute = path.resolve(entryPath);
+  let distRoot = path.dirname(absolute);
+  while (path.basename(distRoot) !== "dist") {
+    const parent = path.dirname(distRoot);
+    if (parent === distRoot) {
+      throw new Error("isolated-dist swaps require a compiled module inside a dist/ directory");
+    }
+    distRoot = parent;
+  }
+
+  const relativeEntry = path.relative(distRoot, absolute);
+  // Sibling dist-hotswap-... preserves loader.ts ../../../../data path depth.
+  const stageRoot = await mkdtemp(distRoot + "-hotswap-");
+  try {
+    // Staging the full tree also refreshes deeper transitive relative imports.
+    await cp(distRoot, stageRoot, { recursive: true });
+    return { entryPath: path.join(stageRoot, relativeEntry), stageRoot };
+  } catch (error) {
+    await rm(stageRoot, { recursive: true, force: true });
+    throw error;
+  }
+}
+
 export class PluginHost<T> {
   private current: PluginModule<T>;
   private currentPath: string;
   private readonly history: Array<HistoryEntry<T>> = [];
   private readonly historyLimit: number;
   private importCounter = 0;
+  private readonly importStrategy: PluginImportStrategy;
 
-  constructor(initial: PluginModule<T>, initialPath: string, historyLimit: number = DEFAULT_HISTORY_LIMIT) {
+  constructor(
+    initial: PluginModule<T>,
+    initialPath: string,
+    historyLimit: number = DEFAULT_HISTORY_LIMIT,
+    importStrategy: PluginImportStrategy = "entry",
+  ) {
     this.current = initial;
     this.currentPath = initialPath;
     this.historyLimit = historyLimit;
+    this.importStrategy = importStrategy;
   }
 
   /** Always read fresh — never hold this across an `await`, or an in-flight
@@ -64,18 +102,29 @@ export class PluginHost<T> {
    * `current` completely untouched. */
   async swap(path: string): Promise<SwapResult> {
     let candidate: PluginModule<T>;
+    let stageRoot: string | undefined;
     try {
-      // Cache-busting: Node's ESM loader caches by resolved specifier
-      // (including query string), so re-importing the same file path after
-      // it's been rebuilt would otherwise silently return the stale
-      // previously-imported module instead of the new one on disk.
-      const url = `${pathToFileURL(path).href}?v=${Date.now()}-${this.importCounter++}`;
+      let candidatePath = path;
+      if (this.importStrategy === "isolated-dist") {
+        const stage = await stageIsolatedDist(path);
+        candidatePath = stage.entryPath;
+        stageRoot = stage.stageRoot;
+      }
+
+      // A query reloads only the entry module; static dependencies stay
+      // cached. The isolated strategy instead changes the whole URL graph.
+      const url = pathToFileURL(candidatePath).href +
+        (this.importStrategy === "entry" ? "?v=" + Date.now() + "-" + this.importCounter++ : "");
       const imported = (await import(url)) as { default: PluginModule<T> };
       candidate = imported.default;
       if (candidate.validate) {
         await candidate.validate();
       }
     } catch (error) {
+      if (stageRoot !== undefined) {
+        // Rejected release never became visible to callers.
+        await rm(stageRoot, { recursive: true, force: true }).catch(() => undefined);
+      }
       return { ok: false, error };
     }
 
@@ -85,6 +134,8 @@ export class PluginHost<T> {
     }
     this.current = candidate;
     this.currentPath = path;
+    // Retain successful snapshots until process shutdown: in-flight code and
+    // lazy imports may still depend on them, even after history eviction.
     return { ok: true };
   }
 
