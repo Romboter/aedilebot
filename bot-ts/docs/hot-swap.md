@@ -27,5 +27,8 @@ Do not modify or delete dist-hotswap-* directories while the bot process is runn
 - New code must remain compatible with the currently active data and other plugin APIs. Validation is a smoke test, not a full test suite or schema migration.
 - Reloading code and reloading game data are separate operations, not an atomic pair.
 - Rebuilding the original dist folder in place is not an atomic publish; a future production release process should build into immutable artifacts and switch to a published version.
-- Untrusted plugins are executable code. **Issue #11 must restrict application operators and artifact paths** before this is safe in production.
+- **Security:** /admin_swap is fail-closed until both ADMIN_USER_IDS and ADMIN_GUILD_ID are configured. Every interaction checks the actual caller ID and guild ID at runtime. Even a guild Administrator from another server is denied. The command no longer accepts an arbitrary path: only the built-in known module path for the chosen target is loaded. To make it visible in the trusted guild, enable the command explicitly in Discord Server Settings > Integrations; default command permissions are disabled for everyone.
+- Use the committed bot-ts/.env.example as a configuration template. ADMIN_USER_IDS is a comma/space/semicolon-separated list of Discord snowflake user IDs; ADMIN_GUILD_ID is one guild ID. If either is missing or invalid, no caller can swap or roll back.
+- Operator actions and denials are logged as structured JSON (time, actor, guild, action, target, outcome and version), without filesystem paths or tokens. Retention/secure log shipping remains part of the operations hardening work in issue #25.
+- Permission and path authorization have automated tests, but Discord-side visibility and actual operator click-through are still covered by issue #12.
 - Issue #12 covers actual Discord click-through and rollback; issue #26 covers AMP/container deployment and cleanup procedures.
