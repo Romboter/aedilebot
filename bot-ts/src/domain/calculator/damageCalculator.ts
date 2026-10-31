@@ -34,7 +34,7 @@ function cleanCapitalize(str: string): string {
 }
 
 // Hardcoded Dev Name list for the impact-fuse low-roll adjustment (foxhole's
-// non-hitscan weapons can land as low as ~95% damage) — preserved verbatim.
+// non-hitscan weapons can land as low as ~94% damage) — mirrors main.
 const IMPACT_FUSE_DEV_NAMES = new Set([
   "ATRPGLightCAmmo",
   "ATRPGAmmo",
@@ -221,7 +221,7 @@ export class DamageCalculator {
       this.maxHitsToKill = calculateHitsToReachHealth(this.health!, this.minRealDamage);
     }
     if (IMPACT_FUSE_DEV_NAMES.has(this.weapon["Dev Name"] ?? "")) {
-      this.maxHitsToKill = Math.max(this.maxHitsToKill, calculateHitsToReachHealth(this.health!, maxDamage * 0.95));
+      this.maxHitsToKill = Math.max(this.maxHitsToKill, calculateHitsToReachHealth(this.health!, maxDamage * 0.94));
     }
     if (this.maxHitsToKill > minHitsToKill) {
       return `${minHitsToKill} to ${this.maxHitsToKill}`;

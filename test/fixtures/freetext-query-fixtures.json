@@ -35,7 +35,7 @@
     "message": "How many tremola to kill a size 15 t3 bunker with 2 mg 3 atg 3 howi 1 ramp",
     "result": {
       "weapon": " tremola",
-      "target": "a size 15  bunker with 2 mg 3 atg 3 howi 1 ramp t3",
+      "target": "a size 15 t3 bunker with 2 mg 3 atg 3 howi 1 ramp",
       "operation": "bunker"
     }
   },
@@ -43,7 +43,7 @@
     "message": "How MUCH 40mm to KILL entrenched bb 3x2",
     "result": {
       "weapon": " 40mm",
-      "target": " bb 3x2 emplaced",
+      "target": "entrenched bb 3x2",
       "operation": "kill"
     }
   },
@@ -55,8 +55,32 @@
     "message": "how many 40mm to kill tier 3 trench",
     "result": {
       "weapon": " 40mm",
-      "target": " trench t3",
+      "target": "tier 3 trench",
       "operation": "kill"
+    }
+  },
+  {
+    "message": "how many tier 3 atg to kill border base",
+    "result": {
+      "weapon": " tier 3 atg",
+      "target": "border base",
+      "operation": "kill"
+    }
+  },
+  {
+    "message": "how many tier 3 atg to disable tier 2 tank",
+    "result": {
+      "weapon": "  atg t3",
+      "target": " tank t2",
+      "operation": "disable"
+    }
+  },
+  {
+    "message": "how many tier 3 atg to dehusk concrete core husk",
+    "result": {
+      "weapon": "  atg t3",
+      "target": " core husk t3",
+      "operation": "dehusk"
     }
   }
 ]
