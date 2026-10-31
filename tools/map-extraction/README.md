@@ -1,52 +1,69 @@
-# Foxhole game-file acquisition in GitHub Actions
+# Foxhole game-file acquisition — Linux-first GitHub Actions
 
-This is **Phase 4 infrastructure**. It obtains the licensed game files and exports map JSON. It does **not** yet extract validated Relic Base names/sizes or automatically alter `Locations.csv`.
+The intended pipeline is **SteamCMD on Ubuntu → Windows Foxhole depot → native Linux CUE4Parse exporter → per-map JSON inventory**. This is extraction infrastructure only. It does **not** yet produce validated Relic Base/Town Base identities or update Locations.csv.
 
-## Runner decision
+## What has been verified
 
-GitHub's standard hosted Windows runners have **14 GB SSD**. Foxhole's current Windows game depot uses about **24.25 GiB installed**, including a roughly **23.9 GiB main PAK**, so a standard hosted runner is not suitable. A paid **150 GB Windows larger runner** could provide enough space, but Steam Guard authentication on ephemeral machines needs separate verification.
+A pinned version of [Tsekho/fh_map_exporter](https://github.com/Tsekho/fh_map_exporter) (commit `db11ab571a6c95fb63c53d7c3bdec44d9f7966d1`) **compiled and started natively on Linux x64** in [GitHub Actions run 41170904073](https://github.com/Romboter/aedilebot/actions/runs/41170904073). This project hardcodes `win-x64` in its .csproj but the Linux build works when publishing with `-r linux-x64 -p:RuntimeIdentifier=linux-x64`. The exporter runs without Wine or Proton.
 
-The current implementation targets a **dedicated, persistent Windows x64 self-hosted runner** with at least **80 GiB free** on its work volume (more is better). Assign it the custom label `foxhole-extract`. The runner must be isolated from unrelated/untrusted jobs; do not run arbitrary public PR code on a Steam-authenticated runner.
+SteamCMD supports `+@sSteamCmdForcePlatformType windows` to download Windows game depots from Linux. **We have not yet tested this with Foxhole and a licensed Steam account.** Foxhole uses Steam AppID 505460; SteamDB lists ~24.25 GiB installed data.
 
-Official docs: [self-hosted Windows runners](https://docs.github.com/en/actions/how-tos/manage-runners/self-hosted-runners/add-runners) and [larger-runner sizes](https://docs.github.com/en/actions/reference/runners/larger-runners).
+## Host choice and security
 
-## One-time runner setup
+The original Windows proof-of-concept is retained as `Invoke-SteamExport.ps1`; the preferred pipeline is `steam_export.sh` on Ubuntu 24.04, running directly in Linux with Python 3.12, .NET 10 and SteamCMD.
 
-1. Install and configure the GitHub Actions Windows runner (label `foxhole-extract`). Use a dedicated Windows identity for the runner service/process.
-2. Install SteamCMD on this runner and use a Steam account that owns Foxhole. Complete initial Steam Guard verification **interactively using the SAME Windows identity that runs the GitHub job**. Keep SteamCMD's login/session data on persistent storage. This workflow deliberately accepts no password or Steam Guard code.
-3. In the GitHub repository, create an environment called `foxhole-extraction` and set these **non-secret** environment variables (replace the example paths):
-   - `FOXHOLE_WORK_ROOT` = `D:\FoxholeExtractor` (persistent volume, 80 GiB+ free)
-   - `FOXHOLE_STEAMCMD_PATH` = `C:\steamcmd\steamcmd.exe`
-   - `FOXHOLE_STEAM_USER` = your Steam login name
-4. Ensure `git` is installed. The workflow installs Python 3.12 and .NET 10 SDK using GitHub setup actions.
-5. Test SteamCMD *locally under the runner identity* first, using `+force_install_dir`, `+login`, `+app_update 505460`, and `+quit`. Confirm it can update Foxhole without requesting Steam Guard again. Steam may revoke the session, in which case an administrator must reauthorize locally.
+**Important: Romboter/aedilebot is a PUBLIC GitHub repository.** GitHub advises against persistent self-hosted runners for public repositories. A runner with Steam authentication must **not** have unrestricted access to the shared AMP game-server host, the Docker daemon/socket or other servers. Preferred production arrangement:
 
-The workflow is **manual only** until validated. Its extract job will queue until a runner with the required labels exists.
+1. A dedicated, isolated Ubuntu VM or properly constrained container hosted by one of the existing AMP Ubuntu machines, with a persistent volume of ~80 GiB available for game, export and Steam session cache.
+2. A **private repository for the actual GitHub Actions runner/dispatch workflow** (not this public repository), restricted to trusted commits and operators; checkout this code at a pinned commit. Do not run public PRs on the private runner.
+3. Use a dedicated non-root account and separate Steam account entitled to download Foxhole (where licensing allows). Complete Steam Guard login interactively under the same account that will run subsequent automated jobs.
+4. Never mount `/var/run/docker.sock`, game-server data folders or host SSH keys into this environment. Keep only explicitly required output paths writable.
 
-## Pipeline
+The current `.github/workflows/foxhole-map-extract.yml` contains a manual-dispatch demonstration job labelled `foxhole-extract`. **Do not attach the live persistent runner to this public-repo workflow.** Move the actual extract job into the private automation repository first. Public-repo PR validation builds the Linux exporter on an ordinary hosted runner without any credentials or game download.
 
-1. `SteamCMD +app_update 505460` uses the preauthenticated Steam account to install/update `<work-root>/game`.
-2. Check the expected `War/Content/Paks/War-WindowsNoEditor.pak` exists and is plausibly sized, and require SteamCMD's success message (never silently trust old game files).
-3. Clone/update and pin [Tsekho/fh_map_exporter](https://github.com/Tsekho/fh_map_exporter) to SHA `db11ab571a6c95fb63c53d7c3bdec44d9f7966d1`; initialize its CUE4Parse submodules and build `Exporter.exe` from source using .NET 10.
-4. Export maps headlessly: `Exporter.exe -i <game.pak> -o <work-root>/export`. Do **not** pass `-t`: terrain textures are unnecessary for Relic Base discovery.
-5. Validate all `_json/*.json` maps using `inventory.py`; record per-map SHA-256, blueprint candidate counts and changes from last run.
-6. Upload only `map-inventory.json` and `map-inventory.csv` as GitHub artifacts. **Do not upload game PAK files or raw exported asset JSON to the public repository.**
+## Installing prerequisites on a dedicated Ubuntu 24.04 environment
 
-Exported map JSON remains locally on the runner at `<work-root>/export/_json/`. The inventory is diagnostic, not a production location catalog.
-
-## Blockers before fully unattended/scheduled production operation
-
-- **Schema:** The recovered `extract_relicbase_locations.py` expects original UnrealExporter/ArrowComponent JSON. The pinned CUE4Parse exporter writes a different `blueprints` dictionary, and its serializer can skip actors without mesh-bearing child components. Test against known Lykos Isle, Acrithia and Basin Sionnach placements; if Relic Bases are absent, modify the exporter to emit **all relevant actor transforms**, rather than reporting no relics.
-- **Match names:** Use the appropriate War API static marker names *for each hex*, not the old batch script's one hardcoded marker list. Explicitly mark untrusted matches and missing size classifications (issues #15, #17).
-- **Steam session:** First login and occasional Steam Guard reauthentication cannot be promised unattended. A dedicated preauthenticated runner is the initial strategy; validate repeated successful runs.
-- **Scheduling:** GitHub Actions `workflow_dispatch` and `schedule` workflows require the workflow file on the repository's **default branch**. This repository's default is currently `main`, while the TypeScript rewrite lives on `rewrite/node-ts`. This feature PR alone does not activate manual/scheduled extraction. After review, a small matching workflow entrypoint must also be put on `main`, or the repository's default branch must change as part of the TypeScript cutover. Don't change the default branch simply to activate this pipeline.
-- **Approvals and publication:** The tool does not edit or commit `Locations.csv`. The Phase 4 review engine will be a separate step.
-
-To validate the safe inventory logic without Steam or a licensed game installation:
+Ubuntu's SteamCMD package is 32-bit and located in `multiverse`. In the isolated Ubuntu environment:
 
 ```bash
-python -m unittest discover -s tools/map-extraction -p 'test_*.py' -v
+sudo dpkg --add-architecture i386
+sudo add-apt-repository -y multiverse
+sudo apt-get update
+sudo apt-get install -y steamcmd:i386 git python3
 ```
 
-## Dependencies
-Issues #38 (acquisition/export), #14 (recover/adapt original extractor), #15 (War API), #17 (relic location matching), #13 (static source-of-truth).
+Install .NET 10 SDK for Linux (or use GitHub `actions/setup-dotnet@v4` for a runner job). Confirm `/usr/games/steamcmd` is available. Keep the game install in a persistent writable directory; do **not** execute the pipeline as root.
+
+Test downloading the **Windows** files using your own entitled Steam account:
+
+```bash
+/usr/games/steamcmd \
+  +@sSteamCmdForcePlatformType windows \
+  +force_install_dir /srv/foxhole-extract/game \
+  +login YOUR_STEAM_USERNAME \
+  +app_update 505460 \
+  +quit
+```
+
+Complete Steam Guard authentication interactively once; whether reauthentication is required later depends on Steam's session behavior. Do not place the account password or authentication codes in workflow arguments, logs or repository secrets.
+
+After setting `FOXHOLE_WORK_ROOT`, `FOXHOLE_STEAM_USER` and optionally `FOXHOLE_STEAMCMD_PATH`, the pinned `steam_export.sh` script performs the update, native `linux-x64` exporter build, headless export, and diagnostic inventory. It refuses to report success when SteamCMD did not confirm a current install. The optional Windows script remains available as a fallback only.
+
+Only `map-inventory.json` and `map-inventory.csv` are uploaded as action artifacts; **never publish the proprietary PAK or complete raw exported asset data to the public repository**.
+
+## Remaining technical validation before production
+
+- **Actual game export:** The Linux exporter has started, but the full Foxhole PAK extraction has **not** yet been executed. A Steam-authenticated host is needed.
+- **Actor fidelity:** The pinned CUE4Parse exporter writes a `blueprints` dictionary, unlike the recovered UnrealExporter/ArrowComponent JSON. Its serializer can skip actors with no mesh-bearing children; if Relic Bases are absent, extend it to preserve raw Blueprint actors/transforms. An empty relic count does **not** mean there are no relics.
+- **Location identification:** Integrate the correct War API static map markers for *each* hex, test world-coordinate conversion, and do not silently assign labels based on distant closest matches. Relic size tiers still need empirical validation (issues #14, #15, #17).
+- **Update safety:** No automatic deletion or changes to `Locations.csv`; put any proposed changes through the Discord admin review pipeline.
+- **Workflow activation:** The current default branch is `main`; GitHub schedules and workflow_dispatch have default-branch requirements. Use the private automation repo to control schedules rather than changing the public bot's default branch just for this pipeline.
+
+## Local test without game content
+
+```bash
+python3 -m unittest discover -s tools/map-extraction -p 'test_*.py' -v
+bash -n tools/map-extraction/steam_export.sh
+```
+
+Related issues: #38 (SteamCMD/export), #14 (recovered raw extractor), #15 (War API), #17 (relic matching), #13 (static source-of-truth).
