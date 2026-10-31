@@ -39,6 +39,34 @@ jobs:
           [System.Management.Automation.Language.Parser]::ParseFile('tools/map-extraction/Invoke-SteamExport.ps1', [ref]$tokens, [ref]$errors) | Out-Null
           if ($errors.Count -gt 0) { $errors | ForEach-Object { Write-Error $_ }; exit 1 }
 
+  linux_exporter_build:
+    name: Verify pinned exporter runs natively on Linux (no game files)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: '10.0.x'
+      - name: Checkout pinned CUE4Parse exporter
+        run: |
+          git clone https://github.com/Tsekho/fh_map_exporter.git /tmp/fh-map-exporter
+          git -C /tmp/fh-map-exporter checkout --detach db11ab571a6c95fb63c53d7c3bdec44d9f7966d1
+          git -C /tmp/fh-map-exporter submodule update --init --recursive
+          test "$(git -C /tmp/fh-map-exporter rev-parse HEAD)" = "db11ab571a6c95fb63c53d7c3bdec44d9f7966d1"
+      - name: Publish Linux x64 exporter
+        run: |
+          dotnet publish /tmp/fh-map-exporter/Exporter/Exporter.csproj -c Release -r linux-x64 --self-contained true -o /tmp/fh-exporter-bin -p:RuntimeIdentifier=linux-x64 -p:NuGetAudit=false
+          test -x /tmp/fh-exporter-bin/Exporter
+      - name: Smoke-test Linux binary command-line interface
+        run: |
+          set +e
+          output=$(/tmp/fh-exporter-bin/Exporter -i /definitely/no/pak -o /tmp/foo 2>&1)
+          code=$?
+          set -e
+          echo "$output"
+          test "$code" -ne 0
+          echo "$output" | grep -qi 'pak path does not exist'
+
   extract:
     name: SteamCMD download + Windows CUE4Parse export
     if: github.event_name == 'workflow_dispatch'
