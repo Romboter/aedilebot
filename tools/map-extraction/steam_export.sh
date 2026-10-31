@@ -67,4 +67,16 @@ json_dir="$export_dir/_json"
 count="$(find "$json_dir" -maxdepth 1 -type f -name '*.json' | wc -l)"
 (( count >= 2 )) || { echo "Only $count map JSON files: refusing to publish." >&2; exit 1; }
 python3 "$GITHUB_WORKSPACE/tools/map-extraction/inventory.py" --input "$json_dir" --output "$out_dir" --state "$state_dir" --exporter-sha "$exporter_sha" --pak "$pak"
-echo "PASS: $count map files exported on Linux. Locations.csv remains unchanged."
+
+# Keep every map's full exported JSON, including unrecognized properties,
+# under an immutable, content-addressed archive OUTSIDE the scratch export
+# directory. Unchanged maps are deduplicated; no snapshot is auto-deleted.
+# Do not publish a run index until all inventory-checked maps are saved.
+archive_dir="$root/archive"
+python3 "$GITHUB_WORKSPACE/tools/map-extraction/archive_exports.py" \
+  --input "$json_dir" \
+  --inventory "$out_dir/map-inventory.json" \
+  --archive-root "$archive_dir" \
+  --exporter-sha "$exporter_sha" \
+  --pak "$pak"
+echo "PASS: $count maps exported and archived on Linux. Locations.csv remains unchanged."
