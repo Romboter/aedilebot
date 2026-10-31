@@ -247,9 +247,9 @@
   },
   {
     "kind": "weapon",
-    "query": "rifleautomaticwsnigleshotammo",
-    "source_name": "RifleAutomaticWSingleShotAmmo",
-    "canonical": "RifleAutomaticWSingleShotAmmo"
+    "query": "rifle garrison ammo",
+    "source_name": "Rifle Garrison ammo",
+    "canonical": "Rifle Garrison ammo"
   },
   {
     "kind": "weapon",
@@ -265,9 +265,9 @@
   },
   {
     "kind": "weapon",
-    "query": "tulka i1.9w hite raven 20mm (+25% hv)",
-    "source_name": "Tulka I1.9 White Raven 20mm (+25% HV)",
-    "canonical": "Tulka I1.9 White Raven 20mm (+25% HV)"
+    "query": "tenat torpedo",
+    "source_name": "Tenta Torpedo",
+    "canonical": "Moray Torpedo"
   },
   {
     "kind": "weapon",
@@ -313,9 +313,9 @@
   },
   {
     "kind": "weapon",
-    "query": "“dawn” e.ii ammo",
-    "source_name": "“Dawn” Ve.II ammo",
-    "canonical": "“Dawn” Ve.II ammo"
+    "query": "tremola grenae gpb-1",
+    "source_name": "Tremola Grenade GPb-1",
+    "canonical": "Tremola Grenade GPb-1"
   },
   {
     "kind": "weapon",
@@ -325,9 +325,9 @@
   },
   {
     "kind": "weapon",
-    "query": "shtter missile",
-    "source_name": "Shatter Missile",
-    "canonical": "Shatter Missile"
+    "query": "samp auto-rifle 77 (auto) ammo",
+    "source_name": "Sampo Auto-Rifle 77 (Auto) ammo",
+    "canonical": "Sampo Auto-Rifle 77 (Auto) ammo"
   },
   {
     "kind": "weapon",
@@ -355,8 +355,8 @@
   },
   {
     "kind": "weapon",
-    "query": "silverhand olrdscar mk. x ammo",
-    "source_name": "Silverhand Lordscar Mk. X ammo",
-    "canonical": "40mm"
+    "query": "shrapnel motrar shell",
+    "source_name": "Shrapnel Mortar Shell",
+    "canonical": "Shrapnel Mortar Shell"
   }
 ]
