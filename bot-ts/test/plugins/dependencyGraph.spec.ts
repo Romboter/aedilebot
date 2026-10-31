@@ -27,7 +27,8 @@ async function fixture() {
   await writeFile(
     path.join(dist, "data", "loader.mjs"),
     'import { fileURLToPath } from "node:url";\n' +
-      'export const dataDir = fileURLToPath(new URL("../../../../data", import.meta.url));\n',
+      'import path from "node:path";\n' +
+      'export const dataDir = path.resolve(fileURLToPath(import.meta.url), "../../../../data");\n',
   );
   await writeFile(
     entry,
