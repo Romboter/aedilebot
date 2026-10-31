@@ -1,0 +1,65 @@
+name: Foxhole SteamCMD map extraction
+
+on:
+  push:
+    branches: [feat/38-steamcmd-map-export]
+    paths:
+      - 'tools/map-extraction/**'
+      - '.github/workflows/foxhole-map-extract.yml'
+  pull_request:
+    branches: [rewrite/node-ts]
+    paths:
+      - 'tools/map-extraction/**'
+      - '.github/workflows/foxhole-map-extract.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: foxhole-map-export
+  cancel-in-progress: false
+
+jobs:
+  validate:
+    name: Validate map inventory parser (no game download)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Inventory unit tests
+        run: python -m unittest discover -s tools/map-extraction -p 'test_*.py' -v
+
+  extract:
+    name: SteamCMD download + Windows CUE4Parse export
+    if: github.event_name == 'workflow_dispatch'
+    needs: validate
+    runs-on: [self-hosted, windows, x64, foxhole-extract]
+    timeout-minutes: 180
+    environment: foxhole-extraction
+    env:
+      FOXHOLE_WORK_ROOT: ${{ vars.FOXHOLE_WORK_ROOT }}
+      FOXHOLE_STEAMCMD_PATH: ${{ vars.FOXHOLE_STEAMCMD_PATH }}
+      FOXHOLE_STEAM_USER: ${{ vars.FOXHOLE_STEAM_USER }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: '10.0.x'
+      - name: Download Foxhole and export all map JSON
+        shell: pwsh
+        run: ./tools/map-extraction/Invoke-SteamExport.ps1
+      - name: Upload diagnostic inventory only (not licensed PAK or raw maps)
+        uses: actions/upload-artifact@v4
+        with:
+          name: foxhole-map-inventory-${{ github.run_id }}
+          path: |
+            ${{ vars.FOXHOLE_WORK_ROOT }}/outputs/map-inventory.json
+            ${{ vars.FOXHOLE_WORK_ROOT }}/outputs/map-inventory.csv
+          if-no-files-found: error
+          retention-days: 30
