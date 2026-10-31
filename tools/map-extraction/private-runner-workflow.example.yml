@@ -35,6 +35,8 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: '3.12'
+      - name: Install extractor Python dependencies
+        run: python -m pip install -r tools/map-extraction/requirements.txt
       - name: Check prerequisites
         shell: bash
         run: |
