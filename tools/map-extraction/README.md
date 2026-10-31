@@ -2,6 +2,29 @@
 
 The intended pipeline is **SteamCMD on Ubuntu → Windows Foxhole depot → native Linux CUE4Parse exporter → per-map JSON inventory**. This is extraction infrastructure only. It does **not** yet produce validated Relic Base/Town Base identities or update Locations.csv.
 
+## Archival policy — preserve every map export for later analysis
+
+**Requirement:** retain a complete JSON export for **every** map on **every** successful acquisition/export run; generate small relic/Town Base catalogs separately. Never replace the full source data with a filtered catalog.
+
+Both acquisition scripts now run `archive_exports.py` after successful export and validation:
+
+- `<work-root>/export/_json/<map>.json` is the *current working export*, regenerated each run.
+- `<work-root>/archive/blobs/sha256/<prefix>/<sha256>.json.gz` stores exact, losslessly gzip-compressed exported JSON bytes. Unchanged maps deduplicate across runs; a changed map gets an additional blob rather than overwriting history.
+- `<work-root>/archive/runs/<timestamp>-<run-id>-<random>.json` is an immutable manifest for each successful run: all map names, source SHA-256, byte sizes, content-addressed blob paths, exporter SHA, and source PAK SHA-256.
+- `<work-root>/archive/latest.json` identifies the last fully committed run. A failed/incomplete archive does **not** advance this pointer.
+- Nothing in the archive directory is automatically deleted. Capacity monitoring and independent backups are the operator's responsibility; 80 GiB is only a starting allocation, not guaranteed lifetime capacity.
+
+To restore one archived map:
+
+```bash
+gzip -dc /srv/foxhole-extract/archive/blobs/sha256/<prefix>/<sha256>.json.gz > restored-map.json
+sha256sum restored-map.json
+```
+
+**Caution:** These are complete byte-for-byte copies of the *current exporter output*, not yet certified **full-fidelity Unreal actor/property exports**. The C# exporter currently filters/aggregates some objects. Issue #40 requires extending it to preserve every map actor, component, property, transform and unknown field in a separate versioned raw JSON format, and validating against the recovered original exports. The snapshot manifest deliberately marks `full_actor_property_coverage_verified: false` until that work succeeds.
+
+The persistent archive contains large derived game assets and belongs **only in private storage**, never in the public GitHub repository or publicly accessible CI artifacts.
+
 ## What has been verified
 
 A pinned version of [Tsekho/fh_map_exporter](https://github.com/Tsekho/fh_map_exporter) (commit `db11ab571a6c95fb63c53d7c3bdec44d9f7966d1`) **compiled and started natively on Linux x64** in [GitHub Actions run 41170904073](https://github.com/Romboter/aedilebot/actions/runs/41170904073). This project hardcodes `win-x64` in its .csproj but the Linux build works when publishing with `-r linux-x64 -p:RuntimeIdentifier=linux-x64`. The exporter runs without Wine or Proton.
@@ -49,7 +72,7 @@ Complete Steam Guard authentication interactively once; whether reauthentication
 
 After setting `FOXHOLE_WORK_ROOT`, `FOXHOLE_STEAM_USER` and optionally `FOXHOLE_STEAMCMD_PATH`, the pinned `steam_export.sh` script performs the update, native `linux-x64` exporter build, headless export, and diagnostic inventory. It refuses to report success when SteamCMD did not confirm a current install. The optional Windows script remains available as a fallback only.
 
-Only `map-inventory.json` and `map-inventory.csv` are uploaded as action artifacts; **never publish the proprietary PAK or complete raw exported asset data to the public repository**.
+The complete exported JSON is retained in the private local archive, not uploaded to GitHub. Only `map-inventory.json` and `map-inventory.csv` are uploaded as action artifacts; **never publish the proprietary PAK or complete raw exported asset data to the public repository**.
 
 ## Remaining technical validation before production
 
@@ -66,4 +89,4 @@ python3 -m unittest discover -s tools/map-extraction -p 'test_*.py' -v
 bash -n tools/map-extraction/steam_export.sh
 ```
 
-Related issues: #38 (SteamCMD/export), #14 (recovered raw extractor), #15 (War API), #17 (relic matching), #13 (static source-of-truth).
+Related issues: #38 (SteamCMD/export), #40 (full-fidelity raw map exports), #14 (recovered raw extractor), #15 (War API), #17 (relic matching), #13 (static source-of-truth).
