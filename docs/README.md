@@ -17,6 +17,9 @@
 | Handle a service outage or security event | [Incident response](runbooks/incident-response.md) |
 | Set up a secure Foxhole extraction machine | [Ubuntu extraction host](runbooks/extraction-host.md) |
 | Run SteamCMD and export maps | [Steam download and map export](runbooks/steam-map-export.md) |
+| Run GitHub Actions on an isolated, private worker | [Private Actions runner](runbooks/private-actions-runner.md) |
+| Integrate with existing AMP Ubuntu host safely | [AMP host integration](runbooks/amp-host-integration.md) |
+| Extend C# to capture every raw actor/property | [Full-fidelity Unreal export](runbooks/full-fidelity-export.md) |
 | Save, verify or restore historical maps | [Map archival and restoration](runbooks/map-archive-restore.md) |
 | Diagnose missing relics or wrong locations | [Map extraction troubleshooting](runbooks/map-troubleshooting.md) |
 | Protect or rotate credentials | [Credentials and permissions](runbooks/credentials.md) |
