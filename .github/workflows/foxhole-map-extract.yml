@@ -1,4 +1,4 @@
-name: Foxhole SteamCMD map extraction
+name: Foxhole map exporter - offline validation
 
 on:
   push:
@@ -70,34 +70,3 @@ jobs:
           test "$code" -ne 0
           echo "$output" | grep -qi 'pak path does not exist'
 
-  extract:
-    name: SteamCMD download + native Linux CUE4Parse export
-    if: github.event_name == 'workflow_dispatch'
-    needs: [validate, linux_exporter_build]
-    runs-on: [self-hosted, linux, x64, foxhole-extract]
-    timeout-minutes: 240
-    environment: foxhole-extraction
-    env:
-      FOXHOLE_WORK_ROOT: ${{ vars.FOXHOLE_WORK_ROOT }}
-      FOXHOLE_STEAMCMD_PATH: ${{ vars.FOXHOLE_STEAMCMD_PATH }}
-      FOXHOLE_STEAM_USER: ${{ vars.FOXHOLE_STEAM_USER }}
-    steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-python@v5
-        with:
-          python-version: '3.12'
-      - uses: actions/setup-dotnet@v4
-        with:
-          dotnet-version: '10.0.x'
-      - name: Download Foxhole Windows depot and export map JSON on Ubuntu
-        shell: bash
-        run: bash tools/map-extraction/steam_export.sh
-      - name: Upload diagnostic inventory only (not game PAK or raw map JSON)
-        uses: actions/upload-artifact@v4
-        with:
-          name: foxhole-map-inventory-${{ github.run_id }}
-          path: |
-            ${{ vars.FOXHOLE_WORK_ROOT }}/outputs/map-inventory.json
-            ${{ vars.FOXHOLE_WORK_ROOT }}/outputs/map-inventory.csv
-          if-no-files-found: error
-          retention-days: 30
