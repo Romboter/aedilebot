@@ -13,7 +13,7 @@ Each runbook should have:
 6. **Rollback/recovery:** when to stop, what to revert, escalation.
 7. **References:** exact repo files, related issues and further reading.
 
-Prefer commands that can be pasted without modification except clearly identified placeholders; never invent AMP instance IDs, Steam usernames, server addresses, paths or GitHub secret values.
+Prefer commands that can be pasted without modification except clearly identified placeholders; never invent service instance IDs, Steam usernames, server addresses, paths or GitHub secret values.
 
 ## Truthfulness and safety
 
