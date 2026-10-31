@@ -32,6 +32,10 @@ The root release.yaml and unstable.yaml still build the **Python Dockerfile**, n
 4. If compiled-plugin smoke fails: review PluginHost, dist contents, data directory resolution and Node version. Run under compiled Node 22; tsx dev runtime is not the isolation contract.
 5. Rerun after fixing; require **both** check jobs to succeed against the latest head.
 
+## Verify success
+
+Both the Node 22 and Python fixture jobs show a **successful conclusion** for the **current PR head SHA**. The source build, fixture diff and compiled plugin smoke test must all be green. If a new commit is pushed while the previous checks are still running, re-check the latest commit rather than accepting stale results.
+
 ## Enforce checks
 
 GitHub repository administrator: Settings > Rules > Rulesets (or branch protection) > target rewrite/node-ts > require status checks matching the Node 22 job and Python fixture job. This UI setting is **not** implemented by the workflow file; issue #31 tracks enforcement.
