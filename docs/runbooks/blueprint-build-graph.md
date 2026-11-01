@@ -133,3 +133,53 @@ the partial graph complete. Even
 set of recognized exported links has no missing target. It does **not**
 prove gameplay semantics, flatten inheritance, pair multi-ammunition
 variants to projectiles, or authorize automatic publication.
+
+## First private whole-build baseline (26058282)
+
+The broad Blueprint extraction and deterministic index both succeeded on
+the restricted private runner: [full-source validation
+#41280079499](https://github.com/Romboter/foxhole-lab/actions/runs/41280079499).
+A second private run reproduced the same counts and captured the PAK SHA-256.
+
+| Observed count | Build 26058282 |
+|---|---:|
+| Exported Blueprint JSON packages | 4,203 |
+| Explicit package reference edges in the supported field set | 879 |
+| References whose target packages were exported | 879 |
+| Named ammunition/mount row references | 591 |
+| Exact matching DataTable rows | 573 |
+| Missing named rows | 14 |
+| Invalid source identifiers | 4 |
+| Explicit CodeName / ExplosiveCodeName declarations (unscoped) | 981 |
+
+Initial relation digest:
+`5d8b6679cc213630e7253ec2e06f51b394d61b7fa59d9074ae72c72e6b1e088e`.
+
+Pinned local vanilla PAK SHA-256:
+`3f927753301f64082a63df96d59c0e10961ee1582b3ff9f2a0267fbf7e7f1e20`.
+
+The full private runner exports **4,203** package JSON files, whereas
+the earlier curated archived Blueprint research ZIP contained **3,795**.
+Do not compare raw graph coverage numbers across these different export
+scopes without normalizing which assets were included. The broader
+export includes the previously absent `BPWaterStencilComponent`.
+
+The first missing-row investigation list includes repeated `RPGAmmo`
+declarations (already documented in [Issue #53](https://github.com/Romboter/aedilebot/issues/53)),
+`BattleTankMachineGunner`, `FieldMortarGunner`,
+`HalftrackMultiWGunner`, and a lowercase `lighttankammo` reference.
+These are *declared source references*; an unmatched identifier is not
+permission to substitute a similarly spelled entry. Case-only matches
+may be reported as **unverified diagnostics only** and must not be
+promoted to a source edge without evidence.
+
+**Interpretation:** 879/879 means only that all **recognized explicit
+object-package links in this extraction** point to an exported JSON
+package. It does not mean that all Blueprint connections, native runtime
+properties, damage formulas, or player-facing bot identities are resolved.
+The 573/591 exact named-row joins are a separate metric, with remaining
+identity exceptions requiring investigation.
+
+Future builds must be compared using the same extractor revision, source
+root scope, and graph schema. This is a **review baseline**, not a
+production-ready numeric-data pipeline.
