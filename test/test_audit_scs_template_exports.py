@@ -106,8 +106,8 @@ class TemplateExportAuditTests(unittest.TestCase):
             "ObjectName":"ParentTemplate"}
         self.save()
         g,m,t=self.inputs()
-        row=inspect(self.root,g,m,t)["records"][0]
-        self.assertEqual(row["child_template_reference"]["status"],"target_package_mismatch")
+        with self.assertRaisesRegex(ValueError,"Child component reference changed"):
+            inspect(self.root,g,m,t)
 
 
 if __name__=="__main__":
