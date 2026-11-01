@@ -20,6 +20,24 @@ var wanted = new Dictionary<string, string>
     ["BPTownBase3_C"] = "Town Center",
 };
 
+// Exact package extraction uses fully named Blueprint paths, never substring
+// filters. Check-list can be tested without mounting or reading a game PAK.
+if (args.Length >= 3 && (args[2] == "check-list" || args[2] == "dump-list" || args[2] == "inspect-types") && args.Length != 4)
+    throw new ArgumentException("Usage: Extractor <pakDir> <outputDir> check-list|dump-list|inspect-types <manifestFile>");
+
+IReadOnlyList<string>? exactPackages = null;
+if (args.Length == 4 && (args[2] == "check-list" || args[2] == "dump-list" || args[2] == "inspect-types"))
+{
+    exactPackages = ExactBlueprintPackages.ReadManifest(args[3]);
+    if (args[2] == "check-list")
+    {
+        foreach (var package in exactPackages)
+            Console.WriteLine(package);
+        Console.WriteLine($"validated: {exactPackages.Count} exact Blueprint packages");
+        return;
+    }
+}
+
 var sw = Stopwatch.StartNew();
 var provider = new DefaultFileProvider(args[0], SearchOption.TopDirectoryOnly,
     new VersionContainer(EGame.GAME_UE4_24), StringComparer.OrdinalIgnoreCase);
@@ -27,6 +45,51 @@ provider.Initialize();
 provider.SubmitKey(new FGuid(), new FAesKey("0x" + new string('0', 64)));
 provider.PostMount();
 Console.WriteLine($"provider ready: {provider.Files.Count} files, {sw.Elapsed.TotalSeconds:F2}s");
+
+if (exactPackages != null)
+{
+    // Preflight *all* requested names before writing any exports. A package
+    // not present in the PAK is an error, not a reason to guess a similar key.
+    var absent = exactPackages.Where(k => !provider.Files.ContainsKey(k)).ToArray();
+    if (absent.Length > 0)
+        throw new InvalidOperationException("Missing exact Blueprint packages: " + string.Join(", ", absent));
+
+    var inspected = 0;
+    var typeFields = new HashSet<string>(StringComparer.Ordinal)
+    {
+        "AmmoName", "MountCodeName", "CompatibleAmmoCodeName", "ExplosiveCodeName"
+    };
+    foreach (var key in exactPackages)
+    {
+        if (!provider.TryLoadPackage(key, out var pkg))
+            throw new InvalidOperationException("Could not parse exact package: " + key);
+        if (args[2] == "inspect-types")
+        {
+            // Report original tagged UE property types, never raw property
+            // values or a flattened/inferred game-data relationship.
+            foreach (var obj in pkg.GetExports())
+                foreach (var prop in obj.Properties)
+                    if (typeFields.Contains(prop.Name.Text))
+                    {
+                        Console.WriteLine($"TYPE\t{key}\t{obj.Name}\t{prop.Name.Text}\t{prop.PropertyType.Text}");
+                        inspected++;
+                    }
+            continue;
+        }
+        var destination = Path.Combine(args[1], Path.ChangeExtension(key, ".json"));
+        Directory.CreateDirectory(Path.GetDirectoryName(destination)!);
+        File.WriteAllText(destination, Newtonsoft.Json.JsonConvert.SerializeObject(
+            pkg.GetExports(), Newtonsoft.Json.Formatting.Indented));
+    }
+    if (args[2] == "inspect-types")
+    {
+        if (inspected == 0) throw new InvalidOperationException("No requested tagged property types were found");
+        Console.WriteLine($"inspect-types: {inspected} tagged identity properties in {exactPackages.Count} packages");
+    }
+    else Console.WriteLine($"dump-list: {exactPackages.Count} exact Blueprint packages in {sw.Elapsed.TotalSeconds:F2}s");
+    return;
+}
+
 
 if (args.Skip(2).FirstOrDefault() == "find")   // list pak paths containing every given substring
 {
