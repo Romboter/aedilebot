@@ -102,7 +102,7 @@ def legacy_hits(weapon, target, matrix):
             "legacy_hits_to_kill": math.ceil(health / effective_damage)}
 
 
-def check(source_root, weapons, targets, damage, build_id):
+def check(source_root, weapons, targets, damage, build_id, ancestry=None):
     if build_id != "26058282":
         raise ValueError("Use only the established pinned game build")
     name = "Silverhand - Mk. IV (SvH)"
@@ -183,6 +183,29 @@ def check(source_root, weapons, targets, damage, build_id):
                                          for x in health_candidates) else "unresolved")
     statuses["target_saved_armour_type_present"] = (
         "yes" if any(x["field"] == "ArmourType" for x in health_candidates) else "no")
+    # A partial source check MUST NOT mark a matchup answerable merely because
+    # the legacy arithmetic runs. The strict parent-chain proof is a distinct audit.
+    required = {
+        "ammo_exact_row": "present",
+        "ammo_base_damage_vs_human": "match",
+        "ammo_saved_damage_type_ref": "resolved_unique_default",
+        "damage_type_saved_enum": "saved",
+        "enum_to_profile_row": "unique_exact",
+        "profile_target_column_vs_human": "match",
+        "vehicle_dynamic_exact_row": "present",
+        "vehicle_saved_codename_defaults": "unique",
+        "target_source_health_match": "some_saved_source_field",
+    }
+    if any(statuses.get(field) != expected for field, expected in required.items()):
+        answerability = "blocked-missing-source-evidence"
+    elif (isinstance(ancestry, dict) and
+          ancestry.get("source_status") == "exact_saved_ancestor_declaration_matches_human" and
+          ancestry.get("native_effective_inheritance") == "unverified" and
+          ancestry.get("leaf") == "Vehicles/MediumTank/BPMediumTankW" and
+          ancestry.get("human_target_category") == old["human_target_category"]):
+        answerability = "answerable-with-stated-assumptions"
+    else:
+        answerability = "blocked-inherited-target-category-proof"
     return {
         "schema_version": 1, "source_build_id": build_id,
         "question": "How many 75mm rounds to kill a Silverhand Mk. IV?",
@@ -210,7 +233,7 @@ def check(source_root, weapons, targets, damage, build_id):
             "rounding": "legacy_calculator_only",
             "hit_chance": "scenario_assumption",
         },
-        "answerability": "answerable-with-stated-assumptions",
+        "answerability": answerability,
         "limitations": [
             "Human-source baseline is not proof of live Foxhole shot count.",
             "Saved local Blueprint values may not equal effective inherited native game values.",
@@ -227,10 +250,11 @@ def main():
     parser.add_argument("--targets", required=True, type=Path)
     parser.add_argument("--damage", required=True, type=Path)
     parser.add_argument("--build-id", required=True)
+    parser.add_argument("--ancestry-report", type=Path)
     parser.add_argument("--output", required=True, type=Path)
     a = parser.parse_args()
     result = check(a.source_root, read(a.weapons), read(a.targets), read(a.damage),
-                   a.build_id)
+                   a.build_id, read(a.ancestry_report) if a.ancestry_report else None)
     a.output.parent.mkdir(parents=True, exist_ok=True)
     a.output.write_text(json.dumps(result, sort_keys=True, indent=2) + "\n", encoding="utf-8")
     print("Build:", result["source_build_id"])
