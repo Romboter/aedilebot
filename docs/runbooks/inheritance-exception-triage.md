@@ -146,3 +146,51 @@ the effective runtime ammunition is `not_established`.
 Further investigation should establish the applicable UE4.24 struct
 default reconstruction semantics and validate them independently;
 do not inspect Foxhole executables as part of this asset-only phase.
+
+## Verified mounted ammunition source paths
+
+The extended private check [#41282908029](https://github.com/Romboter/foxhole-lab/actions/runs/41282908029)
+followed each child seat's actual `MountComponent.ObjectPath`, and then
+traced the component's `AmmoName` through exported parent defaults.
+The independently named mount rows were already verified as present.
+No `Damage` or `DamageMultiplier` values were guessed or published.
+
+| Effective exported mount | Mount component path | Declared ammunition |
+|---|---|---|
+| `BattleTankCMachineGunner` | `Vehicles/MediumTank/BPBattleTankCMachineGunnerComponent` | `MGAmmo` |
+| `BattleTankWMachineGunner` | `Vehicles/BPWarVehicleMachineGunnerComponent` or `Vehicles/BattleTanks/BPBattleTankWMachineGunnerComponent` (child-dependent) | `MGAmmo` |
+| `BattleTankDefensiveWFlameGunner` | `Vehicles/BattleTanks/BPBattleTankDefensiveWFlameMount` | `FlameAmmo` |
+| `FieldMortarGunnerC` | `Vehicles/FieldWeapons/BPFieldMortarGunnerC` | `MortarTankAmmo` |
+| `FieldMortarGunnerW` | `Vehicles/FieldWeapons/BPFieldMortarGunnerW` | `MortarTankAmmo` |
+
+**Important:** These are source-link identities. They do not independently
+establish effective firing mode, gameplay kinetic factor, target resistance,
+or final damage. The field-mortar base itself refers to
+`BPFieldMortarGunnerW` and `MortarTankAmmo` while retaining an unmatched
+base `FieldMortarGunner` seat mount name. This does not authorize a
+base-class damage entry.
+
+## Original nested UE property types
+
+[Private tag validation #41282992554](https://github.com/Romboter/foxhole-lab/actions/runs/41282992554)
+independently inspected all seven target `MultiAmmo` component assets:
+
+- Parent `CompatibleAmmoNames` is serialized as
+  `ArrayProperty` of `NameProperty`.
+- The three vehicle children serialize
+  `AmmoSlotFilterAmounts` as `ArrayProperty` of `IntProperty`,
+  without a saved `CompatibleAmmoNames` field.
+- The light ATRPG child explicitly serializes an empty
+  `CompatibleAmmoNames` `ArrayProperty` whose element type is
+  `NameProperty`, distinct from an omitted field.
+
+The inspector reports `STRUCTFIELD` and `ARRAYINNER` type
+evidence without disclosing values or making runtime-merge assumptions.
+These facts support treating a partial child `MultiAmmo` as a
+**potential serialized delta**; they do not prove that the inherited
+compatible-ammo list survives in the reconstructed runtime CDO.
+
+The eventual generator must distinguish an explicit empty compatible-ammo
+array from a child struct which only serializes unrelated slot filters.
+Neither can be silently populated with a parent list until the
+applicable UE4.24 runtime reconstruction rules have been verified.
