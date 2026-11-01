@@ -15,6 +15,7 @@
 | Make a reviewed data change | [Game data change](runbooks/data-change.md) |
 | Check or regenerate weapon damage from an exported game build | [Weapon data generator](runbooks/weapon-generator.md) |
 | Investigate asset-backed weapon/ammo references | [Trace weapon asset references](runbooks/weapon-asset-tracing.md) |
+| Compare a licensed game build against existing statistics | [Read-only data audit](runbooks/game-data-audit.md) |
 | Reload calculator, fuzzy logic or data in memory | [Hot swap and rollback](runbooks/hot-swap.md) |
 | Handle a service outage or security event | [Incident response](runbooks/incident-response.md) |
 | Set up a secure Foxhole extraction machine | [Ubuntu extraction host](runbooks/extraction-host.md) |
@@ -30,12 +31,12 @@
 
 ## Essential operating rules
 
-1. **Do not mistake design for deployment.** The Python Dockerfile/Compose are the existing implementation; Node is a rewrite with development-bot evidence but no confirmed production cutover. The map-download/export workflow is a **draft PR**, not a running service.
+1. **Do not mistake design for deployment.** The Python Dockerfile/Compose are the existing implementation; Node is a rewrite with development-bot evidence but no confirmed production cutover. The full map archive/update workflow remains a **draft**, although a licensed Steam download and scoped extraction/comparison have now been verified on the separate private VM. See the [data audit](runbooks/game-data-audit.md).
 2. **No unattended catalog edits.** Every proposed relic or town change needs data-source validation and an explicit approval path. Phase 4 review/approval code does not exist yet.
 3. **Treat game files and map exports as private.** This GitHub repository is public. Never commit full PAKs, raw map JSON archives, bot tokens, Steam login state or identifiable logs.
 4. **Do not attach credentialed persistent GitHub runners to this public repository.** Put execution in an isolated Ubuntu VM/container and a private dispatch repository.
 5. **Back up before changing state; test restoration.** A Git commit is not a backup of SteamCMD authentication, production environment, or private archives.
-6. **Confirm repository branch and SHA before running commands.** The default branch is Python main, while the Node work is on rewrite/node-ts; draft PR #39 contains unmerged extraction code.
+6. **Confirm repository branch and SHA before running commands.** The default branch is Python main, while the Node work is on rewrite/node-ts; the old PR #39 runbooks predate the new CUE4Parse extractor and private-VM comparison work; verify current PRs before following an older draft.
 
 ## How these runbooks are written
 

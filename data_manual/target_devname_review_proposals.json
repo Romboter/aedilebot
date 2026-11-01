@@ -1,0 +1,13 @@
+{
+  "$comment": "Human-review candidates, not authoritative game identity mappings. From Phase 4 design; test against the live build. Never apply automatically or overwrite data/Targets.json.",
+  "proposals": {
+    "Bridge": "DrawbridgeB",
+    "A0E-9 Rocket Platform Husk": "RocketSiteDestroyed",
+    "Dry Dock": "FacilityVehicleFactory3",
+    "Dry Dock Husk": "FacilityVehicleFactory3Destroyed",
+    "Offshore Platform": "FacilityMineOilRig",
+    "Infantry Support Gun Pillbox (ISG Pill)": "ISGPillbox",
+    "Metalworks Factory Husk": "FacilityRefinery2Destroyed",
+    "Heavy Assembly Station Husk": "FacilityVehicleFactory2Destroyed"
+  }
+}
