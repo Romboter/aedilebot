@@ -1,0 +1,26 @@
+name: Structure identity research - offline checks
+
+on:
+  push:
+    branches: [research/52-structure-blueprint-identity]
+    paths:
+      - 'scripts/resolve_structure_blueprints.py'
+      - 'test/test_resolve_structure_blueprints.py'
+      - '.github/workflows/structure-identity-research-ci.yml'
+  pull_request:
+    paths:
+      - 'scripts/resolve_structure_blueprints.py'
+      - 'test/test_resolve_structure_blueprints.py'
+      - '.github/workflows/structure-identity-research-ci.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  structure-reference-tests:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - name: Validate read-only structure identity graph (synthetic fixtures only)
+        run: python3 -m unittest discover -s test -p 'test_resolve_structure_blueprints.py' -v
