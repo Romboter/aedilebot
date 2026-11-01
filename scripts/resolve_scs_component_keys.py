@@ -54,7 +54,7 @@ def resolve(root: Path, graph: dict):
         if template and record.get("ComponentTemplate", {}).get("ObjectPath") != template["object_path"]:
             raise ValueError("Template indexed reference changed")
         name, guid = key.get("SCSVariableName"), key.get("AssociatedGuid")
-        counts_for_key, match = {}, None
+        counts_for_key, match, guid_only_diagnostic = {}, None, None
         if not owner or owner["target_export_status"] != "exported":
             status = "owner_not_exported"
         elif not template or template["target_export_status"] != "exported":
@@ -71,6 +71,16 @@ def resolve(root: Path, graph: dict):
             by_guid = [x for x in candidates if x["Properties"].get("VariableGuid") == guid]
             exact = [x for x in by_name if x["Properties"].get("VariableGuid") == guid]
             counts_for_key = {"name": len(by_name), "guid": len(by_guid), "exact": len(exact)}
+            if len(by_guid) == 1 and not exact:
+                guid_only_diagnostic = {
+                    "parent_package": pkg,
+                    "parent_sha256": nodes[pkg],
+                    "parent_scs_node_record": by_guid[0].get("Name"),
+                    "parent_saved_variable_name": by_guid[0]["Properties"].get("InternalVariableName"),
+                    "child_saved_key_name": name,
+                    "confidence": "unverified_guid_only_candidate",
+                    "accepted_as_exact_match": False,
+                }
             if len(exact) == 1 and valid(exact[0].get("Name")):
                 status = "unique_serialized_key_match"
                 match = {
@@ -92,7 +102,7 @@ def resolve(root: Path, graph: dict):
             "handler_record": pair["source_record"], "record_index": i,
             "owner_class": owner, "child_template": template,
             "status": status, "candidate_counts": counts_for_key,
-            "parent_scs_match": match,
+            "parent_scs_match": match, "guid_only_diagnostic": guid_only_diagnostic,
             "original_property_types": "not_independently_verified",
             "effective_runtime_component": "not_established",
         })
