@@ -46,3 +46,17 @@ Even a type-proven source `CodeName` → row relation does **not** show:
 Cases with absent, malformed, missing or case-only row identifiers remain unresolved, without guessed matches. Reusing the same row across multiple classes is reported separately, never treated as an error or a unique entity identity.
 
 Do not use this to generate automatic bot catalog changes or damage calculations; only a separately reviewed, effective-value validation can establish that capability.
+
+## Verified original-tag and exact-row results (2026-11-01)
+
+[Restricted full-build run #41347602989](https://github.com/Romboter/foxhole-lab/actions/runs/41347602989) **PASSED** on Foxhole Steam build `26058282`, 16/16 synthetic and source regressions, CUE4Parse compiled with zero errors. The extractor inspector `research/83-structure-original-codename-tags` (`ad4c97e4bfe719cc24e7e3bb238563d75f49d799`) examined the **original tagged UE4.24** fields, and the SHA-checked graph digest remained `8a0a8b7c4fa26469b08ca8d39881a69d9beef06f17f520e6472ef8a1676a5a44`.
+
+- Exactly **592** `BPStructureDynamicData` rows, with original `UDataTable.RowMap` key type `FName`.
+- **509** separately saved `Structures/` class-default `CodeName` declarations inspected. **507** had original `NameProperty` type and exactly matched saved `FName` DataTable row keys.
+- **506 distinct matched rows**, of which one row is referenced by more than one saved declaring class.
+- **2** saved `CodeName` declarations did **not** match an exact table row; no case-only or guessed alternate row was promoted.
+- **460** structures had no separately serialized `CodeName` field in their class-default export. This does *not* prove they have no runtime row: native/parent inheritance and runtime selection are unknown.
+
+The type-backed source joins carry per-field SHA-256 hashes of saved `MaxHealth`, `StructuralIntegrity`, `RepairCost`, `DecayStartHours`, `DecayDurationHours`, `ResourceAmounts`, and `AltResourceAmounts`. The audit does not publish these values, calculate bunker integrity, or assign effective runtime CDOs. Typed source identity is not a proven engine consumer of the row.
+
+The two earlier failed private validations were pipeline/testing defects (wrong assertion message, oversized single manifest, then `.uasset` package-key normalization / synthetic test escaping), not failures of the game asset source. The final passing run uses bounded inspector manifests under the extractor's immutable 256-package safety cap.
