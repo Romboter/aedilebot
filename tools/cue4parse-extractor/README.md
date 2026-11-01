@@ -34,3 +34,18 @@ Modes: `stats` writes DataTable assets under the requested output directory; `al
 ## Research scripts
 
 The companion Python `*.py` files are one-off research scripts and still have hardcoded `D:/` paths from Claude's original Windows spike. They are not incorporated in Linux CI and must be made portable before reuse.
+
+## Linux test against actual licensed Foxhole data
+
+On November 1, 2026, the isolated Ubuntu 24.04 VM successfully ran this exact extractor revision against a licensed vanilla Foxhole Windows PAK:
+
+| Test | Observed result |
+|---|---|
+| Pinned source and dependency build | Passed on .NET 10 |
+| `stats` | 53 DataTable JSON assets in ~0.61 seconds |
+| `all` | 53 master maps in ~68.85 seconds |
+| Selected relic/town-base detections | 431 total across 53 maps; no zero-result maps |
+
+This validates **Linux compatibility and narrow extraction**, not class completeness, world-space transform fidelity, bot data accuracy, or full Unreal actor coverage. Raw outputs remained inside private temporary storage and were not committed or uploaded. Automated comparisons against the bot data files are still to be built.
+
+A read-only input arrangement avoids broad access to the Steam installation: give the worker permission to read the vanilla PAK alone, then create a worker-owned temporary directory with a symlink named `War-WindowsNoEditor.pak` pointing at the file. Pass the temporary directory as the extractor's first argument. CUE4Parse enumerates the supplied directory; merely giving the worker `--x` on the original PAK parent directory is insufficient.
