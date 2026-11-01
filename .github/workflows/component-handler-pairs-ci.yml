@@ -1,0 +1,16 @@
+name: Component handler source-pair CI
+on:
+  push:
+    branches: [research/67-component-override-record-pairs]
+  pull_request:
+permissions:
+  contents: read
+jobs:
+  source-pairs:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - run: python3 -m unittest discover -s test -p 'test_pair_inheritable_component_records.py' -v
+      - run: python3 -m unittest discover -s test -p 'test_inheritable_component_edges.py' -v
+      - run: python3 -m unittest discover -s test -p 'test_blueprint_graph_index.py' -v
