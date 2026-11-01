@@ -59,7 +59,7 @@ if (exactPackages != null)
     var inspected = 0;
     var typeFields = new HashSet<string>(StringComparer.Ordinal)
     {
-        "AmmoName", "MountCodeName", "CompatibleAmmoCodeName", "ExplosiveCodeName"
+        "CodeName", "AmmoName", "MountCodeName", "CompatibleAmmoCodeName", "ExplosiveCodeName"
     };
     foreach (var key in exactPackages)
     {
