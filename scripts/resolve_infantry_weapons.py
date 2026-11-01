@@ -58,16 +58,31 @@ def resolve_infantry(root: Path, pickup: Path, build_id: str, kinetic_factor: fl
         return out
     component_path = root / (reference.removeprefix(PREFIX).split(".", 1)[0] + ".json")
     try:
-        ammo_id, evidence = explicit_property(root, component_path, ("CompatibleAmmoCodeName",))
+        ammo_value, evidence = explicit_property(root, component_path,
+                                                  ("CompatibleAmmoCodeName", "MultiAmmo"))
     except ValueError as exc:
         out["reason"] = "component_reference_unresolved"
         out["details"] = str(exc)
         return out
     if evidence:
         out["evidence"].append(evidence)
-    if not isinstance(ammo_id, str) or not ammo_id:
+    if isinstance(ammo_value, str):
+        options = [ammo_value]
+    elif isinstance(ammo_value, dict) and isinstance(ammo_value.get("CompatibleAmmoNames"), list):
+        options = ammo_value["CompatibleAmmoNames"]
+    else:
+        options = []
+    if not options:
         out["reason"] = "component_compatible_ammo_not_found_in_exported_defaults"
         return out
+    if any(not isinstance(x, str) or not x for x in options) or len(set(options)) != len(options):
+        out["reason"] = "invalid_or_duplicate_ammunition_options"
+        return out
+    out["ammo_options"] = options
+    if len(options) != 1:
+        out["reason"] = "multiple_ammunition_options_require_explicit_variant_selection"
+        return out
+    ammo_id = options[0]
     out["ammo_code_name"] = ammo_id
 
     weapons, weapons_path = table(root, "BPWeaponDynamicData")
