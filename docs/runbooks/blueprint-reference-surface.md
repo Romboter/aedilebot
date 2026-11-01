@@ -27,3 +27,26 @@ Before interpreting these as effective component overrides, independently
 verify the target UE4 class-template construction and parent/child behavior.
 In particular, these serialized edges do not prove effective `MultiAmmo`
 values or associate a firing mount with a damage multiplier.
+
+## Paired inherited-component records
+
+`scripts/pair_inheritable_component_records.py` uses checked graph edges
+for `Records[i].ComponentKey.OwnerClass` and
+`Records[i].ComponentTemplate`. It pairs fields only when they occur
+on the same source package, export record and array index, retaining
+both `ObjectPath` strings and the defining source SHA-256. It never
+constructs effective runtime values from these pairs.
+
+On pinned Foxhole build `26058282`, private runner
+[validation #41325767200](https://github.com/Romboter/foxhole-lab/actions/runs/41325767200)
+found exactly **666 paired records**, all with cross-package owner-class
+Blueprint references and same-package component-template references.
+All 666 pairs have both fields and all targets were among the previously
+indexed exports. This is a source-only structural observation, not
+proof that every pair describes a live or spawnable component.
+
+Next: inspect `ComponentKey.SCSVariableName` and `AssociatedGuid`
+and match them to the actual parent `SCS_Node`. Without that specific
+component key and UE4.24 template construction evidence, a class-level
+owner/template association cannot establish effective mount properties,
+ammunition, firing mode, or damage. See Issue #68.
