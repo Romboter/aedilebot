@@ -13,6 +13,7 @@ import json
 from collections import Counter, deque
 from pathlib import Path
 
+from scripts.trace_multi_ammo_field_evidence import collect_nested_field_evidence
 from scripts.diff_blueprint_graph import checked
 from scripts.find_blueprint_dependencies import asset_path
 from scripts.index_blueprint_graph import build_index, table_data
@@ -272,10 +273,15 @@ def inspect(root: Path, index: dict, mount_targets=MOUNT_TARGETS,
                             "present": True,
                         })
                         break
+            field_evidence = collect_nested_field_evidence(
+                child_lineage, nodes,
+                lambda package: class_default(root, package, nodes),
+            )
             members.append({
                 "package": child, "chain": chain,
                 "effective_multi_ammo": nearest if nearest else {"status": "not_exported_in_ancestry"},
                 "parent_option_evidence": parent_option_evidence,
+                "serialized_multi_ammo_field_evidence": field_evidence,
                 "other_explicit_field_evidence": other_fields,
             })
         ammo.append({
@@ -298,6 +304,8 @@ def inspect(root: Path, index: dict, mount_targets=MOUNT_TARGETS,
             "Reverse SuperStruct links are not proof that a descendant is a spawnable game vehicle.",
             "A matching seat object name identifies exported seat overrides, not runtime gunner behavior.",
             "Null or absent MultiAmmo declaration is not proof of unusable or empty runtime ammunition.",
+            "Nested MultiAmmo field evidence lists serialized source candidates only; it cannot reconstruct a runtime CDO.",
+            "JSON array shapes do not establish original Unreal tag types; typed inspections remain separate.",
             "No native class defaults, numeric proxy damage, casing guess, or automatic publication.",
         ],
     }
