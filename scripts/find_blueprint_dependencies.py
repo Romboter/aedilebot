@@ -92,7 +92,7 @@ def discover(root, max_files=10000):
         (entry for entry in edges if entry["package"] in missing_set),
         key=lambda entry: (entry["source_asset"], entry["record"] or "", entry["field"], entry["package"]),
     )
-    by_type = Counter(re.sub(r"\\[\\d+\\]$", "", entry["field"]) for entry in edges)
+    by_type = Counter(re.sub(r"\[\d+\]$", "", entry["field"]) for entry in edges)
     return {
         "schema_version": 1,
         "status": "read_only_dependency_inventory",
