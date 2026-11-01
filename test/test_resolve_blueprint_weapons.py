@@ -98,7 +98,8 @@ class ResolverTests(unittest.TestCase):
                 "MultiAmmo": {"CompatibleAmmoNames": ["MGAmmo", "ATRifleAmmo"]}}},
         ])
         result = resolve(self.root, Path(vehicle), "26058282")
-        self.assertTrue(all(x["reason"] == "multiple_ammunition_options" for x in result["endpoints"]))
+        self.assertTrue(all(x["reason"] == "multiple_ammunition_variants_require_explicit_selection" for x in result["endpoints"]))
+        self.assertTrue(all("damage" not in x for x in result["endpoints"]))
 
     def test_missing_inherited_ammo_is_unresolved(self):
         vehicle = self.destroyer()
