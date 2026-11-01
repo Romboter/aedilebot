@@ -30,17 +30,37 @@
       "provenance": {
         "game_build_id": "26058282",
         "pak_sha256": null,
-        "blueprint_asset_paths": null,
-        "source_property_paths": null,
-        "private_export_hashes": null,
+        "blueprint_asset_paths": [
+          "Vehicles/LargeShips/DestroyerC/BPLargeShipDestroyerC.json",
+          "Vehicles/LargeShips/DestroyerC/BPLargeShipDestroyerCMachineGunner.json",
+          "Vehicles/BPColVehicleMachineGunnerComponent.json"
+        ],
+        "source_property_paths": [
+          "BPLargeShipDestroyerC:GunnerSeat4_GEN_VARIABLE/Properties/MountCodeName",
+          "BPLargeShipDestroyerC:GunnerSeat5_GEN_VARIABLE/Properties/MountCodeName",
+          "BPLargeShipDestroyerC:GunnerSeat4_GEN_VARIABLE/Properties/MountComponent/ObjectPath",
+          "BPLargeShipDestroyerC:GunnerSeat5_GEN_VARIABLE/Properties/MountComponent/ObjectPath",
+          "BPLargeShipDestroyerCMachineGunner:BlueprintGeneratedClass/SuperStruct/ObjectPath",
+          "BPColVehicleMachineGunnerComponent:Default__/Properties/AmmoName",
+          "BPMountDynamicData:Rows/LargeShipDestroyerCMachineGunner/DamageMultiplier"
+        ],
+        "private_export_hashes": {
+          "Vehicles/LargeShips/DestroyerC/BPLargeShipDestroyerC.json": "2b000ee444f413067b36f0e83bef638d2c9558a911173d0df716a4b684a76ac4",
+          "Vehicles/LargeShips/DestroyerC/BPLargeShipDestroyerCMachineGunner.json": "c80ee86569d96d5473fb9d25428e33a68054a5c199eff6d096d5d9c6a1339126",
+          "Vehicles/BPColVehicleMachineGunnerComponent.json": "6f706dfbc2b1d35f4800120c19635250df28a4582d3342ea34f35d5b4afc1968",
+          "Data/BPMountDynamicData.json": "ff7765063eb122fc745ba20792e1ea14ecaaef6b2f309bb1c249ca5c0748639f",
+          "Data/BPAmmoDynamicData.json": "e1fddfce81ad79be16e359a079ee7da97d7863ba4019639c545bcc518073abf4"
+        },
         "reviewer": null,
         "review_date": null,
-        "evidence_type": "reported_from_exported_blueprint_properties",
-        "independently_reproduced": false
+        "evidence_type": "archived_Blueprint_and_DataTable_export_plus_private_runner_validation",
+        "independently_reproduced": true,
+        "archive_baseline_reproduced": true,
+        "private_runner_audit": "https://github.com/Romboter/foxhole-lab/actions/runs/41276422492"
       },
       "guardrails": [
         "Do not generalize to every ship 12.7mm mount",
-        "Do not promote to generator overlay before exact private source/property-path and archived-export hash corroboration for build 26058282",
+        "Do not promote to generator overlay before manual review of scope, per-vessel identity and derived-value tests; private build-26058282 source references were corroborated",
         "Do not use numerical agreement as identity proof",
         "No production data changes or unattended updates"
       ]
