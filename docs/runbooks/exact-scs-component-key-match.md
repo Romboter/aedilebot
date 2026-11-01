@@ -9,3 +9,9 @@ Earlier private extraction showed that child `InheritableComponentHandler.Record
 The report distinguishes `unique_serialized_key_match`, `ambiguous_exact_key`, `name_guid_disagreement`, `no_parent_scs_match`, invalid keys and missing exports. Negative tests cover same-name/different-GUID nodes, conflicts, duplicates, missing fields, and changed source hashes.
 
 **This remains a serialized-source identity matcher, not a UE4.24 runtime component resolver.** Original Unreal property types have not been independently verified by the nested type inspector. No merged CDO, selected ammunition, gameplay multiplier, or damage value is inferred. Continue to require the private restricted runner, raw export privacy, human review and no production activation.
+
+## Pinned Foxhole findings
+
+The restricted runner [#41327072222](https://github.com/Romboter/foxhole-lab/actions/runs/41327072222) passed and showed 664 unique exact name-plus-GUID matches from 666 component handler records. The remaining two records, indices 1 and 2 under `Vehicles/ScoutTank/BPScoutTankOffensiveW`, point to owner class `Vehicles/ScoutTank/ScoutTankWBase`. Each GUID matches one saved parent SCS node, but neither saved child variable name matches that parent node's `InternalVariableName`.
+
+The resolver leaves these cases `name_guid_disagreement`, reports a separately labeled `unverified_guid_only_candidate` for investigation, and explicitly sets `accepted_as_exact_match=false`. A GUID-only candidate must never be silently published as a runtime component relationship. The original Unreal property tag types and UE4.24 runtime behavior still require independent validation.
