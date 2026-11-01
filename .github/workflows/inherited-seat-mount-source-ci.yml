@@ -1,0 +1,19 @@
+name: Explicit inherited seat mount source evidence CI
+on:
+  push:
+    branches: [research/77-seat-mount-serialized-provenance]
+  pull_request:
+permissions:
+  contents: read
+jobs:
+  synthetic:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - name: Verify saved seat mount source fields and negatives
+        run: python3 -m unittest discover -s test -p 'test_audit_inherited_seat_mount_sources.py' -v
+      - name: Preserve SCS export and field-delta baseline
+        run: |
+          python3 -m unittest discover -s test -p 'test_resolve_qualified_scs_template_exports.py' -v
+          python3 -m unittest discover -s test -p 'test_audit_scs_template_field_deltas.py' -v
