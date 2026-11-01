@@ -18,7 +18,7 @@ For each original, independently typed `Default__*.CodeName` → `BPStructureDyn
 4. Whether the class explicitly saved `Tier` (presence, type/shape and fingerprint only), without claiming enum semantics or an inherited value.
 5. Whether an explicit saved upgrade references a missing row, a `None` sentinel, a malformed field, or another valid row that has no reference-compatible tier step.
 
-This deliberately **does not** assert the original UE property type for `UpgradeStructureCodeName` (not yet inspected in the original tag whitelist). Named FName lookups remain only original serialized *saved candidates* unless we independently inspect the original tag and runtime behavior. The proof of the *source* CodeName field and the DataTable row key remains unchanged from the previous auditor.
+The original `UpgradeStructureCodeName` tag is now **independently inspected** with the source-only CUE4Parse tag whitelist extended in pinned extractor commit `1fc0211706b1fd0351763ee33eb034caaea90550` (draft PR #91). The audit accepts original `TYPE` tags from only exact package-scoped, normalized `.uasset` sources, rejects duplicates and missing tags for saved fields, and records the actual original UE property type. This is **source declaration evidence**, not proof that the game executes a runtime upgrade. The independent original `CodeName` property and DataTable `FName` key proofs remain unchanged.
 
 ## Private validation
 
@@ -26,6 +26,20 @@ Private workflow branch `automation/bunker-upgrade-chain-source`; `.github/workf
 
 The status values are **not a published migration path**. In particular, multiple classes can save the same `CodeName`, and multiple reference types can share an identical numeric triplet. A compatible edge may therefore be entirely coincidental until independently corroborated.
 
+## Pinned-run evidence
+
+**Verified** in private runner [#41353595453](https://github.com/Romboter/foxhole-lab/actions/runs/41353595453), build `26058282`, graph digest `8a0a8b7c4fa26469b08ca8d39881a69d9beef06f17f520e6472ef8a1676a5a44`, **37 successful tests** (12 benchmark, 14 upgrade, 11 original-type identity).
+
+- **507** type-proven saved class declarations against **506** distinct original structure row identities.
+- **224** original saved `UpgradeStructureCodeName` UE property tags, **all 224 `NameProperty`**.
+- **29** exact named target edges compatible with adjacent tiers of the same FoxBunker reference profile. These are **source-typed candidates**; several piece types share identical stats, so a compatible profile type is not necessarily the correct role.
+- **178** additional original named upgrade targets that are not adjacent-tier steps in this narrow FoxBunker numeric crosswalk.
+- **283** typed classes with no separately saved upgrade field, **16** `None` sentinels, **one** upgrade target absent from the original structure table.
+- **137** classes explicitly serialize a `Tier` field, though the type/value semantics of that field were not promoted or assumed.
+- Observed special case: `FortRadarT3` has a saved self-targeting upgrade name. Do not assume this is a game bug or reachable runtime upgrade.
+
+No raw source numeric values, exported assets, production updates, or catalog modifications were published.
+
 ## Next evidence gap
 
-Extend the original UE tag inspector, in a separately reviewed and pinned extractor commit, to recognize `UpgradeStructureCodeName` and verify its actual original property type (expected `NameProperty` is a *hypothesis*, not yet asserted). Inspect explicit tier/upgrade targets and actual Blueprint `SuperStruct` relationships, plus native upgrade semantics if available. Do not infer numerical data inheritance or auto-modify `data/` and `data_manual/` catalogs.
+With the original `UpgradeStructureCodeName` `NameProperty` tags now independently verified, next trace explicit upgrade chains together with saved `Tier`, parent `SuperStruct`, build/upgrade role, and actual model geometry to distinguish same-stat structures. The exact named target and its original tag are not proof that the engine uses that path. Inspect native upgrade semantics where available. Do not infer numerical data inheritance or auto-modify `data/` and `data_manual/` catalogs.
