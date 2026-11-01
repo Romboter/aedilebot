@@ -1,0 +1,16 @@
+name: SCS component-template export source inventory CI
+on:
+  push:
+    branches: [research/73-scs-template-export-identity]
+  pull_request:
+permissions:
+  contents: read
+jobs:
+  synthetic:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - run: python3 -m unittest discover -s test -p 'test_audit_scs_template_exports.py' -v
+      - run: python3 -m unittest discover -s test -p 'test_resolve_scs_component_keys.py' -v
+      - run: python3 -m unittest discover -s test -p 'test_resolve_scs_typed_case_identity.py' -v
