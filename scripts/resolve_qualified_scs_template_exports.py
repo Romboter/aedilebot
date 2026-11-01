@@ -88,9 +88,22 @@ def inspect(root: Path, graph: dict, audit: dict):
             outer = component[0].get("Outer")
             outer_shapes["outer_object" if isinstance(outer,dict)
                          else "outer_absent" if outer is None else "outer_other"] += 1
-            match["component_outer_field_shape"] = (
-                sorted(outer) if isinstance(outer,dict) else
-                "absent" if outer is None else "other")
+            expected_name = "BlueprintGeneratedClass'" + owner + "'"
+            observed_name = outer.get("ObjectName") if isinstance(outer,dict) else None
+            observed_path = outer.get("ObjectPath") if isinstance(outer,dict) else None
+            same_class = observed_name == expected_name
+            same_package = asset_path(observed_path) == package if isinstance(observed_path,str) else False
+            owner_state = ("serialized_outer_owner_match" if same_class and same_package else
+                           "outer_reference_missing" if not isinstance(outer,dict) else
+                           "outer_generated_class_mismatch")
+            match["outer_source_provenance"] = {
+                "status": owner_state, "expected_class": expected_name,
+                "observed_class": observed_name, "observed_object_path": observed_path,
+                "same_source_package": same_package,
+                "runtime_owner": "not_established",
+            }
+            if state == "qualified_source_export_unique" and owner_state != "serialized_outer_owner_match":
+                match["status"] = owner_state
         return match
 
     for row in audit.get("records", []):
