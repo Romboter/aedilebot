@@ -24,11 +24,11 @@ var wanted = new Dictionary<string, string>
 
 // Exact package extraction uses fully named Blueprint paths, never substring
 // filters. Check-list can be tested without mounting or reading a game PAK.
-if (args.Length >= 3 && (args[2] == "check-list" || args[2] == "dump-list" || args[2] == "inspect-types") && args.Length != 4)
-    throw new ArgumentException("Usage: Extractor <pakDir> <outputDir> check-list|dump-list|inspect-types <manifestFile>");
+if (args.Length >= 3 && (args[2] == "check-list" || args[2] == "dump-list" || args[2] == "inspect-types" || args[2] == "inspect-scs-tags") && args.Length != 4)
+    throw new ArgumentException("Usage: Extractor <pakDir> <outputDir> check-list|dump-list|inspect-types|inspect-scs-tags <manifestFile>");
 
 IReadOnlyList<string>? exactPackages = null;
-if (args.Length == 4 && (args[2] == "check-list" || args[2] == "dump-list" || args[2] == "inspect-types"))
+if (args.Length == 4 && (args[2] == "check-list" || args[2] == "dump-list" || args[2] == "inspect-types" || args[2] == "inspect-scs-tags"))
 {
     exactPackages = ExactBlueprintPackages.ReadManifest(args[3]);
     if (args[2] == "check-list")
@@ -65,6 +65,60 @@ if (exactPackages != null)
     {
         if (!provider.TryLoadPackage(key, out var pkg))
             throw new InvalidOperationException("Could not parse exact package: " + key);
+        if (args[2] == "inspect-scs-tags")
+        {
+            // Report *original tagged* UE property types, not JSON value shapes.
+            // This is strictly read-only and never reconstructs CDO defaults.
+            foreach (var obj in pkg.GetExports())
+            {
+                if (obj.ExportType == "SCS_Node")
+                {
+                    foreach (var prop in obj.Properties.Where(p =>
+                         p.Name.Text is "InternalVariableName" or "VariableGuid"))
+                    {
+                        Console.WriteLine($"SCSNODETYPE\t{key}\t{obj.Name}\t{prop.Name.Text}\t{prop.PropertyType.Text}");
+                        inspected++;
+                    }
+                }
+                if (obj.ExportType != "InheritableComponentHandler")
+                    continue;
+                foreach (var property in obj.Properties.Where(p => p.Name.Text == "Records"))
+                {
+                    Console.WriteLine($"SCSARRAYTYPE\t{key}\t{obj.Name}\tRecords\t{property.PropertyType.Text}");
+                    if (property.Tag?.GenericValue is not UScriptArray entries ||
+                        entries.InnerType != "StructProperty")
+                    {
+                        Console.WriteLine($"UNRESOLVED\t{key}\t{obj.Name}\tRecords\tarray_struct_not_inspectable");
+                        continue;
+                    }
+                    for (var i = 0; i < entries.Properties.Count; i++)
+                    {
+                        if (entries.Properties[i].GenericValue is not FScriptStruct recordStruct ||
+                            recordStruct.StructType is not FStructFallback recordFields)
+                        {
+                            Console.WriteLine($"UNRESOLVED\t{key}\t{obj.Name}\tRecords[{i}]\tstruct_not_inspectable");
+                            continue;
+                        }
+                        var keys = recordFields.Properties
+                            .Where(p => p.Name.Text == "ComponentKey").ToArray();
+                        if (keys.Length != 1 ||
+                            keys[0].Tag?.GenericValue is not FScriptStruct componentKey ||
+                            componentKey.StructType is not FStructFallback keyFields)
+                        {
+                            Console.WriteLine($"UNRESOLVED\t{key}\t{obj.Name}\tRecords[{i}].ComponentKey\tkey_struct_not_inspectable");
+                            continue;
+                        }
+                        foreach (var field in keyFields.Properties.Where(p =>
+                             p.Name.Text is "OwnerClass" or "SCSVariableName" or "AssociatedGuid"))
+                        {
+                            Console.WriteLine($"SCSKEYTYPE\t{key}\t{obj.Name}\tRecords[{i}].ComponentKey.{field.Name.Text}\t{field.PropertyType.Text}");
+                            inspected++;
+                        }
+                    }
+                }
+            }
+            continue;
+        }
         if (args[2] == "inspect-types")
         {
             // Report original tagged UE property types, never raw property
@@ -135,6 +189,11 @@ if (exactPackages != null)
     {
         if (inspected == 0) throw new InvalidOperationException("No requested tagged property types were found");
         Console.WriteLine($"inspect-types: {inspected} tagged identity properties in {exactPackages.Count} packages");
+    }
+    else if (args[2] == "inspect-scs-tags")
+    {
+        if (inspected == 0) throw new InvalidOperationException("No SCS property tags were found");
+        Console.WriteLine($"inspect-scs-tags: {inspected} original tagged fields in {exactPackages.Count} packages");
     }
     else Console.WriteLine($"dump-list: {exactPackages.Count} exact Blueprint packages in {sw.Elapsed.TotalSeconds:F2}s");
     return;
