@@ -30,11 +30,11 @@ class GameDataAuditTests(unittest.TestCase):
                 "KineticRound": {"Damage": 80.0, "DamageType": {"ObjectName": "EDamageType'HeavyKinetic'"}},
             },
             "BPVehicleDynamicData": {"VehicleA": {"MaxHealth": 500}},
-            "BPStructureDynamicData": {"BridgeA": {"MaxHealth": 1000}},
+            "BPStructureDynamicData": {"BridgeA": {"MaxHealth": 1000}, "BridgeCorrect": {"MaxHealth": 950}},
         }
         for name, rows in values.items():
             write_json(d / (name + ".json"), [{"Rows": rows}])
-        write_json(self.data / "Damage.json", {"Blast": {"Name": "Blast", "Tier1Tank": "0.5", "Trench": "0.20"}})
+        write_json(self.data / "Damage.json", {"Blast": {"Name": "Blast", "Tier1Tank": "0.5", "Trench": "0.20", "Nomitigation": "0"}})
         write_json(self.data / "Targets.json", {
             "A Vehicle": {"ObjectType": "Vehicles", "Dev Name": "VehicleA", "Health": "500"},
             "A Bridge": {"ObjectType": "Structures", "Dev Name": "BridgeA", "Health": "950"},
@@ -48,12 +48,18 @@ class GameDataAuditTests(unittest.TestCase):
         })
         write_json(self.data / "Bunker_piece.json", {"core": {"health": ["1", "2", "3"]}})
         write_json(self.overlay, {"Variant": "Weapon:Unrelated"})
+        self.proposals = self.root / "manual" / "proposals.json"
+        write_json(self.proposals, {"proposals": {"A Bridge": "BridgeCorrect"}})
 
     def test_counts_and_manual_separation(self):
-        result = audit(self.stats, self.data, self.overlay)
+        result = audit(self.stats, self.data, self.overlay, self.proposals)
         d = result["sections"]["damage_mitigation"]
         self.assertEqual((d["matched"], d["mismatched"]), (1, 1))
         self.assertEqual(d["source_only_fields"], ["Ice"])
+        self.assertEqual(d["manual_only_cells"], 1)
+        bridge = result["sections"]["structures_health"]["details"][0]
+        self.assertEqual(bridge["proposed_dev_name"], "BridgeCorrect")
+        self.assertTrue(bridge["proposal_matches_sheet"])
         self.assertEqual(result["sections"]["vehicles_health"]["matched"], 1)
         self.assertEqual(result["sections"]["structures_health"]["mismatched"], 1)
         self.assertEqual(result["unsupported_target_categories"]["Tripods"], 1)
