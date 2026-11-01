@@ -15,3 +15,18 @@ The report distinguishes `unique_serialized_key_match`, `ambiguous_exact_key`, `
 The restricted runner [#41327072222](https://github.com/Romboter/foxhole-lab/actions/runs/41327072222) passed and showed 664 unique exact name-plus-GUID matches from 666 component handler records. The remaining two records, indices 1 and 2 under `Vehicles/ScoutTank/BPScoutTankOffensiveW`, point to owner class `Vehicles/ScoutTank/ScoutTankWBase`. Each GUID matches one saved parent SCS node, but neither saved child variable name matches that parent node's `InternalVariableName`.
 
 The resolver leaves these cases `name_guid_disagreement`, reports a separately labeled `unverified_guid_only_candidate` for investigation, and explicitly sets `accepted_as_exact_match=false`. A GUID-only candidate must never be silently published as a runtime component relationship. The original Unreal property tag types and UE4.24 runtime behavior still require independent validation.
+
+## Engine API context (not pinned-version tag proof)
+
+Epic's Unreal Engine API documents `FComponentKey.SCSVariableName` as
+`FName`, `FComponentKey.AssociatedGuid` as `FGuid`, and
+`USCS_Node.InternalVariableName` / `USCS_Node.VariableGuid` as
+`FName` / `FGuid` respectively:
+- https://dev.epicgames.com/documentation/unreal-engine/API/Runtime/Engine/FComponentKey
+- https://dev.epicgames.com/documentation/unreal-engine/API/Runtime/Engine/USCS_Node
+
+These references describe the current public API and independently support
+the proposed identity grammar, but do **not** verify the original tagged
+property types or effective component behavior in the pinned Foxhole
+UE4.24 build. Do not conflate a GUID-only candidate with a verified runtime
+override; use read-only original-tag inspection if further promotion is needed.
