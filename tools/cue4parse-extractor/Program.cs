@@ -22,8 +22,8 @@ var wanted = new Dictionary<string, string>
 
 // Exact package extraction uses fully named Blueprint paths, never substring
 // filters. Check-list can be tested without mounting or reading a game PAK.
-if (args.Length >= 3 && (args[2] == "check-list" || args[2] == "dump-list") && args.Length != 4)
-    throw new ArgumentException("Usage: Extractor <pakDir> <outputDir> check-list|dump-list <manifestFile>");
+if (args.Length >= 3 && (args[2] == "check-list" || args[2] == "dump-list" || args[2] == "inspect-types") && args.Length != 4)
+    throw new ArgumentException("Usage: Extractor <pakDir> <outputDir> check-list|dump-list|inspect-types <manifestFile>");
 
 IReadOnlyList<string>? exactPackages = null;
 if (args.Length == 4 && (args[2] == "check-list" || args[2] == "dump-list"))
@@ -54,16 +54,39 @@ if (exactPackages != null)
     if (absent.Length > 0)
         throw new InvalidOperationException("Missing exact Blueprint packages: " + string.Join(", ", absent));
 
+    var inspected = 0;
+    var typeFields = new HashSet<string>(StringComparer.Ordinal)
+    {
+        "AmmoName", "MountCodeName", "CompatibleAmmoCodeName", "ExplosiveCodeName"
+    };
     foreach (var key in exactPackages)
     {
         if (!provider.TryLoadPackage(key, out var pkg))
             throw new InvalidOperationException("Could not parse exact package: " + key);
+        if (args[2] == "inspect-types")
+        {
+            // Report original tagged UE property types, never raw property
+            // values or a flattened/inferred game-data relationship.
+            foreach (var obj in pkg.GetExports())
+                foreach (var prop in obj.Properties)
+                    if (typeFields.Contains(prop.Name.Text))
+                    {
+                        Console.WriteLine($"TYPE\\t{key}\\t{obj.Name}\\t{prop.Name.Text}\\t{prop.PropertyType.Text}");
+                        inspected++;
+                    }
+            continue;
+        }
         var destination = Path.Combine(args[1], Path.ChangeExtension(key, ".json"));
         Directory.CreateDirectory(Path.GetDirectoryName(destination)!);
         File.WriteAllText(destination, Newtonsoft.Json.JsonConvert.SerializeObject(
             pkg.GetExports(), Newtonsoft.Json.Formatting.Indented));
     }
-    Console.WriteLine($"dump-list: {exactPackages.Count} exact Blueprint packages in {sw.Elapsed.TotalSeconds:F2}s");
+    if (args[2] == "inspect-types")
+    {
+        if (inspected == 0) throw new InvalidOperationException("No requested tagged property types were found");
+        Console.WriteLine($"inspect-types: {inspected} tagged identity properties in {exactPackages.Count} packages");
+    }
+    else Console.WriteLine($"dump-list: {exactPackages.Count} exact Blueprint packages in {sw.Elapsed.TotalSeconds:F2}s");
     return;
 }
 
