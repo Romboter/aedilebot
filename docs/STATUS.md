@@ -14,11 +14,12 @@
 | Permanent Node CI | Implemented | .github/workflows/typescript-ci.yml: Node 22 tests/build and Python golden fixture drift |
 | CI required branch checks | Workflow exists; enforcement unverified | Repo ruleset must require two checks (issue #31) |
 | Static Town Base source decision | **Open blocker** | Dynamic War API is not authoritative for permanent map presence (#13) |
-| SteamCMD acquisition on Ubuntu | **Draft and unverified with a licensed download** | PR #39 provides script; only source-level/CLI Linux exporter smoke tests passed |
-| CUE4Parse Linux exporter build | Verified to compile/start | PR #39 offline GitHub Actions; no genuine Foxhole map export verified |
+| Read-only gameplay data comparison | **Real PAK verified; review-only** | Private [run 41272950412](https://github.com/Romboter/foxhole-lab/actions/runs/41272950412); 342/342 mitigation cells, 177 vehicle HP, 10 structure mismatches (8 candidates). No sheet writes; see [audit runbook](runbooks/game-data-audit.md) |
+| SteamCMD acquisition on Ubuntu | **Verified in isolated private VM** | Licensed Foxhole Windows PAK acquired under steamfetch (25,681,549,397 bytes); private runner verified read-only access on 2026-11-01 |
+| Custom CUE4Parse Linux extractor | **Verified on real PAK (narrow extraction only)** | Private [run 41271819120](https://github.com/Romboter/foxhole-lab/actions/runs/41271819120): 53 game DataTable JSON assets, 53 maps, 431 filtered relic/town placements; raw/full fidelity not established |
 | Private archive of map JSON | Draft implementation | PR #39 uses SHA-256 manifests and Zstd; exact-byte tests, but no real game run or storage backup test |
 | Full-fidelity raw Unreal actor/property JSON | **Not implemented** | Current upstream processed exporter can omit actors; issue #40 |
-| Relic/Town detection/name/tier validation | Prototype only | Recoveries and issues #14–#17; old cross-map marker matching unreliable |
+| Relic/Town detection/name/tier validation | **Live extraction verified; identity matching still prototype** | Narrow 431-placement scan passed on real PAK; no automated per-hex marker validation, fidelity audit, or Locations.csv update |
 | Review/approve/update Locations.csv by Discord | Design only | Issues #18–#20 |
 | Multi-host HA | Design only, unsafe draft | #30; supervised single host is sufficient starting point |
 | Public Discord verification | Status unknown | #28–#29; do not equate eligibility with approval |
