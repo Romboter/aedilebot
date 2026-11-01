@@ -1,0 +1,26 @@
+name: Projectile asset graph research - offline checks
+
+on:
+  push:
+    branches: [research/53-projectile-source-edges]
+    paths:
+      - 'scripts/trace_projectile_source.py'
+      - 'test/test_trace_projectile_source.py'
+      - '.github/workflows/projectile-source-research-ci.yml'
+  pull_request:
+    paths:
+      - 'scripts/trace_projectile_source.py'
+      - 'test/test_trace_projectile_source.py'
+      - '.github/workflows/projectile-source-research-ci.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  projectile-reference-tests:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - name: Test explicit projectile reference graph and unresolved numeric authority
+        run: python3 -m unittest discover -s test -p 'test_trace_projectile_source.py' -v
