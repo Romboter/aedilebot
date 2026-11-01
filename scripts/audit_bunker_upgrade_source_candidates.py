@@ -127,7 +127,8 @@ def inspect_declared_upgrade(default_properties, rows, source_profiles, target_p
     }
 
 
-def audit(root: Path, graph: dict, typed_report: dict, benchmark_report: dict,\n          original_type_log: str | None = None, inspector_commit: str | None = None):
+def audit(root: Path, graph: dict, typed_report: dict, benchmark_report: dict,
+          original_type_log: str | None = None, inspector_commit: str | None = None):
     graph = checked(graph)
     for name, report in (("typed", typed_report), ("benchmark", benchmark_report)):
         if not isinstance(report, dict):
@@ -247,13 +248,17 @@ def main():
     p.add_argument("--index", type=Path, required=True)
     p.add_argument("--typed-report", type=Path, required=True)
     p.add_argument("--benchmark-report", type=Path, required=True)
-    p.add_argument("--inspector-log", type=Path)\n    p.add_argument("--inspector-commit")\n    p.add_argument("--output", type=Path, required=True)
+    p.add_argument("--inspector-log", type=Path)
+    p.add_argument("--inspector-commit")
+    p.add_argument("--output", type=Path, required=True)
     a = p.parse_args()
     result = audit(
         a.source_root,
         json.loads(a.index.read_text(encoding="utf-8")),
         json.loads(a.typed_report.read_text(encoding="utf-8")),
-        json.loads(a.benchmark_report.read_text(encoding="utf-8")),\n        a.inspector_log.read_text(encoding="utf-8") if a.inspector_log else None,\n        a.inspector_commit)
+        json.loads(a.benchmark_report.read_text(encoding="utf-8")),
+        a.inspector_log.read_text(encoding="utf-8") if a.inspector_log else None,
+        a.inspector_commit)
     a.output.write_text(json.dumps(result, indent=2, sort_keys=True) + "\n", encoding="utf-8")
 
 
