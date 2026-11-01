@@ -72,6 +72,33 @@ class SilverhandAnswerabilityTests(unittest.TestCase):
             self.assertEqual(states["vehicle_saved_codename_defaults"], "none")
             self.assertEqual(states["target_source_health_match"], "unresolved")
 
+    def test_actual_legacy_calculator_output(self):
+        """Run the existing calculator functions with bot imports stubbed, not a replica."""
+        import importlib.util
+        from unittest.mock import patch
+        import types
+
+        root = Path(__file__).resolve().parents[1]
+        weapons = json.loads((root / "data/Weapons.json").read_text(encoding="utf-8"))
+        targets = json.loads((root / "data/Targets.json").read_text(encoding="utf-8"))
+        damages = json.loads((root / "data/Damage.json").read_text(encoding="utf-8"))
+        mocked = {
+            "parse": types.SimpleNamespace(weapons=weapons, targets=targets, damages=damages),
+            "utils": types.SimpleNamespace(debug_summary=lambda *a, **kw: None),
+            "fuzzy": types.SimpleNamespace(),
+            "main": types.SimpleNamespace(clean_capitalize=lambda x: x),
+            "bot": types.SimpleNamespace(InvalidTypeError=ValueError),
+        }
+        with patch.dict("sys.modules", mocked):
+            spec = importlib.util.spec_from_file_location(
+                "_silverhand_legacy_calculator_fixture", root / "src/calculator.py")
+            module = importlib.util.module_from_spec(spec)
+            spec.loader.exec_module(module)
+            calc = module.DamageCalculator("75mm", "Silverhand - Mk. IV (SvH)")
+            self.assertEqual(calc.calculate_damage(), 1488)
+            self.assertEqual(calc.general_damage_calculator(), 3)
+            self.assertIn("It takes 3 75mm to kill a Silverhand", calc.get_kill_calculation())
+
     def test_reject_guesses_and_other_builds(self):
         self.assertIsNone(source_ref({"ObjectPath": "Other/DamageTypes/BPExplosive"}))
         self.assertIsNone(saved_enum("EDamageType::"))
