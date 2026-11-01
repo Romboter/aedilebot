@@ -183,3 +183,41 @@ identity exceptions requiring investigation.
 Future builds must be compared using the same extractor revision, source
 root scope, and graph schema. This is a **review baseline**, not a
 production-ready numeric-data pipeline.
+
+## Serialized FName evidence: review the missing-row classification
+
+The first full-build index used **strict, exact-case** string matching to
+avoid guessing. A separate targeted private analysis confirmed the
+**original UE property type**, not just the JSON spelling:
+
+- `BPMechWGunnerComponent.AmmoName`: `NameProperty`
+- `BPScoutVehicleOffensiveCGunner.AmmoName`: `NameProperty`
+- `BPRPGTWComponent.CompatibleAmmoCodeName`: `NameProperty`
+- sampled Destroyer and halftrack `MountCodeName`: `NameProperty`
+
+Evidence: [private runner #41280794489](https://github.com/Romboter/foxhole-lab/actions/runs/41280794489).
+Epic's [Unreal Engine 4.27 FName guide](https://dev.epicgames.com/documentation/en-us/unreal-engine/string-handling?application_version=4.27)
+states `FName` comparison is case-insensitive, and
+[`UDataTable::FindRow`](https://dev.epicgames.com/documentation/unreal-engine/API/Runtime/Engine/UDataTable/FindRow)
+takes an `FName` key.
+
+Therefore, some initial `row_missing` statuses are likely
+**exact-case-only representation differences**, not absent engine-name
+identities: `RPGAmmo` / `RpgAmmo` and
+`HalftrackMultiWGunner` / `HalfTrackMultiWGunner` are examples.
+Likewise, `lighttankammo` / `LightTankAmmo` is a candidate, but its
+value comes from nested `MultiAmmo`; the nested property type has
+not yet been independently verified.
+
+**Policy gate:** Do not silently rewrite the graph or promote a numerical
+value. A future typed resolver may map two strings as the same engine
+`FName` only after (1) the original property is verified as an `FName`,
+(2) the receiving table is keyed by `FName`, (3) the case-insensitive
+lookup yields exactly **one** row, and (4) per-field/source provenance is
+recorded and regression-tested. If any condition fails, return
+`unresolved` and require review. The current index intentionally
+continues to report exact-case misses with unverified case-only suggestions.
+
+This refines, rather than invalidates, the source graph work documented
+in [Issue #53](https://github.com/Romboter/aedilebot/issues/53) and
+[Issue #58](https://github.com/Romboter/aedilebot/issues/58).
