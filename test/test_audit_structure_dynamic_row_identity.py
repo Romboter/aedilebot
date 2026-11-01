@@ -107,8 +107,10 @@ class StructureDynamicRowIdentityTests(unittest.TestCase):
             audit(self.root, graph)
 
     def test_tag_parser_duplicate_rejected(self):
-        with self.assertRaisesRegex(ValueError, "Duplicate original"):
+        with self.assertRaisesRegex(ValueError, "Duplicate table type tag"):
             parse_type_log(TAGS + TAGS)
+        with self.assertRaisesRegex(ValueError, "Duplicate original CodeName tag"):
+            parse_type_log(TAGS + TAGS.splitlines(keepends=True)[1])
 
     def test_type_log_without_inspector_pin_rejected(self):
         with self.assertRaisesRegex(ValueError, "pinned commit"):
