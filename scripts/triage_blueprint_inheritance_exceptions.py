@@ -14,8 +14,9 @@ from collections import Counter, deque
 from pathlib import Path
 
 from scripts.diff_blueprint_graph import checked
+from scripts.find_blueprint_dependencies import asset_path
 from scripts.index_blueprint_graph import build_index, table_data
-from scripts.resolve_blueprint_weapons import assembled_vehicle, load, sha256
+from scripts.resolve_blueprint_weapons import assembled_vehicle, explicit_property, load, sha256
 
 
 MOUNT_TARGETS = (
@@ -114,6 +115,38 @@ def class_default(root, package, nodes):
     return defaults[0]["Name"], props
 
 
+
+def component_ammo_declarations(root, reference, nodes):
+    """Follow an exact mounted-component ObjectPath; retain unproven modes."""
+    if not isinstance(reference, str):
+        return {"status": "no_component_object_path", "fields": []}
+    package = asset_path(reference)
+    if package is None:
+        return {"status": "non_blueprint_or_native_component", "object_path": reference, "fields": []}
+    if package not in nodes:
+        return {"status": "referenced_component_not_exported", "package": package, "fields": []}
+    path = exact_export(root, package, nodes[package])
+    declarations = []
+    for field in ("AmmoName", "CompatibleAmmoCodeName", "MultiAmmo", "GrenadeMultiAmmo"):
+        try:
+            value, evidence = explicit_property(root, path, (field,))
+        except ValueError as error:
+            return {"status": "component_inheritance_unresolved",
+                    "package": package, "reason": str(error), "fields": []}
+        if evidence is None:
+            continue
+        if field in {"MultiAmmo", "GrenadeMultiAmmo"}:
+            shape = ammo_structure(value)
+            declarations.append({"field": field, "origin": evidence,
+                                 "shape": shape, "numeric_join": "not_attempted"})
+        else:
+            declarations.append({"field": field, "origin": evidence,
+                                 "declared_identifier": value,
+                                 "numeric_join": "not_attempted"})
+    return {"status": "explicit_component_declarations_only", "package": package,
+            "package_sha256": nodes[package], "fields": declarations}
+
+
 def inspect(root: Path, index: dict, mount_targets=MOUNT_TARGETS,
             ammo_targets=AMMO_TARGETS, max_nodes=512):
     index = checked(index)
@@ -134,6 +167,8 @@ def inspect(root: Path, index: dict, mount_targets=MOUNT_TARGETS,
         relevant = []
         for child, chain in descendants(base, children, max_nodes):
             source = exact_export(root, child, nodes[child])
+            for item in lineage(child, parents, nodes):
+                exact_export(root, item["package"], item["sha256"])
             _, seats, _ = assembled_vehicle(root, source)
             seats = [seat for seat in seats if seat["Name"] == seat_name]
             if len(seats) > 1:
@@ -158,6 +193,12 @@ def inspect(root: Path, index: dict, mount_targets=MOUNT_TARGETS,
                 "mount_component_object_path": (
                     fields.get("MountComponent", {}).get("ObjectPath")
                     if isinstance(fields.get("MountComponent"), dict) else None
+                ),
+                "mounted_component_ammunition": component_ammo_declarations(
+                    root,
+                    (fields.get("MountComponent", {}).get("ObjectPath")
+                     if isinstance(fields.get("MountComponent"), dict) else None),
+                    nodes,
                 ),
                 "effective_mount_is_inherited_from_base": (
                     origin is not None and origin.get("asset") == base + ".json"
