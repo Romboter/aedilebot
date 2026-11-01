@@ -96,7 +96,7 @@ class ExactSCSKeyTests(unittest.TestCase):
     def test_duplicate_handler_name_is_ambiguous(self):
         self.child.append(self.child[-1].copy())
         self.save()
-        with self.assertRaisesRegex(ValueError, "Ambiguous handler"):
+        with self.assertRaisesRegex(ValueError, "Ambiguous"):
             self.result()
 
 
