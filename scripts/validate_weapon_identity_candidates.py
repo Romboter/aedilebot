@@ -26,7 +26,7 @@ def load_json(path: Path):
 
 
 def validate(ledger: dict, sheet: dict, overlay: dict, stats: Path | None = None) -> dict:
-    if ledger.get("schema_version") != 1 or not isinstance(ledger.get("records"), list):
+    if not isinstance(ledger, dict) or ledger.get("schema_version") != 1 or not isinstance(ledger.get("records"), list):
         raise ValueError("Unsupported identity-candidate schema")
     records = ledger["records"]
     if not records:
@@ -34,13 +34,15 @@ def validate(ledger: dict, sheet: dict, overlay: dict, stats: Path | None = None
     mount_rows = None
     if stats is not None:
         exports = load_json(stats / TABLE)
-        if not isinstance(exports, list) or not exports or not isinstance(exports[0].get("Rows"), dict):
+        if not isinstance(exports, list) or not exports or not isinstance(exports[0], dict) or not isinstance(exports[0].get("Rows"), dict):
             raise ValueError("Invalid BPMountDynamicData export")
         mount_rows = exports[0]["Rows"]
 
     result = []
     observed = set()
     for candidate in records:
+        if not isinstance(candidate, dict):
+            raise ValueError("Malformed identity-candidate record")
         name = candidate.get("weapon_sheet_key")
         if not isinstance(name, str) or not name or name in observed:
             raise ValueError("Invalid or duplicate weapon sheet key")
@@ -61,7 +63,7 @@ def validate(ledger: dict, sheet: dict, overlay: dict, stats: Path | None = None
         if not isinstance(seats, list) or not seats:
             raise ValueError(f"Candidate {name}: no seat mappings")
         for seat in seats:
-            if seat.get("property") != "MountCodeName" or seat.get("value") != candidate.get("mount_dynamic_data_row"):
+            if not isinstance(seat, dict) or seat.get("property") != "MountCodeName" or seat.get("value") != candidate.get("mount_dynamic_data_row"):
                 raise ValueError(f"Candidate {name}: inconsistent mount code")
         if candidate.get("mount_dynamic_data_table") != "BPMountDynamicData":
             raise ValueError(f"Candidate {name}: unsupported multiplier table")
