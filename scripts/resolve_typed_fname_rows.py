@@ -90,7 +90,7 @@ def resolve(index: dict, export_root: Path, inspector_output: str, game_build_id
     packages = {obj["package"]: obj["sha256"] for obj in index["packages"]}
     observations = []
     for ref in index["numeric_row_references"]:
-        if ref["status"] not in {"row_missing", "invalid_identifier"}:
+        if ref["status"] not in {"row_missing", "invalid_identifier", "none_sentinel_candidate"}:
             continue
         source = ref["source"]
         if packages.get(source) != ref["source_sha256"]:
@@ -115,7 +115,15 @@ def resolve(index: dict, export_root: Path, inspector_output: str, game_build_id
             "safe_for_unattended_publication": False,
         }
         if ref["status"] == "invalid_identifier":
-            report["reason"] = "invalid_declared_identifier"
+            report["reason"] = ("no_compatible_ammo_names_exported" if
+                                 ref["field"] in {"MultiAmmo", "GrenadeMultiAmmo"} else
+                                 "invalid_declared_identifier")
+        elif ref["status"] == "none_sentinel_candidate":
+            if report["source_type"] == "NameProperty":
+                report["status"] = "typed_fname_unset_mount_identity"
+                report["reason"] = "ue_fname_none_unset_mount_identity"
+            else:
+                report["reason"] = "unset_mount_nameproperty_type_unverified"
         elif report["source_type"] != "NameProperty":
             report["reason"] = "original_nameproperty_type_unverified"
         elif not verified_tables[table]:
@@ -155,6 +163,7 @@ def resolve(index: dict, export_root: Path, inspector_output: str, game_build_id
         "inspected_property_type_records": len(type_evidence),
         "inspector_unresolved_fields": unresolved,
         "counts": {"eligible_and_unique": counts.get("typed_fname_unique_row_identity", 0),
+                   "unset_mount_identity": counts.get("typed_fname_unset_mount_identity", 0),
                    "unresolved": counts.get("unresolved", 0),
                    "reasons": dict(sorted(reasons.items()))},
         "observations": observations,
