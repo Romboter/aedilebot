@@ -37,3 +37,15 @@ The pinned private `foxhole-lab` workflow branch is `automation/combat-field-sou
 Inspect pinned field-shape summary, then implement **one** exact typed linkage (for instance, target `ArmourType` declaration to a known damage category, if its original type and semantics are independently established). If matrix factors are not serializable, report the native boundary and keep the curated matrix under human review.
 
 Do not pull upstream, overwrite `data/` or `data_manual/`, deploy, merge, schedule Steam downloads, or upload game exports.
+
+## Pinned full-build results — 2026-11-01
+
+[Restricted run #41345485604](https://github.com/Romboter/foxhole-lab/actions/runs/41345485604) **PASS**: build `26058282`, 10/10 synthetic tests across field/domain suites, extractor build 0 errors. The audit rechecked exact graph digest `8a0a8b7c4fa26469b08ca8d39881a69d9beef06f17f520e6472ef8a1676a5a44`.
+
+- All **34** `DamageTypes/` packages have exactly one saved generated class-default export. The saved defaults contain **374** matching property entries. The survey did not resolve any exported Blueprint `SuperStruct` parents for these classes; this does not prove there is no inherited native behavior.
+- `Data/` includes **14** exported DataTables with **1,631** total rows. In particular, `Data/BPStructureDynamicData` has **592** row entries, each with `MaxHealth`, `StructuralIntegrity`, `RepairCost`, `DecayStartHours`, `DecayDurationHours`, resource amount fields and other metadata.
+- `Structures/` has **969** uniquely saved class defaults and **4,497** candidate field occurrences across default/template source objects. Named health/armor fields include `Health` (487 saved defaults), `MaxHealth` (477), `ArmourType` (324), `Tier` (138). These are occurrences, not verified active structures.
+- `StructureSeatComponent` saved properties include **42** `MountComponent` and **42** `MountCodeName` occurrences. AI turret templates contain `DamageAttributes`, `DamageAttributesAlternate` and range declarations.
+- Saved `DamageTypes` defaults include `bCanPenetrateArmour`, `bApplyTankArmourMechanics`, `TankArmourPenetrationFactor`, and `VehicleSubsystemDisableMultipliers` declarations. No full damage-type × target-class mitigation matrix has been proven from this survey.
+
+**Follow-up:** draft PR #83 adds explicit `Structure.CodeName` → structure DataTable row verification based on the original UE4.24 property tags. Issue #84 tracks structure-mounted weapons and AI turret references. Neither task authorizes replacing the curated production data.
