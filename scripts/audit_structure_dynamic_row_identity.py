@@ -48,23 +48,31 @@ def value_shape(value):
 
 
 def parse_type_log(content: str):
-    """Only original extractor tag lines are recognized; values never accepted."""
+    """Parse original UE tag types and normalize only exact .uasset path suffixes."""
+    def source_package(pak):
+        if not pak.startswith(ROOT_PREFIX):
+            raise ValueError("Unscoped original inspector package type tag")
+        # CUE4Parse's raw provider key includes '.uasset' while the
+        # exported JSON/index uses package names without extensions.
+        key = pak[len(ROOT_PREFIX):]
+        if key.endswith(".uasset"):
+            key = key[:-7]
+        if not key or "." in key or "\\" in key:
+            raise ValueError("Unsupported inspector package path")
+        return key
+
     types, tables = {}, {}
     for raw in content.splitlines():
         fields = raw.split("\t")
         if len(fields) == 5 and fields[0] == "TYPE" and fields[3] == "CodeName":
             _, pak, obj, field, original_type = fields
-            if not pak.startswith(ROOT_PREFIX):
-                raise ValueError("Unscoped CodeName type tag")
-            key = (pak[len(ROOT_PREFIX):], obj)
+            key = (source_package(pak), obj)
             if key in types:
                 raise ValueError("Duplicate original CodeName tag")
             types[key] = original_type
         elif len(fields) == 4 and fields[0] == "TABLE":
             _, pak, name, key_type = fields
-            if not pak.startswith(ROOT_PREFIX):
-                raise ValueError("Unscoped DataTable type tag")
-            if pak == ROOT_PREFIX + TABLE_PACKAGE:
+            if source_package(pak) == TABLE_PACKAGE:
                 if name in tables:
                     raise ValueError("Duplicate table type tag")
                 tables[name] = key_type
