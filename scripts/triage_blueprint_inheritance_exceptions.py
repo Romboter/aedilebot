@@ -238,6 +238,28 @@ def inspect(root: Path, index: dict, mount_targets=MOUNT_TARGETS,
                     nearest = {"source": source["package"], "source_sha256": source["sha256"],
                                "record": name, **ammo_structure(props["MultiAmmo"])}
                     break
+            # A child StructProperty may serialize only changed subfields.
+            # Preserve the parent's exported choices as *evidence*, never
+            # synthesize a merged runtime struct or choose a default ammo.
+            parent_option_evidence = None
+            if nearest and nearest["status"] in {
+                "explicit_none_or_missing", "empty_array", "array_not_in_export",
+            }:
+                for source in child_lineage[1:]:
+                    record, fields = class_default(root, source["package"], nodes)
+                    if "MultiAmmo" not in fields:
+                        continue
+                    candidate = ammo_structure(fields["MultiAmmo"])
+                    if candidate["status"] == "explicit_ammo_options":
+                        parent_option_evidence = {
+                            "source": source["package"],
+                            "source_sha256": source["sha256"],
+                            "record": record,
+                            "options": candidate["ammo_options"],
+                            "status": "unverified_parent_default_candidate",
+                            "effective_at_runtime": "not_established",
+                        }
+                        break
             other_fields = []
             for field in ("AmmoName", "CompatibleAmmoCodeName", "GrenadeMultiAmmo",
                           "ProjectileClass", "ProjectileClasses"):
@@ -253,6 +275,7 @@ def inspect(root: Path, index: dict, mount_targets=MOUNT_TARGETS,
             members.append({
                 "package": child, "chain": chain,
                 "effective_multi_ammo": nearest if nearest else {"status": "not_exported_in_ancestry"},
+                "parent_option_evidence": parent_option_evidence,
                 "other_explicit_field_evidence": other_fields,
             })
         ammo.append({
