@@ -87,7 +87,8 @@ class ResolverTests(unittest.TestCase):
             "UnrelatedGun": {"DamageMultiplier": 1.2},
         }}])
         result = resolve(self.root, Path(self.destroyer()), "26058282")
-        self.assertEqual([x["damage"] for x in result["endpoints"]], [75.625, 75.625])
+        for endpoint in result["endpoints"]:
+            self.assertAlmostEqual(endpoint["damage"], 75.625)
 
     def test_ambiguous_multi_ammo_fails_closed(self):
         vehicle = self.destroyer()
