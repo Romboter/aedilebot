@@ -86,6 +86,7 @@ def assembled_vehicle(root: Path, vehicle: Path):
 
     seats = {}
     defaults = {}
+    default_origins = {}
     for source, objects in reversed(ancestry):
         origin = source.relative_to(root).as_posix()
         for obj in objects:
@@ -104,8 +105,10 @@ def assembled_vehicle(root: Path, vehicle: Path):
         if len(class_defaults) > 1:
             raise ValueError("Duplicate Blueprint class defaults")
         if class_defaults:
-            defaults.update(class_defaults[0].get("Properties") or {})
-    return defaults, list(seats.values())
+            for field, value in (class_defaults[0].get("Properties") or {}).items():
+                defaults[field] = value
+                default_origins[field] = {"asset": origin, "sha256": sha256(source)}
+    return defaults, list(seats.values()), default_origins
 
 
 def numeric(value):
@@ -121,10 +124,11 @@ def resolve(root: Path, vehicle: Path, build_id: str, kinetic_factor=1.25):
         raise ValueError('A numeric pinned game build ID is required')
     ammo, ammo_path = table(root, 'BPAmmoDynamicData')
     mount, mount_path = table(root, 'BPMountDynamicData')
-    props, seats = assembled_vehicle(root, vehicle)
+    props, seats, default_origins = assembled_vehicle(root, vehicle)
     candidates = []
     cfgs = props.get('WeaponConfigs')
     if cfgs is not None:
+        cfg_origin = default_origins.get('WeaponConfigs', {})
         if not isinstance(cfgs, list):
             raise ValueError('Malformed WeaponConfigs')
         for i, cfg in enumerate(cfgs):
@@ -132,12 +136,12 @@ def resolve(root: Path, vehicle: Path, build_id: str, kinetic_factor=1.25):
                 raise ValueError('Malformed WeaponConfigs entry')
             candidates.append({'endpoint': 'WeaponConfigs/' + str(i),
                                'ammo': cfg.get('AmmoCodeName'), 'mount': cfg.get('WeaponCodeName'),
-                               'edges': [{'asset': vehicle.relative_to(root).as_posix(),
+                               'edges': [{'asset': cfg_origin.get('asset', vehicle.relative_to(root).as_posix()),
                                           'property': f'Default__/WeaponConfigs/{i}/AmmoCodeName',
-                                          'value': cfg.get('AmmoCodeName')},
-                                         {'asset': vehicle.relative_to(root).as_posix(),
+                                          'value': cfg.get('AmmoCodeName'), 'sha256': cfg_origin.get('sha256')},
+                                         {'asset': cfg_origin.get('asset', vehicle.relative_to(root).as_posix()),
                                           'property': f'Default__/WeaponConfigs/{i}/WeaponCodeName',
-                                          'value': cfg.get('WeaponCodeName')}],
+                                          'value': cfg.get('WeaponCodeName'), 'sha256': cfg_origin.get('sha256')}],
                                'source_sha256': sha256(vehicle)})
     for obj in seats:
         if obj.get('Type') != 'VehicleSeatComponent':
@@ -146,7 +150,7 @@ def resolve(root: Path, vehicle: Path, build_id: str, kinetic_factor=1.25):
         mount_id = p.get('MountCodeName')
         component = p.get('MountComponent') or {}
         ref = component.get('ObjectPath') if isinstance(component, dict) else None
-        if not mount_id or not ref:
+        if not mount_id:
             continue
         origins = obj.get("_field_origins", {})
         entry = {'endpoint': obj.get('Name'), 'mount': mount_id,
@@ -156,7 +160,9 @@ def resolve(root: Path, vehicle: Path, build_id: str, kinetic_factor=1.25):
                            {'asset': vehicle.relative_to(root).as_posix(),
                             'property': obj.get('Name') + '/Properties/MountComponent/ObjectPath',
                             'value': ref, **origins.get('MountComponent', {})}], 'source_sha256': sha256(vehicle)}
-        if not ref.startswith('War/Content/Blueprints/'):
+        if not ref:
+            entry['problem'] = 'mount_component_reference_missing'
+        elif not ref.startswith('War/Content/Blueprints/'):
             entry['problem'] = 'non_exportable_component_reference'
         else:
             comp_path = root / (ref.removeprefix('War/Content/Blueprints/').split('.', 1)[0] + '.json')
