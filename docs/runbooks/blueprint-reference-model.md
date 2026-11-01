@@ -179,3 +179,46 @@ treated as immutable expected totals.
 Related: [weapon resolver](weapon-blueprint-resolver.md),
 [asset-derived pipeline contract](../superpowers/specs/2026-11-01-asset-derived-data-contract.md),
 [Issue #44](https://github.com/Romboter/aedilebot/issues/44).
+
+## Additional seat-graph coverage findings (build 26058282)
+
+A read-only inventory of 3,795 privately archived Blueprint JSON packages
+(with 350 seat mount-code entries across the analyzed vehicle inheritance
+tree) produced the following **per-class/seat, not unique-vehicle counts**:
+
+| Source edge status | Count |
+|---|---:|
+| Seats with direct/inherited `AmmoName` | 153 |
+| Seats with direct/inherited `MultiAmmo` | 58 |
+| Of all seats, exactly one referenced ammo option | 202 |
+| Of those, one-option ammo present in `BPAmmoDynamicData` | 197 |
+| Seats with more than one explicit ammo option | 7 |
+| Multi-option seats with every referenced ammo row present | 7 |
+| Seats with no exported ammo declaration after following parents | 128 |
+| Seats with missing mounted-component reference/export | 11 |
+| Seat mount codes absent from `BPMountDynamicData` | 5 |
+
+These categories **overlap** (e.g., single-ammo seats include both direct
+`AmmoName` and single-entry `MultiAmmo`; a seat with missing mount row can
+also have a valid ammo declaration). The 128 absent ammo properties include
+non-firing roles (drivers, engineers, spotters) as well as cases that may use
+native logic. They cannot be classified as broken weapon links without
+further class/behavior evidence.
+
+One particularly actionable source gap: **five single-ammo seats reference
+`RPGAmmo`, but no `RPGAmmo` row exists in the pinned
+`BPAmmoDynamicData` export.** Their named source link must stay unresolved:
+
+- `BPMechW` — `MechWGunner`
+- `BPScoutVehicleOffensiveC` — `ScoutVehicleOffensiveCGunner`
+- `BPArmoredCarTwinC` — `ArmoredCarTwinGunnerC`
+- `BPMediumTank2TwinC` — `MediumTank2TwinCRPG`
+- `BPMediumBoatW` — `MediumBoatWBowGunner`
+
+Do not repair these by choosing a similarly valued RPG, launcher or rocket
+row. Next, inspect whether the missing asset is defined by a different
+table, an inherited item component, or native-only configuration. The
+current source-only resolver must flag it rather than publishing damage.
+
+The separate [weapon resolver runbook](weapon-blueprint-resolver.md) documents
+how it enumerates all `MultiAmmo` alternatives without selecting a default.
