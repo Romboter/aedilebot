@@ -1,0 +1,15 @@
+name: Type-gated SCS FName case-only identity CI
+on:
+  push:
+    branches: [research/72-typed-scs-fname-case-identity]
+  pull_request:
+permissions:
+  contents: read
+jobs:
+  synthetic-evidence:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - run: python3 -m unittest discover -s test -p 'test_resolve_scs_typed_case_identity.py' -v
+      - run: python3 -m unittest discover -s test -p 'test_resolve_scs_component_keys.py' -v
