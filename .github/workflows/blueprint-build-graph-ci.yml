@@ -1,0 +1,38 @@
+name: Blueprint build-graph index (offline)
+
+on:
+  push:
+    branches: [research/57-blueprint-build-graph-index]
+    paths:
+      - 'scripts/index_blueprint_graph.py'
+      - 'scripts/diff_blueprint_graph.py'
+      - 'test/test_blueprint_graph_index.py'
+      - 'scripts/explain_blueprint_graph.py'
+      - 'test/test_explain_blueprint_graph.py'
+      - '.github/workflows/blueprint-build-graph-ci.yml'
+  pull_request:
+    paths:
+      - 'scripts/index_blueprint_graph.py'
+      - 'scripts/diff_blueprint_graph.py'
+      - 'test/test_blueprint_graph_index.py'
+      - 'scripts/explain_blueprint_graph.py'
+      - 'test/test_explain_blueprint_graph.py'
+      - '.github/workflows/blueprint-build-graph-ci.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  offline-graph-tests:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - name: Index and compare synthetic game-build source graphs
+        run: python3 -m unittest discover -s test -p 'test_blueprint_graph_index.py' -v
+      - name: Explain bounded Blueprint parent/mount/ammo paths
+        run: python3 -m unittest discover -s test -p 'test_explain_blueprint_graph.py' -v
+      - name: Preserve dependency and firing-mode tests
+        run: |
+          python3 -m unittest discover -s test -p 'test_find_blueprint_dependencies.py' -v
+          python3 -m unittest discover -s test -p 'test_trace_infantry_firing_modes.py' -v
