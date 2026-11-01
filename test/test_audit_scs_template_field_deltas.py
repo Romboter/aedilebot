@@ -91,6 +91,17 @@ class SerializedTemplateFieldTests(unittest.TestCase):
         with self.assertRaisesRegex(ValueError,"Invalid Properties"):
             self.source()
 
+    def test_different_component_types_are_not_compared(self):
+        self.child[-1]["Type"]="OtherMeshComponent"
+        self.child[1]["Properties"]["Records"][0]["ComponentTemplate"]["ObjectName"]=(
+            "OtherMeshComponent'Child_C:ChildMesh'")
+        self.save()
+        graph,ids=self.source()
+        record=analyze(self.root,graph,ids)["records"][0]
+        self.assertEqual(record["comparison_status"],"different_component_types_not_compared")
+        self.assertNotIn("explicit_shared_changed_fields",record)
+        self.assertEqual(record["effective_runtime_component"],"not_established")
+
     def test_source_file_modified_after_indexing_fails(self):
         graph,ids=self.source()
         self.parent[-1]["Properties"]["Same"]=999
