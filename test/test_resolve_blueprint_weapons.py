@@ -109,6 +109,56 @@ class ResolverTests(unittest.TestCase):
         result = resolve(self.root, Path(vehicle), "26058282")
         self.assertTrue(all(x["reason"] == "ammo_reference_missing" for x in result["endpoints"]))
 
+    def test_inherited_vehicle_seat_properties_not_guessed_from_child(self):
+        self.write("Data/BPMountDynamicData.json", [{"Rows": {
+            "LightTankGunnerC": {"DamageMultiplier": 1.0},
+        }}])
+        self.write("Vehicles/LightTank/BPLightTankBaseC.json", [
+            {"Type": "BlueprintGeneratedClass", "Name": "BaseC_C",
+             "SuperStruct": {"ObjectPath": "/Script/War"}},
+            {"Name": "Default__BaseC_C", "Properties": {}},
+            {"Type": "VehicleSeatComponent", "Name": "GunnerSeat1_GEN_VARIABLE",
+             "Properties": {"MountCodeName": "LightTankGunnerC",
+                            "MountComponent": {"ObjectPath": "War/Content/Blueprints/Vehicles/LightTank/BPLightTankGunnerMountComponentW.0"}}},
+        ])
+        self.write("Vehicles/LightTank/BPLightTankC.json", [
+            {"Type": "BlueprintGeneratedClass", "Name": "TankC_C",
+             "SuperStruct": {"ObjectPath": "War/Content/Blueprints/Vehicles/LightTank/BPLightTankBaseC.1"}},
+            {"Name": "Default__TankC_C", "Properties": {}},
+            {"Type": "VehicleSeatComponent", "Name": "GunnerSeat1_GEN_VARIABLE",
+             "Properties": {"Direction": "ESeatDirection::Center"}},
+        ])
+        self.write("Vehicles/LightTank/BPLightTankGunnerMountComponentW.json", [
+            {"Type": "BlueprintGeneratedClass", "Name": "TankGunnerW_C",
+             "SuperStruct": {"ObjectPath": "/Script/War"}},
+            {"Name": "Default__TankGunnerW_C", "Properties": {
+                "MultiAmmo": {"CompatibleAmmoNames": ["MGAmmo"]}}},
+        ])
+        result = resolve(self.root, Path("Vehicles/LightTank/BPLightTankC.json"), "26058282")
+        self.assertEqual(len(result["endpoints"]), 1)
+        endpoint = result["endpoints"][0]
+        self.assertEqual(endpoint["mount"], "LightTankGunnerC")
+        self.assertEqual(endpoint["ammo"], "MGAmmo")
+        self.assertAlmostEqual(endpoint["damage"], 68.75)
+        self.assertTrue(any(e.get("asset") == "Vehicles/LightTank/BPLightTankBaseC.json" for e in endpoint["edges"]))
+
+    def test_vehicle_with_weapon_configs_and_gunner_seat_resolves_both(self):
+        self.aircraft()
+        self.write("Vehicles/Fighter.json", [
+            {"Name": "Default__Fighter_C", "Properties": {"WeaponConfigs": [
+                {"AmmoCodeName": "AircraftAmmo", "WeaponCodeName": "AircraftFighterW_HMG"}]}},
+            {"Type": "VehicleSeatComponent", "Name": "GunnerSeat1_GEN_VARIABLE",
+             "Properties": {"MountCodeName": "LargeShipDestroyerCMachineGunner",
+                            "MountComponent": {"ObjectPath": "War/Content/Blueprints/Vehicles/MGComponent.0"}}},
+        ])
+        self.write("Vehicles/MGComponent.json", [
+            {"Type": "BlueprintGeneratedClass", "Name": "MG_C", "SuperStruct": {"ObjectPath": "/Script/War"}},
+            {"Name": "Default__MG_C", "Properties": {"AmmoName": "MGAmmo"}},
+        ])
+        endpoints = resolve(self.root, Path("Vehicles/Fighter.json"), "26058282")["endpoints"]
+        self.assertEqual(len(endpoints), 2)
+        self.assertEqual({x["endpoint"] for x in endpoints}, {"WeaponConfigs/0", "GunnerSeat1_GEN_VARIABLE"})
+
     def test_invalid_build_or_traversal_fails(self):
         vehicle = Path(self.aircraft())
         with self.assertRaises(ValueError):
