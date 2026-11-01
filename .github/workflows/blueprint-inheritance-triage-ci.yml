@@ -1,0 +1,30 @@
+name: Blueprint inheritance exception triage — offline
+
+on:
+  push:
+    branches: [research/61-inheritance-exception-triage]
+    paths:
+      - 'scripts/triage_blueprint_inheritance_exceptions.py'
+      - 'test/test_triage_blueprint_inheritance_exceptions.py'
+      - '.github/workflows/blueprint-inheritance-triage-ci.yml'
+  pull_request:
+    paths:
+      - 'scripts/triage_blueprint_inheritance_exceptions.py'
+      - 'test/test_triage_blueprint_inheritance_exceptions.py'
+      - '.github/workflows/blueprint-inheritance-triage-ci.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  synthetic-graphs:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - name: Test exact seat inheritance, override and optional ammo declarations
+        run: python3 -m unittest discover -s test -p 'test_triage_blueprint_inheritance_exceptions.py' -v
+      - name: Retain typed source joins and graph index regressions
+        run: |
+          python3 -m unittest discover -s test -p 'test_resolve_typed_fname_rows.py' -v
+          python3 -m unittest discover -s test -p 'test_blueprint_graph_index.py' -v
