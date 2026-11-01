@@ -32,6 +32,20 @@ class UpgradeSourceCandidateTests(unittest.TestCase):
         self.assertEqual(result["runtime_upgrade_behavior"], "not_established")
         self.assertEqual(result["original_upgrade_property_type"], "not_inspected")
 
+    def test_multiple_same_type_step_candidates_sorted_deterministically(self):
+        result = inspect_declared_upgrade(
+            {"UpgradeStructureCodeName": "PieceT2"}, self.rows,
+            [("Radar", 1), ("Base", 1), ("Radar", 2), ("Base", 2)],
+            [("Radar", 3), ("Base", 3), ("Base", 2), ("Radar", 2)])
+        self.assertEqual(
+            result["same_reference_next_tier_candidates"],
+            [
+                {"type": "Base", "from_tier": 1, "to_tier": 2},
+                {"type": "Base", "from_tier": 2, "to_tier": 3},
+                {"type": "Radar", "from_tier": 1, "to_tier": 2},
+                {"type": "Radar", "from_tier": 2, "to_tier": 3},
+            ])
+
     def test_cross_type_or_nonadjacent_tier_not_promoted(self):
         result = inspect_declared_upgrade(
             {"UpgradeStructureCodeName": "OtherT2"}, self.rows,
