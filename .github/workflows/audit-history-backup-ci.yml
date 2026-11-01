@@ -1,0 +1,26 @@
+name: Independent audit history backup - offline tests
+
+on:
+  push:
+    branches: [feat/50-independent-audit-backup]
+    paths:
+      - 'tools/cue4parse-extractor/backup_audit_history.py'
+      - 'tools/cue4parse-extractor/test_backup_audit_history.py'
+      - '.github/workflows/audit-history-backup-ci.yml'
+  pull_request:
+    paths:
+      - 'tools/cue4parse-extractor/backup_audit_history.py'
+      - 'tools/cue4parse-extractor/test_backup_audit_history.py'
+      - '.github/workflows/audit-history-backup-ci.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  offline-backup-tests:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - name: Run synthetic backup verification tests
+        run: python3 -m unittest discover -s tools/cue4parse-extractor -p 'test_backup_audit_history.py' -v
