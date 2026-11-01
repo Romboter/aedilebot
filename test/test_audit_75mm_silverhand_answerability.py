@@ -59,6 +59,17 @@ class SilverhandAnswerabilityTests(unittest.TestCase):
             self.assertEqual(states["target_source_health_match"], "some_saved_source_field")
             self.assertEqual(states["vehicle_saved_codename_defaults"], "unique")
             self.assertEqual(result["runtime_rules"]["penetration"], "unverified")
+            self.assertEqual(result["answerability"], "blocked-inherited-target-category-proof")
+            ancestry = {
+                "source_status": "exact_saved_ancestor_declaration_matches_human",
+                "native_effective_inheritance": "unverified",
+                "leaf": "Vehicles/MediumTank/BPMediumTankW",
+                "human_target_category": "Tier2Tank",
+            }
+            verified = check(folder, self.weapon, self.target, self.damage,
+                             "26058282", ancestry)
+            self.assertEqual(verified["answerability"], "answerable-with-stated-assumptions")
+
 
     def test_mismatch_not_silently_promoted(self):
         with tempfile.TemporaryDirectory() as d:
@@ -71,6 +82,7 @@ class SilverhandAnswerabilityTests(unittest.TestCase):
             self.assertEqual(states["enum_to_profile_row"], "unresolved")
             self.assertEqual(states["vehicle_saved_codename_defaults"], "none")
             self.assertEqual(states["target_source_health_match"], "unresolved")
+            self.assertEqual(result["answerability"], "blocked-missing-source-evidence")
 
     def test_actual_legacy_calculator_output(self):
         """Run the existing calculator functions with bot imports stubbed, not a replica."""
