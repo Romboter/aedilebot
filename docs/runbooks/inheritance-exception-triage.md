@@ -194,3 +194,51 @@ The eventual generator must distinguish an explicit empty compatible-ammo
 array from a child struct which only serializes unrelated slot filters.
 Neither can be silently populated with a parent list until the
 applicable UE4.24 runtime reconstruction rules have been verified.
+
+## Issue #62: field-level serialization inventory (research branch)
+
+The source-only tracer in `scripts/trace_multi_ammo_field_evidence.py` adds
+`serialized_multi_ammo_field_evidence` to each triaged component record.
+It walks the already-indexed, SHA-256-checked `SuperStruct` ancestry from
+child to root and records **each explicitly serialized nested field**:
+
+- `MultiAmmo.CompatibleAmmoNames` — name array JSON shape, including
+  explicitly empty and malformed arrays, and SHA-256 of the serialized value.
+- `MultiAmmo.AmmoSlotFilterAmounts` — integer-array JSON shape and value
+  SHA-256, **without publishing the raw filter numbers** in summary output.
+- Defining Blueprint package, indexed package SHA-256, default object name,
+  property path, closest-first declaration history, and any opaque intervening
+  null/malformed struct.
+- Field resolution (`serialized_on_target`,
+  `unverified_ancestor_candidate`, `no_serialized_field_on_chain`, or
+  `invalid_serialized_field`). The **runtime-effective value is always
+  `not_established`**, regardless of these source-only statuses.
+
+This is intentionally a **serialization evidence inventory, not a UE4.24
+CDO reconstitution algorithm**. Presence/omission in CUE4Parse's flattened
+JSON cannot alone prove what the engine constructs at runtime. The JSON array
+shape is also *not* sufficient to assert the original UE `PropertyTag`
+type: independently validated type evidence remains in the earlier private
+`inspect-types` workflow.
+
+### Regression matrix
+
+`test/test_trace_multi_ammo_field_evidence.py` exercises partial child
+structs, explicit empty names, omitted whole structs, multiple inheritance
+levels, explicit null and malformed structs, invalid/duplicate names, invalid
+filter element types, absent fields, changed graph hashes, and malformed
+records. The integrated inheritance test verifies that a child filter-only
+override still produces a parent name **candidate**, not effective ammo.
+
+These are **synthetic serialized-JSON fixtures**, not independently compiled
+Unreal Engine 4.24 runtime CDO fixtures. Do not check Issue #62's runtime
+semantics criterion as complete until an authorized Unreal 4.24 runtime
+fixture or another independent, reproducible construction is available.
+
+### Private pinned-build verification and safety
+
+The private workflow must check out the **new research branch commit SHA**,
+and verify that each of the four known Foxhole components has the expected
+field-level provenance shape and `runtime_effective=not_established`.
+Any source shape or indexed SHA change should fail closed. No game PAK data
+is committed, no game update is scheduled, and no damage value is published.
