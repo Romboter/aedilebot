@@ -11,3 +11,11 @@ The input is the fail-closed component-template reference audit from PR #73 and 
 The private runner validates the pinned game build and prints only derived counts and a bounded source example set. The complete game export corpus and reports remain in temporary restricted scratch.
 
 **Future work:** independently verify export ownership via the `Outer` reference and determine the precise CUE4Parse package export index semantics before considering deeper export resolution. An explicit template object does not prove which properties survive UE4.24 CDO inheritance. Do not activate or publish calculated damage, perform game updates, or merge without human review.
+
+## Independent Outer ownership validation
+
+The private source survey [#41329285743](https://github.com/Romboter/foxhole-lab/actions/runs/41329285743) confirmed that every one of the 1,332 uniquely matched source component exports has an `Outer` object reference identifying the **same source package** and the **same BlueprintGeneratedClass** as the qualified template name. An example parent `StaticMeshComponent'Grenade_C:GrenadeMesh_GEN_VARIABLE'` has `Outer.ObjectName=BlueprintGeneratedClass'Grenade_C'`; child exports follow the same pattern. This still does not interpret `.N` as an export index.
+
+The qualified matcher now requires an exact `Outer.ObjectName` and `Outer.ObjectPath` package match for each otherwise unique source component export. Missing or mismatching outer evidence downgrades the export to an unresolved source identity, instead of quietly accepting the qualified name alone. The private workflow enforces exactly 666 parent and 666 child successful source exports for the pinned game build, and rejects changed ownership.
+
+A successful source-side owner check is not evidence that Unreal's effective CDO template property values are equal, inherited, or merged. Preserve the distinction between a serialized component export, an associated handler override, and a runtime instantiated component.
