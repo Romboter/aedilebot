@@ -32,11 +32,11 @@ aliases, projectile damage, or relationships from matching values.
 ~~~bash
 ROOT=/PRIVATE/EXPORT/War/Content/Blueprints
 
-python3 scripts/index_blueprint_graph.py \
+python3 -m scripts.index_blueprint_graph \
   --source-root "$ROOT" --build-id 26058282 \
   --output /PRIVATE/audit/graph-26058282.json
 
-python3 scripts/diff_blueprint_graph.py \
+python3 -m scripts.diff_blueprint_graph \
   --before /PRIVATE/audit/graph-26058282.json \
   --after /PRIVATE/audit/graph-NEW_BUILD.json \
   --output /PRIVATE/audit/graph-review-diff.json
