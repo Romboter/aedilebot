@@ -76,3 +76,28 @@ python3 -m unittest discover -s tools/cue4parse-extractor -p 'test_audit_game_da
 ```
 
 AedileBot CI tests this on GitHub-hosted runners. The private runner additionally tests against a real game file. Changes to the source tables, schema or mapping behavior should fail closed or produce a review finding, not silently overwrite data.
+
+## Private provenance and version-to-version drift
+
+The provenance recorder in `tools/cue4parse-extractor/record_audit_run.py` runs **after** an extracted DataTable audit succeeds. It computes:
+
+- SHA-256 of the exact vanilla PAK, including a before/after inode, size and modification-time check to reject an archive that changed during hashing
+- SHA-256 and byte size of each JSON DataTable output, with stable paths
+- SHA-256 hashes of the four bot data sheets and both manual overlay files
+- Exact AedileBot, CUE4Parse and private workflow commit SHAs
+- Comparison counts and **only nonmatching, derived audit details**, not the raw DataTables
+- Optional Steam build ID only when the specific Steam appmanifest is readable by the runner; otherwise `build_id: null` with an explicit unavailable status
+
+The private workflow writes `provenance.json`, `drift.json` and `drift.md` alongside the current `audit.json` and `audit.md`. Only these five small **derived** reports go to the private repository's GitHub Actions artifacts. The per-run provenance snapshot is additionally stored on the isolated VM under `/home/foxrunner/.foxhole-audit-state/runs/<run-id>-<attempt>.json`. The last snapshot pointer is integrity-checked against SHA-256; missing or corrupt referenced history **fails closed**. This state contains no raw game assets and is not automatically removed.
+
+The first run creates the baseline. Subsequent runs compare PAK hash, individual DataTable files, bot input files, tool revision pins and nonmatching findings; `changed_review_required` flags any drift. A clean audit of the same content reports `unchanged`. The report is **review only** even when all compared values match; no bot updates or merges are authorized by status alone.
+
+### Scope and recovery
+
+- Changing either source code or workflow SHA is a recorded implementation change, so it may create a review alert even with identical game data.
+- Changing the PAK checksum requires review even if no checked stats change.
+- A missing appmanifest **does not** prove the Steam build stayed the same. The PAK hash is the strongest observed artifact identity available under current ACLs.
+- A malformed or missing `latest.json` target must not be silently treated as a new baseline. Restore the state from trusted private backup or explicitly review/reset the history through an operator-controlled process.
+- If SteamCMD replaces the PAK, the file ACL may be lost; the human-operated ACL runbook in `Romboter/foxhole-lab` describes regrant and revocation.
+- State is local to `foxhole-lab01` and is **not an independent backup**. Back it up outside the VM before relying on multi-month drift history.
+- No schedule or unattended Steam login/update is enabled. The operator reviews a proposed game update before recalibrating the comparison.
