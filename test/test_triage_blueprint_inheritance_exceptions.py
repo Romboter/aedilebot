@@ -137,6 +137,32 @@ class InheritanceTriageTests(unittest.TestCase):
         self.assertEqual(child["mounted_component_ammunition"]["status"],
                          "referenced_component_not_exported")
 
+    def test_partial_child_struct_preserves_parent_options_as_unverified_candidate(self):
+        self.put("Items/AmmoBase.json", [
+            {"Type": "BlueprintGeneratedClass", "Name": "AmmoBase_C",
+             "SuperStruct": {"ObjectPath": "/Script/War"}},
+            {"Name": "Default__AmmoBase_C", "Properties": {
+                "MultiAmmo": {"CompatibleAmmoNames": ["MGAmmo"]},
+            }},
+        ])
+        self.put("Items/AmmoChild.json", [
+            {"Type": "BlueprintGeneratedClass", "Name": "AmmoChild_C",
+             "SuperStruct": {"ObjectPath": "War/Content/Blueprints/Items/AmmoBase.1"}},
+            {"Name": "Default__AmmoChild_C", "Properties": {
+                "MultiAmmo": {"AmmoSlotFilterAmounts": [1, 2]},
+            }},
+        ])
+        case = self.report()["multi_ammo_cases"][0]
+        child = next(x for x in case["subclasses"] if x["package"] == "Items/AmmoChild")
+        self.assertEqual(child["effective_multi_ammo"]["status"], "array_not_in_export")
+        self.assertEqual(child["effective_multi_ammo"]["exported_field_names"],
+                         ["AmmoSlotFilterAmounts"])
+        self.assertEqual(child["parent_option_evidence"]["options"], ["MGAmmo"])
+        self.assertEqual(child["parent_option_evidence"]["source"], "Items/AmmoBase")
+        self.assertEqual(child["parent_option_evidence"]["effective_at_runtime"],
+                         "not_established")
+        self.assertFalse(self.report()["safe_for_unattended_publication"])
+
     def test_source_hash_mismatch_aborts(self):
         graph = build_index(self.root, "26058282")
         self.put("Vehicles/Child.json", [
