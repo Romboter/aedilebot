@@ -139,45 +139,44 @@ def resolve(root: Path, vehicle: Path, build_id: str, kinetic_factor=1.25):
                                           'property': f'Default__/WeaponConfigs/{i}/WeaponCodeName',
                                           'value': cfg.get('WeaponCodeName')}],
                                'source_sha256': sha256(vehicle)})
-    else:
-        for obj in seats:
-            if obj.get('Type') != 'VehicleSeatComponent':
-                continue
-            p = obj.get('Properties') or {}
-            mount_id = p.get('MountCodeName')
-            component = p.get('MountComponent') or {}
-            ref = component.get('ObjectPath') if isinstance(component, dict) else None
-            if not mount_id or not ref:
-                continue
-            origins = obj.get("_field_origins", {})
-            entry = {'endpoint': obj.get('Name'), 'mount': mount_id,
-                     'edges': [{'asset': vehicle.relative_to(root).as_posix(),
-                                'property': obj.get('Name') + '/Properties/MountCodeName',
-                                'value': mount_id, **origins.get('MountCodeName', {})},
-                               {'asset': vehicle.relative_to(root).as_posix(),
-                                'property': obj.get('Name') + '/Properties/MountComponent/ObjectPath',
-                                'value': ref, **origins.get('MountComponent', {})}], 'source_sha256': sha256(vehicle)}
-            if not ref.startswith('War/Content/Blueprints/'):
-                entry['problem'] = 'non_exportable_component_reference'
-            else:
-                comp_path = root / (ref.removeprefix('War/Content/Blueprints/').split('.', 1)[0] + '.json')
-                try:
-                    found, evidence = explicit_property(root, comp_path, ('AmmoName', 'MultiAmmo'))
-                    if evidence:
-                        entry['edges'].append(evidence)
-                    if isinstance(found, str):
-                        entry['ammo'] = found
-                    elif isinstance(found, dict) and isinstance(found.get('CompatibleAmmoNames'), list):
-                        opts = found['CompatibleAmmoNames']
-                        if len(opts) == 1:
-                            entry['ammo'] = opts[0]
-                        else:
-                            entry['problem'] = 'multiple_ammunition_options'
+    for obj in seats:
+        if obj.get('Type') != 'VehicleSeatComponent':
+            continue
+        p = obj.get('Properties') or {}
+        mount_id = p.get('MountCodeName')
+        component = p.get('MountComponent') or {}
+        ref = component.get('ObjectPath') if isinstance(component, dict) else None
+        if not mount_id or not ref:
+            continue
+        origins = obj.get("_field_origins", {})
+        entry = {'endpoint': obj.get('Name'), 'mount': mount_id,
+                 'edges': [{'asset': vehicle.relative_to(root).as_posix(),
+                            'property': obj.get('Name') + '/Properties/MountCodeName',
+                            'value': mount_id, **origins.get('MountCodeName', {})},
+                           {'asset': vehicle.relative_to(root).as_posix(),
+                            'property': obj.get('Name') + '/Properties/MountComponent/ObjectPath',
+                            'value': ref, **origins.get('MountComponent', {})}], 'source_sha256': sha256(vehicle)}
+        if not ref.startswith('War/Content/Blueprints/'):
+            entry['problem'] = 'non_exportable_component_reference'
+        else:
+            comp_path = root / (ref.removeprefix('War/Content/Blueprints/').split('.', 1)[0] + '.json')
+            try:
+                found, evidence = explicit_property(root, comp_path, ('AmmoName', 'MultiAmmo'))
+                if evidence:
+                    entry['edges'].append(evidence)
+                if isinstance(found, str):
+                    entry['ammo'] = found
+                elif isinstance(found, dict) and isinstance(found.get('CompatibleAmmoNames'), list):
+                    opts = found['CompatibleAmmoNames']
+                    if len(opts) == 1:
+                        entry['ammo'] = opts[0]
                     else:
-                        entry['problem'] = 'ammo_reference_missing'
-                except ValueError as err:
-                    entry['problem'] = str(err)
-            candidates.append(entry)
+                        entry['problem'] = 'multiple_ammunition_options'
+                else:
+                    entry['problem'] = 'ammo_reference_missing'
+            except ValueError as err:
+                entry['problem'] = str(err)
+        candidates.append(entry)
     result = []
     for c in candidates:
         id_ammo, id_mount = c.get('ammo'), c.get('mount')
