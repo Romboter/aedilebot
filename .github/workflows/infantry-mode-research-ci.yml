@@ -1,0 +1,36 @@
+name: Infantry firing-mode graph research
+
+on:
+  push:
+    branches: [research/55-infantry-firing-mode-graph]
+    paths:
+      - 'scripts/trace_infantry_firing_modes.py'
+      - 'scripts/find_blueprint_dependencies.py'
+      - 'test/test_trace_infantry_firing_modes.py'
+      - 'test/test_find_blueprint_dependencies.py'
+      - '.github/workflows/infantry-mode-research-ci.yml'
+  pull_request:
+    paths:
+      - 'scripts/trace_infantry_firing_modes.py'
+      - 'scripts/find_blueprint_dependencies.py'
+      - 'test/test_trace_infantry_firing_modes.py'
+      - 'test/test_find_blueprint_dependencies.py'
+      - '.github/workflows/infantry-mode-research-ci.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  source-graph-tests:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - name: Validate primary and secondary firing-mode separation
+        run: python3 -m unittest discover -s test -p 'test_trace_infantry_firing_modes.py' -v
+      - name: Validate exact exported Blueprint dependencies
+        run: python3 -m unittest discover -s test -p 'test_find_blueprint_dependencies.py' -v
+      - name: Protect existing infantry and vehicle reference resolution
+        run: |
+          python3 -m unittest discover -s test -p 'test_resolve_infantry_weapons.py' -v
+          python3 -m unittest discover -s test -p 'test_resolve_blueprint_weapons.py' -v

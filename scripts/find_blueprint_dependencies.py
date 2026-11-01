@@ -9,15 +9,15 @@ Only edges understood by the weapon resolvers are considered here.
 from __future__ import annotations
 
 import argparse
+from collections import Counter
+import hashlib
 import json
+import re
 from pathlib import Path, PurePosixPath
 
 PREFIX = "War/Content/Blueprints/"
-SUPPORTED = {
-    ("BlueprintGeneratedClass", "SuperStruct"),
-    ("VehicleSeatComponent", "MountComponent"),
-    ("Default", "ItemComponentClass"),
-}
+DEFAULT_SINGLE_REF_FIELDS = ("ItemComponentClass", "ProjectileClass", "ExplosionTemplate")
+DEFAULT_ARRAY_REF_FIELDS = ("ProjectileClasses", "GrenadeClasses")
 
 
 def asset_path(object_path):
@@ -33,7 +33,9 @@ def asset_path(object_path):
 
 
 def direct_edges(root, source):
-    objects = json.loads(source.read_text(encoding="utf-8"))
+    raw = source.read_bytes()
+    source_hash = hashlib.sha256(raw).hexdigest()
+    objects = json.loads(raw.decode("utf-8"))
     if not isinstance(objects, list):
         raise ValueError("Expected list of exported objects in " + source.name)
     for item in objects:
@@ -48,15 +50,26 @@ def direct_edges(root, source):
         if cls == "VehicleSeatComponent":
             links.append(("MountComponent", props.get("MountComponent")))
         if str(item.get("Name", "")).startswith("Default__"):
-            links.append(("ItemComponentClass", props.get("ItemComponentClass")))
+            for field in DEFAULT_SINGLE_REF_FIELDS:
+                links.append((field, props.get(field)))
+            for field in DEFAULT_ARRAY_REF_FIELDS:
+                value = props.get(field)
+                if value is None:
+                    continue
+                if not isinstance(value, list):
+                    raise ValueError(f"Malformed {field} reference array in {source}")
+                for index, ref in enumerate(value):
+                    links.append((f"{field}[{index}]", ref))
         for field, ref in links:
             value = ref.get("ObjectPath") if isinstance(ref, dict) else None
             target = asset_path(value)
             if target:
                 yield {
                     "source_asset": source.relative_to(root).as_posix(),
+                    "source_sha256": source_hash,
                     "record": item.get("Name"),
                     "field": field,
+                    "object_path": value,
                     "package": target,
                 }
 
@@ -69,21 +82,33 @@ def discover(root, max_files=10000):
         raise ValueError("Too many exported packages for a single dependency scan")
     edges = []
     for source in export_files:
+        if source.is_symlink() or not source.resolve().is_relative_to(root.resolve()):
+            raise ValueError("Unsafe symlink or exported package path")
         edges.extend(direct_edges(root, source))
     dependencies = sorted({x["package"] for x in edges})
     missing = [x for x in dependencies if not (root / (x + ".json")).is_file()]
+    missing_set = set(missing)
+    missing_edges = sorted(
+        (entry for entry in edges if entry["package"] in missing_set),
+        key=lambda entry: (entry["source_asset"], entry["record"] or "", entry["field"], entry["package"]),
+    )
+    by_type = Counter(re.sub(r"\[\d+\]$", "", entry["field"]) for entry in edges)
     return {
         "schema_version": 1,
         "status": "read_only_dependency_inventory",
         "scanned_packages": len(export_files),
         "explicit_edges": len(edges),
+        "resolved_edge_references": len(edges) - len(missing_edges),
+        "unresolved_edge_references": len(missing_edges),
+        "edge_type_counts": dict(sorted(by_type.items())),
+        "missing_source_edges": missing_edges,
         "referenced_packages": len(dependencies),
         "missing_packages": [
             {"package": key, "pak_path": PREFIX + key}
             for key in missing
         ],
         "limitations": [
-            "Only explicit SuperStruct, vehicle MountComponent, and pickup ItemComponentClass paths are followed.",
+            "Only explicit SuperStruct, vehicle MountComponent, ItemComponentClass, ProjectileClass, ExplosionTemplate, ProjectileClasses and GrenadeClasses paths are followed.",
             "Missing export is not proof of missing game asset.",
             "Does not resolve native /Script/War class behavior or opaque bytecode links.",
             "Does not infer references using names, values or class prefixes.",
