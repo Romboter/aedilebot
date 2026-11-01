@@ -55,6 +55,40 @@ class DependencyTests(unittest.TestCase):
                 asset_path(value)
         self.assertIsNone(asset_path("/Script/War"))
 
+    def test_explicit_projectile_and_grenade_references_are_dependencies(self):
+        self.save("Items/RifleComponent.json", [
+            {"Type": "BlueprintGeneratedClass", "Name": "Rifle_C",
+             "SuperStruct": {"ObjectPath": "/Script/War"}},
+            {"Name": "Default__Rifle_C", "Properties": {
+                "ProjectileClass": {"ObjectPath": "War/Content/Blueprints/Items/RPGProjectile.1"},
+                "ProjectileClasses": [{"ObjectPath": "War/Content/Blueprints/Items/RPGVariant.1"}],
+                "GrenadeClasses": [
+                    {"ObjectPath": "War/Content/Blueprints/Items/GrenadeA.0"},
+                    {"ObjectPath": "War/Content/Blueprints/Items/GrenadeB.0"},
+                ],
+                "ExplosionTemplate": {"ObjectPath": "War/Content/Blueprints/Items/Explosion.1"},
+            }},
+        ])
+        from scripts.find_blueprint_dependencies import direct_edges
+        edges = list(direct_edges(self.root, self.root / "Items/RifleComponent.json"))
+        self.assertEqual([e["field"] for e in edges],
+            ["ProjectileClass", "ExplosionTemplate", "ProjectileClasses[0]",
+             "GrenadeClasses[0]", "GrenadeClasses[1]"])
+        self.assertEqual(edges[0]["package"], "Items/RPGProjectile")
+        self.assertEqual(edges[2]["object_path"], "War/Content/Blueprints/Items/RPGVariant.1")
+        inv = discover(self.root)
+        self.assertEqual(inv["explicit_edges"], 8)
+        self.assertEqual(len(inv["missing_packages"]), 8)
+
+    def test_malformed_class_list_fails_closed(self):
+        self.save("Items/RifleComponent.json", [
+            {"Type": "BlueprintGeneratedClass", "Name": "Rifle_C",
+             "SuperStruct": {"ObjectPath": "/Script/War"}},
+            {"Name": "Default__Rifle_C", "Properties": {"GrenadeClasses": "invalid"}},
+        ])
+        with self.assertRaisesRegex(ValueError, "Malformed GrenadeClasses"):
+            discover(self.root)
+
     def test_scan_max_files_bounds_crawl(self):
         with self.assertRaisesRegex(ValueError, "Too many"):
             discover(self.root, max_files=0)
