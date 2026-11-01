@@ -131,7 +131,39 @@ class TypedFNameTests(unittest.TestCase):
         ])
         report = self.run_resolver()
         field = next(e for e in report["observations"] if e["source"] == "Vehicles/Submarine")
-        self.assertEqual(field["reason"], "invalid_declared_identifier")
+        self.assertEqual(field["reason"], "no_compatible_ammo_names_exported")
+
+    def test_unset_fname_none_seat_is_not_a_missing_weapon(self):
+        self.put("Vehicles/Driver.json", [
+            {"Type": "BlueprintGeneratedClass", "Name": "Driver_C",
+             "SuperStruct": {"ObjectPath": "/Script/War"}},
+            {"Type": "VehicleSeatComponent", "Name": "DriverSeat0_GEN_VARIABLE",
+             "Properties": {"MountCodeName": "None"}},
+        ])
+        graph = build_index(self.root, BUILD)
+        name = next(e for e in graph["numeric_row_references"]
+                    if e["source"] == "Vehicles/Driver" and e["field"] == "MountCodeName")
+        self.assertEqual(name["status"], "none_sentinel_candidate")
+        tag = (f"TYPE\\t{PREFIX}Vehicles/Driver.uasset\\tDriverSeat0_GEN_VARIABLE"
+               f"\\tMountCodeName\\tNameProperty")
+        result = self.run_resolver(self.inspection() + "\\n" + tag, index=graph)
+        sentinel = next(e for e in result["observations"] if e["source"] == "Vehicles/Driver")
+        self.assertEqual(sentinel["status"], "typed_fname_unset_mount_identity")
+        self.assertEqual(sentinel["reason"], "ue_fname_none_unset_mount_identity")
+        self.assertIsNone(sentinel["matched_row"])
+        self.assertEqual(result["counts"]["unset_mount_identity"], 1)
+
+    def test_none_seat_without_original_type_proof_stays_unresolved(self):
+        self.put("Vehicles/Driver.json", [
+            {"Type": "BlueprintGeneratedClass", "Name": "Driver_C",
+             "SuperStruct": {"ObjectPath": "/Script/War"}},
+            {"Type": "VehicleSeatComponent", "Name": "DriverSeat0_GEN_VARIABLE",
+             "Properties": {"MountCodeName": "None"}},
+        ])
+        result = self.run_resolver()
+        sentinel = next(e for e in result["observations"] if e["source"] == "Vehicles/Driver")
+        self.assertEqual(sentinel["reason"], "unset_mount_nameproperty_type_unverified")
+        self.assertEqual(sentinel["status"], "unresolved")
 
     def test_mismatched_index_table_hash_aborts(self):
         index = build_index(self.root, BUILD)
