@@ -1,0 +1,47 @@
+{
+  "schema_version": 1,
+  "purpose": "Read-only identity research ledger. Not input to the weapon damage generator.",
+  "records": [
+    {
+      "weapon_sheet_key": "Ship 12.7mm (+20% HV)",
+      "scope": "Colonial Destroyer machine guns on BPLargeShipDestroyerC (GunnerSeat4 and GunnerSeat5) only",
+      "source_status": "operator_reported_pending_pinned_export_review",
+      "vehicle_blueprint": "BPLargeShipDestroyerC",
+      "seat_mounts": [
+        {
+          "seat": "GunnerSeat4",
+          "property": "MountCodeName",
+          "value": "LargeShipDestroyerCMachineGunner"
+        },
+        {
+          "seat": "GunnerSeat5",
+          "property": "MountCodeName",
+          "value": "LargeShipDestroyerCMachineGunner"
+        }
+      ],
+      "mount_component_blueprint": "BPLargeShipDestroyerCMachineGunner",
+      "inherited_component_class": "BPColVehicleMachineGunnerComponent",
+      "inherited_ammo_dev_name": "MGAmmo",
+      "mount_dynamic_data_table": "BPMountDynamicData",
+      "mount_dynamic_data_row": "LargeShipDestroyerCMachineGunner",
+      "reported_damage_multiplier": 1.2,
+      "current_unrelated_proxy": "Weapon:AssaultRifleHeavyW",
+      "proposed_asset_backed_reference": "Mount:LargeShipDestroyerCMachineGunner",
+      "provenance": {
+        "game_build_id": null,
+        "pak_sha256": null,
+        "blueprint_asset_paths": null,
+        "source_property_paths": null,
+        "private_export_hashes": null,
+        "reviewer": null,
+        "review_date": null
+      },
+      "guardrails": [
+        "Do not generalize to every ship 12.7mm mount",
+        "Do not promote to generator overlay before exact private source-path, build and source export verification",
+        "Do not use numerical agreement as identity proof",
+        "No production data changes or unattended updates"
+      ]
+    }
+  ]
+}
