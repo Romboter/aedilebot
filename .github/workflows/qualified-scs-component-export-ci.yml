@@ -1,0 +1,16 @@
+name: Qualified SCS component export identity CI
+on:
+  push:
+    branches: [research/74-qualified-scs-component-export]
+  pull_request:
+permissions:
+  contents: read
+jobs:
+  synthetic:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - run: python3 -m unittest discover -s test -p 'test_resolve_qualified_scs_template_exports.py' -v
+      - run: python3 -m unittest discover -s test -p 'test_audit_scs_template_exports.py' -v
+      - run: python3 -m unittest discover -s test -p 'test_resolve_scs_typed_case_identity.py' -v
