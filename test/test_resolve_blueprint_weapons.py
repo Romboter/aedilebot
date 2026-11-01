@@ -110,6 +110,7 @@ class ResolverTests(unittest.TestCase):
         self.assertTrue(all(x["reason"] == "ammo_reference_missing" for x in result["endpoints"]))
 
     def test_inherited_vehicle_seat_properties_not_guessed_from_child(self):
+        self.write("Data/BPAmmoDynamicData.json", [{"Rows": {"LightTankAmmo": {"Damage": 600.0, "DamageType": {"ObjectName": "Explosive"}}}}])
         self.write("Data/BPMountDynamicData.json", [{"Rows": {
             "LightTankGunnerC": {"DamageMultiplier": 1.0},
         }}])
@@ -132,14 +133,14 @@ class ResolverTests(unittest.TestCase):
             {"Type": "BlueprintGeneratedClass", "Name": "TankGunnerW_C",
              "SuperStruct": {"ObjectPath": "/Script/War"}},
             {"Name": "Default__TankGunnerW_C", "Properties": {
-                "MultiAmmo": {"CompatibleAmmoNames": ["MGAmmo"]}}},
+                "MultiAmmo": {"CompatibleAmmoNames": ["LightTankAmmo"]}}},
         ])
         result = resolve(self.root, Path("Vehicles/LightTank/BPLightTankC.json"), "26058282")
         self.assertEqual(len(result["endpoints"]), 1)
         endpoint = result["endpoints"][0]
         self.assertEqual(endpoint["mount"], "LightTankGunnerC")
-        self.assertEqual(endpoint["ammo"], "MGAmmo")
-        self.assertAlmostEqual(endpoint["damage"], 68.75)
+        self.assertEqual(endpoint["ammo"], "LightTankAmmo")
+        self.assertAlmostEqual(endpoint["damage"], 600.0)
         self.assertTrue(any(e.get("asset") == "Vehicles/LightTank/BPLightTankBaseC.json" for e in endpoint["edges"]))
 
     def test_vehicle_with_weapon_configs_and_gunner_seat_resolves_both(self):
