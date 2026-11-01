@@ -13,6 +13,8 @@
 | Investigate a failed build or fixtures | [CI and golden fixtures](runbooks/ci-fixtures.md) |
 | Deploy or roll back a release | [Release and cutover](runbooks/release-cutover.md), [Service operations](runbooks/service-operations.md) |
 | Make a reviewed data change | [Game data change](runbooks/data-change.md) |
+| Check or regenerate weapon damage from an exported game build | [Weapon data generator](runbooks/weapon-generator.md) |
+| Investigate asset-backed weapon/ammo references | [Trace weapon asset references](runbooks/weapon-asset-tracing.md) |
 | Compare a licensed game build against existing statistics | [Read-only data audit](runbooks/game-data-audit.md) |
 | Reload calculator, fuzzy logic or data in memory | [Hot swap and rollback](runbooks/hot-swap.md) |
 | Handle a service outage or security event | [Incident response](runbooks/incident-response.md) |
