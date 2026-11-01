@@ -95,3 +95,45 @@ reports, human-reviewed PR promotion, and atomic bot snapshot rollback.
 
 No raw game JSON is committed to the public repository. Extraction happens
 only on the private runner with transient output.
+
+## Inspect original Unreal property types (read-only)
+
+A CUE4Parse JSON export renders many UE property values as plain strings.
+That is **not enough** to decide whether case-sensitive or case-insensitive
+lookup is correct. The `inspect-types` mode reads the *serialized property
+tag*, reporting only the owning package, object, property name and UE
+`PropertyType` (not its value).
+
+~~~bash
+dotnet run --project tools/cue4parse-extractor/Extractor.csproj -- \
+  /PRIVATE/local-pak-dir unused inspect-types \
+  /PRIVATE/identity-blueprint-packages.txt
+~~~
+
+Use the same validated exact-package manifest as `dump-list`; the PAK
+and source build must be pinned. Output is tab-separated lines beginning
+with `TYPE`, followed by package, record, property, and type. Only the
+explicit identity fields `AmmoName`, `MountCodeName`,
+`CompatibleAmmoCodeName` and `ExplosiveCodeName` are reported.
+No raw values or export files are emitted.
+
+**Private validation:** [run #41280794489](https://github.com/Romboter/foxhole-lab/actions/runs/41280794489)
+passed against build `26058282`. The actual serialized properties
+`BPMechWGunnerComponent.AmmoName`,
+`BPScoutVehicleOffensiveCGunner.AmmoName`,
+`BPRPGTWComponent.CompatibleAmmoCodeName`, and sampled Destroyer /
+halftrack seat `MountCodeName` fields were all tagged **`NameProperty`**.
+This is stronger evidence than guessing from their JSON text.
+
+Epic's [UE4 FName documentation](https://dev.epicgames.com/documentation/en-us/unreal-engine/string-handling?application_version=4.27)
+explains that `FName` equality is case-insensitive; the
+[UDataTable FindRow API](https://dev.epicgames.com/documentation/unreal-engine/API/Runtime/Engine/UDataTable/FindRow)
+uses an `FName` row key. The original property type and the table's row
+key semantics together are prerequisites for any deliberate name-based
+normalization policy. They do **not** authorize globally case-folding
+arbitrary strings, choosing a non-unique match, or substituting a different
+ammo type based on numerical equality.
+
+Nested fields such as `MultiAmmo.CompatibleAmmoNames[]` have **not** been
+verified by this top-level property-tag inspector and remain a separate
+investigation.
