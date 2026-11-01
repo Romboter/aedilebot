@@ -160,6 +160,36 @@ class ResolverTests(unittest.TestCase):
         self.assertEqual(len(endpoints), 2)
         self.assertEqual({x["endpoint"] for x in endpoints}, {"WeaponConfigs/0", "GunnerSeat1_GEN_VARIABLE"})
 
+    def test_incomplete_seat_reference_is_unresolved_not_dropped(self):
+        self.write("Vehicles/Ship.json", [
+            {"Name": "Default__Ship_C", "Properties": {}},
+            {"Type": "VehicleSeatComponent", "Name": "GunnerSeat1_GEN_VARIABLE", "Properties": {
+                "MountCodeName": "LargeShipDestroyerCMachineGunner",
+            }},
+        ])
+        result = resolve(self.root, Path("Vehicles/Ship.json"), "26058282")
+        self.assertEqual(len(result["endpoints"]), 1)
+        self.assertEqual(result["endpoints"][0]["status"], "unresolved")
+        self.assertEqual(result["endpoints"][0]["reason"], "mount_component_reference_missing")
+
+    def test_inherited_weapon_configs_cite_parent_source(self):
+        self.write("Vehicles/FighterBase.json", [
+            {"Type": "BlueprintGeneratedClass", "Name": "FighterBase_C",
+             "SuperStruct": {"ObjectPath": "/Script/War"}},
+            {"Name": "Default__FighterBase_C", "Properties": {"WeaponConfigs": [
+                {"AmmoCodeName": "AircraftAmmo", "WeaponCodeName": "AircraftFighterW_HMG"},
+            ]}},
+        ])
+        self.write("Vehicles/Fighter.json", [
+            {"Type": "BlueprintGeneratedClass", "Name": "Fighter_C",
+             "SuperStruct": {"ObjectPath": "War/Content/Blueprints/Vehicles/FighterBase.1"}},
+            {"Name": "Default__Fighter_C", "Properties": {"OtherProperty": 42}},
+        ])
+        result = resolve(self.root, Path("Vehicles/Fighter.json"), "26058282")
+        self.assertEqual(len(result["endpoints"]), 1)
+        self.assertTrue(all(e["asset"] == "Vehicles/FighterBase.json"
+                            for e in result["endpoints"][0]["edges"]))
+
     def test_invalid_build_or_traversal_fails(self):
         vehicle = Path(self.aircraft())
         with self.assertRaises(ValueError):
