@@ -1,0 +1,16 @@
+name: SCS component-key source shape CI
+on:
+  push:
+    branches: [research/69-scs-component-key-audit]
+  pull_request:
+permissions:
+  contents: read
+jobs:
+  synthetic:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - run: python3 -m unittest discover -s test -p 'test_audit_scs_component_keys.py' -v
+      - run: python3 -m unittest discover -s test -p 'test_pair_inheritable_component_records.py' -v
+      - run: python3 -m unittest discover -s test -p 'test_inheritable_component_edges.py' -v
