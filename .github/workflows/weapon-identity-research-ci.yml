@@ -7,6 +7,8 @@ on:
       - 'data_manual/weapon_asset_identity_candidates.json'
       - 'scripts/validate_weapon_identity_candidates.py'
       - 'test/test_weapon_identity_candidates.py'
+      - 'scripts/report_weapon_identity_coverage.py'
+      - 'test/test_weapon_identity_coverage.py'
       - '.github/workflows/weapon-identity-research-ci.yml'
   pull_request:
     paths:
@@ -26,5 +28,9 @@ jobs:
       - uses: actions/checkout@v4
       - name: Validate candidate ledger and synthetic mount row checks
         run: python3 -m unittest discover -s test -p 'test_weapon_identity_candidates.py' -v
+      - name: Test conservative identity coverage inventory
+        run: python3 -m unittest discover -s test -p 'test_weapon_identity_coverage.py' -v
+      - name: Smoke-test inventory against current committed weapon sheets
+        run: python3 scripts/report_weapon_identity_coverage.py --output /tmp/weapon-identity-coverage.json
       - name: Validate reference tracing tests
         run: python3 -m unittest discover -s test -p 'test_trace_weapon_assets.py' -v
