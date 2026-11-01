@@ -28,17 +28,19 @@
       "current_unrelated_proxy": "Weapon:AssaultRifleHeavyW",
       "proposed_asset_backed_reference": "Mount:LargeShipDestroyerCMachineGunner",
       "provenance": {
-        "game_build_id": null,
+        "game_build_id": "26058282",
         "pak_sha256": null,
         "blueprint_asset_paths": null,
         "source_property_paths": null,
         "private_export_hashes": null,
         "reviewer": null,
-        "review_date": null
+        "review_date": null,
+        "evidence_type": "reported_from_exported_blueprint_properties",
+        "independently_reproduced": false
       },
       "guardrails": [
         "Do not generalize to every ship 12.7mm mount",
-        "Do not promote to generator overlay before exact private source-path, build and source export verification",
+        "Do not promote to generator overlay before exact private source/property-path and archived-export hash corroboration for build 26058282",
         "Do not use numerical agreement as identity proof",
         "No production data changes or unattended updates"
       ]
