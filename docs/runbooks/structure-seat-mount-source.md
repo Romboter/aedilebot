@@ -29,3 +29,14 @@ The complete report must remain in restricted temporary scratch. The runner emit
 Compare saved structure seat template identities with `SCS_Node` owner/name/GUID relationships and child `InheritableComponentHandler` template overrides. Independently inspect the original UE type of `MountCodeName`. Any target mount class may save its own ammunition fields, but that does not establish effective runtime ammo selection or damage until inheritance and AI turret behavior are verified. Follow Issue #84.
 
 No upstream pulls, merges, automatic catalog updates, Steam scheduling, production bot writes or raw export uploads.
+
+## Verified pinned results (2026-11-01)
+
+[Private run #41347071275](https://github.com/Romboter/foxhole-lab/actions/runs/41347071275) **PASS**: 19/19 synthetic/regression tests, 0 extractor build errors, build `26058282` and exact relation digest `8a0a8b7c4fa26469b08ca8d39881a69d9beef06f17f520e6472ef8a1676a5a44`.
+
+- 54 saved `StructureSeatComponent` exports with 54 exact source-owning generated-class `Outer` relationships.
+- 42 explicitly saved `MountCodeName` declarations, each matching an exact `BPMountDynamicData` row key (not original property-type proof).
+- 42 explicitly saved `MountComponent` references; 35 point to unique saved Blueprint-generated class exports; 7 point to native/external targets.
+- 12 structure seats omit both mount fields in their own saved export. No missing value was inherited or guessed.
+
+The owner match is saved source ownership only. Neither field's runtime effect has been established. Structure turret/AI firing rules and child/parent SCS template selection require separate validation.
