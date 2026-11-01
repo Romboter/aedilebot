@@ -38,7 +38,7 @@ class ReferenceParsing(unittest.TestCase):
             reference_table(reference_fixture())
 
     def test_missing_tier_at_or_above_minimum_rejected(self):
-        blob = reference_fixture().replace(b'0.97, 2000, 75, 75, 75, 0', b'null', 1)
+        blob = reference_fixture().replace(b'[0.97, 2000, 75, 75, 75, 0]', b'null', 1)
         # JSON null replaces first T1 tuple of a min-T1 piece.
         with self.assertRaisesRegex(ValueError, "Missing tier"):
             reference_table(blob, hashlib.sha256(blob).hexdigest())
