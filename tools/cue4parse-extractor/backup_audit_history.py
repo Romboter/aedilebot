@@ -17,7 +17,7 @@ import shutil
 import stat
 import sys
 
-RUN = re.compile(r"^[0-9]+-[0-9]+\\.json$")
+RUN = re.compile(r"^[0-9]+-[0-9]+\.json$")
 SHA = re.compile(r"^[a-f0-9]{64}$")
 
 
