@@ -161,6 +161,16 @@ class InheritanceTriageTests(unittest.TestCase):
         self.assertEqual(child["parent_option_evidence"]["source"], "Items/AmmoBase")
         self.assertEqual(child["parent_option_evidence"]["effective_at_runtime"],
                          "not_established")
+        nested = child["serialized_multi_ammo_field_evidence"]
+        self.assertEqual(nested["runtime_effective"], "not_established")
+        self.assertEqual(nested["fields"]["CompatibleAmmoNames"]["resolution"],
+                         "unverified_ancestor_candidate")
+        self.assertEqual(nested["fields"]["CompatibleAmmoNames"][
+            "source_declarations_nearest_first"][0]["package"], "Items/AmmoBase")
+        self.assertEqual(nested["fields"]["AmmoSlotFilterAmounts"]["resolution"],
+                         "serialized_on_target")
+        self.assertEqual(nested["fields"]["AmmoSlotFilterAmounts"][
+            "source_declarations_nearest_first"][0]["package"], "Items/AmmoChild")
         self.assertFalse(self.report()["safe_for_unattended_publication"])
 
     def test_source_hash_mismatch_aborts(self):
