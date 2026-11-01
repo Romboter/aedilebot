@@ -76,6 +76,29 @@ class InfantryResolverTests(unittest.TestCase):
         result = resolve_infantry(self.root, Path("ItemPickups/BlakerowPickup.json"), "26058282")
         self.assertEqual(result["reason"], "component_reference_unresolved")
 
+    def test_single_multi_ammo_option_resolves_explicitly(self):
+        self.write("Items/BPCarbineComponent.json", [
+            {"Type": "BlueprintGeneratedClass", "Name": "BPCarbineComponent_C",
+             "SuperStruct": {"ObjectPath": "/Script/War"}},
+            {"Name": "Default__BPCarbineComponent_C", "Properties": {
+                "MultiAmmo": {"CompatibleAmmoNames": ["RifleAmmo"]}}},
+        ])
+        result = resolve_infantry(self.root, Path("ItemPickups/BlakerowPickup.json"), "26058282")
+        self.assertEqual(result["ammo_options"], ["RifleAmmo"])
+        self.assertAlmostEqual(result["derived_direct_damage"], 49.95)
+
+    def test_multiple_ammo_variants_do_not_choose_first_by_default(self):
+        self.write("Items/BPCarbineComponent.json", [
+            {"Type": "BlueprintGeneratedClass", "Name": "BPCarbineComponent_C",
+             "SuperStruct": {"ObjectPath": "/Script/War"}},
+            {"Name": "Default__BPCarbineComponent_C", "Properties": {
+                "MultiAmmo": {"CompatibleAmmoNames": ["RifleAmmo", "RifleAmmoSpecial"]}}},
+        ])
+        result = resolve_infantry(self.root, Path("ItemPickups/BlakerowPickup.json"), "26058282")
+        self.assertEqual(result["status"], "unresolved")
+        self.assertEqual(result["ammo_options"], ["RifleAmmo", "RifleAmmoSpecial"])
+        self.assertEqual(result["reason"], "multiple_ammunition_options_require_explicit_variant_selection")
+
     def test_no_ammo_reference_fails_closed(self):
         self.write("Items/BPCarbineComponent.json", [
             {"Type": "BlueprintGeneratedClass", "Name": "BPCarbineComponent_C",
