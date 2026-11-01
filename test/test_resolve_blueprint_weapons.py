@@ -190,6 +190,66 @@ class ResolverTests(unittest.TestCase):
         self.assertTrue(all(e["asset"] == "Vehicles/FighterBase.json"
                             for e in result["endpoints"][0]["edges"]))
 
+    def test_multi_ammo_variants_list_real_rows_without_default(self):
+        vehicle = self.destroyer()
+        self.write("Vehicles/ParentMG.json", [
+            {"Type": "BlueprintGeneratedClass", "Name": "ParentMG_C",
+             "SuperStruct": {"ObjectPath": "/Script/War"}},
+            {"Name": "Default__ParentMG_C", "Properties": {
+                "MultiAmmo": {"CompatibleAmmoNames": ["MGAmmo", "ATRifleAmmo"]}}},
+        ])
+        result = resolve(self.root, Path(vehicle), "26058282")
+        for endpoint in result["endpoints"]:
+            self.assertEqual(endpoint["status"], "unresolved")
+            self.assertEqual(endpoint["reason"], "multiple_ammunition_variants_require_explicit_selection")
+            self.assertNotIn("damage", endpoint)
+            self.assertEqual([x["ammo"] for x in endpoint["variant_candidates"]], ["MGAmmo", "ATRifleAmmo"])
+            self.assertEqual([round(x["damage"], 5) for x in endpoint["variant_candidates"]], [82.5, 225.0])
+            self.assertTrue(all(x["source_rows"] for x in endpoint["variant_candidates"]))
+
+    def test_zero_damage_flare_is_known_not_missing(self):
+        vehicle = self.destroyer()
+        self.write("Vehicles/ParentMG.json", [
+            {"Type": "BlueprintGeneratedClass", "Name": "ParentMG_C",
+             "SuperStruct": {"ObjectPath": "/Script/War"}},
+            {"Name": "Default__ParentMG_C", "Properties": {
+                "MultiAmmo": {"CompatibleAmmoNames": ["MGAmmo", "FlareAmmo"]}}},
+        ])
+        self.write("Data/BPAmmoDynamicData.json", [{"Rows": {
+            "MGAmmo": {"Damage": 55, "DamageType": {"ObjectName": "HeavyKinetic"}},
+            "FlareAmmo": {"Damage": 0, "DamageType": {"ObjectName": "Flare"}},
+        }}])
+        result = resolve(self.root, Path(vehicle), "26058282")
+        for endpoint in result["endpoints"]:
+            self.assertEqual(endpoint["status"], "unresolved")
+            self.assertEqual(endpoint["variant_candidates"][1]["status"], "non_direct_damage_ammunition")
+            self.assertEqual(endpoint["variant_candidates"][1]["damage"], 0)
+
+    def test_missing_variant_row_fails_closed_without_borrowing_another(self):
+        vehicle = self.destroyer()
+        self.write("Vehicles/ParentMG.json", [
+            {"Type": "BlueprintGeneratedClass", "Name": "ParentMG_C",
+             "SuperStruct": {"ObjectPath": "/Script/War"}},
+            {"Name": "Default__ParentMG_C", "Properties": {
+                "MultiAmmo": {"CompatibleAmmoNames": ["MGAmmo", "MissingAmmo"]}}},
+        ])
+        result = resolve(self.root, Path(vehicle), "26058282")
+        for endpoint in result["endpoints"]:
+            self.assertEqual(endpoint["reason"], "one_or_more_ammunition_variants_unresolved")
+            self.assertEqual(endpoint["variant_candidates"][1]["reason"], "named_ammo_row_missing")
+
+    def test_duplicate_variant_options_fail_closed(self):
+        vehicle = self.destroyer()
+        self.write("Vehicles/ParentMG.json", [
+            {"Type": "BlueprintGeneratedClass", "Name": "ParentMG_C",
+             "SuperStruct": {"ObjectPath": "/Script/War"}},
+            {"Name": "Default__ParentMG_C", "Properties": {
+                "MultiAmmo": {"CompatibleAmmoNames": ["MGAmmo", "MGAmmo"]}}},
+        ])
+        result = resolve(self.root, Path(vehicle), "26058282")
+        self.assertTrue(all(e["reason"] == "invalid_or_duplicate_ammunition_options"
+                            for e in result["endpoints"]))
+
     def test_invalid_build_or_traversal_fails(self):
         vehicle = Path(self.aircraft())
         with self.assertRaises(ValueError):
