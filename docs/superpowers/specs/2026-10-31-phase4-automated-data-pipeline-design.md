@@ -10,6 +10,27 @@ town polling, Steam PICS watcher). Kept for history; not yet edited to point her
 Provenance key: **[User]** = decided by the user. **[Call]** = my default, not yet
 agreed. **[Measured]** = measured in this session's spikes.
 
+> **2026-11-01 correction — physical weapon identity is an extraction goal, not an
+> immutable missing field.** The earlier "98/98 reproduced" statement confirms only
+> arithmetic compatibility. The existing `data_manual/weapon_multipliers.json`
+> contains numerical proxy mappings and is *not* an authority for automatic data
+> generation. On reported Foxhole build `26058282`, exported Colonial Destroyer
+> Blueprints connect gunner seats 4/5 to `BPLargeShipDestroyerCMachineGunner`,
+> inherited `MGAmmo`, and actual named mount row
+> `BPMountDynamicData.LargeShipDestroyerCMachineGunner` (1.20×). The exported
+> evidence still needs independently captured source paths/hashes before using
+> it for generation; the relationship is Destroyer-specific, not necessarily
+> generic to all ship 12.7mm mounts. A battleship relationship was reportedly
+> found separately, but its exact IDs are not recorded here.
+>
+> **Updated design decision:** Follow actual seat/component/parent/ammo/mount
+> references to derive values from each current game build. Any missing or
+> ambiguous edge becomes a review finding. Hand-maintain only values that
+> cannot be derived reliably (aliases, some native/runtime rules), and label
+> each manual factor's provenance. Do not seed or reuse numerical-proxy maps
+> for unattended updates. See
+> [asset-derived data contract](2026-11-01-asset-derived-data-contract.md).
+
 ## Intent
 
 After a Foxhole patch, game data in this repo should update itself: a build change is

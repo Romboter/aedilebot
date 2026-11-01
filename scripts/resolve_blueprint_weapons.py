@@ -1,0 +1,282 @@
+#!/usr/bin/env python3
+"""Resolve firing endpoints from exported Foxhole Blueprints, read-only.
+
+No display-name inference, numerical-proxy lookups, or production writes.
+All exports and the game PAK remain private; only derived output is emitted.
+"""
+from __future__ import annotations
+import argparse
+import hashlib
+import json
+import math
+from pathlib import Path
+
+DATA_ROOT = Path('Data')
+
+
+def load(path):
+    return json.loads(path.read_text(encoding='utf-8'))
+
+
+def sha256(path):
+    return hashlib.sha256(path.read_bytes()).hexdigest()
+
+
+def table(root, name):
+    path = root / DATA_ROOT / (name + '.json')
+    objects = load(path)
+    if not isinstance(objects, list) or len(objects) != 1 or not isinstance(objects[0].get('Rows'), dict):
+        raise ValueError('Invalid DataTable: ' + name)
+    return objects[0]['Rows'], path
+
+
+def explicit_property(root, asset, names, trail=None):
+    """Find nearest class-default property along explicit exported parent links."""
+    trail = [] if trail is None else trail
+    asset = asset.resolve()
+    if not asset.is_relative_to(root.resolve()) or asset in trail:
+        raise ValueError('Unsafe or cyclic Blueprint reference: ' + str(asset))
+    if not asset.is_file():
+        raise ValueError('Referenced Blueprint not exported: ' + str(asset))
+    objects = load(asset)
+    cls = [x for x in objects if x.get('Type') == 'BlueprintGeneratedClass']
+    defaults = [x for x in objects if str(x.get('Name', '')).startswith('Default__')]
+    if len(cls) != 1 or len(defaults) != 1:
+        raise ValueError('Invalid Blueprint class/default layout: ' + str(asset))
+    props = defaults[0].get('Properties') or {}
+    for name in names:
+        if name in props:
+            return props[name], {'asset': asset.relative_to(root).as_posix(),
+                                 'property': 'Default__/' + name,
+                                 'sha256': sha256(asset)}
+    parent = cls[0].get('SuperStruct') or cls[0].get('Super') or {}
+    ref = parent.get('ObjectPath', '')
+    if ref.startswith('War/Content/Blueprints/'):
+        relative = ref.removeprefix('War/Content/Blueprints/').split('.', 1)[0] + '.json'
+        return explicit_property(root, root / relative, names, trail + [asset])
+    return None, None
+
+
+
+def assembled_vehicle(root: Path, vehicle: Path):
+    """Build effective seat and default fields from base-to-derived Blueprint exports.
+
+    Exact seat object names link child overrides to parent templates; empty
+    child fields must NOT erase an inherited MountCodeName / MountComponent.
+    """
+    ancestry = []
+    current = vehicle.resolve()
+    seen = set()
+    while True:
+        if not current.is_relative_to(root) or current in seen or not current.is_file():
+            raise ValueError("Unsafe, missing or cyclic parent Blueprint")
+        seen.add(current)
+        objects = load(current)
+        if not isinstance(objects, list):
+            raise ValueError("Expected Unreal Blueprint export list")
+        ancestry.append((current, objects))
+        classes = [o for o in objects if o.get("Type") == "BlueprintGeneratedClass"]
+        if len(classes) > 1:
+            raise ValueError("Multiple generated classes in vehicle export")
+        parent = (classes[0].get("SuperStruct") or {}).get("ObjectPath", "") if classes else ""
+        if not parent.startswith("War/Content/Blueprints/"):
+            break  # Native parent; no guesses about unexported defaults.
+        relative = parent.removeprefix("War/Content/Blueprints/").split(".", 1)[0] + ".json"
+        current = (root / relative).resolve()
+
+    seats = {}
+    defaults = {}
+    default_origins = {}
+    for source, objects in reversed(ancestry):
+        origin = source.relative_to(root).as_posix()
+        for obj in objects:
+            if obj.get("Type") == "VehicleSeatComponent" and isinstance(obj.get("Name"), str):
+                seat = seats.setdefault(obj["Name"], {"Type": "VehicleSeatComponent",
+                                                     "Name": obj["Name"], "Properties": {},
+                                                     "_field_origins": {}})
+                for name, value in (obj.get("Properties") or {}).items():
+                    seat["Properties"][name] = value
+                    seat["_field_origins"][name] = {
+                        "asset": origin,
+                        "property": obj["Name"] + "/Properties/" + name,
+                        "sha256": sha256(source),
+                    }
+        class_defaults = [o for o in objects if str(o.get("Name", "")).startswith("Default__")]
+        if len(class_defaults) > 1:
+            raise ValueError("Duplicate Blueprint class defaults")
+        if class_defaults:
+            for field, value in (class_defaults[0].get("Properties") or {}).items():
+                defaults[field] = value
+                default_origins[field] = {"asset": origin, "sha256": sha256(source)}
+    return defaults, list(seats.values()), default_origins
+
+
+def numeric(value):
+    return isinstance(value, (int, float)) and not isinstance(value, bool) and math.isfinite(value) and value > 0
+
+
+
+def calculate_variant(ammo_id, mount_id, ammo_rows, mount_rows, ammo_path,
+                      mount_path, root, kinetic_factor):
+    """Compute one *explicitly referenced* ammunition + mount pair.
+
+    Zero damage is meaningful for smoke / flare / gas types and does not
+    establish those effects' behavior. No numerical proxies or guesses.
+    """
+    result = {"ammo": ammo_id, "mount": mount_id, "status": "unresolved"}
+    if not isinstance(mount_id, str) or mount_id not in mount_rows:
+        result["reason"] = "named_mount_row_missing"
+        return result
+    if not isinstance(ammo_id, str) or ammo_id not in ammo_rows:
+        result["reason"] = "named_ammo_row_missing"
+        return result
+    multiplier = mount_rows[mount_id].get("DamageMultiplier")
+    damage = ammo_rows[ammo_id].get("Damage")
+    dtype = (ammo_rows[ammo_id].get("DamageType") or {}).get("ObjectName")
+    if not numeric(multiplier) or isinstance(damage, bool) or not isinstance(damage, (int, float)) or not math.isfinite(damage) or damage < 0 or not isinstance(dtype, str) or not dtype:
+        result["reason"] = "invalid_numeric_or_damage_type"
+        return result
+    factor = kinetic_factor if "Kinetic" in dtype or ammo_id == "AircraftAmmo" else 1.0
+    if not numeric(factor):
+        raise ValueError("Invalid gameplay factor")
+    result.update({
+        "status": ("non_direct_damage_ammunition" if damage == 0
+                   else "resolved_with_manual_gameplay_rule" if factor != 1
+                   else "resolved_from_exported_tables"),
+        "damage": damage * multiplier * factor,
+        "ammo_damage": damage,
+        "mount_multiplier": multiplier,
+        "gameplay_factor": factor,
+        "gameplay_factor_provenance": "manual_rule_kinetic_1_25" if factor != 1 else "none",
+        "source_rows": [
+            {"asset": ammo_path.relative_to(root).as_posix(), "row": ammo_id,
+             "property": "Damage", "sha256": sha256(ammo_path)},
+            {"asset": mount_path.relative_to(root).as_posix(), "row": mount_id,
+             "property": "DamageMultiplier", "sha256": sha256(mount_path)},
+        ],
+    })
+    return result
+
+
+def resolve(root: Path, vehicle: Path, build_id: str, kinetic_factor=1.25):
+    root = root.resolve()
+    vehicle = (root / vehicle).resolve()
+    if not vehicle.is_relative_to(root) or not vehicle.is_file():
+        raise ValueError('Vehicle path must be an exported JSON inside source root')
+    if not build_id.isdecimal():
+        raise ValueError('A numeric pinned game build ID is required')
+    ammo, ammo_path = table(root, 'BPAmmoDynamicData')
+    mount, mount_path = table(root, 'BPMountDynamicData')
+    props, seats, default_origins = assembled_vehicle(root, vehicle)
+    candidates = []
+    cfgs = props.get('WeaponConfigs')
+    if cfgs is not None:
+        cfg_origin = default_origins.get('WeaponConfigs', {})
+        if not isinstance(cfgs, list):
+            raise ValueError('Malformed WeaponConfigs')
+        for i, cfg in enumerate(cfgs):
+            if not isinstance(cfg, dict):
+                raise ValueError('Malformed WeaponConfigs entry')
+            candidates.append({'endpoint': 'WeaponConfigs/' + str(i),
+                               'ammo': cfg.get('AmmoCodeName'), 'mount': cfg.get('WeaponCodeName'),
+                               'edges': [{'asset': cfg_origin.get('asset', vehicle.relative_to(root).as_posix()),
+                                          'property': f'Default__/WeaponConfigs/{i}/AmmoCodeName',
+                                          'value': cfg.get('AmmoCodeName'), 'sha256': cfg_origin.get('sha256')},
+                                         {'asset': cfg_origin.get('asset', vehicle.relative_to(root).as_posix()),
+                                          'property': f'Default__/WeaponConfigs/{i}/WeaponCodeName',
+                                          'value': cfg.get('WeaponCodeName'), 'sha256': cfg_origin.get('sha256')}],
+                               'source_sha256': sha256(vehicle)})
+    for obj in seats:
+        if obj.get('Type') != 'VehicleSeatComponent':
+            continue
+        p = obj.get('Properties') or {}
+        mount_id = p.get('MountCodeName')
+        component = p.get('MountComponent') or {}
+        ref = component.get('ObjectPath') if isinstance(component, dict) else None
+        if not mount_id:
+            continue
+        origins = obj.get("_field_origins", {})
+        entry = {'endpoint': obj.get('Name'), 'mount': mount_id,
+                 'edges': [{'asset': vehicle.relative_to(root).as_posix(),
+                            'property': obj.get('Name') + '/Properties/MountCodeName',
+                            'value': mount_id, **origins.get('MountCodeName', {})},
+                           {'asset': vehicle.relative_to(root).as_posix(),
+                            'property': obj.get('Name') + '/Properties/MountComponent/ObjectPath',
+                            'value': ref, **origins.get('MountComponent', {})}], 'source_sha256': sha256(vehicle)}
+        if not ref:
+            entry['problem'] = 'mount_component_reference_missing'
+        elif not ref.startswith('War/Content/Blueprints/'):
+            entry['problem'] = 'non_exportable_component_reference'
+        else:
+            comp_path = root / (ref.removeprefix('War/Content/Blueprints/').split('.', 1)[0] + '.json')
+            try:
+                found, evidence = explicit_property(root, comp_path, ('AmmoName', 'MultiAmmo'))
+                if evidence:
+                    entry['edges'].append(evidence)
+                if isinstance(found, str):
+                    entry['ammo'] = found
+                elif isinstance(found, dict) and isinstance(found.get('CompatibleAmmoNames'), list):
+                    opts = found['CompatibleAmmoNames']
+                    entry['ammo_options'] = opts
+                    if not opts or any(not isinstance(v, str) or not v for v in opts) or len(set(opts)) != len(opts):
+                        entry['problem'] = 'invalid_or_duplicate_ammunition_options'
+                    elif len(opts) == 1:
+                        entry['ammo'] = opts[0]
+                    else:
+                        entry['problem'] = 'multiple_ammunition_options'
+                else:
+                    entry['problem'] = 'ammo_reference_missing'
+            except ValueError as err:
+                entry['problem'] = str(err)
+        candidates.append(entry)
+    result = []
+    for c in candidates:
+        id_ammo, id_mount = c.get('ammo'), c.get('mount')
+        base = {'endpoint': c['endpoint'], 'ammo': id_ammo, 'mount': id_mount,
+                'edges': c['edges'], 'source_sha256': c['source_sha256'],
+                'status': 'unresolved', 'safe_for_unattended_publication': False}
+        options = c.get('ammo_options')
+        if options is not None:
+            base['ammo_options'] = options
+        if c.get('problem') == 'multiple_ammunition_options':
+            # Enumerate distinct source-backed variant values, not a guessed default
+            # ammo. These remain candidates pending a display/vehicle/variant join.
+            base['reason'] = 'multiple_ammunition_variants_require_explicit_selection'
+            base['variant_candidates'] = [
+                calculate_variant(option, id_mount, ammo, mount, ammo_path, mount_path,
+                                  root, kinetic_factor)
+                for option in options
+            ]
+            if any(x['status'] == 'unresolved' for x in base['variant_candidates']):
+                base['reason'] = 'one_or_more_ammunition_variants_unresolved'
+        elif c.get('problem'):
+            base['reason'] = c['problem']
+        else:
+            derived = calculate_variant(id_ammo, id_mount, ammo, mount, ammo_path,
+                                        mount_path, root, kinetic_factor)
+            base.update(derived)
+        result.append(base)
+    return {'schema_version': 1, 'build_id': build_id,
+            'vehicle_asset': vehicle.relative_to(root).as_posix(),
+            'status': 'review_only_no_automatic_publication', 'endpoints': result}
+
+
+def main():
+    p = argparse.ArgumentParser(description=__doc__)
+    p.add_argument('--source-root', type=Path, required=True,
+                   help='Private export/War/Content/Blueprints directory')
+    p.add_argument('--vehicle', type=Path, required=True,
+                   help='Vehicle Blueprint JSON path relative to source root')
+    p.add_argument('--build-id', required=True)
+    p.add_argument('--output', type=Path)
+    args = p.parse_args()
+    result = resolve(args.source_root, args.vehicle, args.build_id)
+    data = json.dumps(result, indent=2, sort_keys=True) + '\n'
+    if args.output:
+        args.output.write_text(data, encoding='utf-8')
+    else:
+        print(data, end='')
+
+
+if __name__ == '__main__':
+    main()

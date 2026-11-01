@@ -60,3 +60,62 @@ For each proposed real relationship, inspect the original source asset and link 
 The tracer reads exports and data/Weapons.json only. It can write an optional private JSON evidence report but never edits damage values, overlay mappings or game assets. If evidence conflicts, stop and leave the generator untouched.
 
 **Related:** [Issue #44](https://github.com/Romboter/aedilebot/issues/44), [Phase 4 research](../superpowers/specs/2026-10-31-phase4-automated-data-pipeline-design.md), [Game-data updates](data-change.md).
+
+## Destroyer 12.7mm MG: operator-reported asset chain (pending pinned-build verification)
+
+A concrete asset chain was supplied for the **Colonial Destroyer** only:
+
+| Relationship | Reported source field/value |
+|---|---|
+| Vehicle Blueprint | `BPLargeShipDestroyerC` |
+| Seats | `GunnerSeat4` and `GunnerSeat5` |
+| Seat `MountCodeName` | `LargeShipDestroyerCMachineGunner` on each seat |
+| Actual mounted class | `BPLargeShipDestroyerCMachineGunner` |
+| Inherited component class | `BPColVehicleMachineGunnerComponent` |
+| Inherited ammunition | `MGAmmo` |
+| Named mount multiplier row | `BPMountDynamicData.LargeShipDestroyerCMachineGunner` |
+| Reported multiplier | `1.20` |
+
+The existing `Ship 12.7mm (+20% HV)` generator overlay currently uses the unrelated
+`Weapon:AssaultRifleHeavyW` numerical proxy. The proposed **Destroyer-only** replacement is
+`Mount:LargeShipDestroyerCMachineGunner`, **not yet applied**.
+A shared `Ship 12.7mm` sheet entry does not prove all vessels fire through this same mount.
+
+The structured, explicitly **unverified** research record is
+`data_manual/weapon_asset_identity_candidates.json`. The status means the claim has not
+yet been independently corroborated against a specific, hashed licensed export.
+Do not mark it verified or authorize generation merely because 1.20 happens to match.
+
+### Non-destructive checks
+
+From the AedileBot repo root:
+
+~~~bash
+python3 scripts/validate_weapon_identity_candidates.py
+
+# Optional: validates the *named* mount row on a privately held DataTable export;
+# this is still not proof of the seat → mount → inherited ammo chain.
+python3 scripts/validate_weapon_identity_candidates.py --stats /PRIVATE/OUTPUT/stats
+
+# Independently inspect reference candidates from private full Blueprint exports.
+python3 scripts/trace_weapon_assets.py /PRIVATE/EXPORT/War/Content/Blueprints \
+  --ammo MGAmmo \
+  --mount LargeShipDestroyerCMachineGunner \
+  --vehicle BPLargeShipDestroyerC \
+  --output /PRIVATE/destroyer-mg-trace.json
+~~~
+
+For a **full identity sign-off**, pin the game build ID, vanilla PAK SHA-256, exporter
+revision and SHA-256 hashes of reviewed source assets in the private audit system.
+Inspect the original `BPLargeShipDestroyerC` Blueprint exports at both gunner seats,
+verify `MountCodeName` resolves to the named actual mount class, verify the
+`BPColVehicleMachineGunnerComponent` inheritance/default ammunition chain, and
+verify the **same-build** `BPMountDynamicData` row. Record exact private asset and
+property paths and a second reviewer's approval. Do not put raw exports in this
+public repository.
+
+**Fail-closed rule:** no source path, no build/hash, or a missing inheritance edge
+means the claim remains a pending candidate. This research ledger is never consumed
+by `gen_weapons.py`; do not turn on scheduled updates or automatic production
+writes. Once source-verified, update the multiplier overlay through a separately
+reviewed PR and check the calculator fixtures and scope for other ship MGs.
