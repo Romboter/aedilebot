@@ -2,7 +2,7 @@
 import unittest
 
 from scripts.audit_bunker_upgrade_source_candidates import (
-    inspect_declared_upgrade, prepare,
+    inspect_declared_upgrade, prepare, parse_original_upgrade_types,
 )
 
 
@@ -87,6 +87,36 @@ class UpgradeSourceCandidateTests(unittest.TestCase):
                 {"status": "unique_typed_source_row_candidate",
                  "reference_type": "Base", "reference_tier": 1,
                  "typed_match_rows": [{"row": "PieceT1"}]}])
+
+    def test_original_upgrade_nameproperty_tag_and_uasset_path(self):
+        log = ("TYPE\\tWar/Content/Blueprints/Structures/Forts/BPFortT1.uasset\\t"
+               "Default__BPFortT1_C\\tUpgradeStructureCodeName\\tNameProperty\\n")
+        result = parse_original_upgrade_types(log)
+        self.assertEqual(result, {("Structures/Forts/BPFortT1",
+                                    "Default__BPFortT1_C"): "NameProperty"})
+
+    def test_original_upgrade_strproperty_not_promoted_to_fname(self):
+        log = ("TYPE\\tWar/Content/Blueprints/Structures/Forts/BPFortT1.uasset\\t"
+               "Default__BPFortT1_C\\tUpgradeStructureCodeName\\tStrProperty\\n")
+        tags = parse_original_upgrade_types(log)
+        result = inspect_declared_upgrade(
+            {"UpgradeStructureCodeName": "PieceT2"}, self.rows,
+            [("Base", 1)], [("Base", 2)],
+            original_tag=tags[("Structures/Forts/BPFortT1", "Default__BPFortT1_C")])
+        self.assertEqual(result["original_upgrade_property_type"], "StrProperty")
+        self.assertEqual(result["runtime_upgrade_behavior"], "not_established")
+
+    def test_duplicate_upgrade_type_tag_rejected(self):
+        line = ("TYPE\\tWar/Content/Blueprints/Structures/Forts/BPFortT1.uasset\\t"
+                "Default__BPFortT1_C\\tUpgradeStructureCodeName\\tNameProperty\\n")
+        with self.assertRaisesRegex(ValueError, "Duplicate"):
+            parse_original_upgrade_types(line + line)
+
+    def test_unsafe_upgrade_tag_suffix_rejected(self):
+        line = ("TYPE\\tWar/Content/Blueprints/Structures/Forts/BPFortT1.uexp\\t"
+                "Default__BPFortT1_C\\tUpgradeStructureCodeName\\tNameProperty\\n")
+        with self.assertRaisesRegex(ValueError, "Invalid"):
+            parse_original_upgrade_types(line)
 
     def test_bad_tier_rejected(self):
         with self.assertRaisesRegex(ValueError, "tier"):
