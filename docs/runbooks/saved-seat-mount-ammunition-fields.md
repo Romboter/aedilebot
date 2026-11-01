@@ -25,3 +25,13 @@ python3 -m scripts.audit_mount_class_saved_ammo \
 This stage does not establish original nested UE4.24 tagged field types, effective runtime CDO defaults, inherited `MultiAmmo` list reconstruction, selected ammo variants, weapon firing behavior, mount DataTable factors or damage. A saved class default is *not* necessarily the effective child component value. Do not promote guessed values from parent classes, use list indexes to pair ammo and multipliers, publish automatic damage, merge upstream, schedule game updates or change production bot data.
 
 Next: for mount classes with absent saved `AmmoName` or partial `MultiAmmo`, trace explicit `SuperStruct` ancestor CDO source declarations with exact field-local provenance, preserving all unresolved effective runtime states.
+
+## Verified pinned-build results (2026-11-01)
+
+[Private end-to-end validation #41331466654](https://github.com/Romboter/foxhole-lab/actions/runs/41331466654): **PASS**, pinned Foxhole build `26058282`, 87/87 regression tests and 0 extractor build errors. All 124 explicitly saved mount class-default export identities were checked (51 parent/73 child occurrences, 74 distinct classes).
+
+The saved field inventory found 52 `AmmoName` occurrences (14 parent/38 child) and 41 complete saved `MultiAmmo.CompatibleAmmoNames` array occurrences (13 parent/28 child); these source occurrence counts overlap and include repeated mount class references. No `GrenadeMultiAmmo` fields were saved on these references. One child saved a partial `MultiAmmo` struct without a compatible names array.
+
+[Independent full-build provenance crosscheck #41331660751](https://github.com/Romboter/foxhole-lab/actions/runs/41331660751): **PASS**. The single partial mounted class is `Vehicles/MediumTank/BPMediumTank2CGunnerMountComponent`, whose explicitly exported `SuperStruct` parent is `Vehicles/DestroyerTank/BPDestroyerTankWGunnerMountComponent`. The parent serializes exactly one compatible name. This was already among PR #64's three partial `MultiAmmo` declarations; the build-wide exception count remains three partial and one explicitly empty.
+
+The ancestor name is **a saved source candidate only**, not a runtime-resolved child default. A full UE4.24 effective CDO reconstruction fixture or engine-semantic validation is still required to promote this candidate. Preserve `effective_at_runtime=not_established`, even though the class and SCS mount link itself is source-verified.
