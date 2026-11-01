@@ -126,7 +126,7 @@ def inspect(root: Path, graph: dict, audit: dict):
             "parent_component": p, "child_component": c,
             "effective_runtime_component": "not_established",
         })
-    if len(result) != audit.get("coverage",{}).get("counts",{}).get("source_components_checked"):
+    if len(result) != audit.get("coverage",{}).get("counts",{}).get("source_components_checked",0):
         raise ValueError("Component audit report coverage inconsistent")
     return {
         "schema_version": 1, "source_build_id": graph["source_build_id"],
