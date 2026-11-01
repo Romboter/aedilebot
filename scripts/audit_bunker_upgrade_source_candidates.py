@@ -86,9 +86,10 @@ def inspect_declared_upgrade(default_properties, rows, source_profiles, target_p
         return {"status": "upgrade_saved_target_not_in_original_structure_table",
                 "saved_target_codename": value}
     reference_steps = sorted(
-        [{"type": piece, "from_tier": tier, "to_tier": tier + 1}
+        ({"type": piece, "from_tier": tier, "to_tier": tier + 1}
          for piece, tier in source_profiles
-         if (piece, tier + 1) in target_profiles])
+         if (piece, tier + 1) in target_profiles),
+        key=lambda step: (step["type"], step["from_tier"], step["to_tier"]))
     return {
         "status": ("exact_saved_target_with_reference_tier_step_candidates"
                    if reference_steps else
