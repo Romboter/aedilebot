@@ -116,6 +116,27 @@ class InheritanceTriageTests(unittest.TestCase):
         self.assertEqual(values["Items/AmmoSecondChild"]["source"], "Items/AmmoBase")
         self.assertEqual(values["Items/AmmoSecondChild"]["status"], "explicit_ammo_options")
 
+    def test_mount_component_ammo_identity_has_its_own_source_edge(self):
+        self.put("Items/BaseGun.json", [
+            {"Type": "BlueprintGeneratedClass", "Name": "BaseGun_C",
+             "SuperStruct": {"ObjectPath": "/Script/War"}},
+            {"Name": "Default__BaseGun_C", "Properties": {"AmmoName": "MGAmmo"}},
+        ])
+        case = self.report()["mount_cases"][0]
+        child = next(x for x in case["descendants"] if x["package"] == "Vehicles/Child")
+        declaration = child["mounted_component_ammunition"]
+        self.assertEqual(declaration["status"], "explicit_component_declarations_only")
+        self.assertEqual(declaration["package"], "Items/BaseGun")
+        self.assertEqual(declaration["fields"][0]["declared_identifier"], "MGAmmo")
+        self.assertEqual(declaration["fields"][0]["numeric_join"], "not_attempted")
+        self.assertNotIn("damage", declaration)
+
+    def test_missing_mount_component_package_is_reported_not_guessed(self):
+        child = next(x for x in self.report()["mount_cases"][0]["descendants"]
+                     if x["package"] == "Vehicles/Child")
+        self.assertEqual(child["mounted_component_ammunition"]["status"],
+                         "referenced_component_not_exported")
+
     def test_source_hash_mismatch_aborts(self):
         graph = build_index(self.root, "26058282")
         self.put("Vehicles/Child.json", [
