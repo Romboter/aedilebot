@@ -13,11 +13,8 @@ import json
 from pathlib import Path, PurePosixPath
 
 PREFIX = "War/Content/Blueprints/"
-SUPPORTED = {
-    ("BlueprintGeneratedClass", "SuperStruct"),
-    ("VehicleSeatComponent", "MountComponent"),
-    ("Default", "ItemComponentClass"),
-}
+DEFAULT_SINGLE_REF_FIELDS = ("ItemComponentClass", "ProjectileClass", "ExplosionTemplate")
+DEFAULT_ARRAY_REF_FIELDS = ("ProjectileClasses", "GrenadeClasses")
 
 
 def asset_path(object_path):
@@ -48,7 +45,16 @@ def direct_edges(root, source):
         if cls == "VehicleSeatComponent":
             links.append(("MountComponent", props.get("MountComponent")))
         if str(item.get("Name", "")).startswith("Default__"):
-            links.append(("ItemComponentClass", props.get("ItemComponentClass")))
+            for field in DEFAULT_SINGLE_REF_FIELDS:
+                links.append((field, props.get(field)))
+            for field in DEFAULT_ARRAY_REF_FIELDS:
+                value = props.get(field)
+                if value is None:
+                    continue
+                if not isinstance(value, list):
+                    raise ValueError(f"Malformed {field} reference array in {source}")
+                for index, ref in enumerate(value):
+                    links.append((f"{field}[{index}]", ref))
         for field, ref in links:
             value = ref.get("ObjectPath") if isinstance(ref, dict) else None
             target = asset_path(value)
@@ -57,6 +63,7 @@ def direct_edges(root, source):
                     "source_asset": source.relative_to(root).as_posix(),
                     "record": item.get("Name"),
                     "field": field,
+                    "object_path": value,
                     "package": target,
                 }
 
@@ -83,7 +90,7 @@ def discover(root, max_files=10000):
             for key in missing
         ],
         "limitations": [
-            "Only explicit SuperStruct, vehicle MountComponent, and pickup ItemComponentClass paths are followed.",
+            "Only explicit SuperStruct, vehicle MountComponent, ItemComponentClass, ProjectileClass, ExplosionTemplate, ProjectileClasses and GrenadeClasses paths are followed.",
             "Missing export is not proof of missing game asset.",
             "Does not resolve native /Script/War class behavior or opaque bytecode links.",
             "Does not infer references using names, values or class prefixes.",
