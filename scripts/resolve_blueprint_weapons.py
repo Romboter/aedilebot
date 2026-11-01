@@ -115,6 +115,49 @@ def numeric(value):
     return isinstance(value, (int, float)) and not isinstance(value, bool) and math.isfinite(value) and value > 0
 
 
+
+def calculate_variant(ammo_id, mount_id, ammo_rows, mount_rows, ammo_path,
+                      mount_path, root, kinetic_factor):
+    """Compute one *explicitly referenced* ammunition + mount pair.
+
+    Zero damage is meaningful for smoke / flare / gas types and does not
+    establish those effects' behavior. No numerical proxies or guesses.
+    """
+    result = {"ammo": ammo_id, "mount": mount_id, "status": "unresolved"}
+    if not isinstance(mount_id, str) or mount_id not in mount_rows:
+        result["reason"] = "named_mount_row_missing"
+        return result
+    if not isinstance(ammo_id, str) or ammo_id not in ammo_rows:
+        result["reason"] = "named_ammo_row_missing"
+        return result
+    multiplier = mount_rows[mount_id].get("DamageMultiplier")
+    damage = ammo_rows[ammo_id].get("Damage")
+    dtype = (ammo_rows[ammo_id].get("DamageType") or {}).get("ObjectName")
+    if not numeric(multiplier) or isinstance(damage, bool) or not isinstance(damage, (int, float)) or not math.isfinite(damage) or damage < 0 or not isinstance(dtype, str) or not dtype:
+        result["reason"] = "invalid_numeric_or_damage_type"
+        return result
+    factor = kinetic_factor if "Kinetic" in dtype or ammo_id == "AircraftAmmo" else 1.0
+    if not numeric(factor):
+        raise ValueError("Invalid gameplay factor")
+    result.update({
+        "status": ("non_direct_damage_ammunition" if damage == 0
+                   else "resolved_with_manual_gameplay_rule" if factor != 1
+                   else "resolved_from_exported_tables"),
+        "damage": damage * multiplier * factor,
+        "ammo_damage": damage,
+        "mount_multiplier": multiplier,
+        "gameplay_factor": factor,
+        "gameplay_factor_provenance": "manual_rule_kinetic_1_25" if factor != 1 else "none",
+        "source_rows": [
+            {"asset": ammo_path.relative_to(root).as_posix(), "row": ammo_id,
+             "property": "Damage", "sha256": sha256(ammo_path)},
+            {"asset": mount_path.relative_to(root).as_posix(), "row": mount_id,
+             "property": "DamageMultiplier", "sha256": sha256(mount_path)},
+        ],
+    })
+    return result
+
+
 def resolve(root: Path, vehicle: Path, build_id: str, kinetic_factor=1.25):
     root = root.resolve()
     vehicle = (root / vehicle).resolve()
@@ -174,7 +217,10 @@ def resolve(root: Path, vehicle: Path, build_id: str, kinetic_factor=1.25):
                     entry['ammo'] = found
                 elif isinstance(found, dict) and isinstance(found.get('CompatibleAmmoNames'), list):
                     opts = found['CompatibleAmmoNames']
-                    if len(opts) == 1:
+                    entry['ammo_options'] = opts
+                    if not opts or any(not isinstance(v, str) or not v for v in opts) or len(set(opts)) != len(opts):
+                        entry['problem'] = 'invalid_or_duplicate_ammunition_options'
+                    elif len(opts) == 1:
                         entry['ammo'] = opts[0]
                     else:
                         entry['problem'] = 'multiple_ammunition_options'
@@ -189,28 +235,26 @@ def resolve(root: Path, vehicle: Path, build_id: str, kinetic_factor=1.25):
         base = {'endpoint': c['endpoint'], 'ammo': id_ammo, 'mount': id_mount,
                 'edges': c['edges'], 'source_sha256': c['source_sha256'],
                 'status': 'unresolved', 'safe_for_unattended_publication': False}
-        if c.get('problem'):
+        options = c.get('ammo_options')
+        if options is not None:
+            base['ammo_options'] = options
+        if c.get('problem') == 'multiple_ammunition_options':
+            # Enumerate distinct source-backed variant values, not a guessed default
+            # ammo. These remain candidates pending a display/vehicle/variant join.
+            base['reason'] = 'multiple_ammunition_variants_require_explicit_selection'
+            base['variant_candidates'] = [
+                calculate_variant(option, id_mount, ammo, mount, ammo_path, mount_path,
+                                  root, kinetic_factor)
+                for option in options
+            ]
+            if any(x['status'] == 'unresolved' for x in base['variant_candidates']):
+                base['reason'] = 'one_or_more_ammunition_variants_unresolved'
+        elif c.get('problem'):
             base['reason'] = c['problem']
-        elif not isinstance(id_mount, str) or id_mount not in mount:
-            base['reason'] = 'named_mount_row_missing'
-        elif not isinstance(id_ammo, str) or id_ammo not in ammo:
-            base['reason'] = 'named_ammo_row_missing'
         else:
-            m, a = mount[id_mount].get('DamageMultiplier'), ammo[id_ammo].get('Damage')
-            dtype = (ammo[id_ammo].get('DamageType') or {}).get('ObjectName', '')
-            if not numeric(m) or not numeric(a) or not isinstance(dtype, str):
-                base['reason'] = 'invalid_numeric_or_damage_type'
-            else:
-                factor = kinetic_factor if 'Kinetic' in dtype or id_ammo == 'AircraftAmmo' else 1.0
-                if not numeric(factor):
-                    raise ValueError('Invalid gameplay factor')
-                base.update({'status': 'resolved_with_manual_gameplay_rule' if factor != 1 else 'resolved_from_exported_tables',
-                             'damage': a * m * factor, 'ammo_damage': a, 'mount_multiplier': m,
-                             'gameplay_factor': factor, 'gameplay_factor_provenance': 'manual_rule_kinetic_1_25' if factor != 1 else 'none',
-                             'source_rows': [{'asset': ammo_path.relative_to(root).as_posix(), 'row': id_ammo,
-                                              'property': 'Damage', 'sha256': sha256(ammo_path)},
-                                             {'asset': mount_path.relative_to(root).as_posix(), 'row': id_mount,
-                                              'property': 'DamageMultiplier', 'sha256': sha256(mount_path)}]})
+            derived = calculate_variant(id_ammo, id_mount, ammo, mount, ammo_path,
+                                        mount_path, root, kinetic_factor)
+            base.update(derived)
         result.append(base)
     return {'schema_version': 1, 'build_id': build_id,
             'vehicle_asset': vehicle.relative_to(root).as_posix(),
