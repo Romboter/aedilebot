@@ -94,3 +94,40 @@ Research only: no SteamCMD updates, scheduled CI, numeric corrections
 to production, automatic PR publication, or live snapshot activation.
 See [Blueprint reference model](blueprint-reference-model.md),
 [Issue #44](https://github.com/Romboter/aedilebot/issues/44).
+
+## Whole-archive known-edge coverage snapshot
+
+A non-destructive pass over the **3,795 Blueprint JSON packages** in the
+privately archived build `26058282` counted **870 exact exported references
+to other Blueprint packages**, targeting **528 distinct package names**.
+
+| Recognized `ObjectPath` field | Exported references | Missing referenced packages |
+|---|---:|---:|
+| `BlueprintGeneratedClass.SuperStruct` | 311 | 1 |
+| `VehicleSeatComponent.MountComponent` | 300 | 0 |
+| `Default__.ItemComponentClass` | 144 | 0 |
+| `Default__.ExplosionTemplate` | 43 | 0 |
+| `Default__.GrenadeClasses[]` | 31 | 0 |
+| `Default__.ProjectileClass` | 31 | 0 |
+| `Default__.ProjectileClasses[]` | 10 | 0 |
+| **All seven recognized fields** | **870** | **1** |
+
+The one absent referenced package in this archive is
+`War/Content/Blueprints/BPWaterStencilComponent`, linked from
+`Vehicles/LargeShips/SubmarineW/BPSubmarineStencilComponent`
+through `SuperStruct.ObjectPath`. That is an **archive completeness
+gap**, not proof that a weapon is broken or that the PAK lacks the
+asset. The resolved edge count is 869/870 **for this recognized field
+set only**.
+
+Do not interpret 869/870 as coverage of *all* Unreal object references
+or gameplay dependencies: the scanner intentionally excludes many
+object types, actor/level relationships, runtime links, materials, sounds,
+native functions, and implicit DataTable lookups. Treat this inventory
+as a **baseline for graph-schema drift comparisons**, not a license to
+automatically generate all damage numbers.
+
+`find_blueprint_dependencies.py` reports the count of each recognized
+edge type, missing source edges with their exact property and
+export-file SHA-256, and the missing package path. No full private JSON
+exports are committed with the report.
