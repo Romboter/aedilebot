@@ -93,6 +93,24 @@ class StructureDynamicRowIdentityTests(unittest.TestCase):
         with self.assertRaisesRegex(ValueError, "row key type"):
             audit(self.root, self.graph(), bad, "pinned-inspector-commit")
 
+    def test_original_uasset_inspector_paths_resolve_to_indexed_packages(self):
+        # CUE4Parse raw provider keys carry .uasset; indexed JSON packages do not.
+        tagged = TAGS.replace(
+            "Data/BPStructureDynamicData\\t", "Data/BPStructureDynamicData.uasset\\t"
+        ).replace(
+            "Structures/Pillbox\\t", "Structures/Pillbox.uasset\\t"
+        )
+        r = audit(self.root, self.graph(), tagged, "exact-extractor-pin")
+        self.assertEqual(
+            r["coverage"]["status_counts"]["original_nameproperty_and_fname_row"], 1)
+        self.assertEqual(r["coverage"]["table_key_type"], "FName")
+
+    def test_other_extension_rejected_not_normalized(self):
+        bad = TAGS.replace(
+            "Data/BPStructureDynamicData\\t", "Data/BPStructureDynamicData.umap\\t")
+        with self.assertRaisesRegex(ValueError, "Unsupported inspector package path"):
+            parse_type_log(bad)
+
     def test_changed_package_rejected(self):
         graph = self.graph()
         file = self.root / "Structures/Pillbox.json"
