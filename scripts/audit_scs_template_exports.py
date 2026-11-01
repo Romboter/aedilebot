@@ -104,7 +104,22 @@ def inspect(root: Path, graph: dict, base: dict, typed: dict):
         if len(source_nodes) != 1:
             raise ValueError("Parent SCS node identity not unique")
         parent_ref = (source_nodes[0].get("Properties") or {}).get("ComponentTemplate")
-        child_ref = row.get("child_template")
+        source_handlers = [x for x in exports(child)
+                           if x.get("Type") == "InheritableComponentHandler"
+                           and x.get("Name") == row["handler_record"]]
+        if len(source_handlers) != 1:
+            raise ValueError("Source child handler record not unique")
+        source_records = (source_handlers[0].get("Properties") or {}).get("Records")
+        i = row["record_index"]
+        if not isinstance(source_records, list) or i >= len(source_records) or not isinstance(source_records[i], dict):
+            raise ValueError("Indexed child handler record missing")
+        child_ref = source_records[i].get("ComponentTemplate")
+        indexed_child_ref = row.get("child_template")
+        if indexed_child_ref:
+            if (not isinstance(child_ref, dict)
+                or child_ref.get("ObjectPath") != indexed_child_ref["object_path"]
+                or indexed_child_ref["target_package"] != child):
+                raise ValueError("Child component reference changed from indexed edge")
         parent_info = reference(parent_ref, owner_package)
         child_info = reference(child_ref, child)
         counts["source_components_checked"] += 1
