@@ -57,6 +57,57 @@ def explicit_property(root, asset, names, trail=None):
     return None, None
 
 
+
+def assembled_vehicle(root: Path, vehicle: Path):
+    """Build effective seat and default fields from base-to-derived Blueprint exports.
+
+    Exact seat object names link child overrides to parent templates; empty
+    child fields must NOT erase an inherited MountCodeName / MountComponent.
+    """
+    ancestry = []
+    current = vehicle.resolve()
+    seen = set()
+    while True:
+        if not current.is_relative_to(root) or current in seen or not current.is_file():
+            raise ValueError("Unsafe, missing or cyclic parent Blueprint")
+        seen.add(current)
+        objects = load(current)
+        if not isinstance(objects, list):
+            raise ValueError("Expected Unreal Blueprint export list")
+        ancestry.append((current, objects))
+        classes = [o for o in objects if o.get("Type") == "BlueprintGeneratedClass"]
+        if len(classes) > 1:
+            raise ValueError("Multiple generated classes in vehicle export")
+        parent = (classes[0].get("SuperStruct") or {}).get("ObjectPath", "") if classes else ""
+        if not parent.startswith("War/Content/Blueprints/"):
+            break  # Native parent; no guesses about unexported defaults.
+        relative = parent.removeprefix("War/Content/Blueprints/").split(".", 1)[0] + ".json"
+        current = (root / relative).resolve()
+
+    seats = {}
+    defaults = {}
+    for source, objects in reversed(ancestry):
+        origin = source.relative_to(root).as_posix()
+        for obj in objects:
+            if obj.get("Type") == "VehicleSeatComponent" and isinstance(obj.get("Name"), str):
+                seat = seats.setdefault(obj["Name"], {"Type": "VehicleSeatComponent",
+                                                     "Name": obj["Name"], "Properties": {},
+                                                     "_field_origins": {}})
+                for name, value in (obj.get("Properties") or {}).items():
+                    seat["Properties"][name] = value
+                    seat["_field_origins"][name] = {
+                        "asset": origin,
+                        "property": obj["Name"] + "/Properties/" + name,
+                        "sha256": sha256(source),
+                    }
+        class_defaults = [o for o in objects if str(o.get("Name", "")).startswith("Default__")]
+        if len(class_defaults) > 1:
+            raise ValueError("Duplicate Blueprint class defaults")
+        if class_defaults:
+            defaults.update(class_defaults[0].get("Properties") or {})
+    return defaults, list(seats.values())
+
+
 def numeric(value):
     return isinstance(value, (int, float)) and not isinstance(value, bool) and math.isfinite(value) and value > 0
 
@@ -70,11 +121,7 @@ def resolve(root: Path, vehicle: Path, build_id: str, kinetic_factor=1.25):
         raise ValueError('A numeric pinned game build ID is required')
     ammo, ammo_path = table(root, 'BPAmmoDynamicData')
     mount, mount_path = table(root, 'BPMountDynamicData')
-    objs = load(vehicle)
-    defaults = [x for x in objs if str(x.get('Name', '')).startswith('Default__')]
-    if len(defaults) != 1:
-        raise ValueError('Missing or duplicate vehicle class default')
-    props = defaults[0].get('Properties') or {}
+    props, seats = assembled_vehicle(root, vehicle)
     candidates = []
     cfgs = props.get('WeaponConfigs')
     if cfgs is not None:
@@ -93,7 +140,7 @@ def resolve(root: Path, vehicle: Path, build_id: str, kinetic_factor=1.25):
                                           'value': cfg.get('WeaponCodeName')}],
                                'source_sha256': sha256(vehicle)})
     else:
-        for obj in objs:
+        for obj in seats:
             if obj.get('Type') != 'VehicleSeatComponent':
                 continue
             p = obj.get('Properties') or {}
@@ -102,13 +149,14 @@ def resolve(root: Path, vehicle: Path, build_id: str, kinetic_factor=1.25):
             ref = component.get('ObjectPath') if isinstance(component, dict) else None
             if not mount_id or not ref:
                 continue
+            origins = obj.get("_field_origins", {})
             entry = {'endpoint': obj.get('Name'), 'mount': mount_id,
                      'edges': [{'asset': vehicle.relative_to(root).as_posix(),
                                 'property': obj.get('Name') + '/Properties/MountCodeName',
-                                'value': mount_id},
+                                'value': mount_id, **origins.get('MountCodeName', {})},
                                {'asset': vehicle.relative_to(root).as_posix(),
                                 'property': obj.get('Name') + '/Properties/MountComponent/ObjectPath',
-                                'value': ref}], 'source_sha256': sha256(vehicle)}
+                                'value': ref, **origins.get('MountComponent', {})}], 'source_sha256': sha256(vehicle)}
             if not ref.startswith('War/Content/Blueprints/'):
                 entry['problem'] = 'non_exportable_component_reference'
             else:
