@@ -184,8 +184,14 @@ def make_snapshot(args) -> dict:
         if getattr(pak_before, field) != getattr(pak_after, field):
             raise ValueError("PAK changed during hashing; fail closed")
     all_tables = {}
-    for path in sorted((args.stats / TABLE_ROOT).glob("*.json")):
-        all_tables[path.name] = {"sha256": sha256_file(path), "bytes": path.stat().st_size}
+    table_dir = args.stats / TABLE_ROOT
+    for path in sorted(table_dir.rglob("*.json")):
+        # Use relative asset paths: different subfolders may contain the same filename.
+        relative_asset = path.relative_to(table_dir).as_posix()
+        all_tables[relative_asset] = {
+            "sha256": sha256_file(path),
+            "bytes": path.stat().st_size,
+        }
     if len(all_tables) < 40:
         raise ValueError("Suspiciously incomplete DataTable export")
     inputs = {}
