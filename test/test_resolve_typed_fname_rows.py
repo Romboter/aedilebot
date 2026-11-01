@@ -139,6 +139,17 @@ class TypedFNameTests(unittest.TestCase):
         with self.assertRaisesRegex(ValueError, "checksum mismatches"):
             self.run_resolver(index=index)
 
+    def test_mismatched_source_blueprint_hash_aborts(self):
+        index = build_index(self.root, BUILD)
+        self.put("Items/RPG.json", [
+            {"Name": "Default__RPG_C", "Properties": {
+                "CompatibleAmmoCodeName": "RPGAmmo",
+                "UnrelatedAssetProperty": 42,
+            }},
+        ])
+        with self.assertRaisesRegex(ValueError, "Source Blueprint checksum"):
+            self.run_resolver(index=index)
+
     def test_mismatched_index_build_rejected(self):
         index = build_index(self.root, "26058300")
         with self.assertRaisesRegex(ValueError, "build differ"):
