@@ -95,6 +95,12 @@ def resolve(index: dict, export_root: Path, inspector_output: str, game_build_id
         source = ref["source"]
         if packages.get(source) != ref["source_sha256"]:
             raise ValueError("Source SHA provenance mismatch in graph: " + source)
+        exported_source = root / (source + ".json")
+        if (not exported_source.is_file() or exported_source.is_symlink()
+                or not exported_source.resolve().is_relative_to(root)):
+            raise ValueError("Source Blueprint export missing or unsafe: " + source)
+        if hashlib.sha256(exported_source.read_bytes()).hexdigest() != ref["source_sha256"]:
+            raise ValueError("Source Blueprint checksum mismatches indexed export: " + source)
         original = ref["row"]
         table = ref["table"]
         report = {
@@ -145,6 +151,7 @@ def resolve(index: dict, export_root: Path, inspector_output: str, game_build_id
         "status": "review_only_typed_fname_evidence",
         "safe_for_unattended_publication": False,
         "verified_table_key_types": verified_tables,
+        "inspector_output_sha256": hashlib.sha256(inspector_output.encode("utf-8")).hexdigest(),
         "inspected_property_type_records": len(type_evidence),
         "inspector_unresolved_fields": unresolved,
         "counts": {"eligible_and_unique": counts.get("typed_fname_unique_row_identity", 0),
