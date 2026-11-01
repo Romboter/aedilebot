@@ -49,6 +49,18 @@ def direct_edges(root, source):
             links.append(("SuperStruct", item.get("SuperStruct")))
         if cls == "VehicleSeatComponent":
             links.append(("MountComponent", props.get("MountComponent")))
+        if cls == "InheritableComponentHandler":
+            records = props.get("Records", [])
+            if not isinstance(records, list):
+                raise ValueError("Invalid component records")
+            for i, entry in enumerate(records):
+                if not isinstance(entry, dict):
+                    raise ValueError("Invalid component record")
+                key = entry.get("ComponentKey", {})
+                if not isinstance(key, dict):
+                    raise ValueError("Invalid component key")
+                links.append((f"Records[{i}].ComponentKey.OwnerClass", key.get("OwnerClass")))
+                links.append((f"Records[{i}].ComponentTemplate", entry.get("ComponentTemplate")))
         if str(item.get("Name", "")).startswith("Default__"):
             for field in DEFAULT_SINGLE_REF_FIELDS:
                 links.append((field, props.get(field)))
