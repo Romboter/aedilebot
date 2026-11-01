@@ -1,0 +1,15 @@
+name: Explicit seat MountComponent generated class source identity CI
+on:
+  push:
+    branches: [research/78-seat-mount-target-classes]
+  pull_request:
+permissions:
+  contents: read
+jobs:
+  synthetic:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - run: python3 -m unittest discover -s test -p 'test_resolve_explicit_seat_mount_classes.py' -v
+      - run: python3 -m unittest discover -s test -p 'test_audit_inherited_seat_mount_sources.py' -v
