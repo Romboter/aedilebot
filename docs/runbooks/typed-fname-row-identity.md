@@ -107,3 +107,38 @@ Related: [graph index](blueprint-build-graph.md), [Blueprint reference
 model](blueprint-reference-model.md),
 [Issue #58](https://github.com/Romboter/aedilebot/issues/58),
 [Issue #53](https://github.com/Romboter/aedilebot/issues/53).
+
+## Follow-up: `FName(None)` does not identify a mount
+
+The full-build exception list includes two driver-seat records whose
+serialized `MountCodeName` is exactly `None`:
+
+- `Vehicles/Tankette/BPTanketteFlameC` /
+  `DriverSeat0_GEN_VARIABLE`
+- `Vehicles/Tankette/BPTanketteOffensiveC` /
+  `DriverSeat0_GEN_VARIABLE`
+
+`FName.IsNone` is an explicit unset-name sentinel in Unreal. A
+`None` mount-name field must not be treated as a missing
+`BPMountDynamicData` weapon row or automatically assigned a gun.
+The graph index now emits `none_sentinel_candidate` for this
+particular source field; the typed resolver emits
+`typed_fname_unset_mount_identity` **only after** inspecting that
+specific field's `NameProperty` tag. Without the original type
+evidence, the candidate remains unresolved.
+
+That leaves two actual unavailable mount row names in the pinned
+source: `BattleTankMachineGunner` and `FieldMortarGunner`. These
+must still be followed through their actual vehicle subclasses/overrides
+before concluding they represent an active firing endpoint.
+
+Four other `MultiAmmo` declarations have no usable exported
+`CompatibleAmmoNames[]` array. They are now described as
+`no_compatible_ammo_names_exported`, rather than proof the game
+assets are corrupt. Some may inherit compatible ammunition or
+represent optional modes; the current graph declaration alone
+does not establish their runtime meaning.
+
+The source inventory remains intentionally review-only. A typed
+`None` sentinel is *not* counted as a newly verified weapon damage
+value or ammunition identity.
