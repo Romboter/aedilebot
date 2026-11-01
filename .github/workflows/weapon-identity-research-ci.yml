@@ -9,6 +9,8 @@ on:
       - 'test/test_weapon_identity_candidates.py'
       - 'scripts/report_weapon_identity_coverage.py'
       - 'test/test_weapon_identity_coverage.py'
+      - 'scripts/resolve_blueprint_weapons.py'
+      - 'test/test_resolve_blueprint_weapons.py'
       - '.github/workflows/weapon-identity-research-ci.yml'
   pull_request:
     paths:
@@ -32,5 +34,7 @@ jobs:
         run: python3 -m unittest discover -s test -p 'test_weapon_identity_coverage.py' -v
       - name: Smoke-test inventory against current committed weapon sheets
         run: python3 scripts/report_weapon_identity_coverage.py --output /tmp/weapon-identity-coverage.json
+      - name: Test Blueprint weapon resolver (synthetic exports)
+        run: python3 -m unittest discover -s test -p 'test_resolve_blueprint_weapons.py' -v
       - name: Validate reference tracing tests
         run: python3 -m unittest discover -s test -p 'test_trace_weapon_assets.py' -v
