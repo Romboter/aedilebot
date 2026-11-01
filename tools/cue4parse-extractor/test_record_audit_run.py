@@ -45,6 +45,7 @@ class ProvenanceTests(unittest.TestCase):
         self.table_root = self.stats / "War/Content/Blueprints/Data"
         for i in range(45):
             dump(self.table_root / f"Test{i:02d}.json", [{"Rows": {"Item": {"Damage": i}}}])
+        dump(self.table_root / "Nested" / "Extra.json", [{"Rows": {"Other": {"Damage": 1}}}])
         self.audit = self.root / "audit.json"
         self.audit_data = {
             "source_table_counts": {"DTDamageProfiles": 20},
@@ -80,7 +81,10 @@ class ProvenanceTests(unittest.TestCase):
     def test_baseline_then_unchanged_then_table_drift(self):
         first = run(self.args("100-1"))
         self.assertEqual(first["status"], "baseline_created")
-        self.assertEqual(previous_snapshot(self.state)["steam"]["build_id"], "987654")
+        baseline = previous_snapshot(self.state)
+        self.assertEqual(baseline["steam"]["build_id"], "987654")
+        self.assertEqual(len(baseline["tables"]), 46)
+        self.assertIn("Nested/Extra.json", baseline["tables"])
         second = run(self.args("101-1"))
         self.assertEqual(second["status"], "unchanged")
         self.assertEqual(second["previous_run_key"], "100-1")
