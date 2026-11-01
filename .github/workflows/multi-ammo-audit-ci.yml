@@ -1,0 +1,30 @@
+name: Whole-build MultiAmmo source inventory — offline
+
+on:
+  push:
+    branches: [research/64-buildwide-multi-ammo-audit]
+    paths:
+      - 'scripts/audit_multi_ammo_declarations.py'
+      - 'test/test_audit_multi_ammo_declarations.py'
+      - '.github/workflows/multi-ammo-audit-ci.yml'
+  pull_request:
+    paths:
+      - 'scripts/audit_multi_ammo_declarations.py'
+      - 'test/test_audit_multi_ammo_declarations.py'
+      - '.github/workflows/multi-ammo-audit-ci.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  synthetic-source-coverage:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - name: Build-wide source declarations, missing parent and hash regression tests
+        run: python3 -m unittest discover -s test -p 'test_audit_multi_ammo_declarations.py' -v
+      - name: Preserve scoped field evidence and inheritance regressions
+        run: |
+          python3 -m unittest discover -s test -p 'test_trace_multi_ammo_field_evidence.py' -v
+          python3 -m unittest discover -s test -p 'test_triage_blueprint_inheritance_exceptions.py' -v
