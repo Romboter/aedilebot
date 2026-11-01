@@ -1,0 +1,15 @@
+name: Serialized SCS template field-delta CI
+on:
+  push:
+    branches: [research/75-component-template-source-deltas]
+  pull_request:
+permissions:
+  contents: read
+jobs:
+  synthetic:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - run: python3 -m unittest discover -s test -p 'test_audit_scs_template_field_deltas.py' -v
+      - run: python3 -m unittest discover -s test -p 'test_resolve_qualified_scs_template_exports.py' -v
