@@ -129,7 +129,10 @@ def compare(old, new):
             "content_changes": len(content_changes),
             "by_family": dict(sorted(change_counts.items())),
         },
-        "requires_human_review": bool(changes or content_changes),
+        "build_changed": old["source_build_id"] != new["source_build_id"],
+        "requires_human_review": bool(
+            changes or content_changes or old["source_build_id"] != new["source_build_id"]
+        ),
         "safe_for_unattended_publication": False,
         "limitations": [
             "Equal relationship identifiers do not establish equal gameplay mechanics.",
