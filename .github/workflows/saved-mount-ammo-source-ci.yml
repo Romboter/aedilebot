@@ -1,0 +1,15 @@
+name: Saved seat mount Blueprint ammunition declaration CI
+on:
+  push:
+    branches: [research/79-seat-mount-saved-ammo-declarations]
+  pull_request:
+permissions:
+  contents: read
+jobs:
+  saved-cdo-source-only:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - run: python3 -m unittest discover -s test -p 'test_audit_mount_class_saved_ammo.py' -v
+      - run: python3 -m unittest discover -s test -p 'test_resolve_explicit_seat_mount_classes.py' -v
