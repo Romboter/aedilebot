@@ -1,0 +1,17 @@
+name: Serialized Blueprint reference surface CI
+on:
+  push:
+    branches: [research/65-blueprint-reference-surface]
+  pull_request:
+permissions:
+  contents: read
+jobs:
+  source-reference-inventory:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - name: Validate exact source references on synthetic exports
+        run: python3 -m unittest discover -s test -p 'test_audit_blueprint_reference_surface.py' -v
+      - name: Keep existing graph tests passing
+        run: python3 -m unittest discover -s test -p 'test_blueprint_graph_index.py' -v
