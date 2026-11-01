@@ -116,6 +116,39 @@ class QualifiedSCSExportTests(unittest.TestCase):
         self.assertEqual(match_qualified(self.root,graph,refs)["records"][0]["parent_component"]["status"],
                          "unsupported_qualified_object_name")
 
+    def test_export_outer_confirms_expected_generated_class(self):
+        graph,refs=self.report()
+        out=match_qualified(self.root,graph,refs)
+        row=out["records"][0]
+        for side in ("parent_component","child_component"):
+            proof=row[side]["outer_source_provenance"]
+            self.assertEqual(proof["status"],"serialized_outer_owner_match")
+            self.assertTrue(proof["same_source_package"])
+            self.assertEqual(proof["runtime_owner"],"not_established")
+
+    def test_wrong_outer_generated_class_is_not_accepted(self):
+        self.child[-1]["Outer"]["ObjectName"]="BlueprintGeneratedClass'Wrong_C'"
+        self.save()
+        graph,refs=self.report()
+        proof=match_qualified(self.root,graph,refs)["records"][0]["child_component"]
+        self.assertEqual(proof["status"],"outer_generated_class_mismatch")
+        self.assertEqual(proof["outer_source_provenance"]["status"],"outer_generated_class_mismatch")
+
+    def test_wrong_outer_package_is_not_accepted(self):
+        self.child[-1]["Outer"]["ObjectPath"]="War/Content/Blueprints/Items/Parent.1"
+        self.save()
+        graph,refs=self.report()
+        proof=match_qualified(self.root,graph,refs)["records"][0]["child_component"]
+        self.assertEqual(proof["status"],"outer_generated_class_mismatch")
+        self.assertFalse(proof["outer_source_provenance"]["same_source_package"])
+
+    def test_missing_outer_reference_is_unresolved(self):
+        self.child[-1].pop("Outer")
+        self.save()
+        graph,refs=self.report()
+        self.assertEqual(match_qualified(self.root,graph,refs)["records"][0]["child_component"]["status"],
+                         "outer_reference_missing")
+
     def test_source_hash_change_aborts(self):
         graph,refs=self.report()
         self.parent[-1]["Name"]="Modified"
