@@ -1,5 +1,19 @@
 # FoxBunker validated bunker tier benchmark against original structure rows
 
+## Verified pinned-run results (2026-11-01)
+
+**Succeeded:** private [run #41352292228](https://github.com/Romboter/foxhole-lab/actions/runs/41352292228), pinned Foxhole build `26058282`, original relation graph digest `8a0a8b7c4fa26469b08ca8d39881a69d9beef06f17f520e6472ef8a1676a5a44`. Passed 12 new reference/ambiguity tests and 11 existing original-type source-join regression tests.
+
+- 22 FoxBunker types, 51 available type/tier configurations; 15 tier cells unavailable in its explicit source table.
+- 592/592 original game structure rows have all three compared numeric scalar fields.
+- **51/51** available FoxBunker configurations match at least one game row *exactly* in all three fields and also have at least one original type-proven source-class `CodeName` join.
+- **20/51** have one such typed source row, **31/51** have multiple. This is row-level numerical uniqueness, not proof of runtime tier class identity.
+- Uniquely matching three-tier families: `FortBaseT1–T3` (Base), `RifleAIT1–T3` (Rifle Garrison), `MGAIT1–T3` (Machine Gun Garrison), `ATGunAIT1–T3` (Anti-Tank Garrison), `ArtilleryAIT1–T3` (Howitzer Garrison), and `FortArtilleryShelterT1–T3` (Artillery Shelter).
+- Other unique third-tier candidates: `FortEmpT3` (Foundation) and `FortGarrisonStation` (Underground Fortress).
+- Deliberately ambiguous families include Blank/Corner/Ramp/Med Bunker and rooms sharing numbers; Observation Bunker/Radar sharing numbers; and several large Tier-3 structures. **Do not use directory name or fuzzy row label to break ties without additional source evidence.**
+
+An early run failed on a malformed synthetic test fixture; a later run failed because the stacked branch retained an older original inspector path parser that omitted the exact `.uasset` suffix normalization from the previously verified audit. Both issues were corrected, with the previously proven parser and its regression tests restored. The successful run above is the authoritative check for this branch.
+
 ## Scope
 
 The project owner confirmed on 2026-11-01 that FoxBunker's **calculation input data** accurately reflects in-game bunker values. Use the currently fingerprinted public FoxBunker `STRUCTURES` table as the gameplay reference for exploring which *serialized* `BPStructureDynamicData` rows could supply each piece/tier configuration. This remains **candidate discovery**, never an unattended authoritative class/tier map or claim about effective native behavior.
