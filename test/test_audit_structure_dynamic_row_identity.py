@@ -96,9 +96,9 @@ class StructureDynamicRowIdentityTests(unittest.TestCase):
     def test_original_uasset_inspector_paths_resolve_to_indexed_packages(self):
         # CUE4Parse raw provider keys carry .uasset; indexed JSON packages do not.
         tagged = TAGS.replace(
-            "Data/BPStructureDynamicData\\t", "Data/BPStructureDynamicData.uasset\\t"
+            "Data/BPStructureDynamicData\t", "Data/BPStructureDynamicData.uasset\t"
         ).replace(
-            "Structures/Pillbox\\t", "Structures/Pillbox.uasset\\t"
+            "Structures/Pillbox\t", "Structures/Pillbox.uasset\t"
         )
         r = audit(self.root, self.graph(), tagged, "exact-extractor-pin")
         self.assertEqual(
@@ -107,7 +107,7 @@ class StructureDynamicRowIdentityTests(unittest.TestCase):
 
     def test_other_extension_rejected_not_normalized(self):
         bad = TAGS.replace(
-            "Data/BPStructureDynamicData\\t", "Data/BPStructureDynamicData.umap\\t")
+            "Data/BPStructureDynamicData\t", "Data/BPStructureDynamicData.umap\t")
         with self.assertRaisesRegex(ValueError, "Unsupported inspector package path"):
             parse_type_log(bad)
 
