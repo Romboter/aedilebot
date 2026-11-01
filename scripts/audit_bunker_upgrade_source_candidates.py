@@ -70,7 +70,33 @@ def prepare(typed_records, benchmark_records):
     return typed_by_row, reference_profiles
 
 
-def inspect_declared_upgrade(default_properties, rows, source_profiles, target_profiles):
+def parse_original_upgrade_types(content: str):
+    """Only original UE property TYPE tags; values are never accepted."""
+    result = {}
+    prefix = "War/Content/Blueprints/"
+    for line in content.splitlines():
+        cols = line.split("\t")
+        if len(cols) != 5 or cols[0] != "TYPE" or cols[3] != "UpgradeStructureCodeName":
+            continue
+        _, path, name, _, kind = cols
+        if not path.startswith(prefix):
+            raise ValueError("Unscoped original upgrade tag")
+        pkg = path[len(prefix):]
+        if pkg.endswith(".uasset"):
+            pkg = pkg[:-7]
+        if not pkg.startswith("Structures/") or "." in pkg or "\\" in pkg:
+            raise ValueError("Invalid original upgrade package path")
+        if not name.startswith("Default__") or not kind:
+            raise ValueError("Malformed original upgrade tag")
+        key = (pkg, name)
+        if key in result:
+            raise ValueError("Duplicate original upgrade tag")
+        result[key] = kind
+    return result
+
+
+def inspect_declared_upgrade(default_properties, rows, source_profiles, target_profiles,
+                             original_tag=None):
     """No name inference. Only same-reference next-tier source candidates counted."""
     if not isinstance(default_properties, dict):
         raise ValueError("Malformed saved class default properties")
@@ -96,12 +122,12 @@ def inspect_declared_upgrade(default_properties, rows, source_profiles, target_p
                    "exact_saved_target_without_reference_tier_step"),
         "saved_target_codename": value,
         "same_reference_next_tier_candidates": reference_steps,
-        "original_upgrade_property_type": "not_inspected",
+        "original_upgrade_property_type": original_tag or "not_inspected",
         "runtime_upgrade_behavior": "not_established",
     }
 
 
-def audit(root: Path, graph: dict, typed_report: dict, benchmark_report: dict):
+def audit(root: Path, graph: dict, typed_report: dict, benchmark_report: dict,\n          original_type_log: str | None = None, inspector_commit: str | None = None):
     graph = checked(graph)
     for name, report in (("typed", typed_report), ("benchmark", benchmark_report)):
         if not isinstance(report, dict):
@@ -121,6 +147,11 @@ def audit(root: Path, graph: dict, typed_report: dict, benchmark_report: dict):
             "project_owner_explicitly_confirmed_gameplay_data_accuracy_2026_11_01"):
         raise ValueError("Unexpected public benchmark validation provenance")
 
+    if original_type_log is not None and not inspector_commit:
+        raise ValueError("Original upgrade type inspection requires pinned extractor commit")
+    upgrade_tags = parse_original_upgrade_types(original_type_log or "")
+    if original_type_log is not None and not upgrade_tags:
+        raise ValueError("No original upgrade type tags inspected")
     root = root.resolve()
     table_export = load(exact_export(root, TABLE_PACKAGE, nodes[TABLE_PACKAGE]))
     if (not isinstance(table_export, list) or len(table_export) != 1
@@ -149,9 +180,15 @@ def audit(root: Path, graph: dict, typed_report: dict, benchmark_report: dict):
             if not isinstance(props, dict) or props.get("CodeName") != row:
                 raise ValueError("Original typed CodeName no longer matches source")
             target = props.get("UpgradeStructureCodeName")
+            tag = upgrade_tags.get((pkg, name))
+            if original_type_log is not None and "UpgradeStructureCodeName" in props and tag is None:
+                raise ValueError("Saved upgrade lacks original UE field type tag")
+            if original_type_log is not None and "UpgradeStructureCodeName" not in props and tag is not None:
+                raise ValueError("Original upgrade tag without saved field")
             profile = inspect_declared_upgrade(
                 props, game_rows, reference_rows.get(row, []),
-                reference_rows.get(target, []) if isinstance(target, str) else [])
+                reference_rows.get(target, []) if isinstance(target, str) else [],
+                original_tag=tag)
             count[profile["status"]] += 1
             tier_saved = props.get("Tier")
             observations.append({
@@ -178,6 +215,10 @@ def audit(root: Path, graph: dict, typed_report: dict, benchmark_report: dict):
         "table_sha256": nodes[TABLE_PACKAGE],
         "reference_sha256": benchmark_report["reference"]["sha256"],
         "safe_for_unattended_publication": False,
+        "original_upgrade_inspector_commit": inspector_commit,
+        "original_upgrade_type_log_sha256": (
+            hashlib.sha256(original_type_log.encode()).hexdigest()
+            if original_type_log is not None else None),
         "coverage": {
             "verified_typed_rows_in_source": len(typed_rows),
             "typed_class_declarations_checked": len(observations),
@@ -185,10 +226,12 @@ def audit(root: Path, graph: dict, typed_report: dict, benchmark_report: dict):
             "saved_upgrade_status_counts": dict(sorted(count.items())),
             "same_reference_next_tier_candidate_links": len(linked),
             "saved_tier_property_present": sum(o["saved_tier"]["status"] == "explicit_saved" for o in observations),
+            "original_upgrade_tag_count": len(upgrade_tags),
+            "original_upgrade_tag_type_counts": dict(sorted(Counter(upgrade_tags.values()).items())),
         },
         "observations": observations,
         "limitations": [
-            "UpgradeStructureCodeName is saved but its original UE property type is not inspected here.",
+            "UpgradeStructureCodeName UE tag proof requires a separately pinned original inspector; runtime behavior remains unproven.",
             "Exact upgrade row key alone does not prove an executable runtime upgrade or class selection.",
             "A reference-compatible tier step is a candidate, not an automatic class identity.",
             "Matching three numeric fields can group unrelated structures and different gameplay roles.",
@@ -204,13 +247,13 @@ def main():
     p.add_argument("--index", type=Path, required=True)
     p.add_argument("--typed-report", type=Path, required=True)
     p.add_argument("--benchmark-report", type=Path, required=True)
-    p.add_argument("--output", type=Path, required=True)
+    p.add_argument("--inspector-log", type=Path)\n    p.add_argument("--inspector-commit")\n    p.add_argument("--output", type=Path, required=True)
     a = p.parse_args()
     result = audit(
         a.source_root,
         json.loads(a.index.read_text(encoding="utf-8")),
         json.loads(a.typed_report.read_text(encoding="utf-8")),
-        json.loads(a.benchmark_report.read_text(encoding="utf-8")))
+        json.loads(a.benchmark_report.read_text(encoding="utf-8")),\n        a.inspector_log.read_text(encoding="utf-8") if a.inspector_log else None,\n        a.inspector_commit)
     a.output.write_text(json.dumps(result, indent=2, sort_keys=True) + "\n", encoding="utf-8")
 
 
