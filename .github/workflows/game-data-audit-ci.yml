@@ -1,0 +1,27 @@
+name: Game data audit - offline tests
+
+on:
+  push:
+    branches: [feat/47-readonly-data-diff]
+    paths:
+      - 'tools/cue4parse-extractor/audit_game_data.py'
+      - 'tools/cue4parse-extractor/test_audit_game_data.py'
+      - '.github/workflows/game-data-audit-ci.yml'
+  pull_request:
+    branches: [feat/45-linux-cue4parse-submodule]
+    paths:
+      - 'tools/cue4parse-extractor/audit_game_data.py'
+      - 'tools/cue4parse-extractor/test_audit_game_data.py'
+      - '.github/workflows/game-data-audit-ci.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - name: Audit tests - no game PAK required
+        run: python3 -m unittest discover -s tools/cue4parse-extractor -p 'test_audit_game_data.py' -v
