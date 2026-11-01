@@ -97,6 +97,14 @@ if (exactPackages != null)
                         Console.WriteLine($"UNRESOLVED\t{key}\t{obj.Name}\t{prop.Name.Text}.CompatibleAmmoNames\tstruct_not_inspectable");
                         continue;
                     }
+                    // Expose only original nested property tag types, not
+                    // values or assumptions about inherited CDO defaults.
+                    foreach (var fieldTag in fields.Properties)
+                    {
+                        Console.WriteLine($"STRUCTFIELD\t{key}\t{obj.Name}\t{prop.Name.Text}.{fieldTag.Name.Text}\t{fieldTag.PropertyType.Text}");
+                        if (fieldTag.Tag?.GenericValue is UScriptArray nestedArray)
+                            Console.WriteLine($"ARRAYINNER\t{key}\t{obj.Name}\t{prop.Name.Text}.{fieldTag.Name.Text}\t{nestedArray.InnerType}");
+                    }
                     var nested = fields.Properties
                         .Where(p => p.Name.Text == "CompatibleAmmoNames").ToArray();
                     if (nested.Length != 1 || nested[0].Tag?.GenericValue is not UScriptArray array)
