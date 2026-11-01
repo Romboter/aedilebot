@@ -26,7 +26,7 @@ if (args.Length >= 3 && (args[2] == "check-list" || args[2] == "dump-list" || ar
     throw new ArgumentException("Usage: Extractor <pakDir> <outputDir> check-list|dump-list|inspect-types <manifestFile>");
 
 IReadOnlyList<string>? exactPackages = null;
-if (args.Length == 4 && (args[2] == "check-list" || args[2] == "dump-list"))
+if (args.Length == 4 && (args[2] == "check-list" || args[2] == "dump-list" || args[2] == "inspect-types"))
 {
     exactPackages = ExactBlueprintPackages.ReadManifest(args[3]);
     if (args[2] == "check-list")
@@ -71,7 +71,7 @@ if (exactPackages != null)
                 foreach (var prop in obj.Properties)
                     if (typeFields.Contains(prop.Name.Text))
                     {
-                        Console.WriteLine($"TYPE\\t{key}\\t{obj.Name}\\t{prop.Name.Text}\\t{prop.PropertyType.Text}");
+                        Console.WriteLine($"TYPE\t{key}\t{obj.Name}\t{prop.Name.Text}\t{prop.PropertyType.Text}");
                         inspected++;
                     }
             continue;
