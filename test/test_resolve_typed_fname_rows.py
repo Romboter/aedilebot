@@ -144,9 +144,9 @@ class TypedFNameTests(unittest.TestCase):
         name = next(e for e in graph["numeric_row_references"]
                     if e["source"] == "Vehicles/Driver" and e["field"] == "MountCodeName")
         self.assertEqual(name["status"], "none_sentinel_candidate")
-        tag = (f"TYPE\\t{PREFIX}Vehicles/Driver.uasset\\tDriverSeat0_GEN_VARIABLE"
-               f"\\tMountCodeName\\tNameProperty")
-        result = self.run_resolver(self.inspection() + "\\n" + tag, index=graph)
+        tag = (f"TYPE\t{PREFIX}Vehicles/Driver.uasset\tDriverSeat0_GEN_VARIABLE"
+               f"\tMountCodeName\tNameProperty")
+        result = self.run_resolver(self.inspection() + "\n" + tag, index=graph)
         sentinel = next(e for e in result["observations"] if e["source"] == "Vehicles/Driver")
         self.assertEqual(sentinel["status"], "typed_fname_unset_mount_identity")
         self.assertEqual(sentinel["reason"], "ue_fname_none_unset_mount_identity")
