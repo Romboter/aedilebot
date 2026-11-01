@@ -60,3 +60,9 @@ Do not use this to generate automatic bot catalog changes or damage calculations
 The type-backed source joins carry per-field SHA-256 hashes of saved `MaxHealth`, `StructuralIntegrity`, `RepairCost`, `DecayStartHours`, `DecayDurationHours`, `ResourceAmounts`, and `AltResourceAmounts`. The audit does not publish these values, calculate bunker integrity, or assign effective runtime CDOs. Typed source identity is not a proven engine consumer of the row.
 
 The two earlier failed private validations were pipeline/testing defects (wrong assertion message, oversized single manifest, then `.uasset` package-key normalization / synthetic test escaping), not failures of the game asset source. The final passing run uses bounded inspector manifests under the extractor's immutable 256-package safety cap.
+
+### Bounded exception identities, independently rerun
+
+[Restricted diagnostic #41347794676](https://github.com/Romboter/foxhole-lab/actions/runs/41347794676) **PASSED** against the same pinned build and original-property inspector. It identified the two exact row misses as saved class defaults in `Structures/Banners/BPBannerTCPickup` (`CodeName=BannerTC`) and `Structures/Banners/BPBannerTWPickup` (`CodeName=BannerTW`); neither has a case-only spelling match in `BPStructureDynamicData`. They remain **missing exact source row**, not evidence of a broken live structure.
+
+The one shared row is `UniqueWChurchG1Destroyed`, declared by both `Structures/Town/UniqueCChurchG1Destroyed` and `Structures/Town/UniqueWChurchG1Destroyed` saved class defaults. This is an exact serialized source collision. Its intent, gameplay effect, or whether it is an asset mistake is **unknown** and must not be auto-corrected by renaming a class or row. Investigate under Issue #86.
