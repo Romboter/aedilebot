@@ -78,6 +78,22 @@ def analyze(root: Path, graph: dict, identities: dict):
             raise ValueError("Stale component template pair")
         p=properties(parent,row["parent_component"])
         c=properties(child,row["child_component"])
+        counts["source_pairs_inspected"]+=1
+        parent_type=row["parent_component"]["component_type"]
+        child_type=row["child_component"]["component_type"]
+        if parent_type != child_type:
+            counts["component_type_changed_no_field_comparison"]+=1
+            result.append({
+                "child":child,"child_sha256":nodes[child],
+                "parent":parent,"parent_sha256":nodes[parent],
+                "record_index":row["record_index"],
+                "parent_scs_node":row["parent_scs_node"],
+                "parent_component_type":parent_type,
+                "child_component_type":child_type,
+                "comparison_status":"different_component_types_not_compared",
+                "effective_runtime_component":"not_established",
+            })
+            continue
         pnames,cnames=set(p),set(c)
         shared=sorted(pnames&cnames)
         changes=sorted(x for x in shared if field_hash(p[x])!=field_hash(c[x]))
@@ -98,7 +114,8 @@ def analyze(root: Path, graph: dict, identities: dict):
             "parent":parent,"parent_sha256":nodes[parent],
             "record_index":row["record_index"],
             "parent_scs_node":row["parent_scs_node"],
-            "component_type":row["parent_component"]["component_type"],
+            "component_type":parent_type,
+            "comparison_status":"explicit_saved_fields_only",
             "source_key_proof":row["source_key_proof"],
             "explicit_child_only_fields":child_only,
             "explicit_parent_only_fields":parent_only,
