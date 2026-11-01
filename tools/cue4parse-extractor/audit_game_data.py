@@ -66,11 +66,16 @@ def get_health(target: dict) -> Decimal | None:
     return numeric(target.get("Health"))
 
 
-def audit(stats_dir: Path, data_dir: Path, overlay_path: Path) -> dict:
+def audit(stats_dir: Path, data_dir: Path, overlay_path: Path,
+          proposals_path: Path | None = None) -> dict:
     src = {name: table(stats_dir, name) for name in TABLES}
     sheets = {name: read_json(data_dir / (name + ".json"))
               for name in ("Damage", "Targets", "Weapons", "Bunker_piece")}
     overlay = read_json(overlay_path)
+    proposals_doc = read_json(proposals_path) if proposals_path else {"proposals": {}}
+    proposals = proposals_doc.get("proposals", {})
+    if not isinstance(proposals, dict):
+        raise ValueError("target proposals must map display names to developer names")
     for name, rows in sheets.items():
         if not isinstance(rows, dict):
             raise ValueError(f"{name}.json is not a JSON object")
@@ -91,7 +96,7 @@ def audit(stats_dir: Path, data_dir: Path, overlay_path: Path) -> dict:
             add(damage, "unmapped", name=damage_name, reason="damage profile absent")
             continue
         for key, value in sheet.items():
-            if key in ("Name", "-", "ObjectType"):
+            if key in ("Name", "-", "ObjectType", "Nomitigation"):
                 continue
             wanted = numeric(value)
             if wanted is None:
@@ -106,6 +111,10 @@ def audit(stats_dir: Path, data_dir: Path, overlay_path: Path) -> dict:
                 add(damage, "mismatched", name=damage_name, field=key,
                     sheet=str(wanted), game=str(actual))
         extra_game_columns.update(set(srcrow) - set(sheet))
+    damage["manual_only_fields"] = ["Nomitigation"]
+    damage["manual_only_cells"] = sum(
+        "Nomitigation" in row for row in sheets["Damage"].values()
+    )
     damage["source_only_fields"] = sorted(extra_game_columns)
     damage["source_only_profiles"] = sorted(set(src["DTDamageProfiles"]) - set(sheets["Damage"]))
     result["sections"]["damage_mitigation"] = damage
@@ -139,8 +148,19 @@ def audit(stats_dir: Path, data_dir: Path, overlay_path: Path) -> dict:
         elif equal(expected, actual):
             add(dest, "matched")
         else:
+            proposal = {}
+            suggested_dev = proposals.get(display_name)
+            if suggested_dev:
+                candidate_row = lookup.get(suggested_dev)
+                candidate_health = numeric(candidate_row.get("MaxHealth")) if isinstance(candidate_row, dict) else None
+                proposal = {
+                    "proposed_dev_name": suggested_dev,
+                    "proposed_health": str(candidate_health) if candidate_health is not None else None,
+                    "proposal_matches_sheet": bool(candidate_health is not None and equal(expected, candidate_health)),
+                    "proposal_requires_review": True,
+                }
             add(dest, "mismatched", name=display_name, dev_name=dev,
-                field="Health", sheet=str(expected), game=str(actual))
+                field="Health", sheet=str(expected), game=str(actual), **proposal)
     result["sections"]["vehicles_health"] = vehicles
     result["sections"]["structures_health"] = structures
 
@@ -208,15 +228,30 @@ def markdown_report(report: dict) -> str:
     lines += ["", "## Sample findings (up to 25 per category)", ""]
     for name, sec in report["sections"].items():
         lines.append(f"### {name}")
-        for item in sec["details"][:25]:
-            if item["status"] == "mismatched":
-                lines.append(f"- `{item['name']}` / `{item.get('field','')}`: "
-                             f"sheet `{item['sheet']}` vs game-derived "
-                             f"`{item.get('game', item.get('game_derived'))}`")
-        if not any(v["status"] == "mismatched" for v in sec["details"][:25]):
-            lines.append("- No numeric mismatches among reported entries.")
+        mismatches = [item for item in sec["details"] if item["status"] == "mismatched"]
+        if not sec["matched"] and not mismatches:
+            lines.append("- No values verified in this category.")
+        elif not mismatches:
+            lines.append("- No numeric mismatches among compared values.")
+        for item in mismatches[:25]:
+            line = (f"- `{item['name']}` / `{item.get('field','')}`: "
+                    f"sheet `{item['sheet']}` vs game-derived "
+                    f"`{item.get('game', item.get('game_derived'))}`")
+            if item.get("proposed_dev_name"):
+                line += (f"; candidate `{item['proposed_dev_name']}` "
+                         f"has game HP `{item['proposed_health']}` "
+                         f"({'matches' if item['proposal_matches_sheet'] else 'DOES NOT match'} sheet; human review required)")
+            lines.append(line)
+        missing = [item for item in sec["details"] if item["status"] == "unmapped"]
+        if missing:
+            lines.append(f"- {len(missing)} unmapped: " +
+                         ", ".join("`" + str(i["name"]) + "`" for i in missing[:12]) +
+                         (" ..." if len(missing) > 12 else ""))
+        if sec["not_compared"]:
+            lines.append(f"- {sec['not_compared']} entries intentionally not compared.")
         lines.append("")
-    lines += ["## Coverage limitations", ""]
+    lines += ["## Coverage limitations", "",
+              f"- Damage includes {report['sections']['damage_mitigation']['manual_only_cells']} manual `Nomitigation` cells that are not in the game table."]
     for cat, count in report["unsupported_target_categories"].items():
         lines.append(f"- Target type `{cat}`: {count} entries not compared.")
     lines.append("- Weapon and mount multiplier identities are not verified (AedileBot #44).")
@@ -232,9 +267,10 @@ def main():
     parser.add_argument("--data", required=True, type=Path)
     parser.add_argument("--overlay", required=True, type=Path)
     parser.add_argument("--output", required=True, type=Path)
+    parser.add_argument("--target-proposals", type=Path, default=None)
     args = parser.parse_args()
 
-    report = audit(args.stats, args.data, args.overlay)
+    report = audit(args.stats, args.data, args.overlay, args.target_proposals)
     args.output.mkdir(parents=True, exist_ok=True)
     (args.output / "audit.json").write_text(json.dumps(report, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
     md = markdown_report(report)
