@@ -88,9 +88,8 @@ class SerializedTemplateFieldTests(unittest.TestCase):
     def test_non_dict_saved_props_fail_closed(self):
         self.child[-1]["Properties"]=["bad"]
         self.save()
-        graph,ids=self.source()
-        with self.assertRaisesRegex(ValueError,"Malformed component properties"):
-            analyze(self.root,graph,ids)
+        with self.assertRaisesRegex(ValueError,"Invalid Properties"):
+            self.source()
 
     def test_source_file_modified_after_indexing_fails(self):
         graph,ids=self.source()
