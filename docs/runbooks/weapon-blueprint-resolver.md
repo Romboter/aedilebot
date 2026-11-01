@@ -129,3 +129,56 @@ The workflow has no SteamCMD invocation and no write token for the bot.
 
 Related: [asset-derived data contract](../superpowers/specs/2026-11-01-asset-derived-data-contract.md),
 [weapon identity evidence](weapon-asset-tracing.md), [Issue #44](https://github.com/Romboter/aedilebot/issues/44).
+
+## MultiAmmo is a set of explicit alternatives, not one default
+
+The Blueprint connection graph can expose multiple valid ammunition values
+for one firing mount. `MultiAmmo.CompatibleAmmoNames[]` is a list of
+**source-linked alternatives**, and each member has its own
+`BPAmmoDynamicData` row. Do not select the first option simply to produce
+one `Weapons.json` entry.
+
+Examples independently checked against build `26058282`:
+
+- `BPHalfTrackArtilleryC` mortar mount `HalfTrackMortarGunner`:
+  `MortarAmmo`, `MortarAmmoSH`, `MortarAmmoFL`, `MortarAmmoFlame`.
+- `BPSuperTankW` front grenade mount
+  `SuperTankWGrenadeLauncherGunner`:
+  `HELaunchedGrenade`, `SmokeGrenade`, `GreenAsh`, `GrenadeW`,
+  `ATLaunchedGrenadeW`.
+
+The resolver returns an unresolved **parent firing endpoint** and a
+`variant_candidates` array with source-backed direct damage calculations
+for each compatible ammo. Even when every candidate is numerically resolved,
+none is automatically selected for publication. Variant selection and
+display/vehicle identity must be reviewed separately.
+
+`Damage = 0` in a named ammo row can be an accurate **zero direct-damage**
+value (flare, gas or smoke), not a missing source. Do not infer secondary
+effects, damage-over-time mechanics or target mitigation from that zero.
+
+## Discovering the required export packages
+
+`scripts/find_blueprint_dependencies.py` scans extracted JSON for the
+**explicit edge types currently used by the resolver**:
+
+- `BlueprintGeneratedClass.SuperStruct.ObjectPath` (parent classes)
+- `VehicleSeatComponent.Properties.MountComponent.ObjectPath` (gun mounts)
+- `Default__*.Properties.ItemComponentClass.ObjectPath` (infantry item components)
+
+Use it to produce a list of referenced but unexported Blueprint packages
+that must be fetched privately:
+
+~~~bash
+python3 scripts/find_blueprint_dependencies.py \
+  /PRIVATE/OUTPUT/War/Content/Blueprints \
+  --output /PRIVATE/OUTPUT/missing-blueprints.json
+
+python3 -m unittest discover -s test -p 'test_find_blueprint_dependencies.py' -v
+~~~
+
+This is **dependency discovery, not proof that the game asset is missing**.
+The scanner intentionally does not crawl every arbitrary `ObjectPath`
+(e.g., materials or FX), and it must not cause arbitrary new packages to be
+published to GitHub. The private extractor can fetch exact package paths
+from the returned list in a separately bounded, read-only workflow.
