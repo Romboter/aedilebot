@@ -106,7 +106,7 @@ class TestStructureSeatSources(unittest.TestCase):
 
     def test_tampered_graph_fails_closed(self):
         graph = build_index(self.root,"26058282")
-        graph["declarations"].append({"tampered":True})
+        graph["declarations"].append({"source": "Structures/BPPillbox", "record": "Default__BPPillbox_C", "field": "CodeName", "value": "Fake"})
         with self.assertRaisesRegex(ValueError,"fingerprint"):
             audit(self.root,graph)
 
