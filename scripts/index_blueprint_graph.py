@@ -80,7 +80,11 @@ def build_index(root: Path, build_id: str, max_packages=10000):
     def numeric_ref(source, source_hash, record, field, table, value):
         rows = tables[table]["rows"]
         valid = check_name(value)
-        status = ("invalid_identifier" if not valid else
+        # Unreal's FName("None") is an unset identity sentinel. Do not
+        # report an unset vehicle seat as a missing weapon DataTable row.
+        # Actual serialized NameProperty proof is still required downstream.
+        status = ("none_sentinel_candidate" if field == "MountCodeName" and value == "None" else
+                  "invalid_identifier" if not valid else
                   "table_unavailable" if rows is None else
                   "row_present" if value in rows else "row_missing")
         # A possible case-only spelling difference is a *diagnostic*, not
