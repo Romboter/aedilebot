@@ -1,0 +1,30 @@
+name: Typed FName row identity research
+
+on:
+  push:
+    branches: [research/59-typed-fname-row-resolution]
+    paths:
+      - 'scripts/resolve_typed_fname_rows.py'
+      - 'test/test_resolve_typed_fname_rows.py'
+      - '.github/workflows/typed-fname-row-ci.yml'
+  pull_request:
+    paths:
+      - 'scripts/resolve_typed_fname_rows.py'
+      - 'test/test_resolve_typed_fname_rows.py'
+      - '.github/workflows/typed-fname-row-ci.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - name: Verify unique case-insensitive FName joins and fail-closed behavior
+        run: python3 -m unittest discover -s test -p 'test_resolve_typed_fname_rows.py' -v
+      - name: Preserve graph and explanation tests
+        run: |
+          python3 -m unittest discover -s test -p 'test_blueprint_graph_index.py' -v
+          python3 -m unittest discover -s test -p 'test_explain_blueprint_graph.py' -v
