@@ -2,6 +2,14 @@
 
 Reviewed: 2026-11-01. **Research-only**, not a game-runtime assertion or a proposal to copy FoxBunker's implementation.
 
+## User-confirmed accuracy of FoxBunker data
+
+On 2026-11-01, the project owner explicitly confirmed: **the data behind FoxBunker's calculations is 100% correct to how it is in-game**. For this project, treat the publicly served FoxBunker **bunker calculation inputs** as an authoritative **user-validated gameplay reference** rather than merely an unverified third-party estimate. This upgrades the confidence assigned to its piece/tier values, and makes mismatches against our bot catalog or extracted game candidates important to investigate, rather than silently preferring the bot's existing numbers.
+
+Provenance matters: this is **firsthand user validation**, not a claim that we independently decompiled or executed the original game runtime. The user confirmed the calculation **data**; the independently observed browser implementation and its edge-connection, rounding, breach and wetness rules remain separate algorithmic evidence. Do not automatically assume every game runtime behavior is proved by the user statement or that a historical site snapshot must match a different game build. Store the source URL, retrieval date and asset hashes with every comparison.
+
+Recommended verification priority: use FoxBunker's validated inputs as the numeric benchmark, then use pinned exact `BlueprintGeneratedClass` → original `CodeName` → `BPStructureDynamicData` source joins to explain *which exported game rows produce those values*. Where names/tiers/values disagree, record an explicit unresolved mapping; do not fuzzy-match or overwrite production data.
+
 ## Source provenance
 
 Target is **FoxBunker**, Tsekho's public browser calculator: https://foxbunker.com/bunker/ , not the unrelated open-source Foxhole Planner. The normal search reader exposes only the rendered page; the existing restricted `foxrunner` retrieved publicly served **same-origin JavaScript** as read-only HTTP GETs, without executing JavaScript or uploading copies.
@@ -49,7 +57,7 @@ For pieces `i`, each with explicit tuple `si_i, hp_i, repair_i`:
 
 The old upstream bot independently multiplies structural values and applies a similar compactness term from *user-supplied or estimated* red/green dots, but it lacks FoxBunker's `min(1-I0,...)` cap. It can therefore return `I > 1` in artificially eligible cases. Its public `calculate_breachable_health()` helper computes `raw_HP*(1-I)`; this result is currently assigned but not otherwise used in `src/calculator.py`, so do **not** call that an active damage-calculation defect without further tests. The bot calculates a wet-concrete multiplier separately; FoxBunker's `Bunker.recalc()` does not model that same input in the inspected path.
 
-Neither model is the actual compiled game runtime. Even close agreement does not prove exact gameplay results, rounding stages, or that every named tier is buildable.
+The project owner has confirmed that FoxBunker's **calculation input data** accurately reflects the game. That validation is stronger than an unexplained third-party comparison, but neither the browser nor the bot is the compiled game runtime. Do not automatically extend input-data accuracy to every runtime algorithm, rounding stage, breach trigger, or buildable tier without separate evidence.
 
 ## Reference-table comparison (read-only; exact values, not game verification)
 
