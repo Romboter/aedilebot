@@ -83,12 +83,21 @@ def build_index(root: Path, build_id: str, max_packages=10000):
         status = ("invalid_identifier" if not valid else
                   "table_unavailable" if rows is None else
                   "row_present" if value in rows else "row_missing")
+        # A possible case-only spelling difference is a *diagnostic*, not
+        # a source edge. It cannot promote a missing named row to a match.
+        case_candidates = []
+        if status == "row_missing":
+            case_candidates = sorted(
+                key for key in rows
+                if isinstance(key, str) and key != value and key.casefold() == value.casefold()
+            )
         numeric_refs.append({
             "source": source, "source_sha256": source_hash,
             "record": record, "field": field,
             "table": table, "row": value,
             "status": status,
             "table_sha256": tables[table]["sha256"],
+            "case_only_spelling_candidates_unverified": case_candidates,
         })
 
     for file in packages:
