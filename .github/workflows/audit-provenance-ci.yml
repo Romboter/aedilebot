@@ -1,0 +1,27 @@
+name: Foxhole audit provenance - offline tests
+
+on:
+  push:
+    branches: [feat/49-game-audit-provenance]
+    paths:
+      - 'tools/cue4parse-extractor/record_audit_run.py'
+      - 'tools/cue4parse-extractor/test_record_audit_run.py'
+      - '.github/workflows/audit-provenance-ci.yml'
+  pull_request:
+    branches: [feat/47-readonly-data-diff]
+    paths:
+      - 'tools/cue4parse-extractor/record_audit_run.py'
+      - 'tools/cue4parse-extractor/test_record_audit_run.py'
+      - '.github/workflows/audit-provenance-ci.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - name: Test private audit provenance (synthetic files only)
+        run: python3 -m unittest discover -s tools/cue4parse-extractor -p 'test_record_audit_run.py' -v
