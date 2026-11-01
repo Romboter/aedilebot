@@ -102,3 +102,34 @@ Related: [Blueprint connection model](blueprint-reference-model.md),
 [infantry modes](infantry-firing-modes.md),
 [exact extraction](exact-blueprint-extraction.md),
 [asset-derived data contract](../superpowers/specs/2026-11-01-asset-derived-data-contract.md).
+
+## Explain a specific vehicle or weapon chain
+
+The build-wide index is useful for comparing releases, but an operator needs
+to answer, "What exported path connects **this** Blueprint to its mounts and
+ammunition?" The read-only `scripts/explain_blueprint_graph.py` command
+performs a bounded breadth-first traversal of explicitly referenced packages.
+It shows the source property and exact `ObjectPath` at each hop, the
+corresponding source-file hashes, and named DataTable row statuses on every
+reachable package.
+
+~~~bash
+python3 -m scripts.explain_blueprint_graph \
+  --index /PRIVATE/audit/graph-26058282.json \
+  --package Vehicles/LargeShips/DestroyerC/BPLargeShipDestroyerC \
+  --max-depth 10 --max-nodes 250 \
+  --output /PRIVATE/audit/destroyer-graph-explanation.json
+~~~
+
+The output's `packages[].source_path` shows one deterministic, shortest
+reference path to each reachable package. Other routes can exist; inspect
+`object_references[]` to see them all. Unexported targets and missing ammo
+rows are separately listed under `gaps`, never substituted.
+
+A depth cap yields `bounded_partial_explicit_graph` and counts skipped
+edges. Exceeding the package-count cap fails; it does **not** silently call
+the partial graph complete. Even
+`explicit_graph_closure_for_recognized_edges` means only that the current
+set of recognized exported links has no missing target. It does **not**
+prove gameplay semantics, flatten inheritance, pair multi-ammunition
+variants to projectiles, or authorize automatic publication.
