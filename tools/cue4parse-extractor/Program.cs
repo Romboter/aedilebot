@@ -8,6 +8,8 @@ using CUE4Parse.UE4.Objects.Core.Math;
 using CUE4Parse.UE4.Objects.Core.Misc;
 using CUE4Parse.UE4.Objects.UObject;
 using CUE4Parse.UE4.Assets.Exports;
+using CUE4Parse.UE4.Assets.Exports.Engine;
+using CUE4Parse.UE4.Assets.Objects;
 using CUE4Parse.UE4.Versions;
 
 var wanted = new Dictionary<string, string>
@@ -68,12 +70,60 @@ if (exactPackages != null)
             // Report original tagged UE property types, never raw property
             // values or a flattened/inferred game-data relationship.
             foreach (var obj in pkg.GetExports())
+            {
+                // UDataTable's RowMap key type is FName in the underlying UE
+                // export, not merely a JSON dictionary string key.
+                if (obj is UDataTable)
+                {
+                    var keyType = typeof(UDataTable).GetProperty(nameof(UDataTable.RowMap))!
+                        .PropertyType.GetGenericArguments()[0].Name;
+                    Console.WriteLine($"TABLE\t{key}\t{obj.Name}\t{keyType}");
+                }
                 foreach (var prop in obj.Properties)
+                {
                     if (typeFields.Contains(prop.Name.Text))
                     {
                         Console.WriteLine($"TYPE\t{key}\t{obj.Name}\t{prop.Name.Text}\t{prop.PropertyType.Text}");
                         inspected++;
                     }
+                    // Never infer a nested field's type from JSON or from the
+                    // enclosing struct. Only report it when the parsed UE
+                    // structure explicitly contains a typed array of names.
+                    if (prop.Name.Text is not ("MultiAmmo" or "GrenadeMultiAmmo"))
+                        continue;
+                    if (prop.Tag?.GenericValue is not FScriptStruct structValue ||
+                        structValue.StructType is not FStructFallback fields)
+                    {
+                        Console.WriteLine($"UNRESOLVED\t{key}\t{obj.Name}\t{prop.Name.Text}.CompatibleAmmoNames\tstruct_not_inspectable");
+                        continue;
+                    }
+                    // Expose only original nested property tag types, not
+                    // values or assumptions about inherited CDO defaults.
+                    foreach (var fieldTag in fields.Properties)
+                    {
+                        Console.WriteLine($"STRUCTFIELD\t{key}\t{obj.Name}\t{prop.Name.Text}.{fieldTag.Name.Text}\t{fieldTag.PropertyType.Text}");
+                        if (fieldTag.Tag?.GenericValue is UScriptArray nestedArray)
+                            Console.WriteLine($"ARRAYINNER\t{key}\t{obj.Name}\t{prop.Name.Text}.{fieldTag.Name.Text}\t{nestedArray.InnerType}");
+                    }
+                    var nested = fields.Properties
+                        .Where(p => p.Name.Text == "CompatibleAmmoNames").ToArray();
+                    if (nested.Length != 1 || nested[0].Tag?.GenericValue is not UScriptArray array)
+                    {
+                        Console.WriteLine($"UNRESOLVED\t{key}\t{obj.Name}\t{prop.Name.Text}.CompatibleAmmoNames\tnested_array_not_inspectable");
+                        continue;
+                    }
+                    if (array.InnerType != "NameProperty")
+                    {
+                        Console.WriteLine($"UNRESOLVED\t{key}\t{obj.Name}\t{prop.Name.Text}.CompatibleAmmoNames\tunexpected_inner_type_{array.InnerType}");
+                        continue;
+                    }
+                    for (var i = 0; i < array.Properties.Count; i++)
+                    {
+                        Console.WriteLine($"TYPE\t{key}\t{obj.Name}\t{prop.Name.Text}.CompatibleAmmoNames[{i}]\tNameProperty");
+                        inspected++;
+                    }
+                }
+            }
             continue;
         }
         var destination = Path.Combine(args[1], Path.ChangeExtension(key, ".json"));
