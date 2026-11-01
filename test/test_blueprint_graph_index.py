@@ -160,6 +160,20 @@ class GraphIndexTests(unittest.TestCase):
         with self.assertRaises(ValueError):
             compare(index, modified)
 
+    def test_case_only_spelling_is_diagnostic_not_a_row_join(self):
+        self.put("Vehicles/Turret.json", [
+            {"Type": "BlueprintGeneratedClass", "Name": "Turret_C",
+             "SuperStruct": {"ObjectPath": "/Script/War"}},
+            {"Name": "Default__Turret_C", "Properties": {"AmmoName": "mgammo"}},
+        ])
+        graph = self.index()
+        ref = next(x for x in graph["numeric_row_references"]
+                   if x["source"] == "Vehicles/Turret" and x["field"] == "AmmoName")
+        self.assertEqual(ref["status"], "row_missing")
+        self.assertEqual(ref["row"], "mgammo")
+        self.assertEqual(ref["case_only_spelling_candidates_unverified"], ["MGAmmo"])
+        self.assertFalse(graph["safe_for_unattended_publication"])
+
     def test_unknown_game_or_empty_export_fails(self):
         with self.assertRaises(ValueError):
             build_index(self.root, "unknown")
