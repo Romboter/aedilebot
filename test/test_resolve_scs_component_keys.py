@@ -70,6 +70,19 @@ class ExactSCSKeyTests(unittest.TestCase):
         self.save()
         self.assertEqual(self.result()["records"][0]["status"], "name_guid_disagreement")
 
+    def test_guid_only_diagnostic_does_not_resolve_renamed_component(self):
+        self.child[-1]["Properties"]["Records"][0]["ComponentKey"]["SCSVariableName"] = "RenamedGun"
+        self.save()
+        result = self.result()["records"][0]
+        self.assertEqual(result["status"], "name_guid_disagreement")
+        self.assertIsNone(result["parent_scs_match"])
+        evidence = result["guid_only_diagnostic"]
+        self.assertEqual(evidence["parent_scs_node_record"], "NodeA")
+        self.assertEqual(evidence["parent_saved_variable_name"], "Gun")
+        self.assertEqual(evidence["child_saved_key_name"], "RenamedGun")
+        self.assertFalse(evidence["accepted_as_exact_match"])
+        self.assertEqual(result["effective_runtime_component"], "not_established")
+
     def test_duplicate_exact_name_and_guid_remains_ambiguous(self):
         self.parent[2]["Properties"]["VariableGuid"] = "guid-a"
         self.save()
