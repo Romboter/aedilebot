@@ -1,0 +1,8 @@
+{
+  "FirePit": "FirePitT1",
+  "FuelContainer": "LiquidContainer",
+  "SmallShippingContainer": "ShippingContainer",
+  "FacilitySupplyStation": "MaintenanceTunnel",
+  "DepotCrane": "StaticCrane",
+  "Tier3BStructure": "TankStopSplineT3"
+}

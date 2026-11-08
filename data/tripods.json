@@ -1,0 +1,186 @@
+{
+  "DeployedAirSirenT": {
+    "name": "Deployed Air Raid Siren",
+    "armourType": "Tier1Tank",
+    "health": 1200,
+    "repairCost": 20,
+    "weapon": null,
+    "cost": []
+  },
+  "DeployedATRifleTC": {
+    "name": "“Typhon” ra.XII",
+    "armourType": "Tier1Tank",
+    "health": 1200,
+    "repairCost": 40,
+    "weapon": {
+      "weapon": "ATRifleTC:ATRifleAmmo",
+      "count": 1,
+      "range": 39.5,
+      "reach": 45.0,
+      "firingTime": 0.0,
+      "reload": 3.5,
+      "magazine": 10
+    },
+    "cost": [
+      {
+        "code": "Cloth",
+        "qty": 40
+      }
+    ]
+  },
+  "DeployedATRPGTW": {
+    "name": "Mounted Bonesaw MK.3",
+    "armourType": "Tier1Tank",
+    "health": 1200,
+    "repairCost": 40,
+    "weapon": {
+      "weapon": "ATRPGTW:ATRPGIndirectAmmo",
+      "count": 1,
+      "range": 35.0,
+      "reach": 40.0,
+      "firingTime": 0.5,
+      "reload": 3.0,
+      "magazine": 1
+    },
+    "cost": [
+      {
+        "code": "Cloth",
+        "qty": 40
+      }
+    ]
+  },
+  "DeployedGrenadeLauncherTC": {
+    "name": "Mounted Fissura gd.I",
+    "armourType": "Tier1Tank",
+    "health": 1200,
+    "repairCost": 40,
+    "weapon": {
+      "weapon": "GrenadeLauncherTC:HELaunchedGrenade",
+      "count": 1,
+      "range": 40.0,
+      "reach": 30.8,
+      "firingTime": 0.5,
+      "reload": 3.0,
+      "magazine": 4
+    },
+    "cost": [
+      {
+        "code": "Cloth",
+        "qty": 40
+      }
+    ]
+  },
+  "DeployedISG": {
+    "name": "Deployed Infantry Support Gun",
+    "armourType": "Tier1Tank",
+    "health": 1200,
+    "repairCost": 40,
+    "weapon": {
+      "weapon": "InfantrySupportGun:MiniTankAmmo",
+      "count": 1,
+      "range": 40.0,
+      "reach": 40.0,
+      "firingTime": 1.0,
+      "reload": 3.0,
+      "magazine": 1
+    },
+    "cost": [
+      {
+        "code": "Cloth",
+        "qty": 40
+      }
+    ]
+  },
+  "DeployedListeningKit": {
+    "name": "Listening Kit",
+    "armourType": "Tier1Tank",
+    "health": 1200,
+    "repairCost": 20,
+    "weapon": null,
+    "cost": []
+  },
+  "DeployedMGTC": {
+    "name": "Lamentum mm.IV",
+    "armourType": "Tier1Tank",
+    "health": 1200,
+    "repairCost": 40,
+    "weapon": {
+      "weapon": "MGTC:MGAmmo",
+      "count": 1,
+      "range": 37.5,
+      "reach": 45.0,
+      "firingTime": 0.0,
+      "reload": 5.0,
+      "magazine": 200
+    },
+    "cost": [
+      {
+        "code": "Cloth",
+        "qty": 40
+      }
+    ]
+  },
+  "DeployedMGTW": {
+    "name": "Malone Ratcatcher MK.1",
+    "armourType": "Tier1Tank",
+    "health": 1200,
+    "repairCost": 40,
+    "weapon": {
+      "weapon": "MGTW:MGAmmo",
+      "count": 1,
+      "range": 37.5,
+      "reach": 45.0,
+      "firingTime": 0.0,
+      "reload": 4.5,
+      "magazine": 150
+    },
+    "cost": [
+      {
+        "code": "Cloth",
+        "qty": 40
+      }
+    ]
+  },
+  "DeployedRPGTW": {
+    "name": "Cutler Foebreaker",
+    "armourType": "Tier1Tank",
+    "health": 1200,
+    "repairCost": 40,
+    "weapon": {
+      "weapon": "RPGTW:RPGAmmo",
+      "count": 1,
+      "range": 35.0,
+      "reach": 40.0,
+      "firingTime": 1.5,
+      "reload": 4.0,
+      "magazine": 2
+    },
+    "cost": [
+      {
+        "code": "Cloth",
+        "qty": 40
+      }
+    ]
+  },
+  "DeployedTripod": {
+    "name": "Deployed Tripod",
+    "armourType": "Tier1Tank",
+    "health": 1200,
+    "repairCost": 20,
+    "weapon": null,
+    "cost": [
+      {
+        "code": "Cloth",
+        "qty": 20
+      }
+    ]
+  },
+  "DeployedWindsockT": {
+    "name": "Wind Sock",
+    "armourType": "Tier1Tank",
+    "health": 1200,
+    "repairCost": 20,
+    "weapon": null,
+    "cost": []
+  }
+}

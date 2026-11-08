@@ -1,0 +1,7412 @@
+{
+  "AmbulanceC": {
+    "name": "R-12 - “Salus” Ambulance",
+    "armourType": "LightVehicle",
+    "health": 750,
+    "armourHealth": 0,
+    "penetration": {
+      "min": 1,
+      "max": 1
+    },
+    "disableLevel": 0.8125,
+    "disableChance": {
+      "tracks": 0.0,
+      "engine": 0.0,
+      "mainGun": 0.0,
+      "secondaryGun": 0.0
+    },
+    "repairCost": 150,
+    "slots": 9,
+    "buildType": "VehicleFactory",
+    "mainWeapon": null,
+    "secondaryWeapon": null,
+    "cost": [
+      {
+        "code": "Cloth",
+        "qty": 150
+      }
+    ]
+  },
+  "AmbulanceW": {
+    "name": "Dunne Responder 3e",
+    "armourType": "LightVehicle",
+    "health": 750,
+    "armourHealth": 0,
+    "penetration": {
+      "min": 1,
+      "max": 1
+    },
+    "disableLevel": 0.8125,
+    "disableChance": {
+      "tracks": 0.0,
+      "engine": 0.0,
+      "mainGun": 0.0,
+      "secondaryGun": 0.0
+    },
+    "repairCost": 150,
+    "slots": 9,
+    "buildType": "VehicleFactory",
+    "mainWeapon": null,
+    "secondaryWeapon": null,
+    "cost": [
+      {
+        "code": "Cloth",
+        "qty": 150
+      }
+    ]
+  },
+  "ArmoredCarC": {
+    "name": "T3 “Xiphos”",
+    "armourType": "Tier1Tank",
+    "health": 1250,
+    "armourHealth": 2100,
+    "penetration": {
+      "min": 0.85,
+      "max": 0.95
+    },
+    "disableLevel": 0.3,
+    "disableChance": {
+      "tracks": 0.0,
+      "engine": 0.0,
+      "mainGun": 0.0,
+      "secondaryGun": 0.0
+    },
+    "repairCost": 100,
+    "slots": 1,
+    "buildType": "VehicleFactory",
+    "mainWeapon": {
+      "weapon": "ArmoredCarGunner:AssaultRifleAmmo",
+      "count": 1,
+      "range": 40.0,
+      "reach": 45.0,
+      "firingTime": 0.0,
+      "reload": 4.0,
+      "magazine": 50
+    },
+    "secondaryWeapon": null,
+    "cost": [
+      {
+        "code": "Wood",
+        "qty": 25
+      }
+    ]
+  },
+  "TanketteC": {
+    "name": "T12 “Actaeon” Tankette",
+    "armourType": "Tier2Tank",
+    "health": 1150,
+    "armourHealth": 7200,
+    "penetration": {
+      "min": 0.6,
+      "max": 0.9
+    },
+    "disableLevel": 0.3,
+    "disableChance": {
+      "tracks": 0.3,
+      "engine": 0.0,
+      "mainGun": 0.0,
+      "secondaryGun": 0.0
+    },
+    "repairCost": 70,
+    "slots": 4,
+    "buildType": "VehicleFactory",
+    "mainWeapon": {
+      "weapon": "TanketteCGunner:MGAmmo",
+      "count": 1,
+      "range": 35.0,
+      "reach": 40.0,
+      "firingTime": 0.0,
+      "reload": 3.5,
+      "magazine": 75
+    },
+    "secondaryWeapon": null,
+    "cost": [
+      {
+        "code": "Wood",
+        "qty": 35
+      }
+    ]
+  },
+  "ArmoredCarW": {
+    "name": "O’Brien V.110",
+    "armourType": "Tier1Tank",
+    "health": 1150,
+    "armourHealth": 2700,
+    "penetration": {
+      "min": 0.85,
+      "max": 0.95
+    },
+    "disableLevel": 0.3,
+    "disableChance": {
+      "tracks": 0.0,
+      "engine": 0.0,
+      "mainGun": 0.0,
+      "secondaryGun": 0.0
+    },
+    "repairCost": 100,
+    "slots": 1,
+    "buildType": "VehicleFactory",
+    "mainWeapon": {
+      "weapon": "ArmoredCarGunner:AssaultRifleAmmo",
+      "count": 1,
+      "range": 40.0,
+      "reach": 45.0,
+      "firingTime": 0.0,
+      "reload": 4.0,
+      "magazine": 50
+    },
+    "secondaryWeapon": null,
+    "cost": [
+      {
+        "code": "Wood",
+        "qty": 25
+      }
+    ]
+  },
+  "ArmoredCarMobilityW": {
+    "name": "O’Brien V.121 Highlander",
+    "armourType": "Tier1Tank",
+    "health": 1250,
+    "armourHealth": 2700,
+    "penetration": {
+      "min": 0.85,
+      "max": 0.95
+    },
+    "disableLevel": 0.3,
+    "disableChance": {
+      "tracks": 0.0,
+      "engine": 0.0,
+      "mainGun": 0.0,
+      "secondaryGun": 0.0
+    },
+    "repairCost": 120,
+    "slots": 1,
+    "buildType": "VehicleFacility",
+    "mainWeapon": {
+      "weapon": "ArmoredCarGunner:AssaultRifleAmmo",
+      "count": 1,
+      "range": 40.0,
+      "reach": 45.0,
+      "firingTime": 0.0,
+      "reload": 4.0,
+      "magazine": 50
+    },
+    "secondaryWeapon": null,
+    "cost": [],
+    "altCost": [
+      {
+        "code": "FacilityMaterials1",
+        "qty": 5
+      },
+      {
+        "code": "FacilityMaterials4",
+        "qty": 5
+      }
+    ]
+  },
+  "Barge": {
+    "name": "BMS - Aquatipper",
+    "armourType": "Tier1Ship",
+    "health": 950,
+    "armourHealth": 0,
+    "penetration": {
+      "min": 1,
+      "max": 1
+    },
+    "disableLevel": 0.5,
+    "disableChance": {
+      "tracks": 0.0,
+      "engine": 0.0,
+      "mainGun": 0.0,
+      "secondaryGun": 0.0
+    },
+    "repairCost": 150,
+    "slots": 15,
+    "buildType": "Shipyard",
+    "mainWeapon": null,
+    "secondaryWeapon": null,
+    "cost": [
+      {
+        "code": "Cloth",
+        "qty": 150
+      }
+    ]
+  },
+  "BattleTankC": {
+    "name": "Lance-36",
+    "armourType": "Tier2Tank",
+    "health": 6250,
+    "armourHealth": 15650,
+    "penetration": {
+      "min": 0.25,
+      "max": 0.5
+    },
+    "disableLevel": 0.3,
+    "disableChance": {
+      "tracks": 0.3,
+      "engine": 0.25,
+      "mainGun": 0.25,
+      "secondaryGun": 0.0
+    },
+    "repairCost": 200,
+    "slots": 2,
+    "buildType": "VehicleFacility",
+    "mainWeapon": {
+      "weapon": "BattleTankGunner:BattleTankAmmo",
+      "count": 1,
+      "range": 35.0,
+      "reach": 35.0,
+      "firingTime": 2.0,
+      "reload": 5.5,
+      "magazine": 1
+    },
+    "secondaryWeapon": {
+      "weapon": "BattleTankCMachineGunner:MGAmmo",
+      "count": 1,
+      "range": 35.0,
+      "reach": 40.0,
+      "firingTime": 0.0,
+      "reload": 4.5,
+      "magazine": 200
+    },
+    "cost": [],
+    "altCost": [
+      {
+        "code": "FacilityMaterials3",
+        "qty": 50
+      },
+      {
+        "code": "FacilityMaterials6",
+        "qty": 30
+      },
+      {
+        "code": "FacilityMaterials7",
+        "qty": 60
+      },
+      {
+        "code": "FacilityMaterials8",
+        "qty": 35
+      }
+    ]
+  },
+  "BattleTankW": {
+    "name": "Flood Mk. I",
+    "armourType": "Tier2Tank",
+    "health": 5100,
+    "armourHealth": 15650,
+    "penetration": {
+      "min": 0.25,
+      "max": 0.5
+    },
+    "disableLevel": 0.3,
+    "disableChance": {
+      "tracks": 0.35,
+      "engine": 0.25,
+      "mainGun": 0.2,
+      "secondaryGun": 0.0
+    },
+    "repairCost": 220,
+    "slots": 2,
+    "buildType": "VehicleFacility",
+    "mainWeapon": {
+      "weapon": "BattleTankGunner:BattleTankAmmo",
+      "count": 1,
+      "range": 35.0,
+      "reach": 35.0,
+      "firingTime": 2.0,
+      "reload": 5.5,
+      "magazine": 1
+    },
+    "secondaryWeapon": {
+      "weapon": "BattleTankWMachineGunner:MGAmmo",
+      "count": 1,
+      "range": 35.0,
+      "reach": 40.0,
+      "firingTime": 0.0,
+      "reload": 3.5,
+      "magazine": 125
+    },
+    "cost": [],
+    "altCost": [
+      {
+        "code": "FacilityMaterials3",
+        "qty": 50
+      },
+      {
+        "code": "FacilityMaterials6",
+        "qty": 30
+      },
+      {
+        "code": "FacilityMaterials7",
+        "qty": 60
+      },
+      {
+        "code": "FacilityMaterials8",
+        "qty": 35
+      }
+    ]
+  },
+  "BusC": {
+    "name": "R-15 - “Chariot”",
+    "armourType": "LightVehicle",
+    "health": 600,
+    "armourHealth": 0,
+    "penetration": {
+      "min": 1,
+      "max": 1
+    },
+    "disableLevel": 0.666667,
+    "disableChance": {
+      "tracks": 0.0,
+      "engine": 0.0,
+      "mainGun": 0.0,
+      "secondaryGun": 0.0
+    },
+    "repairCost": 100,
+    "slots": 1,
+    "buildType": "VehicleFactory",
+    "mainWeapon": null,
+    "secondaryWeapon": null,
+    "cost": [
+      {
+        "code": "Cloth",
+        "qty": 100
+      }
+    ]
+  },
+  "BusW": {
+    "name": "Dunne Caravaner 2f",
+    "armourType": "LightVehicle",
+    "health": 600,
+    "armourHealth": 0,
+    "penetration": {
+      "min": 1,
+      "max": 1
+    },
+    "disableLevel": 0.666667,
+    "disableChance": {
+      "tracks": 0.0,
+      "engine": 0.0,
+      "mainGun": 0.0,
+      "secondaryGun": 0.0
+    },
+    "repairCost": 100,
+    "slots": 1,
+    "buildType": "VehicleFactory",
+    "mainWeapon": null,
+    "secondaryWeapon": null,
+    "cost": [
+      {
+        "code": "Cloth",
+        "qty": 100
+      }
+    ]
+  },
+  "Construction": {
+    "name": "BMS - Universal Assembly Rig",
+    "armourType": "LightVehicle",
+    "health": 1000,
+    "armourHealth": 0,
+    "penetration": {
+      "min": 1,
+      "max": 1
+    },
+    "disableLevel": 0.75,
+    "disableChance": {
+      "tracks": 0.0,
+      "engine": 0.0,
+      "mainGun": 0.0,
+      "secondaryGun": 0.0
+    },
+    "repairCost": 100,
+    "slots": 12,
+    "buildType": "VehicleFactory",
+    "mainWeapon": null,
+    "secondaryWeapon": null,
+    "cost": [
+      {
+        "code": "Cloth",
+        "qty": 100
+      }
+    ]
+  },
+  "Crane": {
+    "name": "BMS - Class 2 Mobile Auto-Crane",
+    "armourType": "LightVehicle",
+    "health": 1500,
+    "armourHealth": 0,
+    "penetration": {
+      "min": 1,
+      "max": 1
+    },
+    "disableLevel": 0.5,
+    "disableChance": {
+      "tracks": 0.0,
+      "engine": 0.0,
+      "mainGun": 0.0,
+      "secondaryGun": 0.0
+    },
+    "repairCost": 125,
+    "slots": 5,
+    "buildType": "VehicleFactory",
+    "mainWeapon": null,
+    "secondaryWeapon": null,
+    "cost": [
+      {
+        "code": "Cloth",
+        "qty": 125
+      }
+    ]
+  },
+  "FieldMGC": {
+    "name": "G40 “Sagittarii”",
+    "armourType": "Tier2Tank",
+    "health": 1850,
+    "armourHealth": 0,
+    "penetration": {
+      "min": 1,
+      "max": 1
+    },
+    "disableLevel": 0.3,
+    "disableChance": {
+      "tracks": 0.0,
+      "engine": 0.0,
+      "mainGun": 0.0,
+      "secondaryGun": 0.0
+    },
+    "repairCost": 100,
+    "slots": 1,
+    "buildType": "VehicleFactory",
+    "mainWeapon": {
+      "weapon": "FieldMachineGunGunner:MGAmmo",
+      "count": 1,
+      "range": 35.0,
+      "reach": 40.0,
+      "firingTime": 0.0,
+      "reload": 0.0,
+      "magazine": 200
+    },
+    "secondaryWeapon": null,
+    "cost": [
+      {
+        "code": "Wood",
+        "qty": 20
+      }
+    ]
+  },
+  "FieldMGW": {
+    "name": "Swallowtail 988/127-2",
+    "armourType": "Tier2Tank",
+    "health": 1850,
+    "armourHealth": 0,
+    "penetration": {
+      "min": 1,
+      "max": 1
+    },
+    "disableLevel": 0.3,
+    "disableChance": {
+      "tracks": 0.0,
+      "engine": 0.0,
+      "mainGun": 0.0,
+      "secondaryGun": 0.0
+    },
+    "repairCost": 100,
+    "slots": 1,
+    "buildType": "VehicleFactory",
+    "mainWeapon": {
+      "weapon": "FieldMachineGunGunner:MGAmmo",
+      "count": 1,
+      "range": 35.0,
+      "reach": 40.0,
+      "firingTime": 0.0,
+      "reload": 0.0,
+      "magazine": 200
+    },
+    "secondaryWeapon": null,
+    "cost": [
+      {
+        "code": "Wood",
+        "qty": 20
+      }
+    ]
+  },
+  "FlatbedTruck": {
+    "name": "BMS - Packmule Flatbed",
+    "armourType": "LightVehicle",
+    "health": 1125,
+    "armourHealth": 0,
+    "penetration": {
+      "min": 1,
+      "max": 1
+    },
+    "disableLevel": 0.8,
+    "disableChance": {
+      "tracks": 0.0,
+      "engine": 0.0,
+      "mainGun": 0.0,
+      "secondaryGun": 0.0
+    },
+    "repairCost": 100,
+    "slots": 1,
+    "buildType": "VehicleFactory",
+    "mainWeapon": null,
+    "secondaryWeapon": null,
+    "cost": [
+      {
+        "code": "Wood",
+        "qty": 30
+      }
+    ]
+  },
+  "Freighter": {
+    "name": "BMS - Ironship",
+    "armourType": "Tier1Ship",
+    "health": 2600,
+    "armourHealth": 0,
+    "penetration": {
+      "min": 1,
+      "max": 1
+    },
+    "disableLevel": 0.5,
+    "disableChance": {
+      "tracks": 0.0,
+      "engine": 0.0,
+      "mainGun": 0.0,
+      "secondaryGun": 0.0
+    },
+    "repairCost": 100,
+    "slots": 10,
+    "buildType": "Shipyard",
+    "mainWeapon": {
+      "weapon": null,
+      "count": 1,
+      "range": 150.0,
+      "reach": 150.0,
+      "firingTime": 0.0,
+      "reload": 0.0,
+      "magazine": 0
+    },
+    "secondaryWeapon": null,
+    "cost": [
+      {
+        "code": "Cloth",
+        "qty": 100
+      }
+    ]
+  },
+  "HalfTrackC": {
+    "name": "HH-a “Javelin”",
+    "armourType": "Tier1Tank",
+    "health": 1350,
+    "armourHealth": 3200,
+    "penetration": {
+      "min": 0.75,
+      "max": 0.9
+    },
+    "disableLevel": 0.3,
+    "disableChance": {
+      "tracks": 0.3,
+      "engine": 0.0,
+      "mainGun": 0.0,
+      "secondaryGun": 0.0
+    },
+    "repairCost": 95,
+    "slots": 2,
+    "buildType": "VehicleFactory",
+    "mainWeapon": null,
+    "secondaryWeapon": null,
+    "cost": [
+      {
+        "code": "Wood",
+        "qty": 55
+      }
+    ]
+  },
+  "HalfTrackDefensiveC": {
+    "name": "HH-b “Hoplite”",
+    "armourType": "Tier1Tank",
+    "health": 1500,
+    "armourHealth": 4600,
+    "penetration": {
+      "min": 0.65,
+      "max": 0.9
+    },
+    "disableLevel": 0.3,
+    "disableChance": {
+      "tracks": 0.3,
+      "engine": 0.0,
+      "mainGun": 0.0,
+      "secondaryGun": 0.0
+    },
+    "repairCost": 110,
+    "slots": 3,
+    "buildType": "VehicleFacility",
+    "mainWeapon": null,
+    "secondaryWeapon": null,
+    "cost": [],
+    "altCost": [
+      {
+        "code": "FacilityMaterials2",
+        "qty": 3
+      },
+      {
+        "code": "FacilityMaterials7",
+        "qty": 3
+      }
+    ]
+  },
+  "HalfTrackArtilleryC": {
+    "name": "HH-d “Peltast”",
+    "armourType": "Tier1Tank",
+    "health": 1350,
+    "armourHealth": 3200,
+    "penetration": {
+      "min": 0.75,
+      "max": 0.9
+    },
+    "disableLevel": 0.3,
+    "disableChance": {
+      "tracks": 0.3,
+      "engine": 0.0,
+      "mainGun": 0.0,
+      "secondaryGun": 0.0
+    },
+    "repairCost": 95,
+    "slots": 4,
+    "buildType": "VehicleFacility",
+    "mainWeapon": {
+      "weapon": "HalfTrackMortarGunner:MortarAmmo",
+      "count": 1,
+      "range": 80.0,
+      "reach": 80.0,
+      "firingTime": 0.0,
+      "reload": 3.0,
+      "magazine": 1
+    },
+    "secondaryWeapon": null,
+    "cost": [],
+    "altCost": [
+      {
+        "code": "FacilityMaterials2",
+        "qty": 5
+      },
+      {
+        "code": "FacilityMaterials5",
+        "qty": 5
+      },
+      {
+        "code": "FacilityMaterials7",
+        "qty": 3
+      }
+    ]
+  },
+  "HalfTrackW": {
+    "name": "Niska Mk. I Gun Motor Carriage",
+    "armourType": "Tier1Tank",
+    "health": 1500,
+    "armourHealth": 4600,
+    "penetration": {
+      "min": 0.65,
+      "max": 0.9
+    },
+    "disableLevel": 0.3,
+    "disableChance": {
+      "tracks": 0.3,
+      "engine": 0.0,
+      "mainGun": 0.0,
+      "secondaryGun": 0.0
+    },
+    "repairCost": 110,
+    "slots": 2,
+    "buildType": "VehicleFactory",
+    "mainWeapon": null,
+    "secondaryWeapon": null,
+    "cost": [
+      {
+        "code": "Wood",
+        "qty": 60
+      }
+    ]
+  },
+  "HalfTrackOffensiveW": {
+    "name": "Niska Mk. II Blinder",
+    "armourType": "Tier1Tank",
+    "health": 1500,
+    "armourHealth": 4600,
+    "penetration": {
+      "min": 0.65,
+      "max": 0.9
+    },
+    "disableLevel": 0.3,
+    "disableChance": {
+      "tracks": 0.3,
+      "engine": 0.0,
+      "mainGun": 0.0,
+      "secondaryGun": 0.0
+    },
+    "repairCost": 130,
+    "slots": 1,
+    "buildType": "VehicleFacility",
+    "mainWeapon": {
+      "weapon": "HalfTrackOffensiveGunner:ATAmmo",
+      "count": 1,
+      "range": 45.0,
+      "reach": 45.0,
+      "firingTime": 2.0,
+      "reload": 4.0,
+      "magazine": 1
+    },
+    "secondaryWeapon": null,
+    "cost": [],
+    "altCost": [
+      {
+        "code": "FacilityMaterials2",
+        "qty": 5
+      },
+      {
+        "code": "FacilityMaterials5",
+        "qty": 10
+      },
+      {
+        "code": "FacilityMaterials7",
+        "qty": 3
+      }
+    ]
+  },
+  "Harvester": {
+    "name": "BMS - Scrap Hauler",
+    "armourType": "LightVehicle",
+    "health": 1250,
+    "armourHealth": 0,
+    "penetration": {
+      "min": 1,
+      "max": 1
+    },
+    "disableLevel": 0.5,
+    "disableChance": {
+      "tracks": 0.0,
+      "engine": 0.0,
+      "mainGun": 0.0,
+      "secondaryGun": 0.0
+    },
+    "repairCost": 120,
+    "slots": 15,
+    "buildType": "VehicleFacility",
+    "mainWeapon": null,
+    "secondaryWeapon": null,
+    "cost": [],
+    "altCost": [
+      {
+        "code": "FacilityMaterials2",
+        "qty": 90
+      },
+      {
+        "code": "FacilityMaterials7",
+        "qty": 25
+      }
+    ]
+  },
+  "LandingCraftC": {
+    "name": "AB-8 “Acheron”",
+    "armourType": "Tier1Tank",
+    "health": 1000,
+    "armourHealth": 5450,
+    "penetration": {
+      "min": 0.55,
+      "max": 0.9
+    },
+    "disableLevel": 0.5,
+    "disableChance": {
+      "tracks": 0.25,
+      "engine": 0.0,
+      "mainGun": 0.0,
+      "secondaryGun": 0.0
+    },
+    "repairCost": 140,
+    "slots": 6,
+    "buildType": null,
+    "mainWeapon": null,
+    "secondaryWeapon": null,
+    "cost": [
+      {
+        "code": "Wood",
+        "qty": 20
+      }
+    ]
+  },
+  "LandingCraftOffensiveC": {
+    "name": "AB-11 “Doru”",
+    "armourType": "Tier1Tank",
+    "health": 1000,
+    "armourHealth": 5450,
+    "penetration": {
+      "min": 0.55,
+      "max": 0.9
+    },
+    "disableLevel": 0.5,
+    "disableChance": {
+      "tracks": 0.25,
+      "engine": 0.0,
+      "mainGun": 0.0,
+      "secondaryGun": 0.0
+    },
+    "repairCost": 140,
+    "slots": 6,
+    "buildType": "VehicleFacility",
+    "mainWeapon": {
+      "weapon": "LandingCraftOffensiveCGunner:MGAmmo",
+      "count": 1,
+      "range": 35.0,
+      "reach": 40.0,
+      "firingTime": 0.0,
+      "reload": 3.5,
+      "magazine": 75
+    },
+    "secondaryWeapon": null,
+    "cost": [],
+    "altCost": [
+      {
+        "code": "FacilityMaterials2",
+        "qty": 5
+      },
+      {
+        "code": "FacilityMaterials6",
+        "qty": 3
+      }
+    ]
+  },
+  "LandingCraftW": {
+    "name": "Mulloy LPC",
+    "armourType": "Tier1Tank",
+    "health": 1000,
+    "armourHealth": 5450,
+    "penetration": {
+      "min": 0.55,
+      "max": 0.9
+    },
+    "disableLevel": 0.5,
+    "disableChance": {
+      "tracks": 0.15,
+      "engine": 0.0,
+      "mainGun": 0.0,
+      "secondaryGun": 0.0
+    },
+    "repairCost": 140,
+    "slots": 6,
+    "buildType": null,
+    "mainWeapon": null,
+    "secondaryWeapon": null,
+    "cost": [
+      {
+        "code": "Wood",
+        "qty": 20
+      }
+    ]
+  },
+  "LightTankC": {
+    "name": "H-5 “Hatchet”",
+    "armourType": "Tier2Tank",
+    "health": 1950,
+    "armourHealth": 9100,
+    "penetration": {
+      "min": 0.33,
+      "max": 0.6699999999999999
+    },
+    "disableLevel": 0.3,
+    "disableChance": {
+      "tracks": 0.3,
+      "engine": 0.2,
+      "mainGun": 0.25,
+      "secondaryGun": 0.0
+    },
+    "repairCost": 135,
+    "slots": 1,
+    "buildType": "VehicleFactory",
+    "mainWeapon": {
+      "weapon": "LightTankGunnerC:LightTankAmmo",
+      "count": 1,
+      "range": 40.0,
+      "reach": 40.0,
+      "firingTime": 2.0,
+      "reload": 5.5,
+      "magazine": 1
+    },
+    "secondaryWeapon": null,
+    "cost": [
+      {
+        "code": "Wood",
+        "qty": 115
+      }
+    ]
+  },
+  "LightTankW": {
+    "name": "Devitt Mk. III",
+    "armourType": "Tier2Tank",
+    "health": 1950,
+    "armourHealth": 10000,
+    "penetration": {
+      "min": 0.3,
+      "max": 0.6699999999999999
+    },
+    "disableLevel": 0.3,
+    "disableChance": {
+      "tracks": 0.3,
+      "engine": 0.25,
+      "mainGun": 0.2,
+      "secondaryGun": 0.0
+    },
+    "repairCost": 135,
+    "slots": 1,
+    "buildType": "VehicleFactory",
+    "mainWeapon": {
+      "weapon": "LightTankGunnerW:LightTankAmmo",
+      "count": 1,
+      "range": 40.0,
+      "reach": 40.0,
+      "firingTime": 2.0,
+      "reload": 5.0,
+      "magazine": 1
+    },
+    "secondaryWeapon": null,
+    "cost": [
+      {
+        "code": "Wood",
+        "qty": 120
+      }
+    ]
+  },
+  "Mech": {
+    "name": "Centurion MV-2",
+    "armourType": "Tier2Tank",
+    "health": 9850,
+    "armourHealth": 9000,
+    "penetration": {
+      "min": 0,
+      "max": 0.6699999999999999
+    },
+    "disableLevel": 0.3,
+    "disableChance": {
+      "tracks": 0.3,
+      "engine": 0.4,
+      "mainGun": 0.15,
+      "secondaryGun": 0.0
+    },
+    "repairCost": 200,
+    "slots": 3,
+    "buildType": null,
+    "mainWeapon": {
+      "weapon": "MechGunner:BattleTankAmmo",
+      "count": 1,
+      "range": 40.0,
+      "reach": 40.0,
+      "firingTime": 2.0,
+      "reload": 4.0,
+      "magazine": 1
+    },
+    "secondaryWeapon": {
+      "weapon": "MechHMGGunner:MGAmmo",
+      "count": 2,
+      "range": 35.0,
+      "reach": 40.0,
+      "firingTime": 0.0,
+      "reload": 0.0,
+      "magazine": 50
+    },
+    "cost": [
+      {
+        "code": "Wood",
+        "qty": 230
+      }
+    ]
+  },
+  "MechW": {
+    "name": "Herne QMW 1a Scourge Hunter",
+    "armourType": "Tier2Tank",
+    "health": 6850,
+    "armourHealth": 4750,
+    "penetration": {
+      "min": 0,
+      "max": 0.6699999999999999
+    },
+    "disableLevel": 0.5,
+    "disableChance": {
+      "tracks": 0.3,
+      "engine": 0.4,
+      "mainGun": 0.3,
+      "secondaryGun": 0.0
+    },
+    "repairCost": 200,
+    "slots": 3,
+    "buildType": null,
+    "mainWeapon": {
+      "weapon": "MechWGunner:RPGAmmo",
+      "count": 1,
+      "range": 27.0,
+      "reach": 40.0,
+      "firingTime": 0.5,
+      "reload": 2.5,
+      "magazine": 4
+    },
+    "secondaryWeapon": {
+      "weapon": "MechWMachineGunner:MGAmmo",
+      "count": 1,
+      "range": 35.0,
+      "reach": 40.0,
+      "firingTime": 0.0,
+      "reload": 4.0,
+      "magazine": 200
+    },
+    "cost": [
+      {
+        "code": "Wood",
+        "qty": 185
+      }
+    ]
+  },
+  "MortarTankC": {
+    "name": "HC-7 “Ballista”",
+    "armourType": "Tier2Tank",
+    "health": 3300,
+    "armourHealth": 11500,
+    "penetration": {
+      "min": 0.3,
+      "max": 0.75
+    },
+    "disableLevel": 0.3,
+    "disableChance": {
+      "tracks": 0.2,
+      "engine": 0.2,
+      "mainGun": 0.2,
+      "secondaryGun": 0.0
+    },
+    "repairCost": 160,
+    "slots": 1,
+    "buildType": "VehicleFacility",
+    "mainWeapon": {
+      "weapon": "MortarTankGunner:MortarTankAmmo",
+      "count": 1,
+      "range": 25.0,
+      "reach": 40.0,
+      "firingTime": 2.0,
+      "reload": 5.5,
+      "magazine": 1
+    },
+    "secondaryWeapon": null,
+    "cost": [],
+    "altCost": [
+      {
+        "code": "FacilityMaterials2",
+        "qty": 15
+      },
+      {
+        "code": "FacilityMaterials5",
+        "qty": 15
+      }
+    ]
+  },
+  "Motorboat": {
+    "name": "BMS - Grouper",
+    "armourType": "LightVehicle",
+    "health": 200,
+    "armourHealth": 0,
+    "penetration": {
+      "min": 1,
+      "max": 1
+    },
+    "disableLevel": 0.5,
+    "disableChance": {
+      "tracks": 0.0,
+      "engine": 0.0,
+      "mainGun": 0.0,
+      "secondaryGun": 0.0
+    },
+    "repairCost": 60,
+    "slots": 2,
+    "buildType": "BuildableAnywhere",
+    "mainWeapon": null,
+    "secondaryWeapon": null,
+    "cost": [
+      {
+        "code": "Cloth",
+        "qty": 60
+      }
+    ]
+  },
+  "MotorcycleC": {
+    "name": "03MM “Caster”",
+    "armourType": "LightVehicle",
+    "health": 300,
+    "armourHealth": 0,
+    "penetration": {
+      "min": 1,
+      "max": 1
+    },
+    "disableLevel": 0.5,
+    "disableChance": {
+      "tracks": 0.0,
+      "engine": 0.0,
+      "mainGun": 0.0,
+      "secondaryGun": 0.0
+    },
+    "repairCost": 85,
+    "slots": 2,
+    "buildType": "VehicleFactory",
+    "mainWeapon": null,
+    "secondaryWeapon": null,
+    "cost": [
+      {
+        "code": "Cloth",
+        "qty": 85
+      }
+    ]
+  },
+  "MotorcycleW": {
+    "name": "Kivela Power Wheel 80-1",
+    "armourType": "LightVehicle",
+    "health": 300,
+    "armourHealth": 0,
+    "penetration": {
+      "min": 1,
+      "max": 1
+    },
+    "disableLevel": 0.5,
+    "disableChance": {
+      "tracks": 0.0,
+      "engine": 0.0,
+      "mainGun": 0.0,
+      "secondaryGun": 0.0
+    },
+    "repairCost": 85,
+    "slots": 2,
+    "buildType": "VehicleFactory",
+    "mainWeapon": null,
+    "secondaryWeapon": null,
+    "cost": [
+      {
+        "code": "Cloth",
+        "qty": 85
+      }
+    ]
+  },
+  "MotorcycleOffensiveC": {
+    "name": "00MS “Stinger”",
+    "armourType": "LightVehicle",
+    "health": 300,
+    "armourHealth": 0,
+    "penetration": {
+      "min": 1,
+      "max": 1
+    },
+    "disableLevel": 0.5,
+    "disableChance": {
+      "tracks": 0.0,
+      "engine": 0.0,
+      "mainGun": 0.0,
+      "secondaryGun": 0.0
+    },
+    "repairCost": 110,
+    "slots": 1,
+    "buildType": "VehicleFacility",
+    "mainWeapon": {
+      "weapon": "MotorcycleOffensiveGunner:AssaultRifleAmmo",
+      "count": 1,
+      "range": 27.0,
+      "reach": 40.0,
+      "firingTime": 0.0,
+      "reload": 0.0,
+      "magazine": 30
+    },
+    "secondaryWeapon": null,
+    "cost": [],
+    "altCost": [
+      {
+        "code": "FacilityMaterials1",
+        "qty": 5
+      }
+    ]
+  },
+  "TruckLiquidC": {
+    "name": "RR-3 “Stolon” Tanker",
+    "armourType": "LightVehicle",
+    "health": 1125,
+    "armourHealth": 0,
+    "penetration": {
+      "min": 1,
+      "max": 1
+    },
+    "disableLevel": 0.875,
+    "disableChance": {
+      "tracks": 0.0,
+      "engine": 0.0,
+      "mainGun": 0.0,
+      "secondaryGun": 0.0
+    },
+    "repairCost": 100,
+    "slots": 1,
+    "buildType": "VehicleFactory",
+    "mainWeapon": null,
+    "secondaryWeapon": null,
+    "cost": [
+      {
+        "code": "Cloth",
+        "qty": 100
+      }
+    ],
+    "altCost": [
+      {
+        "code": "FacilityMaterials1",
+        "qty": 10
+      }
+    ]
+  },
+  "TruckLiquidW": {
+    "name": "Dunne Fuelrunner 2d",
+    "armourType": "LightVehicle",
+    "health": 1125,
+    "armourHealth": 0,
+    "penetration": {
+      "min": 1,
+      "max": 1
+    },
+    "disableLevel": 0.875,
+    "disableChance": {
+      "tracks": 0.0,
+      "engine": 0.0,
+      "mainGun": 0.0,
+      "secondaryGun": 0.0
+    },
+    "repairCost": 100,
+    "slots": 1,
+    "buildType": "VehicleFactory",
+    "mainWeapon": null,
+    "secondaryWeapon": null,
+    "cost": [
+      {
+        "code": "Cloth",
+        "qty": 100
+      }
+    ],
+    "altCost": [
+      {
+        "code": "FacilityMaterials1",
+        "qty": 10
+      }
+    ]
+  },
+  "RelicAPC": {
+    "name": "Heavy Infantry Carrier",
+    "armourType": "Tier1Tank",
+    "health": 40000,
+    "armourHealth": 0,
+    "penetration": {
+      "min": 1,
+      "max": 1
+    },
+    "disableLevel": 0.15,
+    "disableChance": {
+      "tracks": 0.0,
+      "engine": 0.0,
+      "mainGun": 0.0,
+      "secondaryGun": 0.0
+    },
+    "repairCost": 0,
+    "slots": 15,
+    "buildType": null,
+    "mainWeapon": {
+      "weapon": "RelicAPCMachineGunner:MGAmmo",
+      "count": 2,
+      "range": 35.0,
+      "reach": 40.0,
+      "firingTime": 0.0,
+      "reload": 0.0,
+      "magazine": 50
+    },
+    "secondaryWeapon": null,
+    "cost": [
+      {
+        "code": "RelicMaterials",
+        "qty": -29860
+      }
+    ]
+  },
+  "RelicArmouredCar": {
+    "name": "Armoured Fighting Tractor",
+    "armourType": "Tier2Tank",
+    "health": 1500,
+    "armourHealth": 3700,
+    "penetration": {
+      "min": 0.65,
+      "max": 0.85
+    },
+    "disableLevel": 0.3,
+    "disableChance": {
+      "tracks": 0.3,
+      "engine": 0.0,
+      "mainGun": 0.0,
+      "secondaryGun": 0.0
+    },
+    "repairCost": 100,
+    "slots": 3,
+    "buildType": "VehicleFactory",
+    "mainWeapon": {
+      "weapon": "RelicArmoredCarGunner:AssaultRifleAmmo",
+      "count": 1,
+      "range": 40.0,
+      "reach": 45.0,
+      "firingTime": 0.0,
+      "reload": 6.5,
+      "magazine": 75
+    },
+    "secondaryWeapon": null,
+    "cost": [
+      {
+        "code": "RelicMaterials",
+        "qty": 80
+      }
+    ]
+  },
+  "RelicLightTank": {
+    "name": "Storm Tank",
+    "armourType": "Tier2Tank",
+    "health": 2500,
+    "armourHealth": 6800,
+    "penetration": {
+      "min": 0.4,
+      "max": 0.6699999999999999
+    },
+    "disableLevel": 0.3,
+    "disableChance": {
+      "tracks": 0.3,
+      "engine": 0.4,
+      "mainGun": 0.25,
+      "secondaryGun": 0.0
+    },
+    "repairCost": 160,
+    "slots": 3,
+    "buildType": "VehicleFactory",
+    "mainWeapon": {
+      "weapon": "RelicLightTankGunner:LightTankAmmo",
+      "count": 1,
+      "range": 40.0,
+      "reach": 40.0,
+      "firingTime": 2.0,
+      "reload": 2.75,
+      "magazine": 1
+    },
+    "secondaryWeapon": null,
+    "cost": [
+      {
+        "code": "RelicMaterials",
+        "qty": 120
+      }
+    ]
+  },
+  "RelicScoutVehicle": {
+    "name": "Staff Car",
+    "armourType": "LightVehicle",
+    "health": 900,
+    "armourHealth": 0,
+    "penetration": {
+      "min": 1,
+      "max": 1
+    },
+    "disableLevel": 0.4,
+    "disableChance": {
+      "tracks": 0.0,
+      "engine": 0.0,
+      "mainGun": 0.0,
+      "secondaryGun": 0.0
+    },
+    "repairCost": 100,
+    "slots": 9,
+    "buildType": "VehicleFactory",
+    "mainWeapon": null,
+    "secondaryWeapon": null,
+    "cost": [
+      {
+        "code": "RelicMaterials",
+        "qty": 60
+      }
+    ]
+  },
+  "RelicTruck": {
+    "name": "Repurposed Truck",
+    "armourType": "LightVehicle",
+    "health": 800,
+    "armourHealth": 0,
+    "penetration": {
+      "min": 1,
+      "max": 1
+    },
+    "disableLevel": 0.8125,
+    "disableChance": {
+      "tracks": 0.0,
+      "engine": 0.0,
+      "mainGun": 0.0,
+      "secondaryGun": 0.0
+    },
+    "repairCost": 100,
+    "slots": 18,
+    "buildType": "VehicleFactory",
+    "mainWeapon": null,
+    "secondaryWeapon": null,
+    "cost": [
+      {
+        "code": "RelicMaterials",
+        "qty": 60
+      }
+    ]
+  },
+  "ScoutVehicleOffensiveC": {
+    "name": "UV-24 “Icarus”",
+    "armourType": "LightVehicle",
+    "health": 1300,
+    "armourHealth": 0,
+    "penetration": {
+      "min": 1,
+      "max": 1
+    },
+    "disableLevel": 0.4,
+    "disableChance": {
+      "tracks": 0.0,
+      "engine": 0.0,
+      "mainGun": 0.0,
+      "secondaryGun": 0.0
+    },
+    "repairCost": 120,
+    "slots": 3,
+    "buildType": "VehicleFacility",
+    "mainWeapon": {
+      "weapon": "ScoutVehicleOffensiveCGunner:RPGAmmo",
+      "count": 1,
+      "range": 27.0,
+      "reach": 40.0,
+      "firingTime": 0.0,
+      "reload": 0.0,
+      "magazine": 1
+    },
+    "secondaryWeapon": null,
+    "cost": [],
+    "altCost": [
+      {
+        "code": "FacilityMaterials1",
+        "qty": 3
+      },
+      {
+        "code": "FacilityMaterials5",
+        "qty": 10
+      }
+    ]
+  },
+  "ScoutVehicleMobilityC": {
+    "name": "UV-05a “Argonaut”",
+    "armourType": "LightVehicle",
+    "health": 900,
+    "armourHealth": 0,
+    "penetration": {
+      "min": 1,
+      "max": 1
+    },
+    "disableLevel": 0.4,
+    "disableChance": {
+      "tracks": 0.0,
+      "engine": 0.0,
+      "mainGun": 0.0,
+      "secondaryGun": 0.0
+    },
+    "repairCost": 120,
+    "slots": 6,
+    "buildType": "VehicleFactory",
+    "mainWeapon": null,
+    "secondaryWeapon": null,
+    "cost": [
+      {
+        "code": "Wood",
+        "qty": 10
+      }
+    ]
+  },
+  "ScoutVehicleW": {
+    "name": "Drummond 100a",
+    "armourType": "LightVehicle",
+    "health": 1150,
+    "armourHealth": 0,
+    "penetration": {
+      "min": 1,
+      "max": 1
+    },
+    "disableLevel": 0.4,
+    "disableChance": {
+      "tracks": 0.0,
+      "engine": 0.0,
+      "mainGun": 0.0,
+      "secondaryGun": 0.0
+    },
+    "repairCost": 120,
+    "slots": 9,
+    "buildType": "VehicleFactory",
+    "mainWeapon": null,
+    "secondaryWeapon": null,
+    "cost": [
+      {
+        "code": "Wood",
+        "qty": 10
+      }
+    ]
+  },
+  "ScoutVehicleOffensiveW": {
+    "name": "Drummond Spitfire 100d",
+    "armourType": "LightVehicle",
+    "health": 1150,
+    "armourHealth": 0,
+    "penetration": {
+      "min": 1,
+      "max": 1
+    },
+    "disableLevel": 0.4,
+    "disableChance": {
+      "tracks": 0.0,
+      "engine": 0.0,
+      "mainGun": 0.0,
+      "secondaryGun": 0.0
+    },
+    "repairCost": 120,
+    "slots": 3,
+    "buildType": "VehicleFacility",
+    "mainWeapon": {
+      "weapon": "ScoutVehicleOffensiveWGunner:AssaultRifleAmmo",
+      "count": 1,
+      "range": 27.0,
+      "reach": 40.0,
+      "firingTime": 0.0,
+      "reload": 0.0,
+      "magazine": 30
+    },
+    "secondaryWeapon": null,
+    "cost": [],
+    "altCost": [
+      {
+        "code": "FacilityMaterials1",
+        "qty": 3
+      },
+      {
+        "code": "FacilityMaterials5",
+        "qty": 10
+      }
+    ]
+  },
+  "Bicycle": {
+    "name": "Blumfield LK205",
+    "armourType": "LightVehicle",
+    "health": 200,
+    "armourHealth": 0,
+    "penetration": {
+      "min": 1,
+      "max": 1
+    },
+    "disableLevel": 0,
+    "disableChance": {
+      "tracks": 0.0,
+      "engine": 0.0,
+      "mainGun": 0.0,
+      "secondaryGun": 0.0
+    },
+    "repairCost": 0,
+    "slots": 1,
+    "buildType": null,
+    "mainWeapon": null,
+    "secondaryWeapon": null,
+    "cost": [
+      {
+        "code": "Cloth",
+        "qty": 10
+      }
+    ]
+  },
+  "TruckC": {
+    "name": "R-1 Hauler",
+    "armourType": "LightVehicle",
+    "health": 900,
+    "armourHealth": 0,
+    "penetration": {
+      "min": 1,
+      "max": 1
+    },
+    "disableLevel": 0.8125,
+    "disableChance": {
+      "tracks": 0.0,
+      "engine": 0.0,
+      "mainGun": 0.0,
+      "secondaryGun": 0.0
+    },
+    "repairCost": 100,
+    "slots": 15,
+    "buildType": "VehicleFactory",
+    "mainWeapon": null,
+    "secondaryWeapon": null,
+    "cost": [
+      {
+        "code": "Cloth",
+        "qty": 100
+      }
+    ]
+  },
+  "TruckMobilityC": {
+    "name": "R-5b “Sisyphus” Hauler",
+    "armourType": "LightVehicle",
+    "health": 900,
+    "armourHealth": 0,
+    "penetration": {
+      "min": 1,
+      "max": 1
+    },
+    "disableLevel": 0.8125,
+    "disableChance": {
+      "tracks": 0.0,
+      "engine": 0.0,
+      "mainGun": 0.0,
+      "secondaryGun": 0.0
+    },
+    "repairCost": 100,
+    "slots": 14,
+    "buildType": "VehicleFacility",
+    "mainWeapon": null,
+    "secondaryWeapon": null,
+    "cost": [],
+    "altCost": [
+      {
+        "code": "FacilityMaterials1",
+        "qty": 10
+      }
+    ]
+  },
+  "TruckOffensiveC": {
+    "name": "R-9 “Speartip” Escort",
+    "armourType": "LightVehicle",
+    "health": 900,
+    "armourHealth": 0,
+    "penetration": {
+      "min": 1,
+      "max": 1
+    },
+    "disableLevel": 0.8125,
+    "disableChance": {
+      "tracks": 0.0,
+      "engine": 0.0,
+      "mainGun": 0.0,
+      "secondaryGun": 0.0
+    },
+    "repairCost": 120,
+    "slots": 15,
+    "buildType": "VehicleFacility",
+    "mainWeapon": {
+      "weapon": "TruckOffensiveGunner:AssaultRifleAmmo",
+      "count": 1,
+      "range": 27.0,
+      "reach": 40.0,
+      "firingTime": 0.0,
+      "reload": 0.0,
+      "magazine": 30
+    },
+    "secondaryWeapon": null,
+    "cost": [],
+    "altCost": [
+      {
+        "code": "FacilityMaterials1",
+        "qty": 10
+      }
+    ]
+  },
+  "TruckResourceC": {
+    "name": "R-5 “Atlas” Hauler",
+    "armourType": "LightVehicle",
+    "health": 1000,
+    "armourHealth": 0,
+    "penetration": {
+      "min": 1,
+      "max": 1
+    },
+    "disableLevel": 0.8125,
+    "disableChance": {
+      "tracks": 0.0,
+      "engine": 0.0,
+      "mainGun": 0.0,
+      "secondaryGun": 0.0
+    },
+    "repairCost": 100,
+    "slots": 20,
+    "buildType": "VehicleFactory",
+    "mainWeapon": null,
+    "secondaryWeapon": null,
+    "cost": [
+      {
+        "code": "Cloth",
+        "qty": 120
+      }
+    ],
+    "altCost": [
+      {
+        "code": "FacilityMaterials1",
+        "qty": 10
+      }
+    ]
+  },
+  "TruckW": {
+    "name": "Dunne Transport",
+    "armourType": "LightVehicle",
+    "health": 900,
+    "armourHealth": 0,
+    "penetration": {
+      "min": 1,
+      "max": 1
+    },
+    "disableLevel": 0.8125,
+    "disableChance": {
+      "tracks": 0.0,
+      "engine": 0.0,
+      "mainGun": 0.0,
+      "secondaryGun": 0.0
+    },
+    "repairCost": 100,
+    "slots": 15,
+    "buildType": "VehicleFactory",
+    "mainWeapon": null,
+    "secondaryWeapon": null,
+    "cost": [
+      {
+        "code": "Cloth",
+        "qty": 100
+      }
+    ]
+  },
+  "TruckMobilityW": {
+    "name": "Dunne Landrunner 12c",
+    "armourType": "LightVehicle",
+    "health": 900,
+    "armourHealth": 0,
+    "penetration": {
+      "min": 1,
+      "max": 1
+    },
+    "disableLevel": 0.8125,
+    "disableChance": {
+      "tracks": 0.0,
+      "engine": 0.0,
+      "mainGun": 0.0,
+      "secondaryGun": 0.0
+    },
+    "repairCost": 120,
+    "slots": 14,
+    "buildType": "VehicleFacility",
+    "mainWeapon": null,
+    "secondaryWeapon": null,
+    "cost": [],
+    "altCost": [
+      {
+        "code": "FacilityMaterials1",
+        "qty": 10
+      }
+    ]
+  },
+  "TruckDefensiveW": {
+    "name": "Dunne Leatherback 2a",
+    "armourType": "LightVehicle",
+    "health": 1250,
+    "armourHealth": 0,
+    "penetration": {
+      "min": 1,
+      "max": 1
+    },
+    "disableLevel": 0.5,
+    "disableChance": {
+      "tracks": 0.0,
+      "engine": 0.0,
+      "mainGun": 0.0,
+      "secondaryGun": 0.0
+    },
+    "repairCost": 120,
+    "slots": 14,
+    "buildType": "VehicleFacility",
+    "mainWeapon": null,
+    "secondaryWeapon": null,
+    "cost": [],
+    "altCost": [
+      {
+        "code": "FacilityMaterials1",
+        "qty": 10
+      }
+    ]
+  },
+  "TruckResourceW": {
+    "name": "Dunne Loadlugger 3c",
+    "armourType": "LightVehicle",
+    "health": 1000,
+    "armourHealth": 0,
+    "penetration": {
+      "min": 1,
+      "max": 1
+    },
+    "disableLevel": 0.8125,
+    "disableChance": {
+      "tracks": 0.0,
+      "engine": 0.0,
+      "mainGun": 0.0,
+      "secondaryGun": 0.0
+    },
+    "repairCost": 100,
+    "slots": 20,
+    "buildType": "VehicleFactory",
+    "mainWeapon": null,
+    "secondaryWeapon": null,
+    "cost": [
+      {
+        "code": "Cloth",
+        "qty": 120
+      }
+    ],
+    "altCost": [
+      {
+        "code": "FacilityMaterials1",
+        "qty": 10
+      }
+    ]
+  },
+  "LightTankDefensiveW": {
+    "name": "Devitt Ironhide Mk. IV",
+    "armourType": "Tier2Tank",
+    "health": 1950,
+    "armourHealth": 14000,
+    "penetration": {
+      "min": 0.3,
+      "max": 0.6699999999999999
+    },
+    "disableLevel": 0.2,
+    "disableChance": {
+      "tracks": 0.25,
+      "engine": 0.2,
+      "mainGun": 0.2,
+      "secondaryGun": 0.0
+    },
+    "repairCost": 135,
+    "slots": 1,
+    "buildType": "VehicleFacility",
+    "mainWeapon": {
+      "weapon": "LightTankGunnerW:LightTankAmmo",
+      "count": 1,
+      "range": 40.0,
+      "reach": 40.0,
+      "firingTime": 2.0,
+      "reload": 5.0,
+      "magazine": 1
+    },
+    "secondaryWeapon": null,
+    "cost": [],
+    "altCost": [
+      {
+        "code": "FacilityMaterials2",
+        "qty": 8
+      },
+      {
+        "code": "FacilityMaterials5",
+        "qty": 20
+      },
+      {
+        "code": "FacilityMaterials6",
+        "qty": 5
+      }
+    ]
+  },
+  "LightTankMobilityC": {
+    "name": "H-8 “Kranesca”",
+    "armourType": "Tier2Tank",
+    "health": 2250,
+    "armourHealth": 9100,
+    "penetration": {
+      "min": 0.33,
+      "max": 0.6699999999999999
+    },
+    "disableLevel": 0.3,
+    "disableChance": {
+      "tracks": 0.3,
+      "engine": 0.2,
+      "mainGun": 0.25,
+      "secondaryGun": 0.0
+    },
+    "repairCost": 160,
+    "slots": 1,
+    "buildType": "VehicleFacility",
+    "mainWeapon": {
+      "weapon": "LightTankGunnerC:LightTankAmmo",
+      "count": 1,
+      "range": 40.0,
+      "reach": 40.0,
+      "firingTime": 2.0,
+      "reload": 5.5,
+      "magazine": 1
+    },
+    "secondaryWeapon": null,
+    "cost": [],
+    "altCost": [
+      {
+        "code": "FacilityMaterials2",
+        "qty": 5
+      },
+      {
+        "code": "FacilityMaterials4",
+        "qty": 20
+      },
+      {
+        "code": "FacilityMaterials7",
+        "qty": 5
+      }
+    ]
+  },
+  "FieldATW": {
+    "name": "Collins Cannon 68mm",
+    "armourType": "Tier2Tank",
+    "health": 2850,
+    "armourHealth": 0,
+    "penetration": {
+      "min": 1,
+      "max": 1
+    },
+    "disableLevel": 0.3,
+    "disableChance": {
+      "tracks": 0.0,
+      "engine": 0.0,
+      "mainGun": 0.0,
+      "secondaryGun": 0.0
+    },
+    "repairCost": 100,
+    "slots": 1,
+    "buildType": "VehicleFactory",
+    "mainWeapon": {
+      "weapon": "FieldATGunGunner:ATAmmo",
+      "count": 1,
+      "range": 40.0,
+      "reach": 40.0,
+      "firingTime": 1.0,
+      "reload": 3.0,
+      "magazine": 1
+    },
+    "secondaryWeapon": null,
+    "cost": [
+      {
+        "code": "Wood",
+        "qty": 20
+      }
+    ]
+  },
+  "FieldATC": {
+    "name": "AA-2 “Battering Ram”",
+    "armourType": "Tier2Tank",
+    "health": 2850,
+    "armourHealth": 0,
+    "penetration": {
+      "min": 1,
+      "max": 1
+    },
+    "disableLevel": 0.3,
+    "disableChance": {
+      "tracks": 0.0,
+      "engine": 0.0,
+      "mainGun": 0.0,
+      "secondaryGun": 0.0
+    },
+    "repairCost": 100,
+    "slots": 1,
+    "buildType": "VehicleFactory",
+    "mainWeapon": {
+      "weapon": "FieldATGunGunner:ATAmmo",
+      "count": 1,
+      "range": 40.0,
+      "reach": 40.0,
+      "firingTime": 1.0,
+      "reload": 3.0,
+      "magazine": 1
+    },
+    "secondaryWeapon": null,
+    "cost": [
+      {
+        "code": "Wood",
+        "qty": 20
+      }
+    ]
+  },
+  "BattleTankDefensiveW": {
+    "name": "Flood Juggernaut Mk. VII",
+    "armourType": "Tier2Tank",
+    "health": 5100,
+    "armourHealth": 16250,
+    "penetration": {
+      "min": 0.23,
+      "max": 0.5
+    },
+    "disableLevel": 0.3,
+    "disableChance": {
+      "tracks": 0.2,
+      "engine": 0.25,
+      "mainGun": 0.15,
+      "secondaryGun": 0.0
+    },
+    "repairCost": 220,
+    "slots": 2,
+    "buildType": "VehicleFacility",
+    "mainWeapon": {
+      "weapon": "BattleTankGunner:BattleTankAmmo",
+      "count": 1,
+      "range": 35.0,
+      "reach": 35.0,
+      "firingTime": 2.0,
+      "reload": 5.5,
+      "magazine": 1
+    },
+    "secondaryWeapon": {
+      "weapon": "BattleTankDefensiveWFlameGunner:FlameAmmo",
+      "count": 1,
+      "range": 18.0,
+      "reach": 20.0,
+      "firingTime": 0.0,
+      "reload": 5.5,
+      "magazine": 150
+    },
+    "cost": [],
+    "altCost": [
+      {
+        "code": "FacilityMaterials3",
+        "qty": 40
+      },
+      {
+        "code": "FacilityMaterials6",
+        "qty": 65
+      },
+      {
+        "code": "FacilityMaterials7",
+        "qty": 30
+      },
+      {
+        "code": "FacilityMaterials8",
+        "qty": 45
+      }
+    ]
+  },
+  "MediumTankW": {
+    "name": "Silverhand - Mk. IV",
+    "armourType": "Tier2Tank",
+    "health": 3100,
+    "armourHealth": 17000,
+    "penetration": {
+      "min": 0.25,
+      "max": 0.6699999999999999
+    },
+    "disableLevel": 0.3,
+    "disableChance": {
+      "tracks": 0.3,
+      "engine": 0.2,
+      "mainGun": 0.2,
+      "secondaryGun": 0.15
+    },
+    "repairCost": 170,
+    "slots": 3,
+    "buildType": "VehicleFactory",
+    "mainWeapon": {
+      "weapon": "MediumTankWGunner:LightTankAmmo",
+      "count": 1,
+      "range": 40.0,
+      "reach": 40.0,
+      "firingTime": 2.0,
+      "reload": 5.5,
+      "magazine": 1
+    },
+    "secondaryWeapon": {
+      "weapon": "MediumTankWFrontGunner:ATAmmo",
+      "count": 1,
+      "range": 35.0,
+      "reach": 35.0,
+      "firingTime": 2.0,
+      "reload": 4.5,
+      "magazine": 1
+    },
+    "cost": [
+      {
+        "code": "Wood",
+        "qty": 160
+      }
+    ]
+  },
+  "ArmoredCar2LargeW": {
+    "name": "O’Brien V.101 Freeman",
+    "armourType": "Tier1Tank",
+    "health": 1500,
+    "armourHealth": 2100,
+    "penetration": {
+      "min": 0.75,
+      "max": 0.95
+    },
+    "disableLevel": 0.3,
+    "disableChance": {
+      "tracks": 0.0,
+      "engine": 0.0,
+      "mainGun": 0.0,
+      "secondaryGun": 0.0
+    },
+    "repairCost": 130,
+    "slots": 1,
+    "buildType": "VehicleFacility",
+    "mainWeapon": {
+      "weapon": "ArmoredCar2LargeGunnerW:LightTankAmmo",
+      "count": 1,
+      "range": 35.0,
+      "reach": 35.0,
+      "firingTime": 2.0,
+      "reload": 5.0,
+      "magazine": 1
+    },
+    "secondaryWeapon": null,
+    "cost": [],
+    "altCost": [
+      {
+        "code": "FacilityMaterials1",
+        "qty": 15
+      },
+      {
+        "code": "FacilityMaterials4",
+        "qty": 15
+      }
+    ]
+  },
+  "ArmoredCarOffensiveC": {
+    "name": "T5 “Percutio”",
+    "armourType": "Tier1Tank",
+    "health": 1250,
+    "armourHealth": 2100,
+    "penetration": {
+      "min": 0.85,
+      "max": 0.95
+    },
+    "disableLevel": 0.3,
+    "disableChance": {
+      "tracks": 0.0,
+      "engine": 0.0,
+      "mainGun": 0.0,
+      "secondaryGun": 0.0
+    },
+    "repairCost": 100,
+    "slots": 1,
+    "buildType": "VehicleFacility",
+    "mainWeapon": {
+      "weapon": "ArmoredCarOffensiveGunnerC:ATRifleAmmo",
+      "count": 1,
+      "range": 34.5,
+      "reach": 40.0,
+      "firingTime": 0.0,
+      "reload": 4.0,
+      "magazine": 10
+    },
+    "secondaryWeapon": null,
+    "cost": [],
+    "altCost": [
+      {
+        "code": "FacilityMaterials1",
+        "qty": 10
+      },
+      {
+        "code": "FacilityMaterials4",
+        "qty": 10
+      }
+    ]
+  },
+  "LightTankOffensiveC": {
+    "name": "H-10 “Pelekys”",
+    "armourType": "Tier2Tank",
+    "health": 1750,
+    "armourHealth": 7250,
+    "penetration": {
+      "min": 0.35,
+      "max": 0.6699999999999999
+    },
+    "disableLevel": 0.3,
+    "disableChance": {
+      "tracks": 0.3,
+      "engine": 0.2,
+      "mainGun": 0.25,
+      "secondaryGun": 0.0
+    },
+    "repairCost": 135,
+    "slots": 1,
+    "buildType": "VehicleFacility",
+    "mainWeapon": {
+      "weapon": "LightTankOffensiveGunnerC:ATAmmo",
+      "count": 1,
+      "range": 45.0,
+      "reach": 45.0,
+      "firingTime": 2.0,
+      "reload": 4.5,
+      "magazine": 1
+    },
+    "secondaryWeapon": null,
+    "cost": [],
+    "altCost": [
+      {
+        "code": "FacilityMaterials2",
+        "qty": 8
+      },
+      {
+        "code": "FacilityMaterials5",
+        "qty": 20
+      },
+      {
+        "code": "FacilityMaterials6",
+        "qty": 5
+      }
+    ]
+  },
+  "RelicMediumTank": {
+    "name": "PL-1 “Phalanx”",
+    "armourType": "Tier2Tank",
+    "health": 4850,
+    "armourHealth": 8400,
+    "penetration": {
+      "min": 0.3,
+      "max": 0.6699999999999999
+    },
+    "disableLevel": 0.2,
+    "disableChance": {
+      "tracks": 0.2,
+      "engine": 0.0,
+      "mainGun": 0.3,
+      "secondaryGun": 0.3
+    },
+    "repairCost": 200,
+    "slots": 6,
+    "buildType": "VehicleFactory",
+    "mainWeapon": {
+      "weapon": "RelicMediumTankGunnerL:LightTankAmmo",
+      "count": 1,
+      "range": 47.5,
+      "reach": 47.5,
+      "firingTime": 2.0,
+      "reload": 3.75,
+      "magazine": 1
+    },
+    "secondaryWeapon": {
+      "weapon": "RelicMediumTankGunnerR:LightTankAmmo",
+      "count": 1,
+      "range": 47.5,
+      "reach": 47.5,
+      "firingTime": 2.0,
+      "reload": 3.75,
+      "magazine": 1
+    },
+    "cost": [
+      {
+        "code": "RelicMaterials",
+        "qty": 600
+      }
+    ]
+  },
+  "FieldMortarW": {
+    "name": "Balfour Falconer 250mm",
+    "armourType": "Tier2Tank",
+    "health": 2850,
+    "armourHealth": 0,
+    "penetration": {
+      "min": 1,
+      "max": 1
+    },
+    "disableLevel": 0.3,
+    "disableChance": {
+      "tracks": 0.0,
+      "engine": 0.0,
+      "mainGun": 0.0,
+      "secondaryGun": 0.0
+    },
+    "repairCost": 100,
+    "slots": 1,
+    "buildType": "VehicleFactory",
+    "mainWeapon": {
+      "weapon": "FieldMortarGunnerW:MortarTankAmmo",
+      "count": 1,
+      "range": 25.0,
+      "reach": 40.0,
+      "firingTime": 0.0,
+      "reload": 5.0,
+      "magazine": 1
+    },
+    "secondaryWeapon": null,
+    "cost": [
+      {
+        "code": "Wood",
+        "qty": 35
+      }
+    ]
+  },
+  "FieldCannonW": {
+    "name": "Balfour Wolfhound 40mm",
+    "armourType": "Tier2Tank",
+    "health": 2850,
+    "armourHealth": 0,
+    "penetration": {
+      "min": 1,
+      "max": 1
+    },
+    "disableLevel": 0.3,
+    "disableChance": {
+      "tracks": 0.0,
+      "engine": 0.0,
+      "mainGun": 0.0,
+      "secondaryGun": 0.0
+    },
+    "repairCost": 100,
+    "slots": 1,
+    "buildType": "VehicleFactory",
+    "mainWeapon": {
+      "weapon": "FieldCannonGunner:LightTankAmmo",
+      "count": 1,
+      "range": 35.0,
+      "reach": 35.0,
+      "firingTime": 1.0,
+      "reload": 3.0,
+      "magazine": 1
+    },
+    "secondaryWeapon": null,
+    "cost": [
+      {
+        "code": "Wood",
+        "qty": 20
+      }
+    ]
+  },
+  "ScoutVehicleUtilityC": {
+    "name": "UV-5c “Odyssey”",
+    "armourType": "LightVehicle",
+    "health": 1250,
+    "armourHealth": 0,
+    "penetration": {
+      "min": 1,
+      "max": 1
+    },
+    "disableLevel": 0.4,
+    "disableChance": {
+      "tracks": 0.0,
+      "engine": 0.0,
+      "mainGun": 0.0,
+      "secondaryGun": 0.0
+    },
+    "repairCost": 120,
+    "slots": 7,
+    "buildType": "VehicleFacility",
+    "mainWeapon": null,
+    "secondaryWeapon": null,
+    "cost": [],
+    "altCost": [
+      {
+        "code": "FacilityMaterials1",
+        "qty": 3
+      }
+    ]
+  },
+  "ScoutVehicleUtilityW": {
+    "name": "Drummond Loscann 55c",
+    "armourType": "LightVehicle",
+    "health": 900,
+    "armourHealth": 0,
+    "penetration": {
+      "min": 1,
+      "max": 1
+    },
+    "disableLevel": 0.4,
+    "disableChance": {
+      "tracks": 0.0,
+      "engine": 0.0,
+      "mainGun": 0.0,
+      "secondaryGun": 0.0
+    },
+    "repairCost": 120,
+    "slots": 7,
+    "buildType": "VehicleFacility",
+    "mainWeapon": null,
+    "secondaryWeapon": null,
+    "cost": [],
+    "altCost": [
+      {
+        "code": "FacilityMaterials1",
+        "qty": 3
+      },
+      {
+        "code": "FacilityMaterials5",
+        "qty": 5
+      }
+    ]
+  },
+  "MediumTankC": {
+    "name": "85K-b “Falchion”",
+    "armourType": "Tier2Tank",
+    "health": 3650,
+    "armourHealth": 12725,
+    "penetration": {
+      "min": 0.33,
+      "max": 0.6699999999999999
+    },
+    "disableLevel": 0.3,
+    "disableChance": {
+      "tracks": 0.25,
+      "engine": 0.25,
+      "mainGun": 0.25,
+      "secondaryGun": 0.0
+    },
+    "repairCost": 170,
+    "slots": 3,
+    "buildType": "VehicleFactory",
+    "mainWeapon": {
+      "weapon": "MediumTankCGunner:LightTankAmmo",
+      "count": 1,
+      "range": 40.0,
+      "reach": 40.0,
+      "firingTime": 2.0,
+      "reload": 5.5,
+      "magazine": 1
+    },
+    "secondaryWeapon": null,
+    "cost": [
+      {
+        "code": "Wood",
+        "qty": 135
+      }
+    ]
+  },
+  "ScoutTankW": {
+    "name": "King Spire Mk. I",
+    "armourType": "Tier2Tank",
+    "health": 1350,
+    "armourHealth": 8000,
+    "penetration": {
+      "min": 0.5,
+      "max": 0.9
+    },
+    "disableLevel": 0.3,
+    "disableChance": {
+      "tracks": 0.25,
+      "engine": 0.4,
+      "mainGun": 0.2,
+      "secondaryGun": 0.0
+    },
+    "repairCost": 100,
+    "slots": 2,
+    "buildType": "VehicleFactory",
+    "mainWeapon": {
+      "weapon": "ScoutTankWGunner:MGAmmo",
+      "count": 1,
+      "range": 35.0,
+      "reach": 40.0,
+      "firingTime": 0.0,
+      "reload": 3.5,
+      "magazine": 125
+    },
+    "secondaryWeapon": null,
+    "cost": [
+      {
+        "code": "Wood",
+        "qty": 70
+      }
+    ]
+  },
+  "LightTankArtilleryW": {
+    "name": "Devitt-Caine Mk. IV MMR",
+    "armourType": "Tier2Tank",
+    "health": 1950,
+    "armourHealth": 10000,
+    "penetration": {
+      "min": 0.3,
+      "max": 0.6699999999999999
+    },
+    "disableLevel": 0.3,
+    "disableChance": {
+      "tracks": 0.3,
+      "engine": 0.25,
+      "mainGun": 0.2,
+      "secondaryGun": 0.0
+    },
+    "repairCost": 135,
+    "slots": 4,
+    "buildType": "VehicleFacility",
+    "mainWeapon": {
+      "weapon": "LightTankArtilleryWGunner:MortarAmmo",
+      "count": 1,
+      "range": 80.0,
+      "reach": 80.0,
+      "firingTime": 0.0,
+      "reload": 3.5,
+      "magazine": 1
+    },
+    "secondaryWeapon": null,
+    "cost": [],
+    "altCost": [
+      {
+        "code": "FacilityMaterials2",
+        "qty": 3
+      },
+      {
+        "code": "FacilityMaterials4",
+        "qty": 20
+      },
+      {
+        "code": "FacilityMaterials7",
+        "qty": 3
+      }
+    ]
+  },
+  "MediumTankOffensiveC": {
+    "name": "85K-a “Spatha”",
+    "armourType": "Tier2Tank",
+    "health": 3650,
+    "armourHealth": 10500,
+    "penetration": {
+      "min": 0.33,
+      "max": 0.7
+    },
+    "disableLevel": 0.3,
+    "disableChance": {
+      "tracks": 0.25,
+      "engine": 0.25,
+      "mainGun": 0.2,
+      "secondaryGun": 0.0
+    },
+    "repairCost": 165,
+    "slots": 3,
+    "buildType": "VehicleFacility",
+    "mainWeapon": {
+      "weapon": "MediumTankOffensiveCGunner:LightTankAmmo",
+      "count": 1,
+      "range": 45.0,
+      "reach": 45.0,
+      "firingTime": 1.5,
+      "reload": 4.0,
+      "magazine": 1
+    },
+    "secondaryWeapon": null,
+    "cost": [],
+    "altCost": [
+      {
+        "code": "FacilityMaterials2",
+        "qty": 12
+      },
+      {
+        "code": "FacilityMaterials4",
+        "qty": 10
+      },
+      {
+        "code": "FacilityMaterials7",
+        "qty": 8
+      }
+    ]
+  },
+  "DestroyerTankW": {
+    "name": "Noble Widow MK. XIV",
+    "armourType": "Tier2Tank",
+    "health": 2200,
+    "armourHealth": 17650,
+    "penetration": {
+      "min": 0.22,
+      "max": 0.5
+    },
+    "disableLevel": 0.3,
+    "disableChance": {
+      "tracks": 0.2,
+      "engine": 0.4,
+      "mainGun": 0.2,
+      "secondaryGun": 0.2
+    },
+    "repairCost": 150,
+    "slots": 1,
+    "buildType": "VehicleFactory",
+    "mainWeapon": {
+      "weapon": "DestroyerTankWGunner:ATAmmo",
+      "count": 1,
+      "range": 40.0,
+      "reach": 40.0,
+      "firingTime": 2.0,
+      "reload": 4.5,
+      "magazine": 1
+    },
+    "secondaryWeapon": null,
+    "cost": [
+      {
+        "code": "Wood",
+        "qty": 160
+      }
+    ]
+  },
+  "TanketteOffensiveC": {
+    "name": "T20 “Ixion” Tankette",
+    "armourType": "Tier2Tank",
+    "health": 1350,
+    "armourHealth": 7200,
+    "penetration": {
+      "min": 0.55,
+      "max": 0.8
+    },
+    "disableLevel": 0.3,
+    "disableChance": {
+      "tracks": 0.3,
+      "engine": 0.0,
+      "mainGun": 0.0,
+      "secondaryGun": 0.0
+    },
+    "repairCost": 100,
+    "slots": 2,
+    "buildType": "VehicleFacility",
+    "mainWeapon": {
+      "weapon": "TanketteOffensiveCGunner:MiniTankAmmo",
+      "count": 1,
+      "range": 35.0,
+      "reach": 35.0,
+      "firingTime": 2.0,
+      "reload": 4.5,
+      "magazine": 1
+    },
+    "secondaryWeapon": null,
+    "cost": [],
+    "altCost": [
+      {
+        "code": "FacilityMaterials1",
+        "qty": 10
+      },
+      {
+        "code": "FacilityMaterials4",
+        "qty": 15
+      }
+    ]
+  },
+  "ScoutTankOffensiveW": {
+    "name": "King Gallant Mk. II",
+    "armourType": "Tier2Tank",
+    "health": 1350,
+    "armourHealth": 8500,
+    "penetration": {
+      "min": 0.5,
+      "max": 0.9
+    },
+    "disableLevel": 0.3,
+    "disableChance": {
+      "tracks": 0.2,
+      "engine": 0.4,
+      "mainGun": 0.2,
+      "secondaryGun": 0.0
+    },
+    "repairCost": 100,
+    "slots": 1,
+    "buildType": "VehicleFacility",
+    "mainWeapon": {
+      "weapon": "ScoutTankOffensiveWGunner:MiniTankAmmo",
+      "count": 1,
+      "range": 35.0,
+      "reach": 35.0,
+      "firingTime": 2.0,
+      "reload": 5.0,
+      "magazine": 1
+    },
+    "secondaryWeapon": null,
+    "cost": [],
+    "altCost": [
+      {
+        "code": "FacilityMaterials2",
+        "qty": 5
+      },
+      {
+        "code": "FacilityMaterials6",
+        "qty": 5
+      }
+    ]
+  },
+  "FieldCannonDamageC": {
+    "name": "40-45 “Smelter”",
+    "armourType": "Tier2Tank",
+    "health": 4000,
+    "armourHealth": 0,
+    "penetration": {
+      "min": 1,
+      "max": 1
+    },
+    "disableLevel": 0.3,
+    "disableChance": {
+      "tracks": 0.0,
+      "engine": 0.0,
+      "mainGun": 0.0,
+      "secondaryGun": 0.0
+    },
+    "repairCost": 100,
+    "slots": 1,
+    "buildType": "VehicleFacility",
+    "mainWeapon": {
+      "weapon": "FieldCannonDamageCGunGunner:LightTankAmmo",
+      "count": 1,
+      "range": 45.0,
+      "reach": 45.0,
+      "firingTime": 1.0,
+      "reload": 3.0,
+      "magazine": 1
+    },
+    "secondaryWeapon": null,
+    "cost": [],
+    "altCost": [
+      {
+        "code": "FacilityMaterials2",
+        "qty": 5
+      },
+      {
+        "code": "FacilityMaterials7",
+        "qty": 5
+      }
+    ]
+  },
+  "FieldATDamageW": {
+    "name": "Balfour Rampart 68mm",
+    "armourType": "Tier2Tank",
+    "health": 4000,
+    "armourHealth": 0,
+    "penetration": {
+      "min": 1,
+      "max": 1
+    },
+    "disableLevel": 0.3,
+    "disableChance": {
+      "tracks": 0.0,
+      "engine": 0.0,
+      "mainGun": 0.0,
+      "secondaryGun": 0.0
+    },
+    "repairCost": 100,
+    "slots": 1,
+    "buildType": "VehicleFacility",
+    "mainWeapon": {
+      "weapon": "FieldATDamageWGunner:ATAmmo",
+      "count": 1,
+      "range": 45.0,
+      "reach": 45.0,
+      "firingTime": 1.0,
+      "reload": 3.0,
+      "magazine": 1
+    },
+    "secondaryWeapon": null,
+    "cost": [],
+    "altCost": [
+      {
+        "code": "FacilityMaterials2",
+        "qty": 5
+      },
+      {
+        "code": "FacilityMaterials7",
+        "qty": 5
+      }
+    ]
+  },
+  "MediumTankSiegeW": {
+    "name": "Silverhand Chieftain - Mk. VI",
+    "armourType": "Tier2Tank",
+    "health": 3100,
+    "armourHealth": 15000,
+    "penetration": {
+      "min": 0.25,
+      "max": 0.6699999999999999
+    },
+    "disableLevel": 0.3,
+    "disableChance": {
+      "tracks": 0.2,
+      "engine": 0.15,
+      "mainGun": 0.2,
+      "secondaryGun": 0.3
+    },
+    "repairCost": 170,
+    "slots": 2,
+    "buildType": "VehicleFacility",
+    "mainWeapon": {
+      "weapon": "MediumTankSiegeWFrontGunner:MortarTankAmmo",
+      "count": 1,
+      "range": 25.0,
+      "reach": 40.0,
+      "firingTime": 2.0,
+      "reload": 5.5,
+      "magazine": 1
+    },
+    "secondaryWeapon": {
+      "weapon": "MediumTankSiegeWMGGunner:MGAmmo",
+      "count": 1,
+      "range": 35.0,
+      "reach": 40.0,
+      "firingTime": 0.0,
+      "reload": 5.0,
+      "magazine": 200
+    },
+    "cost": [],
+    "altCost": [
+      {
+        "code": "FacilityMaterials2",
+        "qty": 5
+      },
+      {
+        "code": "FacilityMaterials4",
+        "qty": 10
+      },
+      {
+        "code": "FacilityMaterials7",
+        "qty": 8
+      }
+    ]
+  },
+  "LightTank2InfantryC": {
+    "name": "HC-2 “Scorpion”",
+    "armourType": "Tier2Tank",
+    "health": 3300,
+    "armourHealth": 9800,
+    "penetration": {
+      "min": 0.3,
+      "max": 0.75
+    },
+    "disableLevel": 0.3,
+    "disableChance": {
+      "tracks": 0.3,
+      "engine": 0.2,
+      "mainGun": 0.2,
+      "secondaryGun": 0.2
+    },
+    "repairCost": 160,
+    "slots": 8,
+    "buildType": "VehicleFactory",
+    "mainWeapon": {
+      "weapon": "LightTank2InfantryCGunnerR:MGAmmo",
+      "count": 1,
+      "range": 35.0,
+      "reach": 40.0,
+      "firingTime": 0.0,
+      "reload": 5.0,
+      "magazine": 200
+    },
+    "secondaryWeapon": {
+      "weapon": "LightTank2InfantryCGunnerL:MGAmmo",
+      "count": 1,
+      "range": 35.0,
+      "reach": 40.0,
+      "firingTime": 0.0,
+      "reload": 5.0,
+      "magazine": 200
+    },
+    "cost": [
+      {
+        "code": "Wood",
+        "qty": 100
+      }
+    ]
+  },
+  "MediumTank2C": {
+    "name": "86K-a “Bardiche”",
+    "armourType": "Tier2Tank",
+    "health": 4000,
+    "armourHealth": 15650,
+    "penetration": {
+      "min": 0.23,
+      "max": 0.6699999999999999
+    },
+    "disableLevel": 0.3,
+    "disableChance": {
+      "tracks": 0.25,
+      "engine": 0.25,
+      "mainGun": 0.15,
+      "secondaryGun": 0.0
+    },
+    "repairCost": 200,
+    "slots": 2,
+    "buildType": "VehicleFactory",
+    "mainWeapon": {
+      "weapon": "MediumTank2CMainGunner:ATAmmo",
+      "count": 1,
+      "range": 35.0,
+      "reach": 35.0,
+      "firingTime": 0.8,
+      "reload": 4.5,
+      "magazine": 3
+    },
+    "secondaryWeapon": {
+      "weapon": "MediumTank2CMGGunner:MGAmmo",
+      "count": 1,
+      "range": 40.0,
+      "reach": 45.0,
+      "firingTime": 0.0,
+      "reload": 5.5,
+      "magazine": 75
+    },
+    "cost": [
+      {
+        "code": "Wood",
+        "qty": 165
+      }
+    ]
+  },
+  "MediumTank2RangeW": {
+    "name": "Gallagher Outlaw Mk. II",
+    "armourType": "Tier2Tank",
+    "health": 2950,
+    "armourHealth": 11000,
+    "penetration": {
+      "min": 0.33,
+      "max": 0.6699999999999999
+    },
+    "disableLevel": 0.3,
+    "disableChance": {
+      "tracks": 0.2,
+      "engine": 0.3,
+      "mainGun": 0.2,
+      "secondaryGun": 0.0
+    },
+    "repairCost": 150,
+    "slots": 2,
+    "buildType": "VehicleFacility",
+    "mainWeapon": {
+      "weapon": "MediumTank2RangeWGunner:LightTankAmmo",
+      "count": 1,
+      "range": 45.0,
+      "reach": 45.0,
+      "firingTime": 2.0,
+      "reload": 5.0,
+      "magazine": 1
+    },
+    "secondaryWeapon": {
+      "weapon": "MediumTank2RangeWAssaultRifle:AssaultRifleAmmo",
+      "count": 1,
+      "range": 40.0,
+      "reach": 45.0,
+      "firingTime": 0.0,
+      "reload": 4.0,
+      "magazine": 50
+    },
+    "cost": [],
+    "altCost": [
+      {
+        "code": "FacilityMaterials2",
+        "qty": 10
+      },
+      {
+        "code": "FacilityMaterials4",
+        "qty": 10
+      },
+      {
+        "code": "FacilityMaterials7",
+        "qty": 10
+      }
+    ]
+  },
+  "ArmoredCarTwinC": {
+    "name": "T8 “Gemini”",
+    "armourType": "Tier1Tank",
+    "health": 1250,
+    "armourHealth": 2350,
+    "penetration": {
+      "min": 0.85,
+      "max": 0.95
+    },
+    "disableLevel": 0.3,
+    "disableChance": {
+      "tracks": 0.0,
+      "engine": 0.0,
+      "mainGun": 0.0,
+      "secondaryGun": 0.0
+    },
+    "repairCost": 115,
+    "slots": 1,
+    "buildType": "VehicleFacility",
+    "mainWeapon": {
+      "weapon": "ArmoredCarTwinGunnerC:RPGAmmo",
+      "count": 1,
+      "range": 40.0,
+      "reach": 40.0,
+      "firingTime": 1.5,
+      "reload": 5.5,
+      "magazine": 2
+    },
+    "secondaryWeapon": null,
+    "cost": [],
+    "altCost": [
+      {
+        "code": "FacilityMaterials1",
+        "qty": 10
+      },
+      {
+        "code": "FacilityMaterials4",
+        "qty": 10
+      }
+    ]
+  },
+  "ArmoredCarATW": {
+    "name": "O’Brien V.113 Gravekeeper",
+    "armourType": "Tier1Tank",
+    "health": 1250,
+    "armourHealth": 2450,
+    "penetration": {
+      "min": 0.85,
+      "max": 0.95
+    },
+    "disableLevel": 0.3,
+    "disableChance": {
+      "tracks": 0.0,
+      "engine": 0.0,
+      "mainGun": 0.0,
+      "secondaryGun": 0.0
+    },
+    "repairCost": 115,
+    "slots": 1,
+    "buildType": "VehicleFacility",
+    "mainWeapon": {
+      "weapon": "ArmoredCarATGunnerW:ATRPGIndirectAmmo",
+      "count": 1,
+      "range": 35.0,
+      "reach": 35.0,
+      "firingTime": 1.0,
+      "reload": 3.5,
+      "magazine": 1
+    },
+    "secondaryWeapon": null,
+    "cost": [],
+    "altCost": [
+      {
+        "code": "FacilityMaterials2",
+        "qty": 10
+      },
+      {
+        "code": "FacilityMaterials4",
+        "qty": 10
+      }
+    ]
+  },
+  "MediumTank2TwinC": {
+    "name": "86K-c “Ranseur”",
+    "armourType": "Tier2Tank",
+    "health": 4000,
+    "armourHealth": 15650,
+    "penetration": {
+      "min": 0.23,
+      "max": 0.6699999999999999
+    },
+    "disableLevel": 0.3,
+    "disableChance": {
+      "tracks": 0.25,
+      "engine": 0.25,
+      "mainGun": 0.25,
+      "secondaryGun": 0.0
+    },
+    "repairCost": 170,
+    "slots": 2,
+    "buildType": "VehicleFacility",
+    "mainWeapon": {
+      "weapon": "MediumTank2TwinCRPG:RPGAmmo",
+      "count": 1,
+      "range": 35.0,
+      "reach": 40.0,
+      "firingTime": 0.5,
+      "reload": 5.5,
+      "magazine": 4
+    },
+    "secondaryWeapon": {
+      "weapon": "MediumTank2TwinCGunner:MGAmmo",
+      "count": 1,
+      "range": 35.0,
+      "reach": 40.0,
+      "firingTime": 0.0,
+      "reload": 4.5,
+      "magazine": 200
+    },
+    "cost": [],
+    "altCost": [
+      {
+        "code": "FacilityMaterials2",
+        "qty": 10
+      },
+      {
+        "code": "FacilityMaterials5",
+        "qty": 10
+      },
+      {
+        "code": "FacilityMaterials6",
+        "qty": 10
+      }
+    ]
+  },
+  "MediumTank2MultiW": {
+    "name": "Gallagher Highwayman Mk. III",
+    "armourType": "Tier2Tank",
+    "health": 2950,
+    "armourHealth": 11000,
+    "penetration": {
+      "min": 0.33,
+      "max": 0.6699999999999999
+    },
+    "disableLevel": 0.3,
+    "disableChance": {
+      "tracks": 0.2,
+      "engine": 0.3,
+      "mainGun": 0.2,
+      "secondaryGun": 0.0
+    },
+    "repairCost": 150,
+    "slots": 3,
+    "buildType": "VehicleFacility",
+    "mainWeapon": {
+      "weapon": "MediumTank2MultiWGunner:ATRifleAmmo",
+      "count": 1,
+      "range": 40.0,
+      "reach": 45.0,
+      "firingTime": 0.5,
+      "reload": 5.0,
+      "magazine": 16
+    },
+    "secondaryWeapon": {
+      "weapon": "MediumTank2MultiWCommanderGunner:MGAmmo",
+      "count": 1,
+      "range": 35.0,
+      "reach": 40.0,
+      "firingTime": 0.0,
+      "reload": 3.5,
+      "magazine": 125
+    },
+    "cost": [],
+    "altCost": [
+      {
+        "code": "FacilityMaterials2",
+        "qty": 5
+      },
+      {
+        "code": "FacilityMaterials5",
+        "qty": 10
+      },
+      {
+        "code": "FacilityMaterials6",
+        "qty": 5
+      }
+    ]
+  },
+  "SuperTankC": {
+    "name": "O-75b \"Ares\"",
+    "armourType": "Tier2Tank",
+    "health": 9250,
+    "armourHealth": 15650,
+    "penetration": {
+      "min": 0.25,
+      "max": 0.5
+    },
+    "disableLevel": 0.5,
+    "disableChance": {
+      "tracks": 0.2,
+      "engine": 0.15,
+      "mainGun": 0.1,
+      "secondaryGun": 0.0
+    },
+    "repairCost": 350,
+    "slots": 3,
+    "buildType": "VehicleFacility",
+    "mainWeapon": {
+      "weapon": "SuperTankCGunner:BattleTankAmmo",
+      "count": 1,
+      "range": 40.0,
+      "reach": 40.0,
+      "firingTime": 0.2,
+      "reload": 5.5,
+      "magazine": 2
+    },
+    "secondaryWeapon": null,
+    "cost": [],
+    "altCost": [
+      {
+        "code": "FacilityMaterials3",
+        "qty": 275
+      },
+      {
+        "code": "FacilityMaterials8",
+        "qty": 105
+      },
+      {
+        "code": "FacilityMaterials6",
+        "qty": 105
+      },
+      {
+        "code": "FacilityMaterials7",
+        "qty": 95
+      },
+      {
+        "code": "FacilityMaterials9",
+        "qty": 3
+      }
+    ]
+  },
+  "MediumTankLargeC": {
+    "name": "85V-g “Talos”",
+    "armourType": "Tier2Tank",
+    "health": 4000,
+    "armourHealth": 13550,
+    "penetration": {
+      "min": 0.33,
+      "max": 0.6699999999999999
+    },
+    "disableLevel": 0.3,
+    "disableChance": {
+      "tracks": 0.25,
+      "engine": 0.25,
+      "mainGun": 0.25,
+      "secondaryGun": 0.0
+    },
+    "repairCost": 170,
+    "slots": 2,
+    "buildType": "VehicleFacility",
+    "mainWeapon": {
+      "weapon": "MediumTankLargeCGunner:BattleTankAmmo",
+      "count": 1,
+      "range": 37.5,
+      "reach": 37.5,
+      "firingTime": 2.0,
+      "reload": 3.5,
+      "magazine": 1
+    },
+    "secondaryWeapon": null,
+    "cost": [],
+    "altCost": [
+      {
+        "code": "FacilityMaterials3",
+        "qty": 10
+      },
+      {
+        "code": "FacilityMaterials4",
+        "qty": 10
+      },
+      {
+        "code": "FacilityMaterials7",
+        "qty": 15
+      },
+      {
+        "code": "FacilityMaterials6",
+        "qty": 15
+      }
+    ]
+  },
+  "TruckMultiC": {
+    "name": "R-17 “Retiarius” Skirmisher",
+    "armourType": "LightVehicle",
+    "health": 900,
+    "armourHealth": 0,
+    "penetration": {
+      "min": 1,
+      "max": 1
+    },
+    "disableLevel": 0.65,
+    "disableChance": {
+      "tracks": 0.0,
+      "engine": 0.0,
+      "mainGun": 0.0,
+      "secondaryGun": 0.0
+    },
+    "repairCost": 100,
+    "slots": 1,
+    "buildType": "VehicleFacility",
+    "mainWeapon": {
+      "weapon": "TruckMultiCGunner:HERocketAmmo",
+      "count": 1,
+      "range": 500.0,
+      "reach": 500.0,
+      "firingTime": 0.4,
+      "reload": 3.5,
+      "magazine": 16
+    },
+    "secondaryWeapon": null,
+    "cost": [],
+    "altCost": [
+      {
+        "code": "FacilityMaterials2",
+        "qty": 70
+      },
+      {
+        "code": "FacilityMaterials4",
+        "qty": 10
+      },
+      {
+        "code": "FacilityMaterials6",
+        "qty": 8
+      }
+    ]
+  },
+  "HalfTrackMultiW": {
+    "name": "Niska-Rycker Mk. IX Skycaller",
+    "armourType": "Tier1Tank",
+    "health": 1500,
+    "armourHealth": 4600,
+    "penetration": {
+      "min": 0.65,
+      "max": 0.9
+    },
+    "disableLevel": 0.3,
+    "disableChance": {
+      "tracks": 0.3,
+      "engine": 0.0,
+      "mainGun": 0.0,
+      "secondaryGun": 0.0
+    },
+    "repairCost": 110,
+    "slots": 1,
+    "buildType": "VehicleFacility",
+    "mainWeapon": {
+      "weapon": "HalftrackMultiWGunner:FireRocketAmmo",
+      "count": 1,
+      "range": 350.0,
+      "reach": 350.0,
+      "firingTime": 0.4,
+      "reload": 3.5,
+      "magazine": 17
+    },
+    "secondaryWeapon": null,
+    "cost": [],
+    "altCost": [
+      {
+        "code": "FacilityMaterials2",
+        "qty": 10
+      },
+      {
+        "code": "FacilityMaterials4",
+        "qty": 10
+      },
+      {
+        "code": "FacilityMaterials6",
+        "qty": 8
+      }
+    ]
+  },
+  "MediumTank2IndirectW": {
+    "name": "Gallagher Thornfall Mk. VI",
+    "armourType": "Tier2Tank",
+    "health": 2650,
+    "armourHealth": 11000,
+    "penetration": {
+      "min": 0.33,
+      "max": 0.6699999999999999
+    },
+    "disableLevel": 0.3,
+    "disableChance": {
+      "tracks": 0.2,
+      "engine": 0.3,
+      "mainGun": 0.35,
+      "secondaryGun": 0.0
+    },
+    "repairCost": 150,
+    "slots": 2,
+    "buildType": "VehicleFacility",
+    "mainWeapon": {
+      "weapon": "MediumTank2IndirectWRackGunner:ATRPGIndirectAmmo",
+      "count": 1,
+      "range": 35.0,
+      "reach": 35.0,
+      "firingTime": 0.8,
+      "reload": 5.5,
+      "magazine": 8
+    },
+    "secondaryWeapon": {
+      "weapon": "MediumTank2IndirectWGunner:AssaultRifleAmmo",
+      "count": 1,
+      "range": 40.0,
+      "reach": 45.0,
+      "firingTime": 0.0,
+      "reload": 4.0,
+      "magazine": 50
+    },
+    "cost": [],
+    "altCost": [
+      {
+        "code": "FacilityMaterials2",
+        "qty": 60
+      },
+      {
+        "code": "FacilityMaterials4",
+        "qty": 10
+      },
+      {
+        "code": "FacilityMaterials7",
+        "qty": 15
+      },
+      {
+        "code": "FacilityMaterials6",
+        "qty": 15
+      }
+    ]
+  },
+  "TrainEngine": {
+    "name": "BMS Black Bolt",
+    "armourType": "Tier1Tank",
+    "health": 3250,
+    "armourHealth": 0,
+    "penetration": {
+      "min": 1,
+      "max": 1
+    },
+    "disableLevel": 0.5,
+    "disableChance": {
+      "tracks": 0.0,
+      "engine": 0.0,
+      "mainGun": 0.0,
+      "secondaryGun": 0.0
+    },
+    "repairCost": 100,
+    "slots": 3,
+    "buildType": null,
+    "mainWeapon": null,
+    "secondaryWeapon": null,
+    "cost": [
+      {
+        "code": "Cloth",
+        "qty": 5
+      }
+    ],
+    "altCost": [
+      {
+        "code": "FacilityMaterials2",
+        "qty": 200
+      },
+      {
+        "code": "FacilityMaterials4",
+        "qty": 60
+      },
+      {
+        "code": "FacilityMaterials7",
+        "qty": 50
+      }
+    ]
+  },
+  "TrainCoal": {
+    "name": "BMS Rockhold",
+    "armourType": "Tier1Tank",
+    "health": 1500,
+    "armourHealth": 0,
+    "penetration": {
+      "min": 1,
+      "max": 1
+    },
+    "disableLevel": 0.75,
+    "disableChance": {
+      "tracks": 0.0,
+      "engine": 0.0,
+      "mainGun": 0.0,
+      "secondaryGun": 0.0
+    },
+    "repairCost": 100,
+    "slots": 15,
+    "buildType": null,
+    "mainWeapon": null,
+    "secondaryWeapon": null,
+    "cost": [
+      {
+        "code": "Cloth",
+        "qty": 5
+      }
+    ],
+    "altCost": [
+      {
+        "code": "FacilityMaterials2",
+        "qty": 20
+      },
+      {
+        "code": "FacilityMaterials5",
+        "qty": 15
+      },
+      {
+        "code": "FacilityMaterials6",
+        "qty": 5
+      }
+    ]
+  },
+  "TrainFlatbed": {
+    "name": "BMS Longrider",
+    "armourType": "Tier1Tank",
+    "health": 1500,
+    "armourHealth": 0,
+    "penetration": {
+      "min": 1,
+      "max": 1
+    },
+    "disableLevel": 0.75,
+    "disableChance": {
+      "tracks": 0.0,
+      "engine": 0.0,
+      "mainGun": 0.0,
+      "secondaryGun": 0.0
+    },
+    "repairCost": 100,
+    "slots": 1,
+    "buildType": null,
+    "mainWeapon": null,
+    "secondaryWeapon": null,
+    "cost": [
+      {
+        "code": "Cloth",
+        "qty": 5
+      }
+    ],
+    "altCost": [
+      {
+        "code": "FacilityMaterials2",
+        "qty": 20
+      },
+      {
+        "code": "FacilityMaterials5",
+        "qty": 15
+      },
+      {
+        "code": "FacilityMaterials6",
+        "qty": 10
+      }
+    ]
+  },
+  "TrainInfantry": {
+    "name": "BMS Holdout",
+    "armourType": "Tier1Tank",
+    "health": 3250,
+    "armourHealth": 0,
+    "penetration": {
+      "min": 1,
+      "max": 1
+    },
+    "disableLevel": 0.75,
+    "disableChance": {
+      "tracks": 0.0,
+      "engine": 0.0,
+      "mainGun": 0.0,
+      "secondaryGun": 0.0
+    },
+    "repairCost": 100,
+    "slots": 16,
+    "buildType": null,
+    "mainWeapon": null,
+    "secondaryWeapon": null,
+    "cost": [
+      {
+        "code": "Cloth",
+        "qty": 5
+      }
+    ],
+    "altCost": [
+      {
+        "code": "FacilityMaterials2",
+        "qty": 20
+      },
+      {
+        "code": "FacilityMaterials5",
+        "qty": 15
+      },
+      {
+        "code": "FacilityMaterials6",
+        "qty": 5
+      }
+    ]
+  },
+  "SuperTankW": {
+    "name": "Cullen Predator Mk. III",
+    "armourType": "Tier2Tank",
+    "health": 12000,
+    "armourHealth": 17650,
+    "penetration": {
+      "min": 0.22,
+      "max": 0.5
+    },
+    "disableLevel": 0.5,
+    "disableChance": {
+      "tracks": 0.2,
+      "engine": 0.1,
+      "mainGun": 0.15,
+      "secondaryGun": 0.25
+    },
+    "repairCost": 235,
+    "slots": 6,
+    "buildType": "VehicleFacility",
+    "mainWeapon": {
+      "weapon": "SuperTankWGunner:ATLargeAmmo",
+      "count": 1,
+      "range": 40.0,
+      "reach": 40.0,
+      "firingTime": 2.0,
+      "reload": 5.5,
+      "magazine": 1
+    },
+    "secondaryWeapon": {
+      "weapon": "SuperTankWGrenadeLauncherGunner:ATLaunchedGrenadeW",
+      "count": 2,
+      "range": 40.0,
+      "reach": 30.8,
+      "firingTime": 0.0,
+      "reload": 3.0,
+      "magazine": 4
+    },
+    "cost": [],
+    "altCost": [
+      {
+        "code": "FacilityMaterials3",
+        "qty": 275
+      },
+      {
+        "code": "FacilityMaterials8",
+        "qty": 105
+      },
+      {
+        "code": "FacilityMaterials6",
+        "qty": 105
+      },
+      {
+        "code": "FacilityMaterials7",
+        "qty": 95
+      },
+      {
+        "code": "FacilityMaterials9",
+        "qty": 3
+      }
+    ]
+  },
+  "DestroyerTankFlameW": {
+    "name": "Noble Firebrand Mk. XVII",
+    "armourType": "Tier2Tank",
+    "health": 2200,
+    "armourHealth": 17650,
+    "penetration": {
+      "min": 0.22,
+      "max": 0.5
+    },
+    "disableLevel": 0.3,
+    "disableChance": {
+      "tracks": 0.2,
+      "engine": 0.45,
+      "mainGun": 0.2,
+      "secondaryGun": 0.2
+    },
+    "repairCost": 150,
+    "slots": 1,
+    "buildType": "VehicleFacility",
+    "mainWeapon": {
+      "weapon": "DestroyerTankWFlameGunner:FlameAmmo",
+      "count": 1,
+      "range": 18.0,
+      "reach": 20.0,
+      "firingTime": 0.0,
+      "reload": 5.5,
+      "magazine": 150
+    },
+    "secondaryWeapon": null,
+    "cost": [],
+    "altCost": [
+      {
+        "code": "FacilityMaterials2",
+        "qty": 10
+      },
+      {
+        "code": "FacilityMaterials5",
+        "qty": 10
+      },
+      {
+        "code": "FacilityMaterials6",
+        "qty": 15
+      }
+    ]
+  },
+  "TrainLRArtillery": {
+    "name": "Tempest Cannon RA-2",
+    "armourType": "Tier2Tank",
+    "health": 4000,
+    "armourHealth": 100000,
+    "penetration": {
+      "min": 0.23,
+      "max": 0.77
+    },
+    "disableLevel": 0.75,
+    "disableChance": {
+      "tracks": 0.0,
+      "engine": 0.0,
+      "mainGun": 0.0,
+      "secondaryGun": 0.0
+    },
+    "repairCost": 250,
+    "slots": 1,
+    "buildType": null,
+    "mainWeapon": {
+      "weapon": "LongRangeArtilleryTrainGunner:LRArtilleryAmmo",
+      "count": 1,
+      "range": 500.0,
+      "reach": 40.0,
+      "firingTime": 1.0,
+      "reload": 5.0,
+      "magazine": 1
+    },
+    "secondaryWeapon": null,
+    "cost": [
+      {
+        "code": "Cloth",
+        "qty": 5
+      }
+    ],
+    "altCost": [
+      {
+        "code": "FacilityMaterials3",
+        "qty": 285
+      },
+      {
+        "code": "FacilityMaterials6",
+        "qty": 95
+      },
+      {
+        "code": "FacilityMaterials7",
+        "qty": 105
+      },
+      {
+        "code": "FacilityMaterials8",
+        "qty": 105
+      },
+      {
+        "code": "FacilityMaterials9",
+        "qty": 35
+      },
+      {
+        "code": "FacilityMaterials11",
+        "qty": 45
+      }
+    ]
+  },
+  "TrainCombatCarC": {
+    "name": "Aegis Steelbreaker K5a",
+    "armourType": "Tier2Tank",
+    "health": 4000,
+    "armourHealth": 100000,
+    "penetration": {
+      "min": 0.23,
+      "max": 0.77
+    },
+    "disableLevel": 0.75,
+    "disableChance": {
+      "tracks": 0.0,
+      "engine": 0.0,
+      "mainGun": 0.2,
+      "secondaryGun": 0.0
+    },
+    "repairCost": 100,
+    "slots": 3,
+    "buildType": null,
+    "mainWeapon": {
+      "weapon": "TrainCombatCarCMainGunner:LightTankAmmo",
+      "count": 1,
+      "range": 45.0,
+      "reach": 45.0,
+      "firingTime": 2.0,
+      "reload": 5.5,
+      "magazine": 1
+    },
+    "secondaryWeapon": {
+      "weapon": "TrainCombatCarCLeftGunner:MGAmmo",
+      "count": 1,
+      "range": 35.0,
+      "reach": 40.0,
+      "firingTime": 0.0,
+      "reload": 5.5,
+      "magazine": 75
+    },
+    "cost": [
+      {
+        "code": "Cloth",
+        "qty": 5
+      }
+    ],
+    "altCost": [
+      {
+        "code": "FacilityMaterials3",
+        "qty": 30
+      },
+      {
+        "code": "FacilityMaterials4",
+        "qty": 30
+      },
+      {
+        "code": "FacilityMaterials7",
+        "qty": 30
+      }
+    ]
+  },
+  "TrainCombatCarW": {
+    "name": "O’Brien Warsmith v.215",
+    "armourType": "Tier2Tank",
+    "health": 3250,
+    "armourHealth": 100000,
+    "penetration": {
+      "min": 0.23,
+      "max": 0.77
+    },
+    "disableLevel": 0.75,
+    "disableChance": {
+      "tracks": 0.0,
+      "engine": 0.0,
+      "mainGun": 0.2,
+      "secondaryGun": 0.2
+    },
+    "repairCost": 100,
+    "slots": 2,
+    "buildType": null,
+    "mainWeapon": {
+      "weapon": "TrainCombatCarWFrontGunner:LightTankAmmo",
+      "count": 1,
+      "range": 40.0,
+      "reach": 40.0,
+      "firingTime": 2.0,
+      "reload": 5.5,
+      "magazine": 1
+    },
+    "secondaryWeapon": {
+      "weapon": "TrainCombatCarWRearGunner:LightTankAmmo",
+      "count": 1,
+      "range": 40.0,
+      "reach": 40.0,
+      "firingTime": 2.0,
+      "reload": 5.5,
+      "magazine": 1
+    },
+    "cost": [
+      {
+        "code": "Cloth",
+        "qty": 5
+      }
+    ],
+    "altCost": [
+      {
+        "code": "FacilityMaterials3",
+        "qty": 30
+      },
+      {
+        "code": "FacilityMaterials4",
+        "qty": 30
+      },
+      {
+        "code": "FacilityMaterials7",
+        "qty": 30
+      }
+    ]
+  },
+  "LightTankFlameC": {
+    "name": "H-19 “Vulcan”",
+    "armourType": "Tier2Tank",
+    "health": 1950,
+    "armourHealth": 9100,
+    "penetration": {
+      "min": 0.33,
+      "max": 0.6699999999999999
+    },
+    "disableLevel": 0.3,
+    "disableChance": {
+      "tracks": 0.3,
+      "engine": 0.25,
+      "mainGun": 0.25,
+      "secondaryGun": 0.0
+    },
+    "repairCost": 145,
+    "slots": 1,
+    "buildType": "VehicleFacility",
+    "mainWeapon": {
+      "weapon": "LightTankFlameCGunner:FlameAmmo",
+      "count": 1,
+      "range": 18.0,
+      "reach": 20.0,
+      "firingTime": 0.0,
+      "reload": 5.5,
+      "magazine": 100
+    },
+    "secondaryWeapon": null,
+    "cost": [],
+    "altCost": [
+      {
+        "code": "FacilityMaterials2",
+        "qty": 8
+      },
+      {
+        "code": "FacilityMaterials5",
+        "qty": 20
+      },
+      {
+        "code": "FacilityMaterials6",
+        "qty": 5
+      }
+    ]
+  },
+  "ArmoredCarFlameW": {
+    "name": "O’Brien V.130 Wild Jack",
+    "armourType": "Tier1Tank",
+    "health": 1250,
+    "armourHealth": 2700,
+    "penetration": {
+      "min": 0.85,
+      "max": 0.95
+    },
+    "disableLevel": 0.3,
+    "disableChance": {
+      "tracks": 0.0,
+      "engine": 0.0,
+      "mainGun": 0.0,
+      "secondaryGun": 0.0
+    },
+    "repairCost": 115,
+    "slots": 1,
+    "buildType": "VehicleFacility",
+    "mainWeapon": {
+      "weapon": "ArmoredCarFlameWGunner:FlameAmmo",
+      "count": 1,
+      "range": 15.0,
+      "reach": 18.0,
+      "firingTime": 0.0,
+      "reload": 5.5,
+      "magazine": 100
+    },
+    "secondaryWeapon": null,
+    "cost": [],
+    "altCost": [
+      {
+        "code": "FacilityMaterials1",
+        "qty": 10
+      },
+      {
+        "code": "FacilityMaterials4",
+        "qty": 10
+      }
+    ]
+  },
+  "TanketteFlameC": {
+    "name": "T14 “Vesta” Tankette",
+    "armourType": "Tier2Tank",
+    "health": 1350,
+    "armourHealth": 7200,
+    "penetration": {
+      "min": 0.55,
+      "max": 0.8
+    },
+    "disableLevel": 0.3,
+    "disableChance": {
+      "tracks": 0.3,
+      "engine": 0.0,
+      "mainGun": 0.0,
+      "secondaryGun": 0.0
+    },
+    "repairCost": 100,
+    "slots": 2,
+    "buildType": "VehicleFacility",
+    "mainWeapon": {
+      "weapon": "TanketteFlameCGunner:FlameAmmo",
+      "count": 1,
+      "range": 15.0,
+      "reach": 18.0,
+      "firingTime": 0.0,
+      "reload": 5.5,
+      "magazine": 100
+    },
+    "secondaryWeapon": null,
+    "cost": [],
+    "altCost": [
+      {
+        "code": "FacilityMaterials2",
+        "qty": 10
+      },
+      {
+        "code": "FacilityMaterials4",
+        "qty": 15
+      }
+    ]
+  },
+  "SmallTrainEngine": {
+    "name": "BMS Mineseeker",
+    "armourType": "Tier1Tank",
+    "health": 1650,
+    "armourHealth": 0,
+    "penetration": {
+      "min": 1,
+      "max": 1
+    },
+    "disableLevel": 0.5,
+    "disableChance": {
+      "tracks": 0.0,
+      "engine": 0.0,
+      "mainGun": 0.0,
+      "secondaryGun": 0.0
+    },
+    "repairCost": 100,
+    "slots": 1,
+    "buildType": null,
+    "mainWeapon": null,
+    "secondaryWeapon": null,
+    "cost": [
+      {
+        "code": "Cloth",
+        "qty": 200
+      }
+    ],
+    "altCost": [
+      {
+        "code": "FacilityMaterials1",
+        "qty": 125
+      },
+      {
+        "code": "FacilityMaterials4",
+        "qty": 10
+      },
+      {
+        "code": "FacilityMaterials5",
+        "qty": 20
+      }
+    ]
+  },
+  "SmallTrainResource": {
+    "name": "BMS Railtruck",
+    "armourType": "Tier1Tank",
+    "health": 900,
+    "armourHealth": 0,
+    "penetration": {
+      "min": 1,
+      "max": 1
+    },
+    "disableLevel": 0.75,
+    "disableChance": {
+      "tracks": 0.0,
+      "engine": 0.0,
+      "mainGun": 0.0,
+      "secondaryGun": 0.0
+    },
+    "repairCost": 100,
+    "slots": 25,
+    "buildType": null,
+    "mainWeapon": null,
+    "secondaryWeapon": null,
+    "cost": [
+      {
+        "code": "Cloth",
+        "qty": 200
+      }
+    ],
+    "altCost": [
+      {
+        "code": "FacilityMaterials1",
+        "qty": 35
+      },
+      {
+        "code": "FacilityMaterials4",
+        "qty": 15
+      },
+      {
+        "code": "FacilityMaterials5",
+        "qty": 5
+      }
+    ]
+  },
+  "SmallTrainMaterial": {
+    "name": "BMS Linerunner",
+    "armourType": "Tier1Tank",
+    "health": 900,
+    "armourHealth": 0,
+    "penetration": {
+      "min": 1,
+      "max": 1
+    },
+    "disableLevel": 0.75,
+    "disableChance": {
+      "tracks": 0.0,
+      "engine": 0.0,
+      "mainGun": 0.0,
+      "secondaryGun": 0.0
+    },
+    "repairCost": 100,
+    "slots": 1,
+    "buildType": null,
+    "mainWeapon": null,
+    "secondaryWeapon": null,
+    "cost": [
+      {
+        "code": "Cloth",
+        "qty": 200
+      }
+    ],
+    "altCost": [
+      {
+        "code": "FacilityMaterials1",
+        "qty": 35
+      },
+      {
+        "code": "FacilityMaterials4",
+        "qty": 15
+      },
+      {
+        "code": "FacilityMaterials5",
+        "qty": 5
+      }
+    ]
+  },
+  "LargeCrane": {
+    "name": "BMS - Overseer Sky-Hauler",
+    "armourType": "Tier3Structure",
+    "health": 2600,
+    "armourHealth": 0,
+    "penetration": {
+      "min": 1,
+      "max": 1
+    },
+    "disableLevel": 0.5,
+    "disableChance": {
+      "tracks": 0.0,
+      "engine": 0.0,
+      "mainGun": 0.0,
+      "secondaryGun": 0.0
+    },
+    "repairCost": 125,
+    "slots": 5,
+    "buildType": "RailTrackCrane",
+    "mainWeapon": null,
+    "secondaryWeapon": null,
+    "cost": [
+      {
+        "code": "FacilityMaterials2",
+        "qty": 250
+      }
+    ]
+  },
+  "AmbulanceFlameC": {
+    "name": "R-12b - “Salva” Flame Truck",
+    "armourType": "LightVehicle",
+    "health": 750,
+    "armourHealth": 0,
+    "penetration": {
+      "min": 1,
+      "max": 1
+    },
+    "disableLevel": 0.8125,
+    "disableChance": {
+      "tracks": 0.0,
+      "engine": 0.0,
+      "mainGun": 0.0,
+      "secondaryGun": 0.0
+    },
+    "repairCost": 150,
+    "slots": 1,
+    "buildType": "VehicleFacility",
+    "mainWeapon": {
+      "weapon": "AmbulanceFlameCGunner:Water",
+      "count": 1,
+      "range": 15.0,
+      "reach": 18.0,
+      "firingTime": 0.0,
+      "reload": 3.5,
+      "magazine": 100
+    },
+    "secondaryWeapon": null,
+    "cost": [],
+    "altCost": [
+      {
+        "code": "FacilityMaterials1",
+        "qty": 15
+      },
+      {
+        "code": "FacilityMaterials5",
+        "qty": 5
+      }
+    ]
+  },
+  "AmbulanceFlameW": {
+    "name": "Dunne Dousing Engine 3r",
+    "armourType": "LightVehicle",
+    "health": 750,
+    "armourHealth": 0,
+    "penetration": {
+      "min": 1,
+      "max": 1
+    },
+    "disableLevel": 0.8125,
+    "disableChance": {
+      "tracks": 0.0,
+      "engine": 0.0,
+      "mainGun": 0.0,
+      "secondaryGun": 0.0
+    },
+    "repairCost": 150,
+    "slots": 1,
+    "buildType": "VehicleFacility",
+    "mainWeapon": {
+      "weapon": "AmbulanceFlameWGunner:Water",
+      "count": 1,
+      "range": 15.0,
+      "reach": 18.0,
+      "firingTime": 0.0,
+      "reload": 3.5,
+      "magazine": 100
+    },
+    "secondaryWeapon": null,
+    "cost": [],
+    "altCost": [
+      {
+        "code": "FacilityMaterials1",
+        "qty": 15
+      },
+      {
+        "code": "FacilityMaterials5",
+        "qty": 5
+      }
+    ]
+  },
+  "ArmoredCar2TwinW": {
+    "name": "O’Brien V.190 Knave",
+    "armourType": "Tier1Tank",
+    "health": 1500,
+    "armourHealth": 2100,
+    "penetration": {
+      "min": 0.75,
+      "max": 0.95
+    },
+    "disableLevel": 0.3,
+    "disableChance": {
+      "tracks": 0.0,
+      "engine": 0.0,
+      "mainGun": 0.0,
+      "secondaryGun": 0.0
+    },
+    "repairCost": 110,
+    "slots": 5,
+    "buildType": "VehicleFactory",
+    "mainWeapon": {
+      "weapon": "ArmoredCar2TwinGunnerW:ATLaunchedGrenadeW",
+      "count": 1,
+      "range": 0.0,
+      "reach": 27.5,
+      "firingTime": 0.75,
+      "reload": 2.0,
+      "magazine": 2
+    },
+    "secondaryWeapon": null,
+    "cost": [
+      {
+        "code": "Wood",
+        "qty": 40
+      }
+    ],
+    "altCost": [
+      {
+        "code": "FacilityMaterials5",
+        "qty": 10
+      }
+    ]
+  },
+  "TrainCaboose": {
+    "name": "BMS Roadhouse",
+    "armourType": "Tier1Tank",
+    "health": 1500,
+    "armourHealth": 0,
+    "penetration": {
+      "min": 1,
+      "max": 1
+    },
+    "disableLevel": 0.75,
+    "disableChance": {
+      "tracks": 0.0,
+      "engine": 0.0,
+      "mainGun": 0.0,
+      "secondaryGun": 0.0
+    },
+    "repairCost": 100,
+    "slots": 1,
+    "buildType": null,
+    "mainWeapon": null,
+    "secondaryWeapon": null,
+    "cost": [
+      {
+        "code": "Cloth",
+        "qty": 5
+      }
+    ],
+    "altCost": [
+      {
+        "code": "FacilityMaterials2",
+        "qty": 20
+      },
+      {
+        "code": "FacilityMaterials5",
+        "qty": 15
+      },
+      {
+        "code": "FacilityMaterials6",
+        "qty": 5
+      }
+    ]
+  },
+  "BattleTankATC": {
+    "name": "Lance-25 “Hasta”",
+    "armourType": "Tier2Tank",
+    "health": 6250,
+    "armourHealth": 15650,
+    "penetration": {
+      "min": 0.2,
+      "max": 0.5
+    },
+    "disableLevel": 0.3,
+    "disableChance": {
+      "tracks": 0.3,
+      "engine": 0.25,
+      "mainGun": 0.25,
+      "secondaryGun": 0.0
+    },
+    "repairCost": 230,
+    "slots": 1,
+    "buildType": "VehicleFacility",
+    "mainWeapon": {
+      "weapon": "BattleTankATCGunner:ATLargeAmmo",
+      "count": 1,
+      "range": 40.0,
+      "reach": 40.0,
+      "firingTime": 2.0,
+      "reload": 6.5,
+      "magazine": 1
+    },
+    "secondaryWeapon": null,
+    "cost": [],
+    "altCost": [
+      {
+        "code": "FacilityMaterials3",
+        "qty": 60
+      },
+      {
+        "code": "FacilityMaterials6",
+        "qty": 65
+      },
+      {
+        "code": "FacilityMaterials7",
+        "qty": 45
+      },
+      {
+        "code": "FacilityMaterials8",
+        "qty": 65
+      }
+    ]
+  },
+  "ConstructionUtility": {
+    "name": "BMS - Fabricator",
+    "armourType": "LightVehicle",
+    "health": 1000,
+    "armourHealth": 0,
+    "penetration": {
+      "min": 1,
+      "max": 1
+    },
+    "disableLevel": 0.75,
+    "disableChance": {
+      "tracks": 0.0,
+      "engine": 0.0,
+      "mainGun": 0.0,
+      "secondaryGun": 0.0
+    },
+    "repairCost": 100,
+    "slots": 12,
+    "buildType": "BuildableAnywhere",
+    "mainWeapon": null,
+    "secondaryWeapon": null,
+    "cost": [
+      {
+        "code": "Cloth",
+        "qty": 100
+      }
+    ],
+    "altCost": [
+      {
+        "code": "FacilityMaterials2",
+        "qty": 10
+      }
+    ]
+  },
+  "SmallTrainLiquid": {
+    "name": "BMS Tinderbox",
+    "armourType": "Tier1Tank",
+    "health": 900,
+    "armourHealth": 0,
+    "penetration": {
+      "min": 1,
+      "max": 1
+    },
+    "disableLevel": 0.75,
+    "disableChance": {
+      "tracks": 0.0,
+      "engine": 0.0,
+      "mainGun": 0.0,
+      "secondaryGun": 0.0
+    },
+    "repairCost": 100,
+    "slots": 1,
+    "buildType": null,
+    "mainWeapon": null,
+    "secondaryWeapon": null,
+    "cost": [
+      {
+        "code": "Cloth",
+        "qty": 200
+      }
+    ],
+    "altCost": [
+      {
+        "code": "FacilityMaterials1",
+        "qty": 35
+      },
+      {
+        "code": "FacilityMaterials4",
+        "qty": 5
+      },
+      {
+        "code": "FacilityMaterials5",
+        "qty": 15
+      }
+    ]
+  },
+  "MediumTankATW": {
+    "name": "Silverhand Lordscar - Mk. X",
+    "armourType": "Tier2Tank",
+    "health": 3100,
+    "armourHealth": 14500,
+    "penetration": {
+      "min": 0.28,
+      "max": 0.6699999999999999
+    },
+    "disableLevel": 0.3,
+    "disableChance": {
+      "tracks": 0.3,
+      "engine": 0.2,
+      "mainGun": 0.2,
+      "secondaryGun": 0.0
+    },
+    "repairCost": 200,
+    "slots": 1,
+    "buildType": "VehicleFacility",
+    "mainWeapon": {
+      "weapon": "MediumTankATWGunner:ATLargeAmmo",
+      "count": 1,
+      "range": 40.0,
+      "reach": 40.0,
+      "firingTime": 2.0,
+      "reload": 6.5,
+      "magazine": 1
+    },
+    "secondaryWeapon": null,
+    "cost": [],
+    "altCost": [
+      {
+        "code": "FacilityMaterials3",
+        "qty": 15
+      },
+      {
+        "code": "FacilityMaterials5",
+        "qty": 25
+      },
+      {
+        "code": "FacilityMaterials6",
+        "qty": 25
+      }
+    ]
+  },
+  "ScoutTankMultiW": {
+    "name": "King Jester Mk. I-1",
+    "armourType": "Tier2Tank",
+    "health": 1350,
+    "armourHealth": 6500,
+    "penetration": {
+      "min": 0.5,
+      "max": 0.9
+    },
+    "disableLevel": 0.3,
+    "disableChance": {
+      "tracks": 0.3,
+      "engine": 0.4,
+      "mainGun": 0.2,
+      "secondaryGun": 0.0
+    },
+    "repairCost": 100,
+    "slots": 1,
+    "buildType": "VehicleFacility",
+    "mainWeapon": {
+      "weapon": "ScoutTankMultiWGunner:DemolitionRocketAmmo",
+      "count": 1,
+      "range": 40.0,
+      "reach": 40.0,
+      "firingTime": 0.4,
+      "reload": 5.0,
+      "magazine": 4
+    },
+    "secondaryWeapon": null,
+    "cost": [],
+    "altCost": [
+      {
+        "code": "FacilityMaterials3",
+        "qty": 5
+      },
+      {
+        "code": "FacilityMaterials4",
+        "qty": 15
+      },
+      {
+        "code": "FacilityMaterials6",
+        "qty": 3
+      }
+    ]
+  },
+  "TanketteMultiC": {
+    "name": "T13 “Deioneus” Rocket Battery",
+    "armourType": "Tier2Tank",
+    "health": 1350,
+    "armourHealth": 7200,
+    "penetration": {
+      "min": 0.55,
+      "max": 0.8
+    },
+    "disableLevel": 0.3,
+    "disableChance": {
+      "tracks": 0.3,
+      "engine": 0.0,
+      "mainGun": 0.0,
+      "secondaryGun": 0.0
+    },
+    "repairCost": 100,
+    "slots": 1,
+    "buildType": "VehicleFacility",
+    "mainWeapon": {
+      "weapon": "TanketteMultiCGunner:FireRocketAmmo",
+      "count": 1,
+      "range": 400.0,
+      "reach": 400.0,
+      "firingTime": 0.4,
+      "reload": 3.5,
+      "magazine": 9
+    },
+    "secondaryWeapon": null,
+    "cost": [],
+    "altCost": [
+      {
+        "code": "FacilityMaterials2",
+        "qty": 20
+      },
+      {
+        "code": "FacilityMaterials4",
+        "qty": 15
+      },
+      {
+        "code": "FacilityMaterials6",
+        "qty": 3
+      }
+    ]
+  },
+  "BattleTankHeavyArtilleryW": {
+    "name": "Flood Mk. IX Stain",
+    "armourType": "Tier2Tank",
+    "health": 4800,
+    "armourHealth": 12000,
+    "penetration": {
+      "min": 0.25,
+      "max": 0.5
+    },
+    "disableLevel": 0.3,
+    "disableChance": {
+      "tracks": 0.35,
+      "engine": 0.25,
+      "mainGun": 0.35,
+      "secondaryGun": 0.0
+    },
+    "repairCost": 220,
+    "slots": 1,
+    "buildType": "VehicleFacility",
+    "mainWeapon": {
+      "weapon": "BattleTankHeavyArtilleryWGunner:HeavyArtilleryAmmo",
+      "count": 1,
+      "range": 250.0,
+      "reach": 250.0,
+      "firingTime": 0.0,
+      "reload": 3.0,
+      "magazine": 1
+    },
+    "secondaryWeapon": null,
+    "cost": [],
+    "altCost": [
+      {
+        "code": "FacilityMaterials3",
+        "qty": 150
+      },
+      {
+        "code": "FacilityMaterials6",
+        "qty": 65
+      },
+      {
+        "code": "FacilityMaterials7",
+        "qty": 40
+      },
+      {
+        "code": "FacilityMaterials8",
+        "qty": 85
+      }
+    ]
+  },
+  "BattleTankHeavyArtilleryC": {
+    "name": "Lance-46 “Sarissa”",
+    "armourType": "Tier2Tank",
+    "health": 6250,
+    "armourHealth": 12000,
+    "penetration": {
+      "min": 0.25,
+      "max": 0.5
+    },
+    "disableLevel": 0.3,
+    "disableChance": {
+      "tracks": 0.3,
+      "engine": 0.25,
+      "mainGun": 0.25,
+      "secondaryGun": 0.0
+    },
+    "repairCost": 200,
+    "slots": 1,
+    "buildType": "VehicleFacility",
+    "mainWeapon": {
+      "weapon": "BattleTankHeavyArtilleryCGunner:HeavyArtilleryAmmo",
+      "count": 1,
+      "range": 250.0,
+      "reach": 250.0,
+      "firingTime": 0.0,
+      "reload": 3.0,
+      "magazine": 1
+    },
+    "secondaryWeapon": null,
+    "cost": [],
+    "altCost": [
+      {
+        "code": "FacilityMaterials3",
+        "qty": 150
+      },
+      {
+        "code": "FacilityMaterials6",
+        "qty": 65
+      },
+      {
+        "code": "FacilityMaterials7",
+        "qty": 40
+      },
+      {
+        "code": "FacilityMaterials8",
+        "qty": 85
+      }
+    ]
+  },
+  "FieldAT2C": {
+    "name": "GA6 “Cestus”",
+    "armourType": "Tier2Tank",
+    "health": 1600,
+    "armourHealth": 0,
+    "penetration": {
+      "min": 1,
+      "max": 1
+    },
+    "disableLevel": 0.3,
+    "disableChance": {
+      "tracks": 0.0,
+      "engine": 0.0,
+      "mainGun": 0.0,
+      "secondaryGun": 0.0
+    },
+    "repairCost": 100,
+    "slots": 1,
+    "buildType": "VehicleFacility",
+    "mainWeapon": {
+      "weapon": "FieldAT2CGunner:ATRifleAmmo",
+      "count": 1,
+      "range": 30.0,
+      "reach": 37.5,
+      "firingTime": 1.0,
+      "reload": 5.0,
+      "magazine": 6
+    },
+    "secondaryWeapon": null,
+    "cost": [],
+    "altCost": [
+      {
+        "code": "FacilityMaterials1",
+        "qty": 30
+      },
+      {
+        "code": "FacilityMaterials5",
+        "qty": 20
+      }
+    ]
+  },
+  "FieldAT2W": {
+    "name": "Duncan’s Coin 14.5mm",
+    "armourType": "Tier2Tank",
+    "health": 1600,
+    "armourHealth": 0,
+    "penetration": {
+      "min": 1,
+      "max": 1
+    },
+    "disableLevel": 0.3,
+    "disableChance": {
+      "tracks": 0.0,
+      "engine": 0.0,
+      "mainGun": 0.0,
+      "secondaryGun": 0.0
+    },
+    "repairCost": 100,
+    "slots": 1,
+    "buildType": "VehicleFacility",
+    "mainWeapon": {
+      "weapon": "FieldAT2WGunner:ATRifleAmmo",
+      "count": 1,
+      "range": 32.0,
+      "reach": 37.5,
+      "firingTime": 1.75,
+      "reload": 4.0,
+      "magazine": 4
+    },
+    "secondaryWeapon": null,
+    "cost": [],
+    "altCost": [
+      {
+        "code": "FacilityMaterials1",
+        "qty": 30
+      },
+      {
+        "code": "FacilityMaterials5",
+        "qty": 20
+      }
+    ]
+  },
+  "TrailerResource": {
+    "name": "Rooster - Junkwagon",
+    "armourType": "LightVehicle",
+    "health": 900,
+    "armourHealth": 0,
+    "penetration": {
+      "min": 1,
+      "max": 1
+    },
+    "disableLevel": 0.5,
+    "disableChance": {
+      "tracks": 0.0,
+      "engine": 0.0,
+      "mainGun": 0.0,
+      "secondaryGun": 0.0
+    },
+    "repairCost": 100,
+    "slots": 7,
+    "buildType": "VehicleFactory",
+    "mainWeapon": null,
+    "secondaryWeapon": null,
+    "cost": [
+      {
+        "code": "Cloth",
+        "qty": 100
+      }
+    ],
+    "altCost": [
+      {
+        "code": "FacilityMaterials2",
+        "qty": 10
+      },
+      {
+        "code": "FacilityMaterials5",
+        "qty": 5
+      }
+    ]
+  },
+  "TrailerMaterial": {
+    "name": "Rooster - Tumblebox",
+    "armourType": "LightVehicle",
+    "health": 900,
+    "armourHealth": 0,
+    "penetration": {
+      "min": 1,
+      "max": 1
+    },
+    "disableLevel": 0.5,
+    "disableChance": {
+      "tracks": 0.0,
+      "engine": 0.0,
+      "mainGun": 0.0,
+      "secondaryGun": 0.0
+    },
+    "repairCost": 100,
+    "slots": 1,
+    "buildType": "VehicleFactory",
+    "mainWeapon": null,
+    "secondaryWeapon": null,
+    "cost": [
+      {
+        "code": "Cloth",
+        "qty": 100
+      }
+    ],
+    "altCost": [
+      {
+        "code": "FacilityMaterials2",
+        "qty": 10
+      },
+      {
+        "code": "FacilityMaterials5",
+        "qty": 5
+      }
+    ]
+  },
+  "TrailerLiquid": {
+    "name": "Rooster - Lamploader",
+    "armourType": "LightVehicle",
+    "health": 900,
+    "armourHealth": 0,
+    "penetration": {
+      "min": 1,
+      "max": 1
+    },
+    "disableLevel": 0.5,
+    "disableChance": {
+      "tracks": 0.0,
+      "engine": 0.0,
+      "mainGun": 0.0,
+      "secondaryGun": 0.0
+    },
+    "repairCost": 100,
+    "slots": 1,
+    "buildType": "VehicleFactory",
+    "mainWeapon": null,
+    "secondaryWeapon": null,
+    "cost": [
+      {
+        "code": "Cloth",
+        "qty": 100
+      }
+    ],
+    "altCost": [
+      {
+        "code": "FacilityMaterials2",
+        "qty": 10
+      },
+      {
+        "code": "FacilityMaterials5",
+        "qty": 5
+      }
+    ]
+  },
+  "HalftrackTwinW": {
+    "name": "Niska Mk. III Scar Twin",
+    "armourType": "Tier1Tank",
+    "health": 1500,
+    "armourHealth": 4600,
+    "penetration": {
+      "min": 0.65,
+      "max": 0.9
+    },
+    "disableLevel": 0.3,
+    "disableChance": {
+      "tracks": 0.3,
+      "engine": 0.0,
+      "mainGun": 0.0,
+      "secondaryGun": 0.0
+    },
+    "repairCost": 110,
+    "slots": 4,
+    "buildType": "VehicleFacility",
+    "mainWeapon": {
+      "weapon": "HalftrackTwinWGunnerL:AssaultRifleAmmo",
+      "count": 1,
+      "range": 32.5,
+      "reach": 42.5,
+      "firingTime": 0.0,
+      "reload": 3.5,
+      "magazine": 50
+    },
+    "secondaryWeapon": {
+      "weapon": "HalftrackTwinWGunnerR:AssaultRifleAmmo",
+      "count": 1,
+      "range": 32.5,
+      "reach": 42.5,
+      "firingTime": 0.0,
+      "reload": 3.5,
+      "magazine": 50
+    },
+    "cost": [],
+    "altCost": [
+      {
+        "code": "FacilityMaterials2",
+        "qty": 5
+      },
+      {
+        "code": "FacilityMaterials7",
+        "qty": 5
+      }
+    ]
+  },
+  "LargeShipDestroyerC": {
+    "name": "Conqueror",
+    "armourType": "Tier1LargeShip",
+    "health": 46200,
+    "armourHealth": 38500,
+    "penetration": {
+      "min": 0.1,
+      "max": 0.5
+    },
+    "disableLevel": 0.5,
+    "disableChance": {
+      "tracks": 0.0,
+      "engine": 0.0,
+      "mainGun": 0.1,
+      "secondaryGun": 0.1
+    },
+    "repairCost": 500,
+    "slots": 15,
+    "buildType": null,
+    "mainWeapon": {
+      "weapon": "LargeShipDestroyerDepthChargeGunnerR:DepthChargeAmmo",
+      "count": 1,
+      "range": 25.0,
+      "reach": 25.0,
+      "firingTime": 0.0,
+      "reload": 5.0,
+      "magazine": 1
+    },
+    "secondaryWeapon": {
+      "weapon": "LargeShipDestroyerDepthChargeGunnerL:DepthChargeAmmo",
+      "count": 1,
+      "range": 25.0,
+      "reach": 25.0,
+      "firingTime": 0.0,
+      "reload": 5.0,
+      "magazine": 1
+    },
+    "cost": [
+      {
+        "code": "Cloth",
+        "qty": 150
+      }
+    ],
+    "altCost": [
+      {
+        "code": "ShipPart1",
+        "qty": 12
+      },
+      {
+        "code": "ShipPart2",
+        "qty": 12
+      }
+    ]
+  },
+  "LargeShipStorageShip": {
+    "name": "BMS - Bluefin",
+    "armourType": "Tier1LargeShip",
+    "health": 72190,
+    "armourHealth": 57750,
+    "penetration": {
+      "min": 0.1,
+      "max": 0.5
+    },
+    "disableLevel": 0.5,
+    "disableChance": {
+      "tracks": 0.0,
+      "engine": 0.0,
+      "mainGun": 0.0,
+      "secondaryGun": 0.0
+    },
+    "repairCost": 500,
+    "slots": 15,
+    "buildType": null,
+    "mainWeapon": {
+      "weapon": "LargeShipStorageShipMGStarGunner:MGAmmo",
+      "count": 1,
+      "range": 40.0,
+      "reach": 45.0,
+      "firingTime": 0.0,
+      "reload": 3.0,
+      "magazine": 75
+    },
+    "secondaryWeapon": {
+      "weapon": "LargeShipStorageShipMGPortGunner:MGAmmo",
+      "count": 1,
+      "range": 40.0,
+      "reach": 45.0,
+      "firingTime": 0.0,
+      "reload": 3.0,
+      "magazine": 75
+    },
+    "cost": [
+      {
+        "code": "Cloth",
+        "qty": 150
+      }
+    ],
+    "altCost": [
+      {
+        "code": "ShipPart1",
+        "qty": 25
+      },
+      {
+        "code": "ShipPart2",
+        "qty": 25
+      }
+    ]
+  },
+  "LargeShipBaseShip": {
+    "name": "BMS - Longhook",
+    "armourType": "Tier1LargeShip",
+    "health": 49500,
+    "armourHealth": 49500,
+    "penetration": {
+      "min": 0.1,
+      "max": 0.5
+    },
+    "disableLevel": 0.5,
+    "disableChance": {
+      "tracks": 0.0,
+      "engine": 0.0,
+      "mainGun": 0.0,
+      "secondaryGun": 0.0
+    },
+    "repairCost": 500,
+    "slots": 15,
+    "buildType": null,
+    "mainWeapon": {
+      "weapon": "LargeShipBaseShipMachineGunner:MGAmmo",
+      "count": 2,
+      "range": 40.0,
+      "reach": 45.0,
+      "firingTime": 0.0,
+      "reload": 3.0,
+      "magazine": 75
+    },
+    "secondaryWeapon": null,
+    "cost": [
+      {
+        "code": "Cloth",
+        "qty": 150
+      }
+    ],
+    "altCost": [
+      {
+        "code": "ShipPart1",
+        "qty": 8
+      },
+      {
+        "code": "ShipPart2",
+        "qty": 15
+      }
+    ]
+  },
+  "LandingShipC": {
+    "name": "Interceptor PA-12",
+    "armourType": "Tier1Ship",
+    "health": 2250,
+    "armourHealth": 5450,
+    "penetration": {
+      "min": 0.55,
+      "max": 0.9
+    },
+    "disableLevel": 0.5,
+    "disableChance": {
+      "tracks": 0.0,
+      "engine": 0.0,
+      "mainGun": 0.0,
+      "secondaryGun": 0.0
+    },
+    "repairCost": 150,
+    "slots": 6,
+    "buildType": "LargeShip",
+    "mainWeapon": null,
+    "secondaryWeapon": null,
+    "cost": [
+      {
+        "code": "Cloth",
+        "qty": 10
+      }
+    ]
+  },
+  "LandingShipW": {
+    "name": "MacConmara Shorerunner",
+    "armourType": "Tier1Ship",
+    "health": 2250,
+    "armourHealth": 5450,
+    "penetration": {
+      "min": 0.55,
+      "max": 0.9
+    },
+    "disableLevel": 0.5,
+    "disableChance": {
+      "tracks": 0.0,
+      "engine": 0.0,
+      "mainGun": 0.0,
+      "secondaryGun": 0.0
+    },
+    "repairCost": 150,
+    "slots": 6,
+    "buildType": "LargeShip",
+    "mainWeapon": null,
+    "secondaryWeapon": null,
+    "cost": [
+      {
+        "code": "Cloth",
+        "qty": 10
+      }
+    ]
+  },
+  "HeavyTruckC": {
+    "name": "AU-A150 Taurine Rigger",
+    "armourType": "Tier1Tank",
+    "health": 1150,
+    "armourHealth": 3000,
+    "penetration": {
+      "min": 0.75,
+      "max": 0.9
+    },
+    "disableLevel": 0.5,
+    "disableChance": {
+      "tracks": 0.3,
+      "engine": 0.0,
+      "mainGun": 0.0,
+      "secondaryGun": 0.0
+    },
+    "repairCost": 100,
+    "slots": 15,
+    "buildType": "VehicleFacility",
+    "mainWeapon": null,
+    "secondaryWeapon": null,
+    "cost": [],
+    "altCost": [
+      {
+        "code": "FacilityMaterials2",
+        "qty": 40
+      }
+    ]
+  },
+  "LargeFieldATC": {
+    "name": "945g “Stygian Bolt”",
+    "armourType": "Tier2Tank",
+    "health": 5000,
+    "armourHealth": 0,
+    "penetration": {
+      "min": 1,
+      "max": 1
+    },
+    "disableLevel": 0.3,
+    "disableChance": {
+      "tracks": 0.0,
+      "engine": 0.0,
+      "mainGun": 0.0,
+      "secondaryGun": 0.0
+    },
+    "repairCost": 125,
+    "slots": 1,
+    "buildType": "VehicleFacility",
+    "mainWeapon": {
+      "weapon": "LargeFieldATCGunner:ATLargeAmmo",
+      "count": 1,
+      "range": 42.5,
+      "reach": 47.5,
+      "firingTime": 1.0,
+      "reload": 3.0,
+      "magazine": 1
+    },
+    "secondaryWeapon": null,
+    "cost": [],
+    "altCost": [
+      {
+        "code": "FacilityMaterials3",
+        "qty": 15
+      },
+      {
+        "code": "FacilityMaterials5",
+        "qty": 20
+      },
+      {
+        "code": "FacilityMaterials6",
+        "qty": 15
+      }
+    ]
+  },
+  "LargeFieldLightArtilleryC": {
+    "name": "120-68 “Koronides” Field Gun",
+    "armourType": "Tier1Tank",
+    "health": 1000,
+    "armourHealth": 0,
+    "penetration": {
+      "min": 1,
+      "max": 1
+    },
+    "disableLevel": 0.3,
+    "disableChance": {
+      "tracks": 0.0,
+      "engine": 0.0,
+      "mainGun": 0.0,
+      "secondaryGun": 0.0
+    },
+    "repairCost": 120,
+    "slots": 1,
+    "buildType": "VehicleFactory",
+    "mainWeapon": {
+      "weapon": "LargeFieldLightArtilleryCGunner:LightArtilleryAmmo",
+      "count": 1,
+      "range": 250.0,
+      "reach": 250.0,
+      "firingTime": 0.0,
+      "reload": 3.5,
+      "magazine": 1
+    },
+    "secondaryWeapon": null,
+    "cost": [
+      {
+        "code": "Wood",
+        "qty": 25
+      }
+    ]
+  },
+  "LargeFieldCannonW": {
+    "name": "Balfour Stockade 75mm",
+    "armourType": "Tier2Tank",
+    "health": 5000,
+    "armourHealth": 0,
+    "penetration": {
+      "min": 0.914286,
+      "max": 1
+    },
+    "disableLevel": 0.3,
+    "disableChance": {
+      "tracks": 0.0,
+      "engine": 0.0,
+      "mainGun": 0.0,
+      "secondaryGun": 0.0
+    },
+    "repairCost": 125,
+    "slots": 1,
+    "buildType": "VehicleFacility",
+    "mainWeapon": {
+      "weapon": "LargeFieldCannonWGunner:BattleTankAmmo",
+      "count": 1,
+      "range": 37.5,
+      "reach": 42.5,
+      "firingTime": 1.0,
+      "reload": 3.0,
+      "magazine": 1
+    },
+    "secondaryWeapon": null,
+    "cost": [],
+    "altCost": [
+      {
+        "code": "FacilityMaterials3",
+        "qty": 15
+      },
+      {
+        "code": "FacilityMaterials5",
+        "qty": 20
+      },
+      {
+        "code": "FacilityMaterials6",
+        "qty": 15
+      }
+    ]
+  },
+  "LargeFieldMultiW": {
+    "name": "Rycker 4/3-F Wasp Nest",
+    "armourType": "Tier1Tank",
+    "health": 1000,
+    "armourHealth": 0,
+    "penetration": {
+      "min": 1,
+      "max": 1
+    },
+    "disableLevel": 0.3,
+    "disableChance": {
+      "tracks": 0.0,
+      "engine": 0.0,
+      "mainGun": 0.0,
+      "secondaryGun": 0.0
+    },
+    "repairCost": 100,
+    "slots": 1,
+    "buildType": "VehicleFacility",
+    "mainWeapon": {
+      "weapon": "LargeFieldMultiWGunner:FireRocketAmmo",
+      "count": 1,
+      "range": 450.0,
+      "reach": 450.0,
+      "firingTime": 0.4,
+      "reload": 5.0,
+      "magazine": 12
+    },
+    "secondaryWeapon": null,
+    "cost": [],
+    "altCost": [
+      {
+        "code": "FacilityMaterials2",
+        "qty": 20
+      },
+      {
+        "code": "FacilityMaterials5",
+        "qty": 15
+      },
+      {
+        "code": "FacilityMaterials7",
+        "qty": 3
+      }
+    ]
+  },
+  "GunboatW": {
+    "name": "74b-1 Ronan Gunship",
+    "armourType": "Tier2Ship",
+    "health": 1650,
+    "armourHealth": 9500,
+    "penetration": {
+      "min": 0.22,
+      "max": 0.6699999999999999
+    },
+    "disableLevel": 0.3,
+    "disableChance": {
+      "tracks": 0.0,
+      "engine": 0.0,
+      "mainGun": 0.1,
+      "secondaryGun": 0.0
+    },
+    "repairCost": 200,
+    "slots": 6,
+    "buildType": "Shipyard",
+    "mainWeapon": {
+      "weapon": "GunboatWMainGunner:MortarAmmo",
+      "count": 1,
+      "range": 100.0,
+      "reach": 100.0,
+      "firingTime": 0.666667,
+      "reload": 3.0,
+      "magazine": 1
+    },
+    "secondaryWeapon": null,
+    "cost": [
+      {
+        "code": "Wood",
+        "qty": 140
+      }
+    ]
+  },
+  "GunboatC": {
+    "name": "Type C - “Charon”",
+    "armourType": "Tier2Ship",
+    "health": 1850,
+    "armourHealth": 9100,
+    "penetration": {
+      "min": 0.25,
+      "max": 0.6699999999999999
+    },
+    "disableLevel": 0.3,
+    "disableChance": {
+      "tracks": 0.0,
+      "engine": 0.0,
+      "mainGun": 0.1,
+      "secondaryGun": 0.0
+    },
+    "repairCost": 200,
+    "slots": 6,
+    "buildType": "Shipyard",
+    "mainWeapon": {
+      "weapon": "GunboatCGunner:MortarAmmo",
+      "count": 1,
+      "range": 100.0,
+      "reach": 100.0,
+      "firingTime": 0.666667,
+      "reload": 3.0,
+      "magazine": 1
+    },
+    "secondaryWeapon": null,
+    "cost": [
+      {
+        "code": "Wood",
+        "qty": 140
+      }
+    ]
+  },
+  "PlayerImposter": {
+    "name": "Player Imposter",
+    "armourType": "NoArmour",
+    "health": 1000,
+    "armourHealth": 0,
+    "penetration": {
+      "min": 1,
+      "max": 1
+    },
+    "disableLevel": 0,
+    "disableChance": {
+      "tracks": 0.0,
+      "engine": 0.0,
+      "mainGun": 0.0,
+      "secondaryGun": 0.0
+    },
+    "repairCost": 0,
+    "slots": 0,
+    "buildType": null,
+    "mainWeapon": null,
+    "secondaryWeapon": null,
+    "cost": [
+      {
+        "code": "Cloth",
+        "qty": 10
+      }
+    ]
+  },
+  "LargeShipSubmarineW": {
+    "name": "Nakki",
+    "armourType": "Tier1LargeShip",
+    "health": 21275,
+    "armourHealth": 21275,
+    "penetration": {
+      "min": 0.1,
+      "max": 0.5
+    },
+    "disableLevel": 0.5,
+    "disableChance": {
+      "tracks": 0.0,
+      "engine": 0.0,
+      "mainGun": 0.1,
+      "secondaryGun": 0.0
+    },
+    "repairCost": 500,
+    "slots": 15,
+    "buildType": null,
+    "mainWeapon": {
+      "weapon": "LargeShipSubmarineWTorpedoGunner:TorpedoAmmo",
+      "count": 2,
+      "range": 150.0,
+      "reach": 150.0,
+      "firingTime": 1.0,
+      "reload": 13.0,
+      "magazine": 1
+    },
+    "secondaryWeapon": {
+      "weapon": "LargeShipSubmarineWDirectGunner:ATAmmo",
+      "count": 1,
+      "range": 45.0,
+      "reach": 45.0,
+      "firingTime": 0.5,
+      "reload": 2.0,
+      "magazine": 2
+    },
+    "cost": [
+      {
+        "code": "Cloth",
+        "qty": 150
+      }
+    ],
+    "altCost": [
+      {
+        "code": "ShipPart1",
+        "qty": 15
+      },
+      {
+        "code": "ShipPart2",
+        "qty": 15
+      }
+    ]
+  },
+  "LargeShipBattleshipC": {
+    "name": "Titan",
+    "armourType": "Tier1LargeShip",
+    "health": 85960,
+    "armourHealth": 66000,
+    "penetration": {
+      "min": 0.05,
+      "max": 0.25
+    },
+    "disableLevel": 0.5,
+    "disableChance": {
+      "tracks": 0.0,
+      "engine": 0.0,
+      "mainGun": 0.1,
+      "secondaryGun": 0.1
+    },
+    "repairCost": 500,
+    "slots": 15,
+    "buildType": null,
+    "mainWeapon": {
+      "weapon": "LargeShipBattleShipCHeavyArtilleryGunnerForward:HeavyArtilleryAmmo",
+      "count": 1,
+      "range": 225.0,
+      "reach": 225.0,
+      "firingTime": 0.2,
+      "reload": 6.0,
+      "magazine": 3
+    },
+    "secondaryWeapon": {
+      "weapon": "LargeShipBattleShipCHeavyArtilleryGunnerRear:HeavyArtilleryAmmo",
+      "count": 1,
+      "range": 225.0,
+      "reach": 225.0,
+      "firingTime": 0.2,
+      "reload": 6.0,
+      "magazine": 3
+    },
+    "cost": [
+      {
+        "code": "Cloth",
+        "qty": 150
+      }
+    ],
+    "altCost": [
+      {
+        "code": "ShipPart1",
+        "qty": 20
+      },
+      {
+        "code": "ShipPart2",
+        "qty": 20
+      },
+      {
+        "code": "ShipPart3",
+        "qty": 4
+      }
+    ]
+  },
+  "LargeShipBattleshipW": {
+    "name": "Callahan",
+    "armourType": "Tier1LargeShip",
+    "health": 85960,
+    "armourHealth": 74750,
+    "penetration": {
+      "min": 0.05,
+      "max": 0.25
+    },
+    "disableLevel": 0.5,
+    "disableChance": {
+      "tracks": 0.0,
+      "engine": 0.0,
+      "mainGun": 0.1,
+      "secondaryGun": 0.1
+    },
+    "repairCost": 500,
+    "slots": 15,
+    "buildType": null,
+    "mainWeapon": {
+      "weapon": "LargeShipBattleShipWHeavyArtilleryGunnerForward:HeavyArtilleryAmmo",
+      "count": 1,
+      "range": 225.0,
+      "reach": 225.0,
+      "firingTime": 0.2,
+      "reload": 6.0,
+      "magazine": 2
+    },
+    "secondaryWeapon": {
+      "weapon": "LargeShipBattleShipWHeavyArtilleryGunnerRear:HeavyArtilleryAmmo",
+      "count": 2,
+      "range": 225.0,
+      "reach": 225.0,
+      "firingTime": 0.2,
+      "reload": 6.0,
+      "magazine": 2
+    },
+    "cost": [
+      {
+        "code": "Cloth",
+        "qty": 150
+      }
+    ],
+    "altCost": [
+      {
+        "code": "ShipPart1",
+        "qty": 20
+      },
+      {
+        "code": "ShipPart2",
+        "qty": 20
+      },
+      {
+        "code": "ShipPart3",
+        "qty": 4
+      }
+    ]
+  },
+  "HeavyTruckW": {
+    "name": "Cnute Cliffwrest",
+    "armourType": "Tier1Tank",
+    "health": 1150,
+    "armourHealth": 3000,
+    "penetration": {
+      "min": 0.75,
+      "max": 0.9
+    },
+    "disableLevel": 0.5,
+    "disableChance": {
+      "tracks": 0.0,
+      "engine": 0.0,
+      "mainGun": 0.0,
+      "secondaryGun": 0.0
+    },
+    "repairCost": 100,
+    "slots": 15,
+    "buildType": "VehicleFacility",
+    "mainWeapon": null,
+    "secondaryWeapon": null,
+    "cost": [],
+    "altCost": [
+      {
+        "code": "FacilityMaterials2",
+        "qty": 40
+      }
+    ]
+  },
+  "LargeShipDestroyerW": {
+    "name": "Blacksteele",
+    "armourType": "Tier1LargeShip",
+    "health": 41400,
+    "armourHealth": 34500,
+    "penetration": {
+      "min": 0.1,
+      "max": 0.5
+    },
+    "disableLevel": 0.5,
+    "disableChance": {
+      "tracks": 0.0,
+      "engine": 0.0,
+      "mainGun": 0.1,
+      "secondaryGun": 0.1
+    },
+    "repairCost": 500,
+    "slots": 15,
+    "buildType": null,
+    "mainWeapon": {
+      "weapon": "LargeShipDestroyerWDepthChargeGunner:DepthChargeAmmo",
+      "count": 1,
+      "range": 25.0,
+      "reach": 25.0,
+      "firingTime": 3.0,
+      "reload": 5.0,
+      "magazine": 4
+    },
+    "secondaryWeapon": {
+      "weapon": "LargeShipDestroyerWDirectGunnerStarboard:ATAmmo",
+      "count": 1,
+      "range": 45.0,
+      "reach": 45.0,
+      "firingTime": 1.0,
+      "reload": 2.0,
+      "magazine": 1
+    },
+    "cost": [
+      {
+        "code": "Cloth",
+        "qty": 150
+      }
+    ],
+    "altCost": [
+      {
+        "code": "ShipPart1",
+        "qty": 12
+      },
+      {
+        "code": "ShipPart2",
+        "qty": 12
+      }
+    ]
+  },
+  "LargeShipSubmarineC": {
+    "name": "AC-b “Trident”",
+    "armourType": "Tier1LargeShip",
+    "health": 28500,
+    "armourHealth": 28500,
+    "penetration": {
+      "min": 0.1,
+      "max": 0.5
+    },
+    "disableLevel": 0.5,
+    "disableChance": {
+      "tracks": 0.0,
+      "engine": 0.0,
+      "mainGun": 0.1,
+      "secondaryGun": 0.0
+    },
+    "repairCost": 500,
+    "slots": 15,
+    "buildType": null,
+    "mainWeapon": {
+      "weapon": "LargeShipSubmarineWTorpedoGunner:TorpedoAmmo",
+      "count": 2,
+      "range": 150.0,
+      "reach": 150.0,
+      "firingTime": 1.0,
+      "reload": 13.0,
+      "magazine": 1
+    },
+    "secondaryWeapon": {
+      "weapon": "LargeShipSubmarineCHeavyArtillery:LightArtilleryAmmo",
+      "count": 1,
+      "range": 225.0,
+      "reach": 225.0,
+      "firingTime": 0.2,
+      "reload": 3.0,
+      "magazine": 1
+    },
+    "cost": [
+      {
+        "code": "Cloth",
+        "qty": 150
+      }
+    ],
+    "altCost": [
+      {
+        "code": "ShipPart1",
+        "qty": 15
+      },
+      {
+        "code": "ShipPart2",
+        "qty": 15
+      }
+    ]
+  },
+  "LargeShipResourceShip": {
+    "name": "BMS - Bowhead",
+    "armourType": "Tier1LargeShip",
+    "health": 55000,
+    "armourHealth": 55000,
+    "penetration": {
+      "min": 0.1,
+      "max": 0.5
+    },
+    "disableLevel": 0.5,
+    "disableChance": {
+      "tracks": 0.0,
+      "engine": 0.0,
+      "mainGun": 0.0,
+      "secondaryGun": 0.0
+    },
+    "repairCost": 500,
+    "slots": 15,
+    "buildType": null,
+    "mainWeapon": {
+      "weapon": null,
+      "count": 1,
+      "range": 300.0,
+      "reach": 300.0,
+      "firingTime": 0.0,
+      "reload": 0.0,
+      "magazine": 0
+    },
+    "secondaryWeapon": null,
+    "cost": [
+      {
+        "code": "Cloth",
+        "qty": 150
+      }
+    ],
+    "altCost": [
+      {
+        "code": "ShipPart1",
+        "qty": 8
+      },
+      {
+        "code": "ShipPart2",
+        "qty": 15
+      }
+    ]
+  },
+  "SmallTrainShipping": {
+    "name": "BMS Stowheel",
+    "armourType": "Tier1Tank",
+    "health": 900,
+    "armourHealth": 0,
+    "penetration": {
+      "min": 1,
+      "max": 1
+    },
+    "disableLevel": 0.75,
+    "disableChance": {
+      "tracks": 0.0,
+      "engine": 0.0,
+      "mainGun": 0.0,
+      "secondaryGun": 0.0
+    },
+    "repairCost": 100,
+    "slots": 15,
+    "buildType": null,
+    "mainWeapon": null,
+    "secondaryWeapon": null,
+    "cost": [
+      {
+        "code": "Cloth",
+        "qty": 200
+      }
+    ],
+    "altCost": [
+      {
+        "code": "FacilityMaterials1",
+        "qty": 35
+      },
+      {
+        "code": "FacilityMaterials4",
+        "qty": 5
+      },
+      {
+        "code": "FacilityMaterials5",
+        "qty": 15
+      }
+    ]
+  },
+  "MediumTank2W": {
+    "name": "Gallagher Brigand Mk. I",
+    "armourType": "Tier2Tank",
+    "health": 2950,
+    "armourHealth": 11000,
+    "penetration": {
+      "min": 0.33,
+      "max": 0.6699999999999999
+    },
+    "disableLevel": 0.3,
+    "disableChance": {
+      "tracks": 0.25,
+      "engine": 0.3,
+      "mainGun": 0.2,
+      "secondaryGun": 0.0
+    },
+    "repairCost": 150,
+    "slots": 2,
+    "buildType": "VehicleFactory",
+    "mainWeapon": {
+      "weapon": "MediumTank2WGunner:MiniTankAmmo",
+      "count": 1,
+      "range": 40.0,
+      "reach": 40.0,
+      "firingTime": 1.5,
+      "reload": 2.5,
+      "magazine": 3
+    },
+    "secondaryWeapon": {
+      "weapon": "MediumTank2WMGGunner:AssaultRifleAmmo",
+      "count": 1,
+      "range": 40.0,
+      "reach": 45.0,
+      "firingTime": 0.0,
+      "reload": 2.5,
+      "magazine": 30
+    },
+    "cost": [
+      {
+        "code": "Wood",
+        "qty": 150
+      }
+    ]
+  },
+  "MediumTank3C": {
+    "name": "90T-v “Nemesis”",
+    "armourType": "Tier2Tank",
+    "health": 3650,
+    "armourHealth": 10500,
+    "penetration": {
+      "min": 0.33,
+      "max": 0.6699999999999999
+    },
+    "disableLevel": 0.3,
+    "disableChance": {
+      "tracks": 0.1,
+      "engine": 0.25,
+      "mainGun": 0.25,
+      "secondaryGun": 0.0
+    },
+    "repairCost": 160,
+    "slots": 2,
+    "buildType": "VehicleFactory",
+    "mainWeapon": {
+      "weapon": "MediumTank3CGunner:ATAmmo",
+      "count": 1,
+      "range": 40.0,
+      "reach": 40.0,
+      "firingTime": 2.0,
+      "reload": 5.0,
+      "magazine": 1
+    },
+    "secondaryWeapon": {
+      "weapon": "MediumTank3CFrontGunner:HELaunchedGrenade",
+      "count": 1,
+      "range": 40.0,
+      "reach": 40.0,
+      "firingTime": 0.5,
+      "reload": 3.0,
+      "magazine": 4
+    },
+    "cost": [
+      {
+        "code": "Wood",
+        "qty": 150
+      }
+    ]
+  },
+  "TrainHospital": {
+    "name": "BMS Bloodtender",
+    "armourType": "Tier2Tank",
+    "health": 4250,
+    "armourHealth": 100000,
+    "penetration": {
+      "min": 0.33,
+      "max": 0.6699999999999999
+    },
+    "disableLevel": 0.75,
+    "disableChance": {
+      "tracks": 0.0,
+      "engine": 0.0,
+      "mainGun": 0.0,
+      "secondaryGun": 0.0
+    },
+    "repairCost": 250,
+    "slots": 20,
+    "buildType": null,
+    "mainWeapon": {
+      "weapon": "TrainHospitalGunner:MGAmmo",
+      "count": 1,
+      "range": 35.0,
+      "reach": 40.0,
+      "firingTime": 0.0,
+      "reload": 3.5,
+      "magazine": 75
+    },
+    "secondaryWeapon": null,
+    "cost": [
+      {
+        "code": "Cloth",
+        "qty": 5
+      }
+    ],
+    "altCost": [
+      {
+        "code": "FacilityMaterials3",
+        "qty": 60
+      },
+      {
+        "code": "FacilityMaterials6",
+        "qty": 45
+      },
+      {
+        "code": "FacilityMaterials7",
+        "qty": 55
+      },
+      {
+        "code": "FacilityMaterials8",
+        "qty": 40
+      },
+      {
+        "code": "FacilityMaterials9",
+        "qty": 2
+      }
+    ]
+  },
+  "FieldMortarC": {
+    "name": "30-250 “Tisiphone” Field Cannon",
+    "armourType": "Tier2Tank",
+    "health": 2450,
+    "armourHealth": 0,
+    "penetration": {
+      "min": 1,
+      "max": 1
+    },
+    "disableLevel": 0.3,
+    "disableChance": {
+      "tracks": 0.0,
+      "engine": 0.0,
+      "mainGun": 0.0,
+      "secondaryGun": 0.0
+    },
+    "repairCost": 100,
+    "slots": 1,
+    "buildType": "VehicleFactory",
+    "mainWeapon": {
+      "weapon": "FieldMortarGunnerC:MortarTankAmmo",
+      "count": 1,
+      "range": 30.0,
+      "reach": 40.0,
+      "firingTime": 0.0,
+      "reload": 5.5,
+      "magazine": 1
+    },
+    "secondaryWeapon": null,
+    "cost": [
+      {
+        "code": "Wood",
+        "qty": 35
+      }
+    ]
+  },
+  "LargeFieldMortarC": {
+    "name": "40-250 “Alekto” Heavy Cannon",
+    "armourType": "Tier2Tank",
+    "health": 3750,
+    "armourHealth": 0,
+    "penetration": {
+      "min": 1,
+      "max": 1
+    },
+    "disableLevel": 0.3,
+    "disableChance": {
+      "tracks": 0.0,
+      "engine": 0.0,
+      "mainGun": 0.0,
+      "secondaryGun": 0.0
+    },
+    "repairCost": 125,
+    "slots": 1,
+    "buildType": "VehicleFacility",
+    "mainWeapon": {
+      "weapon": "LargeFieldMortarCGunner:MortarTankAmmoBR",
+      "count": 1,
+      "range": 40.0,
+      "reach": 40.0,
+      "firingTime": 0.0,
+      "reload": 5.5,
+      "magazine": 1
+    },
+    "secondaryWeapon": null,
+    "cost": [],
+    "altCost": [
+      {
+        "code": "FacilityMaterials3",
+        "qty": 10
+      },
+      {
+        "code": "FacilityMaterials5",
+        "qty": 20
+      },
+      {
+        "code": "FacilityMaterials6",
+        "qty": 15
+      }
+    ]
+  },
+  "ArmoredCar2MultiW": {
+    "name": "O’Brien v.200 Squire",
+    "armourType": "Tier1Tank",
+    "health": 1500,
+    "armourHealth": 2100,
+    "penetration": {
+      "min": 0.75,
+      "max": 0.95
+    },
+    "disableLevel": 0.3,
+    "disableChance": {
+      "tracks": 0.0,
+      "engine": 0.0,
+      "mainGun": 0.0,
+      "secondaryGun": 0.0
+    },
+    "repairCost": 130,
+    "slots": 1,
+    "buildType": "VehicleFacility",
+    "mainWeapon": {
+      "weapon": "ArmoredCar2MultiWGunner:HERocketAmmo",
+      "count": 1,
+      "range": 500.0,
+      "reach": 500.0,
+      "firingTime": 0.4,
+      "reload": 3.5,
+      "magazine": 10
+    },
+    "secondaryWeapon": null,
+    "cost": [],
+    "altCost": [
+      {
+        "code": "FacilityMaterials2",
+        "qty": 35
+      },
+      {
+        "code": "FacilityMaterials4",
+        "qty": 10
+      },
+      {
+        "code": "FacilityMaterials6",
+        "qty": 8
+      }
+    ]
+  },
+  "Gunboat2C": {
+    "name": "Type B - “Lucian”",
+    "armourType": "Tier2Ship",
+    "health": 1800,
+    "armourHealth": 9100,
+    "penetration": {
+      "min": 0.3,
+      "max": 0.6699999999999999
+    },
+    "disableLevel": 0.3,
+    "disableChance": {
+      "tracks": 0.0,
+      "engine": 0.0,
+      "mainGun": 0.1,
+      "secondaryGun": 0.0
+    },
+    "repairCost": 140,
+    "slots": 1,
+    "buildType": "Shipyard",
+    "mainWeapon": {
+      "weapon": "Gunboat2CGunner:DemolitionRocketAmmo",
+      "count": 1,
+      "range": 50.0,
+      "reach": 50.0,
+      "firingTime": 0.4,
+      "reload": 5.0,
+      "magazine": 6
+    },
+    "secondaryWeapon": null,
+    "cost": [
+      {
+        "code": "Wood",
+        "qty": 100
+      }
+    ]
+  },
+  "MineBoat": {
+    "name": "Bellweather by VAC",
+    "armourType": "Tier1Ship",
+    "health": 950,
+    "armourHealth": 0,
+    "penetration": {
+      "min": 1,
+      "max": 1
+    },
+    "disableLevel": 0.5,
+    "disableChance": {
+      "tracks": 0.0,
+      "engine": 0.0,
+      "mainGun": 0.0,
+      "secondaryGun": 0.0
+    },
+    "repairCost": 150,
+    "slots": 3,
+    "buildType": "Shipyard",
+    "mainWeapon": {
+      "weapon": "MineBoatMachineGunner:MGAmmo",
+      "count": 1,
+      "range": 40.0,
+      "reach": 45.0,
+      "firingTime": 0.0,
+      "reload": 3.5,
+      "magazine": 75
+    },
+    "secondaryWeapon": null,
+    "cost": [
+      {
+        "code": "Cloth",
+        "qty": 150
+      }
+    ]
+  },
+  "AircraftBomberC": {
+    "name": "V-1 Tzykalia",
+    "armourType": "Tier1Aircraft",
+    "health": 10000,
+    "armourHealth": 0,
+    "penetration": {
+      "min": 1,
+      "max": 1
+    },
+    "disableLevel": 0.5,
+    "disableChance": {
+      "tracks": 0.0,
+      "engine": 0.0,
+      "mainGun": 0.0,
+      "secondaryGun": 0.0
+    },
+    "repairCost": 150,
+    "slots": 1,
+    "buildType": null,
+    "mainWeapon": {
+      "weapon": "AircraftBomberCBomber:BomberAmmo",
+      "count": 1,
+      "range": 0.0,
+      "reach": 40.0,
+      "firingTime": 0.35,
+      "reload": 0.0,
+      "magazine": 35
+    },
+    "secondaryWeapon": {
+      "weapon": "AircraftBomberCGunner:MGAmmo",
+      "count": 2,
+      "range": 50.0,
+      "reach": 70.0,
+      "firingTime": 0.0,
+      "reload": 3.5,
+      "magazine": 75
+    },
+    "cost": [],
+    "altCost": [
+      {
+        "code": "FacilityMaterials3",
+        "qty": 60
+      },
+      {
+        "code": "FacilityMaterials8",
+        "qty": 65
+      },
+      {
+        "code": "FacilityMaterials6",
+        "qty": 25
+      },
+      {
+        "code": "FacilityMaterials7",
+        "qty": 40
+      },
+      {
+        "code": "FacilityMaterials9",
+        "qty": 12
+      },
+      {
+        "code": "FacilityMaterials11",
+        "qty": 10
+      }
+    ]
+  },
+  "AircraftFighterW": {
+    "name": "Luminary Mk. II Harbinger",
+    "armourType": "Tier1Aircraft",
+    "health": 6000,
+    "armourHealth": 0,
+    "penetration": {
+      "min": 1,
+      "max": 1
+    },
+    "disableLevel": 0.5,
+    "disableChance": {
+      "tracks": 0.0,
+      "engine": 0.0,
+      "mainGun": 0.0,
+      "secondaryGun": 0.0
+    },
+    "repairCost": 150,
+    "slots": 2,
+    "buildType": null,
+    "mainWeapon": {
+      "weapon": "AircraftFighterW_Cannon:ATRifleAmmo",
+      "count": 1,
+      "range": 50.0,
+      "reach": 75.0,
+      "firingTime": 0.0,
+      "reload": 5.0,
+      "magazine": 20
+    },
+    "secondaryWeapon": {
+      "weapon": "AircraftFighterW_HMG:AircraftAmmo",
+      "count": 1,
+      "range": 50.0,
+      "reach": 75.0,
+      "firingTime": 0.0,
+      "reload": 5.0,
+      "magazine": 50
+    },
+    "cost": [
+      {
+        "code": "Wood",
+        "qty": 250
+      }
+    ],
+    "altCost": [
+      {
+        "code": "FacilityMaterials2",
+        "qty": 40
+      },
+      {
+        "code": "FacilityMaterials6",
+        "qty": 50
+      },
+      {
+        "code": "FacilityMaterials7",
+        "qty": 50
+      },
+      {
+        "code": "FacilityMaterials9",
+        "qty": 2
+      }
+    ]
+  },
+  "LargeShipBattleshipAircraftW": {
+    "name": "Mercy",
+    "armourType": "Tier1LargeShip",
+    "health": 74750,
+    "armourHealth": 74750,
+    "penetration": {
+      "min": 0.05,
+      "max": 0.25
+    },
+    "disableLevel": 0.5,
+    "disableChance": {
+      "tracks": 0.0,
+      "engine": 0.0,
+      "mainGun": 0.1,
+      "secondaryGun": 0.1
+    },
+    "repairCost": 500,
+    "slots": 15,
+    "buildType": null,
+    "mainWeapon": {
+      "weapon": "LargeShipBattleShipAircraftWHeavyMGPort:AircraftAmmo",
+      "count": 1,
+      "range": 40.0,
+      "reach": 45.0,
+      "firingTime": 0.0,
+      "reload": 3.5,
+      "magazine": 200
+    },
+    "secondaryWeapon": {
+      "weapon": "LargeShipBattleShipAircraftWHeavyMGStar:AircraftAmmo",
+      "count": 1,
+      "range": 40.0,
+      "reach": 45.0,
+      "firingTime": 0.0,
+      "reload": 3.5,
+      "magazine": 200
+    },
+    "cost": [
+      {
+        "code": "Cloth",
+        "qty": 150
+      }
+    ],
+    "altCost": [
+      {
+        "code": "ShipPart1",
+        "qty": 16
+      },
+      {
+        "code": "ShipPart2",
+        "qty": 20
+      }
+    ]
+  },
+  "AircraftWaterW": {
+    "name": "Tulka I1.9 White Raven",
+    "armourType": "Tier1Aircraft",
+    "health": 5750,
+    "armourHealth": 0,
+    "penetration": {
+      "min": 1,
+      "max": 1
+    },
+    "disableLevel": 0.5,
+    "disableChance": {
+      "tracks": 0.0,
+      "engine": 0.0,
+      "mainGun": 0.0,
+      "secondaryGun": 0.0
+    },
+    "repairCost": 150,
+    "slots": 1,
+    "buildType": null,
+    "mainWeapon": {
+      "weapon": "AircraftWaterW_HMG:AircraftAmmo",
+      "count": 1,
+      "range": 45.0,
+      "reach": 70.0,
+      "firingTime": 0.0,
+      "reload": 7.5,
+      "magazine": 50
+    },
+    "secondaryWeapon": null,
+    "cost": [
+      {
+        "code": "Wood",
+        "qty": 100
+      }
+    ],
+    "altCost": [
+      {
+        "code": "FacilityMaterials2",
+        "qty": 40
+      },
+      {
+        "code": "FacilityMaterials5",
+        "qty": 200
+      },
+      {
+        "code": "FacilityMaterials6",
+        "qty": 50
+      },
+      {
+        "code": "FacilityMaterials9",
+        "qty": 2
+      }
+    ]
+  },
+  "AircraftScoutW": {
+    "name": "Luminary Mk. IV Herald",
+    "armourType": "Tier1Aircraft",
+    "health": 300,
+    "armourHealth": 0,
+    "penetration": {
+      "min": 1,
+      "max": 1
+    },
+    "disableLevel": 0.5,
+    "disableChance": {
+      "tracks": 0.0,
+      "engine": 0.0,
+      "mainGun": 0.0,
+      "secondaryGun": 0.0
+    },
+    "repairCost": 75,
+    "slots": 1,
+    "buildType": "AircraftFactory",
+    "mainWeapon": {
+      "weapon": "AircraftScoutWBomber:MiniTorpedoAmmo",
+      "count": 1,
+      "range": 0.0,
+      "reach": 40.0,
+      "firingTime": 1.5,
+      "reload": 4.5,
+      "magazine": 2
+    },
+    "secondaryWeapon": {
+      "weapon": "AircraftScoutW_HMG:AircraftAmmo",
+      "count": 1,
+      "range": 40.0,
+      "reach": 65.0,
+      "firingTime": 0.0,
+      "reload": 5.0,
+      "magazine": 35
+    },
+    "cost": [
+      {
+        "code": "Wood",
+        "qty": 100
+      }
+    ]
+  },
+  "AircraftDiveC": {
+    "name": "Mergo-4 “Myrmidon”",
+    "armourType": "Tier1Aircraft",
+    "health": 5500,
+    "armourHealth": 0,
+    "penetration": {
+      "min": 1,
+      "max": 1
+    },
+    "disableLevel": 0.5,
+    "disableChance": {
+      "tracks": 0.0,
+      "engine": 0.0,
+      "mainGun": 0.0,
+      "secondaryGun": 0.0
+    },
+    "repairCost": 150,
+    "slots": 1,
+    "buildType": null,
+    "mainWeapon": {
+      "weapon": "AircraftDiveCGunner:MGAmmo",
+      "count": 1,
+      "range": 50.0,
+      "reach": 70.0,
+      "firingTime": 0.0,
+      "reload": 3.5,
+      "magazine": 75
+    },
+    "secondaryWeapon": null,
+    "cost": [
+      {
+        "code": "Wood",
+        "qty": 250
+      }
+    ],
+    "altCost": [
+      {
+        "code": "FacilityMaterials2",
+        "qty": 40
+      },
+      {
+        "code": "FacilityMaterials4",
+        "qty": 85
+      },
+      {
+        "code": "FacilityMaterials5",
+        "qty": 175
+      },
+      {
+        "code": "FacilityMaterials6",
+        "qty": 50
+      },
+      {
+        "code": "FacilityMaterials9",
+        "qty": 4
+      }
+    ]
+  },
+  "AircraftScoutC": {
+    "name": "A51 Venti “Daedalus”",
+    "armourType": "Tier1Aircraft",
+    "health": 300,
+    "armourHealth": 0,
+    "penetration": {
+      "min": 1,
+      "max": 1
+    },
+    "disableLevel": 0.5,
+    "disableChance": {
+      "tracks": 0.0,
+      "engine": 0.0,
+      "mainGun": 0.0,
+      "secondaryGun": 0.0
+    },
+    "repairCost": 75,
+    "slots": 1,
+    "buildType": "AircraftFactory",
+    "mainWeapon": {
+      "weapon": "AircraftScoutCBomber:SurfaceWaterMine",
+      "count": 1,
+      "range": 0.0,
+      "reach": 40.0,
+      "firingTime": 3.0,
+      "reload": 6.0,
+      "magazine": 2
+    },
+    "secondaryWeapon": {
+      "weapon": "AircraftScoutC_HMG:AircraftAmmo",
+      "count": 1,
+      "range": 40.0,
+      "reach": 65.0,
+      "firingTime": 0.0,
+      "reload": 5.0,
+      "magazine": 35
+    },
+    "cost": [
+      {
+        "code": "Wood",
+        "qty": 100
+      }
+    ]
+  },
+  "AircraftTorpedoW": {
+    "name": "M925 Austringer Man-O-War",
+    "armourType": "Tier1Aircraft",
+    "health": 7000,
+    "armourHealth": 0,
+    "penetration": {
+      "min": 1,
+      "max": 1
+    },
+    "disableLevel": 0.5,
+    "disableChance": {
+      "tracks": 0.0,
+      "engine": 0.0,
+      "mainGun": 0.0,
+      "secondaryGun": 0.0
+    },
+    "repairCost": 150,
+    "slots": 1,
+    "buildType": null,
+    "mainWeapon": {
+      "weapon": "AircraftTorpedoWDriver:AircraftTorpedoAmmo",
+      "count": 1,
+      "range": 0.0,
+      "reach": 40.0,
+      "firingTime": 1.0,
+      "reload": 6.0,
+      "magazine": 2
+    },
+    "secondaryWeapon": {
+      "weapon": "AircraftTorpedoWRearGunner:MGAmmo",
+      "count": 1,
+      "range": 50.0,
+      "reach": 70.0,
+      "firingTime": 0.0,
+      "reload": 3.5,
+      "magazine": 75
+    },
+    "cost": [
+      {
+        "code": "Cloth",
+        "qty": 200
+      }
+    ],
+    "altCost": [
+      {
+        "code": "FacilityMaterials2",
+        "qty": 25
+      },
+      {
+        "code": "FacilityMaterials4",
+        "qty": 85
+      },
+      {
+        "code": "FacilityMaterials5",
+        "qty": 100
+      },
+      {
+        "code": "FacilityMaterials6",
+        "qty": 20
+      },
+      {
+        "code": "FacilityMaterials9",
+        "qty": 4
+      }
+    ]
+  },
+  "LightBoatInfantryW": {
+    "name": "68A-4 Ronan Fathomer",
+    "armourType": "Tier1Ship",
+    "health": 1750,
+    "armourHealth": 7500,
+    "penetration": {
+      "min": 0.3,
+      "max": 0.6699999999999999
+    },
+    "disableLevel": 0.3,
+    "disableChance": {
+      "tracks": 0.0,
+      "engine": 0.0,
+      "mainGun": 0.0,
+      "secondaryGun": 0.0
+    },
+    "repairCost": 150,
+    "slots": 2,
+    "buildType": "Shipyard",
+    "mainWeapon": {
+      "weapon": "LightBoatInfantryWMainGunner:AircraftAmmo",
+      "count": 1,
+      "range": 40.0,
+      "reach": 45.0,
+      "firingTime": 0.0,
+      "reload": 6.0,
+      "magazine": 100
+    },
+    "secondaryWeapon": null,
+    "cost": [
+      {
+        "code": "Cloth",
+        "qty": 125
+      }
+    ]
+  },
+  "MediumBoatC": {
+    "name": "Strider",
+    "armourType": "Tier1Ship",
+    "health": 2300,
+    "armourHealth": 8500,
+    "penetration": {
+      "min": 0.25,
+      "max": 0.9
+    },
+    "disableLevel": 0.3,
+    "disableChance": {
+      "tracks": 0.0,
+      "engine": 0.0,
+      "mainGun": 0.0,
+      "secondaryGun": 0.0
+    },
+    "repairCost": 200,
+    "slots": 4,
+    "buildType": "Shipyard",
+    "mainWeapon": {
+      "weapon": "MediumBoatCBowGunner:LightTankAmmo",
+      "count": 1,
+      "range": 40.0,
+      "reach": 40.0,
+      "firingTime": 0.5,
+      "reload": 5.0,
+      "magazine": 1
+    },
+    "secondaryWeapon": {
+      "weapon": "MediumBoatCSternGunner:MiniTankAmmo",
+      "count": 1,
+      "range": 35.0,
+      "reach": 35.0,
+      "firingTime": 1.0,
+      "reload": 2.5,
+      "magazine": 3
+    },
+    "cost": [
+      {
+        "code": "Cloth",
+        "qty": 100
+      }
+    ]
+  },
+  "Gunboat2W": {
+    "name": "81f-f Ronan Blackguard",
+    "armourType": "Tier2Ship",
+    "health": 2000,
+    "armourHealth": 9500,
+    "penetration": {
+      "min": 0.3,
+      "max": 0.6699999999999999
+    },
+    "disableLevel": 0.3,
+    "disableChance": {
+      "tracks": 0.0,
+      "engine": 0.0,
+      "mainGun": 0.0,
+      "secondaryGun": 0.0
+    },
+    "repairCost": 150,
+    "slots": 1,
+    "buildType": "Shipyard",
+    "mainWeapon": {
+      "weapon": "Gunboat2WMainGunner:MortarTankAmmoBR",
+      "count": 1,
+      "range": 40.0,
+      "reach": 40.0,
+      "firingTime": 0.0,
+      "reload": 5.5,
+      "magazine": 1
+    },
+    "secondaryWeapon": null,
+    "cost": [
+      {
+        "code": "Wood",
+        "qty": 100
+      }
+    ]
+  },
+  "LargeShipAircraftC": {
+    "name": "Poseidon",
+    "armourType": "Tier1LargeShip",
+    "health": 78050,
+    "armourHealth": 78050,
+    "penetration": {
+      "min": 0.05,
+      "max": 0.25
+    },
+    "disableLevel": 0.5,
+    "disableChance": {
+      "tracks": 0.0,
+      "engine": 0.0,
+      "mainGun": 0.1,
+      "secondaryGun": 0.1
+    },
+    "repairCost": 500,
+    "slots": 15,
+    "buildType": null,
+    "mainWeapon": {
+      "weapon": "LargeShipAircraftCMachineGunnerPort:AircraftAmmo",
+      "count": 2,
+      "range": 40.0,
+      "reach": 45.0,
+      "firingTime": 0.0,
+      "reload": 6.0,
+      "magazine": 300
+    },
+    "secondaryWeapon": {
+      "weapon": "LargeShipAircraftCMachineGunnerStar:AircraftAmmo",
+      "count": 2,
+      "range": 40.0,
+      "reach": 45.0,
+      "firingTime": 0.0,
+      "reload": 6.0,
+      "magazine": 300
+    },
+    "cost": [
+      {
+        "code": "Cloth",
+        "qty": 150
+      }
+    ],
+    "altCost": [
+      {
+        "code": "ShipPart1",
+        "qty": 16
+      },
+      {
+        "code": "ShipPart2",
+        "qty": 20
+      }
+    ]
+  },
+  "MediumBoatW": {
+    "name": "Rinnspeir Ornitier-Class Gunship",
+    "armourType": "Tier1Ship",
+    "health": 2050,
+    "armourHealth": 9100,
+    "penetration": {
+      "min": 0.22,
+      "max": 0.7
+    },
+    "disableLevel": 0.3,
+    "disableChance": {
+      "tracks": 0.0,
+      "engine": 0.0,
+      "mainGun": 0.1,
+      "secondaryGun": 0.0
+    },
+    "repairCost": 200,
+    "slots": 3,
+    "buildType": "Shipyard",
+    "mainWeapon": {
+      "weapon": "MediumBoatWBowGunner:RPGAmmo",
+      "count": 1,
+      "range": 27.0,
+      "reach": 40.0,
+      "firingTime": 1.0,
+      "reload": 4.0,
+      "magazine": 2
+    },
+    "secondaryWeapon": {
+      "weapon": "MediumBoatWISGGunner:MiniTankAmmo",
+      "count": 2,
+      "range": 40.0,
+      "reach": 40.0,
+      "firingTime": 0.2,
+      "reload": 2.5,
+      "magazine": 2
+    },
+    "cost": [
+      {
+        "code": "Cloth",
+        "qty": 90
+      }
+    ]
+  },
+  "AircraftParatrooperC": {
+    "name": "V-5b Pegasus",
+    "armourType": "Tier1Aircraft",
+    "health": 7000,
+    "armourHealth": 0,
+    "penetration": {
+      "min": 1,
+      "max": 1
+    },
+    "disableLevel": 0.5,
+    "disableChance": {
+      "tracks": 0.0,
+      "engine": 0.0,
+      "mainGun": 0.0,
+      "secondaryGun": 0.0
+    },
+    "repairCost": 150,
+    "slots": 1,
+    "buildType": null,
+    "mainWeapon": {
+      "weapon": "AircraftParatrooperCGunner:MGAmmo",
+      "count": 1,
+      "range": 50.0,
+      "reach": 70.0,
+      "firingTime": 0.0,
+      "reload": 3.5,
+      "magazine": 75
+    },
+    "secondaryWeapon": null,
+    "cost": [],
+    "altCost": [
+      {
+        "code": "FacilityMaterials3",
+        "qty": 5
+      },
+      {
+        "code": "FacilityMaterials6",
+        "qty": 20
+      },
+      {
+        "code": "FacilityMaterials7",
+        "qty": 20
+      },
+      {
+        "code": "FacilityMaterials9",
+        "qty": 6
+      },
+      {
+        "code": "FacilityMaterials11",
+        "qty": 10
+      }
+    ]
+  },
+  "AircraftFighterC": {
+    "name": "Toxot-902 “Blind Silver”",
+    "armourType": "Tier1Aircraft",
+    "health": 5500,
+    "armourHealth": 0,
+    "penetration": {
+      "min": 1,
+      "max": 1
+    },
+    "disableLevel": 0.5,
+    "disableChance": {
+      "tracks": 0.0,
+      "engine": 0.0,
+      "mainGun": 0.0,
+      "secondaryGun": 0.0
+    },
+    "repairCost": 150,
+    "slots": 1,
+    "buildType": null,
+    "mainWeapon": {
+      "weapon": "AircraftFighterC_HMG:AircraftAmmo",
+      "count": 1,
+      "range": 50.0,
+      "reach": 75.0,
+      "firingTime": 0.0,
+      "reload": 5.0,
+      "magazine": 50
+    },
+    "secondaryWeapon": null,
+    "cost": [
+      {
+        "code": "Wood",
+        "qty": 250
+      }
+    ],
+    "altCost": [
+      {
+        "code": "FacilityMaterials2",
+        "qty": 40
+      },
+      {
+        "code": "FacilityMaterials6",
+        "qty": 50
+      },
+      {
+        "code": "FacilityMaterials7",
+        "qty": 50
+      },
+      {
+        "code": "FacilityMaterials9",
+        "qty": 2
+      }
+    ]
+  },
+  "AircraftBomberW": {
+    "name": "Tulka P4 Welkinrive",
+    "armourType": "Tier1Aircraft",
+    "health": 10000,
+    "armourHealth": 0,
+    "penetration": {
+      "min": 1,
+      "max": 1
+    },
+    "disableLevel": 0.5,
+    "disableChance": {
+      "tracks": 0.0,
+      "engine": 0.0,
+      "mainGun": 0.0,
+      "secondaryGun": 0.0
+    },
+    "repairCost": 150,
+    "slots": 1,
+    "buildType": null,
+    "mainWeapon": {
+      "weapon": "AircraftBomberWBomber:BomberAmmo",
+      "count": 1,
+      "range": 0.0,
+      "reach": 40.0,
+      "firingTime": 0.35,
+      "reload": 0.0,
+      "magazine": 35
+    },
+    "secondaryWeapon": {
+      "weapon": "AircraftBomberWTopGunner:MGAmmo",
+      "count": 1,
+      "range": 50.0,
+      "reach": 70.0,
+      "firingTime": 0.0,
+      "reload": 3.5,
+      "magazine": 75
+    },
+    "cost": [],
+    "altCost": [
+      {
+        "code": "FacilityMaterials3",
+        "qty": 60
+      },
+      {
+        "code": "FacilityMaterials8",
+        "qty": 65
+      },
+      {
+        "code": "FacilityMaterials6",
+        "qty": 25
+      },
+      {
+        "code": "FacilityMaterials7",
+        "qty": 40
+      },
+      {
+        "code": "FacilityMaterials9",
+        "qty": 12
+      },
+      {
+        "code": "FacilityMaterials11",
+        "qty": 10
+      }
+    ]
+  },
+  "LightBoatInfantryC": {
+    "name": "K-81e “Sombre”",
+    "armourType": "Tier1Ship",
+    "health": 1500,
+    "armourHealth": 7000,
+    "penetration": {
+      "min": 0.4,
+      "max": 0.6699999999999999
+    },
+    "disableLevel": 0.5,
+    "disableChance": {
+      "tracks": 0.0,
+      "engine": 0.0,
+      "mainGun": 0.3,
+      "secondaryGun": 0.0
+    },
+    "repairCost": 130,
+    "slots": 2,
+    "buildType": "Shipyard",
+    "mainWeapon": {
+      "weapon": "LightBoatInfantryCMainGunner:AircraftAmmo",
+      "count": 1,
+      "range": 40.0,
+      "reach": 45.0,
+      "firingTime": 0.0,
+      "reload": 6.0,
+      "magazine": 150
+    },
+    "secondaryWeapon": null,
+    "cost": [
+      {
+        "code": "Cloth",
+        "qty": 100
+      }
+    ]
+  },
+  "FreighterLight": {
+    "name": "Das Krokodil by VAC",
+    "armourType": "Tier1Ship",
+    "health": 1500,
+    "armourHealth": 0,
+    "penetration": {
+      "min": 1,
+      "max": 1
+    },
+    "disableLevel": 0.4,
+    "disableChance": {
+      "tracks": 0.0,
+      "engine": 0.0,
+      "mainGun": 0.0,
+      "secondaryGun": 0.0
+    },
+    "repairCost": 100,
+    "slots": 2,
+    "buildType": "Shipyard",
+    "mainWeapon": {
+      "weapon": null,
+      "count": 1,
+      "range": 150.0,
+      "reach": 150.0,
+      "firingTime": 0.0,
+      "reload": 0.0,
+      "magazine": 0
+    },
+    "secondaryWeapon": null,
+    "cost": [
+      {
+        "code": "Cloth",
+        "qty": 100
+      }
+    ]
+  },
+  "AircraftParatrooperW": {
+    "name": "Rinnspeir Mk. I Zealot",
+    "armourType": "Tier1Aircraft",
+    "health": 7000,
+    "armourHealth": 0,
+    "penetration": {
+      "min": 1,
+      "max": 1
+    },
+    "disableLevel": 0.5,
+    "disableChance": {
+      "tracks": 0.0,
+      "engine": 0.0,
+      "mainGun": 0.0,
+      "secondaryGun": 0.0
+    },
+    "repairCost": 150,
+    "slots": 1,
+    "buildType": null,
+    "mainWeapon": {
+      "weapon": "AircraftParatrooperWGunner:MGAmmo",
+      "count": 1,
+      "range": 50.0,
+      "reach": 70.0,
+      "firingTime": 0.0,
+      "reload": 3.5,
+      "magazine": 75
+    },
+    "secondaryWeapon": null,
+    "cost": [],
+    "altCost": [
+      {
+        "code": "FacilityMaterials3",
+        "qty": 5
+      },
+      {
+        "code": "FacilityMaterials6",
+        "qty": 20
+      },
+      {
+        "code": "FacilityMaterials7",
+        "qty": 20
+      },
+      {
+        "code": "FacilityMaterials9",
+        "qty": 6
+      },
+      {
+        "code": "FacilityMaterials11",
+        "qty": 10
+      }
+    ]
+  },
+  "AircraftScout2W": {
+    "name": "Luminary Mk. VI Emissary",
+    "armourType": "Tier1Aircraft",
+    "health": 300,
+    "armourHealth": 0,
+    "penetration": {
+      "min": 1,
+      "max": 1
+    },
+    "disableLevel": 0.5,
+    "disableChance": {
+      "tracks": 0.0,
+      "engine": 0.0,
+      "mainGun": 0.0,
+      "secondaryGun": 0.0
+    },
+    "repairCost": 75,
+    "slots": 1,
+    "buildType": "AircraftFactory",
+    "mainWeapon": {
+      "weapon": "AircraftScoutCBomber:SurfaceWaterMine",
+      "count": 1,
+      "range": 0.0,
+      "reach": 40.0,
+      "firingTime": 3.0,
+      "reload": 6.0,
+      "magazine": 2
+    },
+    "secondaryWeapon": {
+      "weapon": "AircraftScout2W_HMG:AircraftAmmo",
+      "count": 1,
+      "range": 40.0,
+      "reach": 65.0,
+      "firingTime": 0.0,
+      "reload": 5.0,
+      "magazine": 35
+    },
+    "cost": [
+      {
+        "code": "Wood",
+        "qty": 100
+      }
+    ]
+  },
+  "AircraftScout2C": {
+    "name": "A59 Venti “Perdix”",
+    "armourType": "Tier1Aircraft",
+    "health": 300,
+    "armourHealth": 0,
+    "penetration": {
+      "min": 1,
+      "max": 1
+    },
+    "disableLevel": 0.5,
+    "disableChance": {
+      "tracks": 0.0,
+      "engine": 0.0,
+      "mainGun": 0.0,
+      "secondaryGun": 0.0
+    },
+    "repairCost": 75,
+    "slots": 1,
+    "buildType": "AircraftFactory",
+    "mainWeapon": {
+      "weapon": "AircraftScout2CBomber:MiniTorpedoAmmo",
+      "count": 1,
+      "range": 0.0,
+      "reach": 40.0,
+      "firingTime": 1.5,
+      "reload": 4.5,
+      "magazine": 2
+    },
+    "secondaryWeapon": {
+      "weapon": "AircraftScout2C_HMG:AircraftAmmo",
+      "count": 1,
+      "range": 40.0,
+      "reach": 65.0,
+      "firingTime": 0.0,
+      "reload": 5.0,
+      "magazine": 35
+    },
+    "cost": [
+      {
+        "code": "Wood",
+        "qty": 100
+      }
+    ]
+  },
+  "LightTank3C": {
+    "name": "HA-1 “Sagaris”",
+    "armourType": "Tier2Tank",
+    "health": 1950,
+    "armourHealth": 9100,
+    "penetration": {
+      "min": 0.33,
+      "max": 0.6699999999999999
+    },
+    "disableLevel": 0.3,
+    "disableChance": {
+      "tracks": 0.3,
+      "engine": 0.2,
+      "mainGun": 0.25,
+      "secondaryGun": 0.0
+    },
+    "repairCost": 135,
+    "slots": 1,
+    "buildType": "VehicleFactory",
+    "mainWeapon": {
+      "weapon": "LightTank3CGunner:LightAAAmmo",
+      "count": 1,
+      "range": 25.0,
+      "reach": 25.0,
+      "firingTime": 1.5,
+      "reload": 5.0,
+      "magazine": 6
+    },
+    "secondaryWeapon": null,
+    "cost": [
+      {
+        "code": "Wood",
+        "qty": 125
+      }
+    ]
+  },
+  "LightTank3W": {
+    "name": "Sharkey-Devitt Birdeater Mk. I",
+    "armourType": "Tier2Tank",
+    "health": 1950,
+    "armourHealth": 9100,
+    "penetration": {
+      "min": 0.33,
+      "max": 0.6699999999999999
+    },
+    "disableLevel": 0.3,
+    "disableChance": {
+      "tracks": 0.3,
+      "engine": 0.2,
+      "mainGun": 0.25,
+      "secondaryGun": 0.0
+    },
+    "repairCost": 135,
+    "slots": 1,
+    "buildType": "VehicleFactory",
+    "mainWeapon": {
+      "weapon": "LightTank3WGunner:LightAAAmmo",
+      "count": 1,
+      "range": 25.0,
+      "reach": 25.0,
+      "firingTime": 1.5,
+      "reload": 5.0,
+      "magazine": 6
+    },
+    "secondaryWeapon": null,
+    "cost": [
+      {
+        "code": "Wood",
+        "qty": 125
+      }
+    ]
+  },
+  "AircraftFighter2C": {
+    "name": "Daimon aK-5 “Harpy”",
+    "armourType": "Tier1Aircraft",
+    "health": 6500,
+    "armourHealth": 0,
+    "penetration": {
+      "min": 1,
+      "max": 1
+    },
+    "disableLevel": 0.5,
+    "disableChance": {
+      "tracks": 0.0,
+      "engine": 0.0,
+      "mainGun": 0.0,
+      "secondaryGun": 0.0
+    },
+    "repairCost": 150,
+    "slots": 2,
+    "buildType": null,
+    "mainWeapon": {
+      "weapon": "AircraftFighter2C_Cannon:ATRifleAmmo",
+      "count": 1,
+      "range": 50.0,
+      "reach": 75.0,
+      "firingTime": 0.0,
+      "reload": 5.0,
+      "magazine": 20
+    },
+    "secondaryWeapon": {
+      "weapon": "AircraftFighter2CTopGunner:AircraftAmmo",
+      "count": 1,
+      "range": 50.0,
+      "reach": 70.0,
+      "firingTime": 0.0,
+      "reload": 7.5,
+      "magazine": 75
+    },
+    "cost": [
+      {
+        "code": "Wood",
+        "qty": 250
+      }
+    ],
+    "altCost": [
+      {
+        "code": "FacilityMaterials2",
+        "qty": 40
+      },
+      {
+        "code": "FacilityMaterials5",
+        "qty": 200
+      },
+      {
+        "code": "FacilityMaterials6",
+        "qty": 50
+      },
+      {
+        "code": "FacilityMaterials9",
+        "qty": 2
+      }
+    ]
+  },
+  "LargeShipLiquidShip": {
+    "name": "Tümmler by VAC",
+    "armourType": "Tier1LargeShip",
+    "health": 55000,
+    "armourHealth": 55000,
+    "penetration": {
+      "min": 0.1,
+      "max": 0.5
+    },
+    "disableLevel": 0.5,
+    "disableChance": {
+      "tracks": 0.0,
+      "engine": 0.0,
+      "mainGun": 0.0,
+      "secondaryGun": 0.0
+    },
+    "repairCost": 500,
+    "slots": 15,
+    "buildType": null,
+    "mainWeapon": {
+      "weapon": null,
+      "count": 1,
+      "range": 300.0,
+      "reach": 300.0,
+      "firingTime": 0.0,
+      "reload": 0.0,
+      "magazine": 0
+    },
+    "secondaryWeapon": null,
+    "cost": [
+      {
+        "code": "Cloth",
+        "qty": 150
+      }
+    ],
+    "altCost": [
+      {
+        "code": "ShipPart1",
+        "qty": 8
+      },
+      {
+        "code": "ShipPart2",
+        "qty": 15
+      }
+    ]
+  }
+}

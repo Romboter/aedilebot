@@ -1,0 +1,3140 @@
+{
+  "ATGrenadeW": {
+    "name": "BF5 White Ash Flask Grenade",
+    "ammo": "ATGrenadeW",
+    "damage": 300.0,
+    "damageType": "AntiTankExplosive",
+    "shelterBonus": false,
+    "source": "ammo"
+  },
+  "ATMortar": {
+    "name": "ATMortar",
+    "ammo": "ATMortar",
+    "damage": 10.0,
+    "damageType": "Explosive",
+    "shelterBonus": false,
+    "source": "ammo"
+  },
+  "ATRPGAmmo": {
+    "name": "AP/RPG",
+    "ammo": "ATRPGAmmo",
+    "damage": 550.0,
+    "damageType": "ArmourPiercing",
+    "shelterBonus": false,
+    "source": "ammo"
+  },
+  "ATRPGLightCAmmo": {
+    "name": "ATRPGLightCAmmo",
+    "ammo": "ATRPGLightCAmmo",
+    "damage": 375.0,
+    "damageType": "ArmourPiercing",
+    "shelterBonus": false,
+    "source": "ammo"
+  },
+  "ATRPGTW": {
+    "name": "Mounted Bonesaw MK.3",
+    "ammo": "ATRPGIndirectAmmo",
+    "damage": 675.0,
+    "damageType": "ArmourPiercing",
+    "shelterBonus": false,
+    "source": "infantry"
+  },
+  "ATRPGTW:ATRPGIndirectAmmo": {
+    "name": "Deployed R.P.G.",
+    "ammo": "ATRPGIndirectAmmo",
+    "damage": 675.0,
+    "damageType": "ArmourPiercing",
+    "shelterBonus": false,
+    "source": "mount",
+    "users": [
+      "BPDeployedATRPGTW"
+    ]
+  },
+  "ATRifleAssaultW": {
+    "name": "228 Satterley Heavy Storm Rifle",
+    "ammo": "ATRifleAmmo",
+    "damage": 140.625,
+    "damageType": "AntiTankKinetic",
+    "shelterBonus": false,
+    "source": "infantry"
+  },
+  "ATRifleAutomaticW": {
+    "name": "Booker Greyhound Model 910",
+    "ammo": "ATRifleAmmo",
+    "damage": 131.25,
+    "damageType": "AntiTankKinetic",
+    "shelterBonus": false,
+    "source": "infantry"
+  },
+  "ATRifleLightC": {
+    "name": "“Dawn” Ve.II",
+    "ammo": "ATRifleAmmo",
+    "damage": 131.25,
+    "damageType": "AntiTankKinetic",
+    "shelterBonus": false,
+    "source": "infantry"
+  },
+  "ATRifleSniperC": {
+    "name": "“Quickhatch” Rt.I",
+    "ammo": "ATRifleAmmo",
+    "damage": 187.5,
+    "damageType": "AntiTankKinetic",
+    "shelterBonus": false,
+    "source": "infantry"
+  },
+  "ATRifleTC:ATRifleAmmo": {
+    "name": "Deployed Anti-Tank Rifle",
+    "ammo": "ATRifleAmmo",
+    "damage": 225.0,
+    "damageType": "AntiTankKinetic",
+    "shelterBonus": false,
+    "source": "mount",
+    "users": [
+      "BPDeployedATRifleTC"
+    ]
+  },
+  "ATRifleW": {
+    "name": "Neville Anti-Tank Rifle",
+    "ammo": "ATRifleAmmo",
+    "damage": 187.5,
+    "damageType": "AntiTankKinetic",
+    "shelterBonus": false,
+    "source": "infantry"
+  },
+  "AircraftBomberCBomber:BomberAmmo": {
+    "name": "V-1 Tzykalia",
+    "ammo": "BomberAmmo",
+    "damage": 1200.0,
+    "damageType": "BombHighExplosive",
+    "shelterBonus": true,
+    "source": "mount",
+    "users": [
+      "BPAircraftBomberC"
+    ]
+  },
+  "AircraftBomberCGunner:MGAmmo": {
+    "name": "V-1 Tzykalia",
+    "ammo": "MGAmmo",
+    "damage": 68.75,
+    "damageType": "HeavyKinetic",
+    "shelterBonus": false,
+    "source": "mount",
+    "users": [
+      "BPAircraftBomberC",
+      "BPAircraftBomberC"
+    ]
+  },
+  "AircraftBomberCTopGunner:MGAmmo": {
+    "name": "V-1 Tzykalia",
+    "ammo": "MGAmmo",
+    "damage": 68.75,
+    "damageType": "HeavyKinetic",
+    "shelterBonus": false,
+    "source": "mount",
+    "users": [
+      "BPAircraftBomberC"
+    ]
+  },
+  "AircraftBomberWBomber:BomberAmmo": {
+    "name": "Tulka P4 Welkinrive",
+    "ammo": "BomberAmmo",
+    "damage": 1200.0,
+    "damageType": "BombHighExplosive",
+    "shelterBonus": true,
+    "source": "mount",
+    "users": [
+      "BPAircraftBomberW"
+    ]
+  },
+  "AircraftBomberWGunner:MGAmmo": {
+    "name": "Tulka P4 Welkinrive",
+    "ammo": "MGAmmo",
+    "damage": 68.75,
+    "damageType": "HeavyKinetic",
+    "shelterBonus": false,
+    "source": "mount",
+    "users": [
+      "BPAircraftBomberW"
+    ]
+  },
+  "AircraftBomberWTopGunner:MGAmmo": {
+    "name": "Tulka P4 Welkinrive",
+    "ammo": "MGAmmo",
+    "damage": 68.75,
+    "damageType": "HeavyKinetic",
+    "shelterBonus": false,
+    "source": "mount",
+    "users": [
+      "BPAircraftBomberW"
+    ]
+  },
+  "AircraftDiveCGunner:MGAmmo": {
+    "name": "Mergo-4 “Myrmidon”",
+    "ammo": "MGAmmo",
+    "damage": 68.75,
+    "damageType": "HeavyKinetic",
+    "shelterBonus": false,
+    "source": "mount",
+    "users": [
+      "BPAircraftDiveC"
+    ]
+  },
+  "AircraftFighter2CTopGunner:AircraftAmmo": {
+    "name": "Daimon aK-5 “Harpy”",
+    "ammo": "AircraftAmmo",
+    "damage": 101.5625,
+    "damageType": "Shrapnel",
+    "shelterBonus": false,
+    "source": "mount",
+    "users": [
+      "BPAircraftFighter2C"
+    ]
+  },
+  "AircraftFighter2C_Cannon:ATRifleAmmo": {
+    "name": "Daimon aK-5 “Harpy”",
+    "ammo": "ATRifleAmmo",
+    "damage": 234.375,
+    "damageType": "AntiTankKinetic",
+    "shelterBonus": false,
+    "source": "mount",
+    "users": [
+      "BPAircraftFighter2C"
+    ]
+  },
+  "AircraftFighterC_HMG:AircraftAmmo": {
+    "name": "Toxot-902 “Blind Silver”",
+    "ammo": "AircraftAmmo",
+    "damage": 81.25,
+    "damageType": "Shrapnel",
+    "shelterBonus": false,
+    "source": "mount",
+    "users": [
+      "BPAircraftFighterC"
+    ]
+  },
+  "AircraftFighterW_Cannon:ATRifleAmmo": {
+    "name": "Luminary Mk. II Harbinger",
+    "ammo": "ATRifleAmmo",
+    "damage": 281.25,
+    "damageType": "AntiTankKinetic",
+    "shelterBonus": false,
+    "source": "mount",
+    "users": [
+      "BPAircraftFighterW"
+    ]
+  },
+  "AircraftFighterW_HMG:AircraftAmmo": {
+    "name": "Luminary Mk. II Harbinger",
+    "ammo": "AircraftAmmo",
+    "damage": 81.25,
+    "damageType": "Shrapnel",
+    "shelterBonus": false,
+    "source": "mount",
+    "users": [
+      "BPAircraftFighterW"
+    ]
+  },
+  "AircraftParatrooperCGunner:MGAmmo": {
+    "name": "V-5b Pegasus",
+    "ammo": "MGAmmo",
+    "damage": 68.75,
+    "damageType": "HeavyKinetic",
+    "shelterBonus": false,
+    "source": "mount",
+    "users": [
+      "BPAircraftParatrooperC"
+    ]
+  },
+  "AircraftParatrooperWGunner:MGAmmo": {
+    "name": "Rinnspeir Mk. I Zealot",
+    "ammo": "MGAmmo",
+    "damage": 68.75,
+    "damageType": "HeavyKinetic",
+    "shelterBonus": false,
+    "source": "mount",
+    "users": [
+      "BPAircraftParatrooperW"
+    ]
+  },
+  "AircraftScout2CBomber:MiniTorpedoAmmo": {
+    "name": "A59 Venti “Perdix”",
+    "ammo": "MiniTorpedoAmmo",
+    "damage": 330.0,
+    "damageType": "ArmourPiercing",
+    "shelterBonus": false,
+    "source": "mount",
+    "users": [
+      "BPAircraftScout2C"
+    ]
+  },
+  "AircraftScout2C_HMG:AircraftAmmo": {
+    "name": "A59 Venti “Perdix”",
+    "ammo": "AircraftAmmo",
+    "damage": 53.625,
+    "damageType": "Shrapnel",
+    "shelterBonus": false,
+    "source": "mount",
+    "users": [
+      "BPAircraftScout2C"
+    ]
+  },
+  "AircraftScout2W_HMG:AircraftAmmo": {
+    "name": "Luminary Mk. VI Emissary",
+    "ammo": "AircraftAmmo",
+    "damage": 53.625,
+    "damageType": "Shrapnel",
+    "shelterBonus": false,
+    "source": "mount",
+    "users": [
+      "BPAircraftScout2W"
+    ]
+  },
+  "AircraftScoutCBomber:SurfaceWaterMine": {
+    "name": "Luminary Mk. VI Emissary",
+    "ammo": "SurfaceWaterMine",
+    "damage": 429.0,
+    "damageType": "ArmourPiercing",
+    "shelterBonus": false,
+    "source": "mount",
+    "users": [
+      "BPAircraftScout2W",
+      "BPAircraftScoutC"
+    ]
+  },
+  "AircraftScoutC_HMG:AircraftAmmo": {
+    "name": "A51 Venti “Daedalus”",
+    "ammo": "AircraftAmmo",
+    "damage": 53.625,
+    "damageType": "Shrapnel",
+    "shelterBonus": false,
+    "source": "mount",
+    "users": [
+      "BPAircraftScoutC"
+    ]
+  },
+  "AircraftScoutWBomber:MiniTorpedoAmmo": {
+    "name": "Luminary Mk. IV Herald",
+    "ammo": "MiniTorpedoAmmo",
+    "damage": 330.0,
+    "damageType": "ArmourPiercing",
+    "shelterBonus": false,
+    "source": "mount",
+    "users": [
+      "BPAircraftScoutW"
+    ]
+  },
+  "AircraftScoutW_HMG:AircraftAmmo": {
+    "name": "Luminary Mk. IV Herald",
+    "ammo": "AircraftAmmo",
+    "damage": 53.625,
+    "damageType": "Shrapnel",
+    "shelterBonus": false,
+    "source": "mount",
+    "users": [
+      "BPAircraftScoutW"
+    ]
+  },
+  "AircraftTorpedoAmmo": {
+    "name": "Tenta Torpedo",
+    "ammo": "AircraftTorpedoAmmo",
+    "damage": 1500.0,
+    "damageType": "HighExplosive",
+    "shelterBonus": true,
+    "source": "ammo"
+  },
+  "AircraftTorpedoWDriver:AircraftTorpedoAmmo": {
+    "name": "M925 Austringer Man-O-War",
+    "ammo": "AircraftTorpedoAmmo",
+    "damage": 1050.0,
+    "damageType": "HighExplosive",
+    "shelterBonus": true,
+    "source": "mount",
+    "users": [
+      "BPAircraftTorpedoW"
+    ]
+  },
+  "AircraftTorpedoWRearGunner:MGAmmo": {
+    "name": "M925 Austringer Man-O-War",
+    "ammo": "MGAmmo",
+    "damage": 68.75,
+    "damageType": "HeavyKinetic",
+    "shelterBonus": false,
+    "source": "mount",
+    "users": [
+      "BPAircraftTorpedoW"
+    ]
+  },
+  "AircraftWaterW_HMG:AircraftAmmo": {
+    "name": "Tulka I1.9 White Raven",
+    "ammo": "AircraftAmmo",
+    "damage": 101.5625,
+    "damageType": "Shrapnel",
+    "shelterBonus": false,
+    "source": "mount",
+    "users": [
+      "BPAircraftWaterW"
+    ]
+  },
+  "AmbulanceFlameCGunner:Water": {
+    "name": "R-12b - “Salva” Flame Truck",
+    "ammo": "Water",
+    "damage": 30.0,
+    "damageType": "Extinguishing",
+    "shelterBonus": false,
+    "source": "mount",
+    "users": [
+      "BPAmbulanceFlameC"
+    ]
+  },
+  "AmbulanceFlameWGunner:Water": {
+    "name": "Dunne Dousing Engine 3r",
+    "ammo": "Water",
+    "damage": 30.0,
+    "damageType": "Extinguishing",
+    "shelterBonus": false,
+    "source": "mount",
+    "users": [
+      "BPAmbulanceFlameW"
+    ]
+  },
+  "ArmoredCar2LargeGunnerW:LightTankAmmo": {
+    "name": "O’Brien V.101 Freeman",
+    "ammo": "LightTankAmmo",
+    "damage": 600.0,
+    "damageType": "Explosive",
+    "shelterBonus": false,
+    "source": "mount",
+    "users": [
+      "BPArmoredCar2LargeW"
+    ]
+  },
+  "ArmoredCar2MultiWGunner:HERocketAmmo": {
+    "name": "O’Brien v.200 Squire",
+    "ammo": "HERocketAmmo",
+    "damage": 700.0,
+    "damageType": "HighExplosive",
+    "shelterBonus": true,
+    "source": "mount",
+    "users": [
+      "BPArmoredCar2MultiW"
+    ]
+  },
+  "ArmoredCar2TwinGunnerW:ATLaunchedGrenadeW": {
+    "name": "O’Brien V.190 Knave",
+    "ammo": "ATLaunchedGrenadeW",
+    "damage": 425.0,
+    "damageType": "AntiTankExplosive",
+    "shelterBonus": false,
+    "source": "mount",
+    "users": [
+      "BPArmoredCar2TwinW"
+    ]
+  },
+  "ArmoredCar2TwinGunnerW:GrenadeW": {
+    "name": "O’Brien V.190 Knave",
+    "ammo": "GrenadeW",
+    "damage": 250.0,
+    "damageType": "LightKinetic",
+    "shelterBonus": false,
+    "source": "mount",
+    "users": [
+      "BPArmoredCar2TwinW"
+    ]
+  },
+  "ArmoredCar2TwinGunnerW:HELaunchedGrenade": {
+    "name": "O’Brien V.190 Knave",
+    "ammo": "HELaunchedGrenade",
+    "damage": 400.0,
+    "damageType": "Explosive",
+    "shelterBonus": false,
+    "source": "mount",
+    "users": [
+      "BPArmoredCar2TwinW"
+    ]
+  },
+  "ArmoredCarATGunnerW:ATRPGIndirectAmmo": {
+    "name": "O’Brien V.113 Gravekeeper",
+    "ammo": "ATRPGIndirectAmmo",
+    "damage": 675.0,
+    "damageType": "ArmourPiercing",
+    "shelterBonus": false,
+    "source": "mount",
+    "users": [
+      "BPArmoredCarATW"
+    ]
+  },
+  "ArmoredCarFlameWGunner:FlameAmmo": {
+    "name": "O’Brien V.130 Wild Jack",
+    "ammo": "FlameAmmo",
+    "damage": 25.0,
+    "damageType": "Incendiary",
+    "shelterBonus": false,
+    "source": "mount",
+    "users": [
+      "BPArmoredCarFlameW"
+    ]
+  },
+  "ArmoredCarGunner:AssaultRifleAmmo": {
+    "name": "BPArmoredCarBaseC",
+    "ammo": "AssaultRifleAmmo",
+    "damage": 43.75,
+    "damageType": "LightKinetic",
+    "shelterBonus": false,
+    "source": "mount",
+    "users": [
+      "BPArmoredCarBaseC",
+      "BPArmoredCarBaseW",
+      "BPArmoredCarC",
+      "BPArmoredCarMobilityW",
+      "BPArmoredCarW"
+    ]
+  },
+  "ArmoredCarOffensiveGunnerC:ATRifleAmmo": {
+    "name": "T5 “Percutio”",
+    "ammo": "ATRifleAmmo",
+    "damage": 187.5,
+    "damageType": "AntiTankKinetic",
+    "shelterBonus": false,
+    "source": "mount",
+    "users": [
+      "BPArmoredCarOffensiveC"
+    ]
+  },
+  "ArmoredCarTwinGunnerC:RPGAmmo": {
+    "name": "T8 “Gemini”",
+    "ammo": "RpgAmmo",
+    "damage": 550.0,
+    "damageType": "Explosive",
+    "shelterBonus": false,
+    "source": "mount",
+    "users": [
+      "BPArmoredCarTwinC"
+    ]
+  },
+  "AssaultRifleC": {
+    "name": "Catara mo.II",
+    "ammo": "MGAmmo",
+    "damage": 44.0,
+    "damageType": "HeavyKinetic",
+    "shelterBonus": false,
+    "source": "infantry"
+  },
+  "AssaultRifleHeavyC": {
+    "name": "“Dusk” ce.III",
+    "ammo": "AssaultRifleAmmo",
+    "damage": 43.75,
+    "damageType": "LightKinetic",
+    "shelterBonus": false,
+    "source": "infantry"
+  },
+  "AssaultRifleHeavyW": {
+    "name": "Booker Storm Rifle Model 838",
+    "ammo": "AssaultRifleAmmo",
+    "damage": 52.5,
+    "damageType": "LightKinetic",
+    "shelterBonus": false,
+    "source": "infantry"
+  },
+  "AssaultRifleSingleShotAmmo": {
+    "name": "AssaultRifleSingleShotAmmo",
+    "ammo": "AssaultRifleSingleShotAmmo",
+    "damage": 52.5,
+    "damageType": "LightKinetic",
+    "shelterBonus": false,
+    "source": "ammo"
+  },
+  "AssaultRifleW": {
+    "name": "Aalto Storm Rifle 24",
+    "ammo": "AssaultRifleAmmo",
+    "damage": 43.75,
+    "damageType": "LightKinetic",
+    "shelterBonus": false,
+    "source": "infantry"
+  },
+  "BattleTankATCGunner:ATLargeAmmo": {
+    "name": "Lance-25 “Hasta”",
+    "ammo": "ATLargeAmmo",
+    "damage": 1750.0,
+    "damageType": "ArmourPiercing",
+    "shelterBonus": false,
+    "source": "mount",
+    "users": [
+      "BPBattleTankATC"
+    ]
+  },
+  "BattleTankCMachineGunner:MGAmmo": {
+    "name": "BPBattleTankBaseC",
+    "ammo": "MGAmmo",
+    "damage": 82.5,
+    "damageType": "HeavyKinetic",
+    "shelterBonus": false,
+    "source": "mount",
+    "users": [
+      "BPBattleTankBaseC",
+      "BPBattleTankC"
+    ]
+  },
+  "BattleTankDefensiveWFlameGunner:FlameAmmo": {
+    "name": "Flood Juggernaut Mk. VII",
+    "ammo": "FlameAmmo",
+    "damage": 25.0,
+    "damageType": "Incendiary",
+    "shelterBonus": false,
+    "source": "mount",
+    "users": [
+      "BPBattleTankDefensiveW"
+    ]
+  },
+  "BattleTankGunner:BattleTankAmmo": {
+    "name": "TBD",
+    "ammo": "BattleTankAmmo",
+    "damage": 1750.0,
+    "damageType": "Explosive",
+    "shelterBonus": false,
+    "source": "mount",
+    "users": [
+      "BattleTankATCBase",
+      "BattleTankBase",
+      "BPBattleTankBaseC",
+      "BPBattleTankBaseW",
+      "BPBattleTankC",
+      "BPBattleTankDefensiveW",
+      "BPBattleTankW"
+    ]
+  },
+  "BattleTankHeavyArtilleryCGunner:HeavyArtilleryAmmo": {
+    "name": "Lance-46 “Sarissa”",
+    "ammo": "HeavyArtilleryAmmo",
+    "damage": 900.0,
+    "damageType": "HighExplosive",
+    "shelterBonus": true,
+    "source": "mount",
+    "users": [
+      "BPBattleTankHeavyArtilleryC"
+    ]
+  },
+  "BattleTankHeavyArtilleryWGunner:HeavyArtilleryAmmo": {
+    "name": "Flood Mk. IX Stain",
+    "ammo": "HeavyArtilleryAmmo",
+    "damage": 900.0,
+    "damageType": "HighExplosive",
+    "shelterBonus": true,
+    "source": "mount",
+    "users": [
+      "BPBattleTankHeavyArtilleryW"
+    ]
+  },
+  "BattleTankWMachineGunner:MGAmmo": {
+    "name": "Flood Mk-1",
+    "ammo": "MGAmmo",
+    "damage": 44.0,
+    "damageType": "HeavyKinetic",
+    "shelterBonus": false,
+    "source": "mount",
+    "users": [
+      "BPBattleTankBaseW",
+      "BPBattleTankW"
+    ]
+  },
+  "DestroyerTankWFlameGunner:FlameAmmo": {
+    "name": "Noble Firebrand Mk. XVII",
+    "ammo": "FlameAmmo",
+    "damage": 25.0,
+    "damageType": "Incendiary",
+    "shelterBonus": false,
+    "source": "mount",
+    "users": [
+      "BPDestroyerTankFlameW"
+    ]
+  },
+  "DestroyerTankWGunner:ATAmmo": {
+    "name": "Noble Widow MK. XIV",
+    "ammo": "ATAmmo",
+    "damage": 1050.0,
+    "damageType": "ArmourPiercing",
+    "shelterBonus": false,
+    "source": "mount",
+    "users": [
+      "BPDestroyerTankBaseW",
+      "BPDestroyerTankW"
+    ]
+  },
+  "DiveBomberAmmo": {
+    "name": "912 Shrike Rounds",
+    "ammo": "DiveBomberAmmo",
+    "damage": 950.0,
+    "damageType": "ArmourPiercing",
+    "shelterBonus": false,
+    "source": "ammo"
+  },
+  "EmplacedAACGunner:AAAmmo": {
+    "name": "DAE 5b “Zeal”",
+    "ammo": "AAAmmo",
+    "damage": 1200.0,
+    "damageType": "Shrapnel",
+    "shelterBonus": false,
+    "source": "mount",
+    "users": [
+      "BPEmplacedAAC"
+    ]
+  },
+  "EmplacedAAWGunner:AAAmmo": {
+    "name": "Leary AA-70 Bolas",
+    "ammo": "AAAmmo",
+    "damage": 1200.0,
+    "damageType": "Shrapnel",
+    "shelterBonus": false,
+    "source": "mount",
+    "users": [
+      "BPEmplacedAAW"
+    ]
+  },
+  "EmplacedATLargeWGunner:ATLargeAmmo": {
+    "name": "Huber Starbreaker 94.5mm",
+    "ammo": "ATLargeAmmo",
+    "damage": 2625.0,
+    "damageType": "ArmourPiercing",
+    "shelterBonus": false,
+    "source": "mount",
+    "users": [
+      "BPEmplacedATLargeW"
+    ]
+  },
+  "EmplacedATWGunner:ATAmmo": {
+    "name": "Leary Shellbore 68mm",
+    "ammo": "ATAmmo",
+    "damage": 600.0,
+    "damageType": "ArmourPiercing",
+    "shelterBonus": false,
+    "source": "mount",
+    "users": [
+      "BPEmplacedATW"
+    ]
+  },
+  "EmplacedCannonLargeCGunner:BattleTankAmmo": {
+    "name": "DAE 2a-1 “Ruptura”",
+    "ammo": "BattleTankAmmo",
+    "damage": 2362.5,
+    "damageType": "Explosive",
+    "shelterBonus": false,
+    "source": "mount",
+    "users": [
+      "BPEmplacedCannonLargeC"
+    ]
+  },
+  "EmplacedHeavyArtilleryCGunner:HeavyArtilleryAmmo": {
+    "name": "50-500 “Thunderbolt” Cannon",
+    "ammo": "HeavyArtilleryAmmo",
+    "damage": 900.0,
+    "damageType": "HighExplosive",
+    "shelterBonus": true,
+    "source": "mount",
+    "users": [
+      "BPEmplacedHeavyArtilleryC"
+    ]
+  },
+  "EmplacedHeavyArtilleryWGunner:HeavyArtilleryAmmo": {
+    "name": "Huber Exalt 150mm",
+    "ammo": "HeavyArtilleryAmmo",
+    "damage": 900.0,
+    "damageType": "HighExplosive",
+    "shelterBonus": true,
+    "source": "mount",
+    "users": [
+      "BPEmplacedHeavyArtilleryW"
+    ]
+  },
+  "EmplacedIndirectCGunner:ATRPGIndirectAmmo": {
+    "name": "DAE 1o-3 “Polybolos”",
+    "ammo": "ATRPGIndirectAmmo",
+    "damage": 675.0,
+    "damageType": "ArmourPiercing",
+    "shelterBonus": false,
+    "source": "mount",
+    "users": [
+      "BPEmplacedIndirectC"
+    ]
+  },
+  "EmplacedInfantryCGunner:AircraftAmmo": {
+    "name": "DAE 1b-2 “Serra”",
+    "ammo": "AircraftAmmo",
+    "damage": 97.5,
+    "damageType": "Shrapnel",
+    "shelterBonus": false,
+    "source": "mount",
+    "users": [
+      "BPEmplacedInfantryC"
+    ]
+  },
+  "EmplacedInfantryWGunner:AircraftAmmo": {
+    "name": "Leary Snare Trap 20",
+    "ammo": "AircraftAmmo",
+    "damage": 97.5,
+    "damageType": "Shrapnel",
+    "shelterBonus": false,
+    "source": "mount",
+    "users": [
+      "BPEmplacedInfantryW"
+    ]
+  },
+  "EmplacedLightArtilleryWGunner:LightArtilleryAmmo": {
+    "name": "Huber Lariat 120mm",
+    "ammo": "LightArtilleryAmmo",
+    "damage": 400.0,
+    "damageType": "HighExplosive",
+    "shelterBonus": true,
+    "source": "mount",
+    "users": [
+      "BPEmplacedLightArtilleryW"
+    ]
+  },
+  "EmplacedMultiCGunner:HERocketAmmo": {
+    "name": "DAE 3b-2 “Hades’ Net”",
+    "ammo": "HERocketAmmo",
+    "damage": 700.0,
+    "damageType": "HighExplosive",
+    "shelterBonus": true,
+    "source": "mount",
+    "users": [
+      "BPEmplacedMultiC"
+    ]
+  },
+  "EmplacementMortarMount:MortarAmmo": {
+    "name": "Emplacement House",
+    "ammo": "MortarAmmo",
+    "damage": 300.0,
+    "damageType": "HighExplosive",
+    "shelterBonus": true,
+    "source": "mount",
+    "users": [
+      "TownWSmall1"
+    ]
+  },
+  "EmplacementMortarMount:MortarAmmoFlame": {
+    "name": "Emplacement House",
+    "ammo": "MortarAmmoFlame",
+    "damage": 55.0,
+    "damageType": "IncendiaryHighExplosive",
+    "shelterBonus": true,
+    "source": "mount",
+    "users": [
+      "TownWSmall1"
+    ]
+  },
+  "EmplacementMortarMount:MortarAmmoSH": {
+    "name": "Emplacement House",
+    "ammo": "MortarAmmoSH",
+    "damage": 125.0,
+    "damageType": "Shrapnel",
+    "shelterBonus": false,
+    "source": "mount",
+    "users": [
+      "TownWSmall1"
+    ]
+  },
+  "ExplosiveLightC": {
+    "name": "Hydra’s Whisper",
+    "ammo": "ExplosiveLightC",
+    "damage": 550.0,
+    "damageType": "Demolition",
+    "shelterBonus": false,
+    "source": "ammo"
+  },
+  "FieldAT2CGunner:ATRifleAmmo": {
+    "name": "GA6 “Cestus”",
+    "ammo": "ATRifleAmmo",
+    "damage": 187.5,
+    "damageType": "AntiTankKinetic",
+    "shelterBonus": false,
+    "source": "mount",
+    "users": [
+      "BPFieldAT2C"
+    ]
+  },
+  "FieldAT2WGunner:ATRifleAmmo": {
+    "name": "Duncan’s Coin 14.5mm",
+    "ammo": "ATRifleAmmo",
+    "damage": 234.375,
+    "damageType": "AntiTankKinetic",
+    "shelterBonus": false,
+    "source": "mount",
+    "users": [
+      "BPFieldAT2W"
+    ]
+  },
+  "FieldATDamageWGunner:ATAmmo": {
+    "name": "Balfour Rampart 68mm",
+    "ammo": "ATAmmo",
+    "damage": 750.0,
+    "damageType": "ArmourPiercing",
+    "shelterBonus": false,
+    "source": "mount",
+    "users": [
+      "BPFieldATDamageW"
+    ]
+  },
+  "FieldATGunGunner:ATAmmo": {
+    "name": "AA-2 “Battering Ram”",
+    "ammo": "ATAmmo",
+    "damage": 600.0,
+    "damageType": "ArmourPiercing",
+    "shelterBonus": false,
+    "source": "mount",
+    "users": [
+      "BPFieldATC",
+      "BPFieldATW"
+    ]
+  },
+  "FieldCannonDamageCGunGunner:LightTankAmmo": {
+    "name": "40-45 “Smelter”",
+    "ammo": "LightTankAmmo",
+    "damage": 810.0,
+    "damageType": "Explosive",
+    "shelterBonus": false,
+    "source": "mount",
+    "users": [
+      "BPFieldCannonDamageC"
+    ]
+  },
+  "FieldCannonGunner:LightTankAmmo": {
+    "name": "Balfour Wolfhound 40mm",
+    "ammo": "LightTankAmmo",
+    "damage": 600.0,
+    "damageType": "Explosive",
+    "shelterBonus": false,
+    "source": "mount",
+    "users": [
+      "BPFieldCannonW"
+    ]
+  },
+  "FieldMGAmmo": {
+    "name": "FieldMGAmmo",
+    "ammo": "FieldMGAmmo",
+    "damage": 81.25,
+    "damageType": "HeavyKinetic",
+    "shelterBonus": false,
+    "source": "ammo"
+  },
+  "FieldMachineGunGunner:MGAmmo": {
+    "name": "G40 “Sagittarii”",
+    "ammo": "MGAmmo",
+    "damage": 82.5,
+    "damageType": "HeavyKinetic",
+    "shelterBonus": false,
+    "source": "mount",
+    "users": [
+      "BPFieldMGC",
+      "BPFieldMGW"
+    ]
+  },
+  "FieldMortarGunnerC:MortarTankAmmo": {
+    "name": "30-250 “Tisiphone” Field Cannon",
+    "ammo": "MortarTankAmmo",
+    "damage": 800.0,
+    "damageType": "Demolition",
+    "shelterBonus": false,
+    "source": "mount",
+    "users": [
+      "BPFieldMortarC"
+    ]
+  },
+  "FieldMortarGunnerW:MortarTankAmmo": {
+    "name": "Balfour Falconer 250mm",
+    "ammo": "MortarTankAmmo",
+    "damage": 800.0,
+    "damageType": "Demolition",
+    "shelterBonus": false,
+    "source": "mount",
+    "users": [
+      "BPFieldMortarW"
+    ]
+  },
+  "FlameTorchC": {
+    "name": "“Molten Wind” v.II Flame Torch",
+    "ammo": "FlameBackpackAmmo",
+    "damage": 15.0,
+    "damageType": "Incendiary",
+    "shelterBonus": false,
+    "source": "infantry"
+  },
+  "FlameTorchW": {
+    "name": "Willow’s Bane Model 845",
+    "ammo": "FlameBackpackAmmo",
+    "damage": 15.0,
+    "damageType": "Incendiary",
+    "shelterBonus": false,
+    "source": "infantry"
+  },
+  "GrenadeC": {
+    "name": "Bomastone Grenade",
+    "ammo": "GrenadeC",
+    "damage": 125.0,
+    "damageType": "Shrapnel",
+    "shelterBonus": false,
+    "source": "ammo"
+  },
+  "GrenadeLauncherTC:HELaunchedGrenade": {
+    "name": "Fissura gd.I",
+    "ammo": "HELaunchedGrenade",
+    "damage": 400.0,
+    "damageType": "Explosive",
+    "shelterBonus": false,
+    "source": "mount",
+    "users": [
+      "BPDeployedGrenadeLauncherTC"
+    ]
+  },
+  "Gunboat2CGunner:DemolitionRocketAmmo": {
+    "name": "Type B - “Lucian”",
+    "ammo": "DemolitionRocketAmmo",
+    "damage": 250.0,
+    "damageType": "Demolition",
+    "shelterBonus": false,
+    "source": "mount",
+    "users": [
+      "BPGunboat2C"
+    ]
+  },
+  "Gunboat2WMainGunner:MortarTankAmmoBR": {
+    "name": "81f-f Ronan Blackguard",
+    "ammo": "MortarTankAmmoBR",
+    "damage": 800.0,
+    "damageType": "Demolition",
+    "shelterBonus": false,
+    "source": "mount",
+    "users": [
+      "BPGunboat2W"
+    ]
+  },
+  "GunboatCGunner:MortarAmmo": {
+    "name": "Type C - “Charon”",
+    "ammo": "MortarAmmo",
+    "damage": 300.0,
+    "damageType": "HighExplosive",
+    "shelterBonus": true,
+    "source": "mount",
+    "users": [
+      "BPGunboatC"
+    ]
+  },
+  "GunboatCGunner:MortarAmmoFlame": {
+    "name": "Type C - “Charon”",
+    "ammo": "MortarAmmoFlame",
+    "damage": 55.0,
+    "damageType": "IncendiaryHighExplosive",
+    "shelterBonus": true,
+    "source": "mount",
+    "users": [
+      "BPGunboatC"
+    ]
+  },
+  "GunboatCGunner:MortarAmmoSH": {
+    "name": "Type C - “Charon”",
+    "ammo": "MortarAmmoSH",
+    "damage": 125.0,
+    "damageType": "Shrapnel",
+    "shelterBonus": false,
+    "source": "mount",
+    "users": [
+      "BPGunboatC"
+    ]
+  },
+  "GunboatWMainGunner:MortarAmmo": {
+    "name": "74b-1 Ronan Gunship",
+    "ammo": "MortarAmmo",
+    "damage": 300.0,
+    "damageType": "HighExplosive",
+    "shelterBonus": true,
+    "source": "mount",
+    "users": [
+      "BPGunboatW"
+    ]
+  },
+  "GunboatWMainGunner:MortarAmmoFlame": {
+    "name": "74b-1 Ronan Gunship",
+    "ammo": "MortarAmmoFlame",
+    "damage": 55.0,
+    "damageType": "IncendiaryHighExplosive",
+    "shelterBonus": true,
+    "source": "mount",
+    "users": [
+      "BPGunboatW"
+    ]
+  },
+  "GunboatWMainGunner:MortarAmmoSH": {
+    "name": "74b-1 Ronan Gunship",
+    "ammo": "MortarAmmoSH",
+    "damage": 125.0,
+    "damageType": "Shrapnel",
+    "shelterBonus": false,
+    "source": "mount",
+    "users": [
+      "BPGunboatW"
+    ]
+  },
+  "HEGrenade": {
+    "name": "Mammon 91-b",
+    "ammo": "HEGrenade",
+    "damage": 240.0,
+    "damageType": "Explosive",
+    "shelterBonus": false,
+    "source": "ammo"
+  },
+  "HalfTrackMortarGunner:MortarAmmo": {
+    "name": "HH-d “Peltast”",
+    "ammo": "MortarAmmo",
+    "damage": 300.0,
+    "damageType": "HighExplosive",
+    "shelterBonus": true,
+    "source": "mount",
+    "users": [
+      "BPHalfTrackArtilleryC"
+    ]
+  },
+  "HalfTrackMortarGunner:MortarAmmoFlame": {
+    "name": "HH-d “Peltast”",
+    "ammo": "MortarAmmoFlame",
+    "damage": 55.0,
+    "damageType": "IncendiaryHighExplosive",
+    "shelterBonus": true,
+    "source": "mount",
+    "users": [
+      "BPHalfTrackArtilleryC"
+    ]
+  },
+  "HalfTrackMortarGunner:MortarAmmoSH": {
+    "name": "HH-d “Peltast”",
+    "ammo": "MortarAmmoSH",
+    "damage": 125.0,
+    "damageType": "Shrapnel",
+    "shelterBonus": false,
+    "source": "mount",
+    "users": [
+      "BPHalfTrackArtilleryC"
+    ]
+  },
+  "HalfTrackOffensiveGunner:ATAmmo": {
+    "name": "Niska Mk. II Blinder",
+    "ammo": "ATAmmo",
+    "damage": 600.0,
+    "damageType": "ArmourPiercing",
+    "shelterBonus": false,
+    "source": "mount",
+    "users": [
+      "BPHalfTrackOffensiveW"
+    ]
+  },
+  "HalftrackMultiWGunner:FireRocketAmmo": {
+    "name": "Niska-Rycker Mk. IX Skycaller",
+    "ammo": "FireRocketAmmo",
+    "damage": 145.0,
+    "damageType": "IncendiaryHighExplosive",
+    "shelterBonus": true,
+    "source": "mount",
+    "users": [
+      "BPHalftrackMultiW"
+    ]
+  },
+  "HalftrackTwinWGunnerL:AssaultRifleAmmo": {
+    "name": "Niska Mk. III Scar Twin",
+    "ammo": "AssaultRifleAmmo",
+    "damage": 43.75,
+    "damageType": "LightKinetic",
+    "shelterBonus": false,
+    "source": "mount",
+    "users": [
+      "BPHalftrackTwinW"
+    ]
+  },
+  "HalftrackTwinWGunnerR:AssaultRifleAmmo": {
+    "name": "Niska Mk. III Scar Twin",
+    "ammo": "AssaultRifleAmmo",
+    "damage": 43.75,
+    "damageType": "LightKinetic",
+    "shelterBonus": false,
+    "source": "mount",
+    "users": [
+      "BPHalftrackTwinW"
+    ]
+  },
+  "InfantryMine": {
+    "name": "Crow’s Foot Mine",
+    "ammo": "InfantryMine",
+    "damage": 312.5,
+    "damageType": "LightKinetic",
+    "shelterBonus": false,
+    "source": "ammo"
+  },
+  "InfantrySupportGun:MiniTankAmmo": {
+    "name": "Deployed Infantry Support Gun",
+    "ammo": "MiniTankAmmo",
+    "damage": 400.0,
+    "damageType": "Explosive",
+    "shelterBonus": false,
+    "source": "mount",
+    "users": [
+      "BPDeployedISG"
+    ]
+  },
+  "LandingCraftOffensiveCGunner:MGAmmo": {
+    "name": "AB-11 “Doru”",
+    "ammo": "MGAmmo",
+    "damage": 68.75,
+    "damageType": "HeavyKinetic",
+    "shelterBonus": false,
+    "source": "mount",
+    "users": [
+      "BPLandingCraftOffensiveC"
+    ]
+  },
+  "LargeFieldATCGunner:ATLargeAmmo": {
+    "name": "945g “Stygian Bolt”",
+    "ammo": "ATLargeAmmo",
+    "damage": 2625.0,
+    "damageType": "ArmourPiercing",
+    "shelterBonus": false,
+    "source": "mount",
+    "users": [
+      "BPLargeFieldATC"
+    ]
+  },
+  "LargeFieldCannonWGunner:BattleTankAmmo": {
+    "name": "Balfour Stockade 75mm",
+    "ammo": "BattleTankAmmo",
+    "damage": 2362.5,
+    "damageType": "Explosive",
+    "shelterBonus": false,
+    "source": "mount",
+    "users": [
+      "BPLargeFieldCannonW"
+    ]
+  },
+  "LargeFieldLightArtilleryCGunner:LightArtilleryAmmo": {
+    "name": "120-68 “Koronides” Field Gun",
+    "ammo": "LightArtilleryAmmo",
+    "damage": 400.0,
+    "damageType": "HighExplosive",
+    "shelterBonus": true,
+    "source": "mount",
+    "users": [
+      "BPLargeFieldLightArtilleryC"
+    ]
+  },
+  "LargeFieldMortarCGunner:MortarTankAmmoBR": {
+    "name": "40-250 “Alekto” Heavy Cannon",
+    "ammo": "MortarTankAmmoBR",
+    "damage": 800.0,
+    "damageType": "Demolition",
+    "shelterBonus": false,
+    "source": "mount",
+    "users": [
+      "BPLargeFieldMortarC"
+    ]
+  },
+  "LargeFieldMultiWGunner:FireRocketAmmo": {
+    "name": "Rycker 4/3-F Wasp Nest",
+    "ammo": "FireRocketAmmo",
+    "damage": 145.0,
+    "damageType": "IncendiaryHighExplosive",
+    "shelterBonus": true,
+    "source": "mount",
+    "users": [
+      "BPLargeFieldMultiW"
+    ]
+  },
+  "LargeShipAircraftCMachineGunnerPort:AircraftAmmo": {
+    "name": "Poseidon",
+    "ammo": "AircraftAmmo",
+    "damage": 97.5,
+    "damageType": "Shrapnel",
+    "shelterBonus": false,
+    "source": "mount",
+    "users": [
+      "BPLargeShipAircraftC",
+      "BPLargeShipAircraftC"
+    ]
+  },
+  "LargeShipAircraftCMachineGunnerStar:AircraftAmmo": {
+    "name": "Poseidon",
+    "ammo": "AircraftAmmo",
+    "damage": 97.5,
+    "damageType": "Shrapnel",
+    "shelterBonus": false,
+    "source": "mount",
+    "users": [
+      "BPLargeShipAircraftC",
+      "BPLargeShipAircraftC"
+    ]
+  },
+  "LargeShipBaseShipMachineGunner:MGAmmo": {
+    "name": "BMS - Longhook",
+    "ammo": "MGAmmo",
+    "damage": 82.5,
+    "damageType": "HeavyKinetic",
+    "shelterBonus": false,
+    "source": "mount",
+    "users": [
+      "BPLargeShipBaseShip",
+      "BPLargeShipBaseShip"
+    ]
+  },
+  "LargeShipBattleShipAircraftWHeavyMGPort:AircraftAmmo": {
+    "name": "Mercy",
+    "ammo": "AircraftAmmo",
+    "damage": 97.5,
+    "damageType": "Shrapnel",
+    "shelterBonus": false,
+    "source": "mount",
+    "users": [
+      "BPLargeShipBattleshipAircraftW"
+    ]
+  },
+  "LargeShipBattleShipAircraftWHeavyMGStar:AircraftAmmo": {
+    "name": "Mercy",
+    "ammo": "AircraftAmmo",
+    "damage": 97.5,
+    "damageType": "Shrapnel",
+    "shelterBonus": false,
+    "source": "mount",
+    "users": [
+      "BPLargeShipBattleshipAircraftW"
+    ]
+  },
+  "LargeShipBattleShipCDirectGunnerPort:ATAmmo": {
+    "name": "Titan",
+    "ammo": "ATAmmo",
+    "damage": 600.0,
+    "damageType": "ArmourPiercing",
+    "shelterBonus": false,
+    "source": "mount",
+    "users": [
+      "BPLargeShipBattleshipC"
+    ]
+  },
+  "LargeShipBattleShipCDirectGunnerStar:ATAmmo": {
+    "name": "Titan",
+    "ammo": "ATAmmo",
+    "damage": 600.0,
+    "damageType": "ArmourPiercing",
+    "shelterBonus": false,
+    "source": "mount",
+    "users": [
+      "BPLargeShipBattleshipC"
+    ]
+  },
+  "LargeShipBattleShipCHeavyArtilleryGunnerForward:HeavyArtilleryAmmo": {
+    "name": "Titan",
+    "ammo": "HeavyArtilleryAmmo",
+    "damage": 900.0,
+    "damageType": "HighExplosive",
+    "shelterBonus": true,
+    "source": "mount",
+    "users": [
+      "BPLargeShipBattleshipC"
+    ]
+  },
+  "LargeShipBattleShipCHeavyArtilleryGunnerRear:HeavyArtilleryAmmo": {
+    "name": "Titan",
+    "ammo": "HeavyArtilleryAmmo",
+    "damage": 900.0,
+    "damageType": "HighExplosive",
+    "shelterBonus": true,
+    "source": "mount",
+    "users": [
+      "BPLargeShipBattleshipC"
+    ]
+  },
+  "LargeShipBattleShipCLightArtilleryGunnerMid:LightArtilleryAmmo": {
+    "name": "Titan",
+    "ammo": "LightArtilleryAmmo",
+    "damage": 400.0,
+    "damageType": "HighExplosive",
+    "shelterBonus": true,
+    "source": "mount",
+    "users": [
+      "BPLargeShipBattleshipC"
+    ]
+  },
+  "LargeShipBattleShipWArtilleryGunnerPort:LightArtilleryAmmo": {
+    "name": "Callahan",
+    "ammo": "LightArtilleryAmmo",
+    "damage": 400.0,
+    "damageType": "HighExplosive",
+    "shelterBonus": true,
+    "source": "mount",
+    "users": [
+      "BPLargeShipBattleshipW"
+    ]
+  },
+  "LargeShipBattleShipWArtilleryGunnerStar:LightArtilleryAmmo": {
+    "name": "Callahan",
+    "ammo": "LightArtilleryAmmo",
+    "damage": 400.0,
+    "damageType": "HighExplosive",
+    "shelterBonus": true,
+    "source": "mount",
+    "users": [
+      "BPLargeShipBattleshipW"
+    ]
+  },
+  "LargeShipBattleShipWHeavyArtilleryGunnerForward:HeavyArtilleryAmmo": {
+    "name": "Callahan",
+    "ammo": "HeavyArtilleryAmmo",
+    "damage": 900.0,
+    "damageType": "HighExplosive",
+    "shelterBonus": true,
+    "source": "mount",
+    "users": [
+      "BPLargeShipBattleshipW"
+    ]
+  },
+  "LargeShipBattleShipWHeavyArtilleryGunnerRear:HeavyArtilleryAmmo": {
+    "name": "Callahan",
+    "ammo": "HeavyArtilleryAmmo",
+    "damage": 900.0,
+    "damageType": "HighExplosive",
+    "shelterBonus": true,
+    "source": "mount",
+    "users": [
+      "BPLargeShipBattleshipW",
+      "BPLargeShipBattleshipW"
+    ]
+  },
+  "LargeShipBattleShipWISGGunnerPort:MiniTankAmmo": {
+    "name": "Callahan",
+    "ammo": "MiniTankAmmo",
+    "damage": 400.0,
+    "damageType": "Explosive",
+    "shelterBonus": false,
+    "source": "mount",
+    "users": [
+      "BPLargeShipBattleshipW",
+      "BPLargeShipBattleshipW"
+    ]
+  },
+  "LargeShipBattleShipWISGGunnerStar:MiniTankAmmo": {
+    "name": "Callahan",
+    "ammo": "MiniTankAmmo",
+    "damage": 400.0,
+    "damageType": "Explosive",
+    "shelterBonus": false,
+    "source": "mount",
+    "users": [
+      "BPLargeShipBattleshipW",
+      "BPLargeShipBattleshipW"
+    ]
+  },
+  "LargeShipBattleshipAircraftWMG:MGAmmo": {
+    "name": "Mercy",
+    "ammo": "MGAmmo",
+    "damage": 68.75,
+    "damageType": "HeavyKinetic",
+    "shelterBonus": false,
+    "source": "mount",
+    "users": [
+      "BPLargeShipBattleshipAircraftW",
+      "BPLargeShipBattleshipAircraftW"
+    ]
+  },
+  "LargeShipBattleshipCMachineGunnerPort:MGAmmo": {
+    "name": "Titan",
+    "ammo": "MGAmmo",
+    "damage": 82.5,
+    "damageType": "HeavyKinetic",
+    "shelterBonus": false,
+    "source": "mount",
+    "users": [
+      "BPLargeShipBattleshipC"
+    ]
+  },
+  "LargeShipBattleshipCMachineGunnerStar:MGAmmo": {
+    "name": "Titan",
+    "ammo": "MGAmmo",
+    "damage": 82.5,
+    "damageType": "HeavyKinetic",
+    "shelterBonus": false,
+    "source": "mount",
+    "users": [
+      "BPLargeShipBattleshipC"
+    ]
+  },
+  "LargeShipBattleshipWMachineGunner:MGAmmo": {
+    "name": "Callahan",
+    "ammo": "MGAmmo",
+    "damage": 68.75,
+    "damageType": "HeavyKinetic",
+    "shelterBonus": false,
+    "source": "mount",
+    "users": [
+      "BPLargeShipBattleshipW",
+      "BPLargeShipBattleshipW"
+    ]
+  },
+  "LargeShipDestroyerCArtilleryGunnerFront:LightArtilleryAmmo": {
+    "name": "Conqueror",
+    "ammo": "LightArtilleryAmmo",
+    "damage": 400.0,
+    "damageType": "HighExplosive",
+    "shelterBonus": true,
+    "source": "mount",
+    "users": [
+      "BPLargeShipDestroyerC"
+    ]
+  },
+  "LargeShipDestroyerCArtilleryGunnerRear:LightArtilleryAmmo": {
+    "name": "Conqueror",
+    "ammo": "LightArtilleryAmmo",
+    "damage": 400.0,
+    "damageType": "HighExplosive",
+    "shelterBonus": true,
+    "source": "mount",
+    "users": [
+      "BPLargeShipDestroyerC"
+    ]
+  },
+  "LargeShipDestroyerCDirectGunner:ATAmmo": {
+    "name": "Conqueror",
+    "ammo": "ATAmmo",
+    "damage": 600.0,
+    "damageType": "ArmourPiercing",
+    "shelterBonus": false,
+    "source": "mount",
+    "users": [
+      "BPLargeShipDestroyerC"
+    ]
+  },
+  "LargeShipDestroyerCMachineGunner:MGAmmo": {
+    "name": "Conqueror",
+    "ammo": "MGAmmo",
+    "damage": 82.5,
+    "damageType": "HeavyKinetic",
+    "shelterBonus": false,
+    "source": "mount",
+    "users": [
+      "BPLargeShipDestroyerC",
+      "BPLargeShipDestroyerC"
+    ]
+  },
+  "LargeShipDestroyerDepthChargeGunnerL:DepthChargeAmmo": {
+    "name": "Conqueror",
+    "ammo": "DepthChargeAmmo",
+    "damage": 900.0,
+    "damageType": "HighExplosive",
+    "shelterBonus": true,
+    "source": "mount",
+    "users": [
+      "BPLargeShipDestroyerC"
+    ]
+  },
+  "LargeShipDestroyerDepthChargeGunnerR:DepthChargeAmmo": {
+    "name": "Conqueror",
+    "ammo": "DepthChargeAmmo",
+    "damage": 900.0,
+    "damageType": "HighExplosive",
+    "shelterBonus": true,
+    "source": "mount",
+    "users": [
+      "BPLargeShipDestroyerC"
+    ]
+  },
+  "LargeShipDestroyerWArtilleryGunnerAft:LightArtilleryAmmo": {
+    "name": "Blacksteele",
+    "ammo": "LightArtilleryAmmo",
+    "damage": 400.0,
+    "damageType": "HighExplosive",
+    "shelterBonus": true,
+    "source": "mount",
+    "users": [
+      "BPLargeShipDestroyerW"
+    ]
+  },
+  "LargeShipDestroyerWArtilleryGunnerMid:LightArtilleryAmmo": {
+    "name": "Blacksteele",
+    "ammo": "LightArtilleryAmmo",
+    "damage": 400.0,
+    "damageType": "HighExplosive",
+    "shelterBonus": true,
+    "source": "mount",
+    "users": [
+      "BPLargeShipDestroyerW"
+    ]
+  },
+  "LargeShipDestroyerWDepthChargeGunner:DepthChargeAmmo": {
+    "name": "Blacksteele",
+    "ammo": "DepthChargeAmmo",
+    "damage": 900.0,
+    "damageType": "HighExplosive",
+    "shelterBonus": true,
+    "source": "mount",
+    "users": [
+      "BPLargeShipDestroyerW"
+    ]
+  },
+  "LargeShipDestroyerWDirectGunnerPort:ATAmmo": {
+    "name": "Blacksteele",
+    "ammo": "ATAmmo",
+    "damage": 600.0,
+    "damageType": "ArmourPiercing",
+    "shelterBonus": false,
+    "source": "mount",
+    "users": [
+      "BPLargeShipDestroyerW"
+    ]
+  },
+  "LargeShipDestroyerWDirectGunnerStarboard:ATAmmo": {
+    "name": "Blacksteele",
+    "ammo": "ATAmmo",
+    "damage": 600.0,
+    "damageType": "ArmourPiercing",
+    "shelterBonus": false,
+    "source": "mount",
+    "users": [
+      "BPLargeShipDestroyerW"
+    ]
+  },
+  "LargeShipDestroyerWMachineGunner:MGAmmo": {
+    "name": "Blacksteele",
+    "ammo": "MGAmmo",
+    "damage": 68.75,
+    "damageType": "HeavyKinetic",
+    "shelterBonus": false,
+    "source": "mount",
+    "users": [
+      "BPLargeShipDestroyerW",
+      "BPLargeShipDestroyerW"
+    ]
+  },
+  "LargeShipStorageShipMGPortGunner:MGAmmo": {
+    "name": "BMS - Bluefin",
+    "ammo": "MGAmmo",
+    "damage": 82.5,
+    "damageType": "HeavyKinetic",
+    "shelterBonus": false,
+    "source": "mount",
+    "users": [
+      "BPLargeShipStorageShip"
+    ]
+  },
+  "LargeShipStorageShipMGStarGunner:MGAmmo": {
+    "name": "BMS - Bluefin",
+    "ammo": "MGAmmo",
+    "damage": 82.5,
+    "damageType": "HeavyKinetic",
+    "shelterBonus": false,
+    "source": "mount",
+    "users": [
+      "BPLargeShipStorageShip"
+    ]
+  },
+  "LargeShipSubmarineCHeavyArtillery:LightArtilleryAmmo": {
+    "name": "AC-b “Trident”",
+    "ammo": "LightArtilleryAmmo",
+    "damage": 400.0,
+    "damageType": "HighExplosive",
+    "shelterBonus": true,
+    "source": "mount",
+    "users": [
+      "BPLargeShipSubmarineC"
+    ]
+  },
+  "LargeShipSubmarineWDirectGunner:ATAmmo": {
+    "name": "Nakki",
+    "ammo": "ATAmmo",
+    "damage": 600.0,
+    "damageType": "ArmourPiercing",
+    "shelterBonus": false,
+    "source": "mount",
+    "users": [
+      "BPLargeShipSubmarineW"
+    ]
+  },
+  "LargeShipSubmarineWTorpedoGunner:TorpedoAmmo": {
+    "name": "AC-b “Trident”",
+    "ammo": "TorpedoAmmo",
+    "damage": 3550.0,
+    "damageType": "HighExplosive",
+    "shelterBonus": true,
+    "source": "mount",
+    "users": [
+      "BPLargeShipSubmarineC",
+      "BPLargeShipSubmarineC",
+      "BPLargeShipSubmarineW",
+      "BPLargeShipSubmarineW"
+    ]
+  },
+  "LightBoatInfantryCMainGunner:AircraftAmmo": {
+    "name": "K-81e “Sombre”",
+    "ammo": "AircraftAmmo",
+    "damage": 81.25,
+    "damageType": "Shrapnel",
+    "shelterBonus": false,
+    "source": "mount",
+    "users": [
+      "BPLightBoatInfantryC"
+    ]
+  },
+  "LightBoatInfantryWMainGunner:AircraftAmmo": {
+    "name": "68A-4 Ronan Fathomer",
+    "ammo": "AircraftAmmo",
+    "damage": 81.25,
+    "damageType": "Shrapnel",
+    "shelterBonus": false,
+    "source": "mount",
+    "users": [
+      "BPLightBoatInfantryW"
+    ]
+  },
+  "LightTank2InfantryCGunnerL:MGAmmo": {
+    "name": "HC-2 “Scorpion”",
+    "ammo": "MGAmmo",
+    "damage": 82.5,
+    "damageType": "HeavyKinetic",
+    "shelterBonus": false,
+    "source": "mount",
+    "users": [
+      "BPLightTank2InfantryC"
+    ]
+  },
+  "LightTank2InfantryCGunnerR:MGAmmo": {
+    "name": "HC-2 “Scorpion”",
+    "ammo": "MGAmmo",
+    "damage": 82.5,
+    "damageType": "HeavyKinetic",
+    "shelterBonus": false,
+    "source": "mount",
+    "users": [
+      "BPLightTank2InfantryC"
+    ]
+  },
+  "LightTank3CGunner:LightAAAmmo": {
+    "name": "HA-1 “Sagaris”",
+    "ammo": "LightAAAmmo",
+    "damage": 600.0,
+    "damageType": "Shrapnel",
+    "shelterBonus": false,
+    "source": "mount",
+    "users": [
+      "BPLightTank3C"
+    ]
+  },
+  "LightTank3WGunner:LightAAAmmo": {
+    "name": "Sharkey-Devitt Birdeater Mk. I",
+    "ammo": "LightAAAmmo",
+    "damage": 600.0,
+    "damageType": "Shrapnel",
+    "shelterBonus": false,
+    "source": "mount",
+    "users": [
+      "BPLightTank3W"
+    ]
+  },
+  "LightTankArtilleryWGunner:MortarAmmo": {
+    "name": "Devitt-Caine Mk. IV MMR",
+    "ammo": "MortarAmmo",
+    "damage": 300.0,
+    "damageType": "HighExplosive",
+    "shelterBonus": true,
+    "source": "mount",
+    "users": [
+      "BPLightTankArtilleryW"
+    ]
+  },
+  "LightTankArtilleryWGunner:MortarAmmoFlame": {
+    "name": "Devitt-Caine Mk. IV MMR",
+    "ammo": "MortarAmmoFlame",
+    "damage": 55.0,
+    "damageType": "IncendiaryHighExplosive",
+    "shelterBonus": true,
+    "source": "mount",
+    "users": [
+      "BPLightTankArtilleryW"
+    ]
+  },
+  "LightTankArtilleryWGunner:MortarAmmoSH": {
+    "name": "Devitt-Caine Mk. IV MMR",
+    "ammo": "MortarAmmoSH",
+    "damage": 125.0,
+    "damageType": "Shrapnel",
+    "shelterBonus": false,
+    "source": "mount",
+    "users": [
+      "BPLightTankArtilleryW"
+    ]
+  },
+  "LightTankFlameCGunner:FlameAmmo": {
+    "name": "H-19 “Vulcan”",
+    "ammo": "FlameAmmo",
+    "damage": 25.0,
+    "damageType": "Incendiary",
+    "shelterBonus": false,
+    "source": "mount",
+    "users": [
+      "BPLightTankFlameC"
+    ]
+  },
+  "LightTankGunnerC:LightTankAmmo": {
+    "name": "BPLightTankBaseC",
+    "ammo": "LightTankAmmo",
+    "damage": 600.0,
+    "damageType": "Explosive",
+    "shelterBonus": false,
+    "source": "mount",
+    "users": [
+      "BPLightTankBaseC",
+      "BPLightTankC",
+      "BPLightTankMobilityC"
+    ]
+  },
+  "LightTankGunnerW:LightTankAmmo": {
+    "name": "Devitt Ironhide Mk. IV",
+    "ammo": "LightTankAmmo",
+    "damage": 600.0,
+    "damageType": "Explosive",
+    "shelterBonus": false,
+    "source": "mount",
+    "users": [
+      "BPLightTankDefensiveW",
+      "BPLightTankW"
+    ]
+  },
+  "LightTankOffensiveGunnerC:ATAmmo": {
+    "name": "H-10 “Pelekys”",
+    "ammo": "ATAmmo",
+    "damage": 600.0,
+    "damageType": "ArmourPiercing",
+    "shelterBonus": false,
+    "source": "mount",
+    "users": [
+      "BPLightTankOffensiveC"
+    ]
+  },
+  "LongRangeArtillery:LRArtilleryAmmo": {
+    "name": "Storm Cannon",
+    "ammo": "LRArtilleryAmmo",
+    "damage": 3000.0,
+    "damageType": "HighExplosive",
+    "shelterBonus": false,
+    "source": "mount",
+    "users": [
+      "BPLRArtillery"
+    ]
+  },
+  "LongRangeArtilleryTrainGunner:LRArtilleryAmmo": {
+    "name": "Tempest Cannon RA-2",
+    "ammo": "LRArtilleryAmmo",
+    "damage": 3000.0,
+    "damageType": "HighExplosive",
+    "shelterBonus": false,
+    "source": "mount",
+    "users": [
+      "BPTrainLRArtillery"
+    ]
+  },
+  "MGC": {
+    "name": "KRN886-127 Gast Machine Gun",
+    "ammo": "MGAmmo",
+    "damage": 68.75,
+    "damageType": "HeavyKinetic",
+    "shelterBonus": false,
+    "source": "infantry"
+  },
+  "MGTC:MGAmmo": {
+    "name": "Deployed Machinegun",
+    "ammo": "MGAmmo",
+    "damage": 103.125,
+    "damageType": "HeavyKinetic",
+    "shelterBonus": false,
+    "source": "mount",
+    "users": [
+      "BPDeployedMGTC"
+    ]
+  },
+  "MGTW:MGAmmo": {
+    "name": "Deployed Machinegun",
+    "ammo": "MGAmmo",
+    "damage": 68.75,
+    "damageType": "HeavyKinetic",
+    "shelterBonus": false,
+    "source": "mount",
+    "users": [
+      "BPDeployedMGTW"
+    ]
+  },
+  "MGW": {
+    "name": "Malone MK.2",
+    "ammo": "MGAmmo",
+    "damage": 44.0,
+    "damageType": "HeavyKinetic",
+    "shelterBonus": false,
+    "source": "infantry"
+  },
+  "MechGunner:BattleTankAmmo": {
+    "name": "Centurion MV-2",
+    "ammo": "BattleTankAmmo",
+    "damage": 1750.0,
+    "damageType": "Explosive",
+    "shelterBonus": false,
+    "source": "mount",
+    "users": [
+      "BPMech"
+    ]
+  },
+  "MechHMGGunner:MGAmmo": {
+    "name": "Centurion MV-2",
+    "ammo": "MGAmmo",
+    "damage": 68.75,
+    "damageType": "HeavyKinetic",
+    "shelterBonus": false,
+    "source": "mount",
+    "users": [
+      "BPMech",
+      "BPMech"
+    ]
+  },
+  "MechWGunner:RPGAmmo": {
+    "name": "Herne QMW 1a Scourge Hunter",
+    "ammo": "RpgAmmo",
+    "damage": 550.0,
+    "damageType": "Explosive",
+    "shelterBonus": false,
+    "source": "mount",
+    "users": [
+      "BPMechW"
+    ]
+  },
+  "MechWMachineGunner:MGAmmo": {
+    "name": "Herne QMW 1a Scourge Hunter",
+    "ammo": "MGAmmo",
+    "damage": 68.75,
+    "damageType": "HeavyKinetic",
+    "shelterBonus": false,
+    "source": "mount",
+    "users": [
+      "BPMechW"
+    ]
+  },
+  "MediumBoatCBowGunner:LightTankAmmo": {
+    "name": "Strider",
+    "ammo": "LightTankAmmo",
+    "damage": 600.0,
+    "damageType": "Explosive",
+    "shelterBonus": false,
+    "source": "mount",
+    "users": [
+      "BPMediumBoatC"
+    ]
+  },
+  "MediumBoatCPortGunner:MGAmmo": {
+    "name": "Strider",
+    "ammo": "MGAmmo",
+    "damage": 68.75,
+    "damageType": "HeavyKinetic",
+    "shelterBonus": false,
+    "source": "mount",
+    "users": [
+      "BPMediumBoatC"
+    ]
+  },
+  "MediumBoatCStarboardGunner:MGAmmo": {
+    "name": "Strider",
+    "ammo": "MGAmmo",
+    "damage": 68.75,
+    "damageType": "HeavyKinetic",
+    "shelterBonus": false,
+    "source": "mount",
+    "users": [
+      "BPMediumBoatC"
+    ]
+  },
+  "MediumBoatCSternGunner:MiniTankAmmo": {
+    "name": "Strider",
+    "ammo": "MiniTankAmmo",
+    "damage": 400.0,
+    "damageType": "Explosive",
+    "shelterBonus": false,
+    "source": "mount",
+    "users": [
+      "BPMediumBoatC"
+    ]
+  },
+  "MediumBoatWBowGunner:RPGAmmo": {
+    "name": "Rinnspeir Ornitier-Class Gunship",
+    "ammo": "RpgAmmo",
+    "damage": 550.0,
+    "damageType": "Explosive",
+    "shelterBonus": false,
+    "source": "mount",
+    "users": [
+      "BPMediumBoatW"
+    ]
+  },
+  "MediumBoatWISGGunner:MiniTankAmmo": {
+    "name": "Rinnspeir Ornitier-Class Gunship",
+    "ammo": "MiniTankAmmo",
+    "damage": 400.0,
+    "damageType": "Explosive",
+    "shelterBonus": false,
+    "source": "mount",
+    "users": [
+      "BPMediumBoatW",
+      "BPMediumBoatW"
+    ]
+  },
+  "MediumTank2CMGGunner:MGAmmo": {
+    "name": "86K-a “Bardiche”",
+    "ammo": "MGAmmo",
+    "damage": 68.75,
+    "damageType": "HeavyKinetic",
+    "shelterBonus": false,
+    "source": "mount",
+    "users": [
+      "BPMediumTank2C"
+    ]
+  },
+  "MediumTank2CMainGunner:ATAmmo": {
+    "name": "86K-a “Bardiche”",
+    "ammo": "ATAmmo",
+    "damage": 600.0,
+    "damageType": "ArmourPiercing",
+    "shelterBonus": false,
+    "source": "mount",
+    "users": [
+      "BPMediumTank2C"
+    ]
+  },
+  "MediumTank2IndirectWGunner:AssaultRifleAmmo": {
+    "name": "Gallagher Thornfall Mk. VI",
+    "ammo": "AssaultRifleAmmo",
+    "damage": 43.75,
+    "damageType": "LightKinetic",
+    "shelterBonus": false,
+    "source": "mount",
+    "users": [
+      "BPMediumTank2IndirectW"
+    ]
+  },
+  "MediumTank2IndirectWRackGunner:ATRPGIndirectAmmo": {
+    "name": "Gallagher Thornfall Mk. VI",
+    "ammo": "ATRPGIndirectAmmo",
+    "damage": 675.0,
+    "damageType": "ArmourPiercing",
+    "shelterBonus": false,
+    "source": "mount",
+    "users": [
+      "BPMediumTank2IndirectW"
+    ]
+  },
+  "MediumTank2MultiWCommanderGunner:MGAmmo": {
+    "name": "Gallagher Highwayman Mk. III",
+    "ammo": "MGAmmo",
+    "damage": 68.75,
+    "damageType": "HeavyKinetic",
+    "shelterBonus": false,
+    "source": "mount",
+    "users": [
+      "BPMediumTank2MultiW"
+    ]
+  },
+  "MediumTank2MultiWGunner:ATRifleAmmo": {
+    "name": "Gallagher Highwayman Mk. III",
+    "ammo": "ATRifleAmmo",
+    "damage": 187.5,
+    "damageType": "AntiTankKinetic",
+    "shelterBonus": false,
+    "source": "mount",
+    "users": [
+      "BPMediumTank2MultiW"
+    ]
+  },
+  "MediumTank2RangeWAssaultRifle:AssaultRifleAmmo": {
+    "name": "Gallagher Outlaw Mk. II",
+    "ammo": "AssaultRifleAmmo",
+    "damage": 43.75,
+    "damageType": "LightKinetic",
+    "shelterBonus": false,
+    "source": "mount",
+    "users": [
+      "BPMediumTank2RangeW"
+    ]
+  },
+  "MediumTank2RangeWGunner:LightTankAmmo": {
+    "name": "Gallagher Outlaw Mk. II",
+    "ammo": "LightTankAmmo",
+    "damage": 720.0,
+    "damageType": "Explosive",
+    "shelterBonus": false,
+    "source": "mount",
+    "users": [
+      "BPMediumTank2RangeW"
+    ]
+  },
+  "MediumTank2TwinCGunner:MGAmmo": {
+    "name": "86K-c “Ranseur”",
+    "ammo": "MGAmmo",
+    "damage": 82.5,
+    "damageType": "HeavyKinetic",
+    "shelterBonus": false,
+    "source": "mount",
+    "users": [
+      "BPMediumTank2TwinC"
+    ]
+  },
+  "MediumTank2TwinCRPG:RPGAmmo": {
+    "name": "86K-c “Ranseur”",
+    "ammo": "RpgAmmo",
+    "damage": 550.0,
+    "damageType": "Explosive",
+    "shelterBonus": false,
+    "source": "mount",
+    "users": [
+      "BPMediumTank2TwinC"
+    ]
+  },
+  "MediumTank2WGunner:MiniTankAmmo": {
+    "name": "Gallagher Brigand Mk. I",
+    "ammo": "MiniTankAmmo",
+    "damage": 400.0,
+    "damageType": "Explosive",
+    "shelterBonus": false,
+    "source": "mount",
+    "users": [
+      "BPMediumTank2W"
+    ]
+  },
+  "MediumTank2WMGGunner:AssaultRifleAmmo": {
+    "name": "Gallagher Brigand Mk. I",
+    "ammo": "AssaultRifleAmmo",
+    "damage": 43.75,
+    "damageType": "LightKinetic",
+    "shelterBonus": false,
+    "source": "mount",
+    "users": [
+      "BPMediumTank2W"
+    ]
+  },
+  "MediumTank3CFrontGunner:HELaunchedGrenade": {
+    "name": "90T-v “Nemesis”",
+    "ammo": "HELaunchedGrenade",
+    "damage": 400.0,
+    "damageType": "Explosive",
+    "shelterBonus": false,
+    "source": "mount",
+    "users": [
+      "BPMediumTank3C"
+    ]
+  },
+  "MediumTank3CGunner:ATAmmo": {
+    "name": "90T-v “Nemesis”",
+    "ammo": "ATAmmo",
+    "damage": 600.0,
+    "damageType": "ArmourPiercing",
+    "shelterBonus": false,
+    "source": "mount",
+    "users": [
+      "BPMediumTank3C"
+    ]
+  },
+  "MediumTankATWGunner:ATLargeAmmo": {
+    "name": "Silverhand Lordscar - Mk. X",
+    "ammo": "ATLargeAmmo",
+    "damage": 1200.5,
+    "damageType": "ArmourPiercing",
+    "shelterBonus": false,
+    "source": "mount",
+    "users": [
+      "BPMediumTankATW"
+    ]
+  },
+  "MediumTankCGunner:LightTankAmmo": {
+    "name": "85K-b “Falchion”",
+    "ammo": "LightTankAmmo",
+    "damage": 600.0,
+    "damageType": "Explosive",
+    "shelterBonus": false,
+    "source": "mount",
+    "users": [
+      "BPMediumTankC"
+    ]
+  },
+  "MediumTankLargeCGunner:BattleTankAmmo": {
+    "name": "85V-g “Talos”",
+    "ammo": "BattleTankAmmo",
+    "damage": 1750.0,
+    "damageType": "Explosive",
+    "shelterBonus": false,
+    "source": "mount",
+    "users": [
+      "BPMediumTankLargeC"
+    ]
+  },
+  "MediumTankOffensiveCGunner:LightTankAmmo": {
+    "name": "85K-a “Spatha”",
+    "ammo": "LightTankAmmo",
+    "damage": 600.0,
+    "damageType": "Explosive",
+    "shelterBonus": false,
+    "source": "mount",
+    "users": [
+      "BPMediumTankOffensiveC"
+    ]
+  },
+  "MediumTankSiegeWFrontGunner:MortarTankAmmo": {
+    "name": "Silverhand Chieftain - Mk. VI",
+    "ammo": "MortarTankAmmo",
+    "damage": 800.0,
+    "damageType": "Demolition",
+    "shelterBonus": false,
+    "source": "mount",
+    "users": [
+      "BPMediumTankSiegeW"
+    ]
+  },
+  "MediumTankSiegeWMGGunner:MGAmmo": {
+    "name": "Silverhand Chieftain - Mk. VI",
+    "ammo": "MGAmmo",
+    "damage": 82.5,
+    "damageType": "HeavyKinetic",
+    "shelterBonus": false,
+    "source": "mount",
+    "users": [
+      "BPMediumTankSiegeW"
+    ]
+  },
+  "MediumTankWFrontGunner:ATAmmo": {
+    "name": "BPMediumTankW",
+    "ammo": "ATAmmo",
+    "damage": 600.0,
+    "damageType": "ArmourPiercing",
+    "shelterBonus": false,
+    "source": "mount",
+    "users": [
+      "BPMediumTankW",
+      "MediumTankBaseW"
+    ]
+  },
+  "MediumTankWGunner:LightTankAmmo": {
+    "name": "BPMediumTankW",
+    "ammo": "LightTankAmmo",
+    "damage": 600.0,
+    "damageType": "Explosive",
+    "shelterBonus": false,
+    "source": "mount",
+    "users": [
+      "BPMediumTankW"
+    ]
+  },
+  "MineBoatMachineGunner:MGAmmo": {
+    "name": "Bellweather by VAC",
+    "ammo": "MGAmmo",
+    "damage": 82.5,
+    "damageType": "HeavyKinetic",
+    "shelterBonus": false,
+    "source": "mount",
+    "users": [
+      "BPMineBoat"
+    ]
+  },
+  "MiniTorpedoAmmo": {
+    "name": "Quillback Torpedo",
+    "ammo": "MiniTorpedoAmmo",
+    "damage": 500.0,
+    "damageType": "ArmourPiercing",
+    "shelterBonus": false,
+    "source": "ammo"
+  },
+  "MortarTankGunner:MortarTankAmmo": {
+    "name": "HC-7 “Ballista”",
+    "ammo": "MortarTankAmmo",
+    "damage": 800.0,
+    "damageType": "Demolition",
+    "shelterBonus": false,
+    "source": "mount",
+    "users": [
+      "BPMortarTankC"
+    ]
+  },
+  "MotorcycleOffensiveGunner:AssaultRifleAmmo": {
+    "name": "00MS “Stinger”",
+    "ammo": "AssaultRifleAmmo",
+    "damage": 43.75,
+    "damageType": "LightKinetic",
+    "shelterBonus": false,
+    "source": "mount",
+    "users": [
+      "BPMotorcycleOffensiveC"
+    ]
+  },
+  "PistolC": {
+    "name": "Ferro 879",
+    "ammo": "PistolAmmo",
+    "damage": 37.5,
+    "damageType": "LightKinetic",
+    "shelterBonus": false,
+    "source": "infantry"
+  },
+  "PistolLightW": {
+    "name": "Cascadier 873",
+    "ammo": "PistolAmmo",
+    "damage": 33.3,
+    "damageType": "LightKinetic",
+    "shelterBonus": false,
+    "source": "infantry"
+  },
+  "PistolW": {
+    "name": "Ahti Model 2",
+    "ammo": "PistolAmmo",
+    "damage": 37.5,
+    "damageType": "LightKinetic",
+    "shelterBonus": false,
+    "source": "infantry"
+  },
+  "RPGTW": {
+    "name": "Cutler Foebreaker",
+    "ammo": "RpgAmmo",
+    "damage": 550.0,
+    "damageType": "Explosive",
+    "shelterBonus": false,
+    "source": "infantry"
+  },
+  "RPGTW:RPGAmmo": {
+    "name": "Deployed RPG",
+    "ammo": "RpgAmmo",
+    "damage": 550.0,
+    "damageType": "Explosive",
+    "shelterBonus": false,
+    "source": "mount",
+    "users": [
+      "BPDeployedRPGTW"
+    ]
+  },
+  "RelicAPCMachineGunner:MGAmmo": {
+    "name": "Heavy Infantry Carrier",
+    "ammo": "MGAmmo",
+    "damage": 68.75,
+    "damageType": "HeavyKinetic",
+    "shelterBonus": false,
+    "source": "mount",
+    "users": [
+      "BPRelicAPC",
+      "BPRelicAPC"
+    ]
+  },
+  "RelicArmoredCarGunner:AssaultRifleAmmo": {
+    "name": "Armoured Fighting Tractor",
+    "ammo": "AssaultRifleAmmo",
+    "damage": 43.75,
+    "damageType": "LightKinetic",
+    "shelterBonus": false,
+    "source": "mount",
+    "users": [
+      "BPRelicArmouredCar"
+    ]
+  },
+  "RelicLightTankGunner:LightTankAmmo": {
+    "name": "Storm Tank",
+    "ammo": "LightTankAmmo",
+    "damage": 420.0,
+    "damageType": "Explosive",
+    "shelterBonus": false,
+    "source": "mount",
+    "users": [
+      "BPRelicLightTank"
+    ]
+  },
+  "RelicMediumTankGunnerL:LightTankAmmo": {
+    "name": "PL-1 “Phalanx”",
+    "ammo": "LightTankAmmo",
+    "damage": 600.0,
+    "damageType": "Explosive",
+    "shelterBonus": false,
+    "source": "mount",
+    "users": [
+      "BPRelicMediumTank"
+    ]
+  },
+  "RelicMediumTankGunnerR:LightTankAmmo": {
+    "name": "PL-1 “Phalanx”",
+    "ammo": "LightTankAmmo",
+    "damage": 600.0,
+    "damageType": "Explosive",
+    "shelterBonus": false,
+    "source": "mount",
+    "users": [
+      "BPRelicMediumTank"
+    ]
+  },
+  "Revolver": {
+    "name": "Cometa T2-9",
+    "ammo": "RevolverAmmo",
+    "damage": 75.0,
+    "damageType": "LightKinetic",
+    "shelterBonus": false,
+    "source": "infantry"
+  },
+  "RifleAutomaticC": {
+    "name": "Catena rt.IV Auto-Rifle",
+    "ammo": "RifleAmmo",
+    "damage": 56.25,
+    "damageType": "LightKinetic",
+    "shelterBonus": false,
+    "source": "infantry"
+  },
+  "RifleAutomaticW": {
+    "name": "Sampo Auto-Rifle 77",
+    "ammo": "RifleAmmo",
+    "damage": 45.0,
+    "damageType": "LightKinetic",
+    "shelterBonus": false,
+    "source": "infantry"
+  },
+  "RifleAutomaticWSingleShotAmmo": {
+    "name": "RifleAutomaticWSingleShotAmmo",
+    "ammo": "RifleAutomaticWSingleShotAmmo",
+    "damage": 56.25,
+    "damageType": "LightKinetic",
+    "shelterBonus": false,
+    "source": "ammo"
+  },
+  "RifleC": {
+    "name": "Argenti r.II Rifle",
+    "ammo": "RifleAmmo",
+    "damage": 56.25,
+    "damageType": "LightKinetic",
+    "shelterBonus": false,
+    "source": "infantry"
+  },
+  "RifleHeavyC": {
+    "name": "Volta r.I Repeater",
+    "ammo": "RifleAmmo",
+    "damage": 98.4375,
+    "damageType": "LightKinetic",
+    "shelterBonus": false,
+    "source": "infantry"
+  },
+  "RifleHeavyW": {
+    "name": "The Hangman 757",
+    "ammo": "RevolverAmmo",
+    "damage": 97.5,
+    "damageType": "LightKinetic",
+    "shelterBonus": false,
+    "source": "infantry"
+  },
+  "RifleLightC": {
+    "name": "Fuscina pi.I",
+    "ammo": "RifleAmmo",
+    "damage": 49.95,
+    "damageType": "LightKinetic",
+    "shelterBonus": false,
+    "source": "infantry"
+  },
+  "RifleLightW": {
+    "name": "Blakerow 871",
+    "ammo": "RifleAmmo",
+    "damage": 49.95,
+    "damageType": "LightKinetic",
+    "shelterBonus": false,
+    "source": "infantry"
+  },
+  "RifleLongC": {
+    "name": "KRR2-790 Omen",
+    "ammo": "RifleAmmo",
+    "damage": 56.25,
+    "damageType": "LightKinetic",
+    "shelterBonus": false,
+    "source": "infantry"
+  },
+  "RifleLongW": {
+    "name": "Clancy Cinder M3",
+    "ammo": "RifleAmmo",
+    "damage": 56.25,
+    "damageType": "LightKinetic",
+    "shelterBonus": false,
+    "source": "infantry"
+  },
+  "RifleShortW": {
+    "name": "No.2B Hawthorne",
+    "ammo": "RifleAmmo",
+    "damage": 49.95,
+    "damageType": "LightKinetic",
+    "shelterBonus": false,
+    "source": "infantry"
+  },
+  "RifleW": {
+    "name": "No.2 Loughcaster",
+    "ammo": "RifleAmmo",
+    "damage": 56.25,
+    "damageType": "LightKinetic",
+    "shelterBonus": false,
+    "source": "infantry"
+  },
+  "SMGC": {
+    "name": "“The Pitch Gun” mc.V",
+    "ammo": "SMGAmmo",
+    "damage": 25.3125,
+    "damageType": "LightKinetic",
+    "shelterBonus": false,
+    "source": "infantry"
+  },
+  "SMGHeavyC": {
+    "name": "“Lionclaw” mc.VIII",
+    "ammo": "SMGAmmo",
+    "damage": 33.75,
+    "damageType": "LightKinetic",
+    "shelterBonus": false,
+    "source": "infantry"
+  },
+  "SMGHeavyW": {
+    "name": "No.1 “The Liar” Submachinegun",
+    "ammo": "SMGAmmo",
+    "damage": 33.75,
+    "damageType": "LightKinetic",
+    "shelterBonus": false,
+    "source": "infantry"
+  },
+  "SMGW": {
+    "name": "Fiddler Submachine Gun Model 868",
+    "ammo": "SMGAmmo",
+    "damage": 33.75,
+    "damageType": "LightKinetic",
+    "shelterBonus": false,
+    "source": "infantry"
+  },
+  "SatchelChargeT": {
+    "name": "Havoc Charge Detonator",
+    "ammo": "SatchelChargeT",
+    "damage": 1950.0,
+    "damageType": "Demolition",
+    "shelterBonus": false,
+    "source": "ammo"
+  },
+  "SatchelChargeW": {
+    "name": "Alligator Charge",
+    "ammo": "SatchelChargeW",
+    "damage": 550.0,
+    "damageType": "Demolition",
+    "shelterBonus": false,
+    "source": "ammo"
+  },
+  "ScoutTankMultiWGunner:DemolitionRocketAmmo": {
+    "name": "King Jester Mk. I-1",
+    "ammo": "DemolitionRocketAmmo",
+    "damage": 250.0,
+    "damageType": "Demolition",
+    "shelterBonus": false,
+    "source": "mount",
+    "users": [
+      "BPScoutTankMultiW"
+    ]
+  },
+  "ScoutTankOffensiveWGunner:MiniTankAmmo": {
+    "name": "King Gallant Mk. II",
+    "ammo": "MiniTankAmmo",
+    "damage": 400.0,
+    "damageType": "Explosive",
+    "shelterBonus": false,
+    "source": "mount",
+    "users": [
+      "BPScoutTankOffensiveW"
+    ]
+  },
+  "ScoutTankWGunner:MGAmmo": {
+    "name": "King Spire Mk. I",
+    "ammo": "MGAmmo",
+    "damage": 44.0,
+    "damageType": "HeavyKinetic",
+    "shelterBonus": false,
+    "source": "mount",
+    "users": [
+      "BPScoutTankW"
+    ]
+  },
+  "ScoutVehicleOffensiveCGunner:RPGAmmo": {
+    "name": "UV-24 “Icarus”",
+    "ammo": "RpgAmmo",
+    "damage": 550.0,
+    "damageType": "Explosive",
+    "shelterBonus": false,
+    "source": "mount",
+    "users": [
+      "BPScoutVehicleOffensiveC"
+    ]
+  },
+  "ScoutVehicleOffensiveWGunner:AssaultRifleAmmo": {
+    "name": "Drummond Spitfire 100d",
+    "ammo": "AssaultRifleAmmo",
+    "damage": 43.75,
+    "damageType": "LightKinetic",
+    "shelterBonus": false,
+    "source": "mount",
+    "users": [
+      "BPScoutVehicleOffensiveW"
+    ]
+  },
+  "ShotgunC": {
+    "name": "KRF1-750 Dragonfly",
+    "ammo": "ShotgunAmmo",
+    "damage": 87.5,
+    "damageType": "LightKinetic",
+    "shelterBonus": false,
+    "source": "infantry"
+  },
+  "ShotgunW": {
+    "name": "No.4 The Pillory Scattergun",
+    "ammo": "ShotgunAmmo",
+    "damage": 78.75,
+    "damageType": "LightKinetic",
+    "shelterBonus": false,
+    "source": "infantry"
+  },
+  "SniperRifleAmmo": {
+    "name": "SniperRifleAmmo",
+    "ammo": "SniperRifleAmmo",
+    "damage": 125.0,
+    "damageType": "LightKinetic",
+    "shelterBonus": false,
+    "source": "ammo"
+  },
+  "SniperRifleC": {
+    "name": "KRR3-792 Auger",
+    "ammo": "RifleAmmo",
+    "damage": 87.1875,
+    "damageType": "LightKinetic",
+    "shelterBonus": false,
+    "source": "infantry"
+  },
+  "SniperRifleW": {
+    "name": "Clancy-Raca M4",
+    "ammo": "RifleAmmo",
+    "damage": 87.1875,
+    "damageType": "LightKinetic",
+    "shelterBonus": false,
+    "source": "infantry"
+  },
+  "StickyBomb": {
+    "name": "Anti-Tank Sticky Bomb",
+    "ammo": "StickyBomb",
+    "damage": 450.0,
+    "damageType": "AntiTankExplosive",
+    "shelterBonus": false,
+    "source": "ammo"
+  },
+  "SuperTankCGunner:BattleTankAmmo": {
+    "name": "O-75b \"Ares\"",
+    "ammo": "BattleTankAmmo",
+    "damage": 1750.0,
+    "damageType": "Explosive",
+    "shelterBonus": false,
+    "source": "mount",
+    "users": [
+      "BPSuperTankC"
+    ]
+  },
+  "SuperTankWGrenadeLauncherGunner:ATLaunchedGrenadeW": {
+    "name": "Cullen Predator Mk. III",
+    "ammo": "ATLaunchedGrenadeW",
+    "damage": 425.0,
+    "damageType": "AntiTankExplosive",
+    "shelterBonus": false,
+    "source": "mount",
+    "users": [
+      "BPSuperTankW",
+      "BPSuperTankW"
+    ]
+  },
+  "SuperTankWGrenadeLauncherGunner:GrenadeW": {
+    "name": "Cullen Predator Mk. III",
+    "ammo": "GrenadeW",
+    "damage": 250.0,
+    "damageType": "LightKinetic",
+    "shelterBonus": false,
+    "source": "mount",
+    "users": [
+      "BPSuperTankW",
+      "BPSuperTankW"
+    ]
+  },
+  "SuperTankWGrenadeLauncherGunner:HELaunchedGrenade": {
+    "name": "Cullen Predator Mk. III",
+    "ammo": "HELaunchedGrenade",
+    "damage": 400.0,
+    "damageType": "Explosive",
+    "shelterBonus": false,
+    "source": "mount",
+    "users": [
+      "BPSuperTankW",
+      "BPSuperTankW"
+    ]
+  },
+  "SuperTankWGunner:ATLargeAmmo": {
+    "name": "Cullen Predator Mk. III",
+    "ammo": "ATLargeAmmo",
+    "damage": 2187.5,
+    "damageType": "ArmourPiercing",
+    "shelterBonus": false,
+    "source": "mount",
+    "users": [
+      "BPSuperTankW"
+    ]
+  },
+  "SurfaceWaterMine": {
+    "name": "E681-B Hullbreaker Mine",
+    "ammo": "SurfaceWaterMine",
+    "damage": 650.0,
+    "damageType": "ArmourPiercing",
+    "shelterBonus": false,
+    "source": "ammo"
+  },
+  "TankMine": {
+    "name": "Abisme AT-99 Mine",
+    "ammo": "TankMine",
+    "damage": 850.0,
+    "damageType": "AntiTankExplosive",
+    "shelterBonus": false,
+    "source": "ammo"
+  },
+  "TanketteCGunner:MGAmmo": {
+    "name": "T12 “Actaeon” Tankette",
+    "ammo": "MGAmmo",
+    "damage": 68.75,
+    "damageType": "HeavyKinetic",
+    "shelterBonus": false,
+    "source": "mount",
+    "users": [
+      "BPTanketteC"
+    ]
+  },
+  "TanketteFlameCGunner:FlameAmmo": {
+    "name": "T14 “Vesta” Tankette",
+    "ammo": "FlameAmmo",
+    "damage": 25.0,
+    "damageType": "Incendiary",
+    "shelterBonus": false,
+    "source": "mount",
+    "users": [
+      "BPTanketteFlameC"
+    ]
+  },
+  "TanketteMultiCGunner:FireRocketAmmo": {
+    "name": "T13 “Deioneus” Rocket Battery",
+    "ammo": "FireRocketAmmo",
+    "damage": 145.0,
+    "damageType": "IncendiaryHighExplosive",
+    "shelterBonus": true,
+    "source": "mount",
+    "users": [
+      "BPTanketteMultiC"
+    ]
+  },
+  "TanketteOffensiveCGunner:MiniTankAmmo": {
+    "name": "T20 “Ixion” Tankette",
+    "ammo": "MiniTankAmmo",
+    "damage": 400.0,
+    "damageType": "Explosive",
+    "shelterBonus": false,
+    "source": "mount",
+    "users": [
+      "BPTanketteOffensiveC"
+    ]
+  },
+  "TrainCombatCarCLeftGunner:MGAmmo": {
+    "name": "Aegis Steelbreaker K5a",
+    "ammo": "MGAmmo",
+    "damage": 68.75,
+    "damageType": "HeavyKinetic",
+    "shelterBonus": false,
+    "source": "mount",
+    "users": [
+      "BPTrainCombatCarC"
+    ]
+  },
+  "TrainCombatCarCMainGunner:LightTankAmmo": {
+    "name": "Aegis Steelbreaker K5a",
+    "ammo": "LightTankAmmo",
+    "damage": 600.0,
+    "damageType": "Explosive",
+    "shelterBonus": false,
+    "source": "mount",
+    "users": [
+      "BPTrainCombatCarC"
+    ]
+  },
+  "TrainCombatCarCRightGunner:MGAmmo": {
+    "name": "Aegis Steelbreaker K5a",
+    "ammo": "MGAmmo",
+    "damage": 68.75,
+    "damageType": "HeavyKinetic",
+    "shelterBonus": false,
+    "source": "mount",
+    "users": [
+      "BPTrainCombatCarC"
+    ]
+  },
+  "TrainCombatCarWFrontGunner:LightTankAmmo": {
+    "name": "O’Brien Warsmith v.215",
+    "ammo": "LightTankAmmo",
+    "damage": 600.0,
+    "damageType": "Explosive",
+    "shelterBonus": false,
+    "source": "mount",
+    "users": [
+      "BPTrainCombatCarW"
+    ]
+  },
+  "TrainCombatCarWRearGunner:LightTankAmmo": {
+    "name": "O’Brien Warsmith v.215",
+    "ammo": "LightTankAmmo",
+    "damage": 600.0,
+    "damageType": "Explosive",
+    "shelterBonus": false,
+    "source": "mount",
+    "users": [
+      "BPTrainCombatCarW"
+    ]
+  },
+  "TrainHospitalGunner:MGAmmo": {
+    "name": "BMS Bloodtender",
+    "ammo": "MGAmmo",
+    "damage": 68.75,
+    "damageType": "HeavyKinetic",
+    "shelterBonus": false,
+    "source": "mount",
+    "users": [
+      "BPTrainHospital"
+    ]
+  },
+  "TruckMultiCGunner:HERocketAmmo": {
+    "name": "R-17 “Retiarius” Skirmisher",
+    "ammo": "HERocketAmmo",
+    "damage": 700.0,
+    "damageType": "HighExplosive",
+    "shelterBonus": true,
+    "source": "mount",
+    "users": [
+      "BPTruckMultiC"
+    ]
+  },
+  "TruckOffensiveGunner:AssaultRifleAmmo": {
+    "name": "R-9 “Speartip” Escort",
+    "ammo": "AssaultRifleAmmo",
+    "damage": 43.75,
+    "damageType": "LightKinetic",
+    "shelterBonus": false,
+    "source": "mount",
+    "users": [
+      "BPTruckOffensiveC"
+    ]
+  },
+  "UnexplodedOrdnance": {
+    "name": "Unexploded Ordnance",
+    "ammo": "UnexplodedOrdnance",
+    "damage": 1200.0,
+    "damageType": null,
+    "shelterBonus": false,
+    "source": "ammo"
+  },
+  "WaterBucketfull": {
+    "name": "WaterBucketfull",
+    "ammo": "WaterBucketfull",
+    "damage": 125.0,
+    "damageType": "Extinguishing",
+    "shelterBonus": false,
+    "source": "ammo"
+  },
+  "WaterMine": {
+    "name": "E680-S Rudder Lock",
+    "ammo": "WaterMine",
+    "damage": 1350.0,
+    "damageType": "HighExplosive",
+    "shelterBonus": true,
+    "source": "ammo"
+  },
+  "bpaagunai:WeaponDamage": {
+    "name": "Anti-Air Gun",
+    "ammo": null,
+    "damage": 2400.0,
+    "damageType": "Shrapnel",
+    "shelterBonus": false,
+    "source": "ai"
+  },
+  "bpaagunai:WeaponDamageAlternate": {
+    "name": "Anti-Air Gun",
+    "ammo": null,
+    "damage": 1000.0,
+    "damageType": "Shrapnel",
+    "shelterBonus": false,
+    "source": "ai-nonInfantry"
+  },
+  "bpaigarrisonturret:WeaponDamage": {
+    "name": "bpaigarrisonturret",
+    "ammo": null,
+    "damage": 10.0,
+    "damageType": null,
+    "shelterBonus": false,
+    "source": "ai"
+  },
+  "bpaigarrisonturret:WeaponDamageAlternate": {
+    "name": "bpaigarrisonturret",
+    "ammo": null,
+    "damage": 400.0,
+    "damageType": "Explosive",
+    "shelterBonus": false,
+    "source": "ai-nonInfantry"
+  },
+  "bpartilleryait1:DamageParams": {
+    "name": "Artillery Garrison (Tier 1)",
+    "ammo": null,
+    "damage": 500.0,
+    "damageType": "HighExplosive",
+    "shelterBonus": true,
+    "source": "ai",
+    "radius": 11.25,
+    "innerRadius": 4.0,
+    "falloff": 2.0
+  },
+  "bpartilleryait2:DamageParams": {
+    "name": "Artillery Garrison (Tier 2)",
+    "ammo": null,
+    "damage": 500.0,
+    "damageType": "HighExplosive",
+    "shelterBonus": true,
+    "source": "ai",
+    "radius": 11.25,
+    "innerRadius": 4.0,
+    "falloff": 2.0
+  },
+  "bpartilleryait3:DamageParams": {
+    "name": "Artillery Garrison (Tier 3)",
+    "ammo": null,
+    "damage": 500.0,
+    "damageType": "HighExplosive",
+    "shelterBonus": true,
+    "source": "ai",
+    "radius": 11.25,
+    "innerRadius": 4.0,
+    "falloff": 2.0
+  },
+  "bpatgunait1:WeaponDamage": {
+    "name": "AT Gun Garrison (Tier 1)",
+    "ammo": null,
+    "damage": 300.0,
+    "damageType": "ArmourPiercing",
+    "shelterBonus": false,
+    "source": "ai"
+  },
+  "bpatgunait1:WeaponDamageAlternate": {
+    "name": "AT Gun Garrison (Tier 1)",
+    "ammo": null,
+    "damage": 600.0,
+    "damageType": "ArmourPiercing",
+    "shelterBonus": false,
+    "source": "ai-nonInfantry"
+  },
+  "bpatgunait2:WeaponDamage": {
+    "name": "AT Gun Garrison (Tier 2)",
+    "ammo": null,
+    "damage": 600.0,
+    "damageType": "ArmourPiercing",
+    "shelterBonus": false,
+    "source": "ai"
+  },
+  "bpatgunait2:WeaponDamageAlternate": {
+    "name": "AT Gun Garrison (Tier 2)",
+    "ammo": null,
+    "damage": 600.0,
+    "damageType": "ArmourPiercing",
+    "shelterBonus": false,
+    "source": "ai-nonInfantry"
+  },
+  "bpatgunait3:WeaponDamage": {
+    "name": "AT Gun Garrison (Tier 3)",
+    "ammo": null,
+    "damage": 600.0,
+    "damageType": "ArmourPiercing",
+    "shelterBonus": false,
+    "source": "ai"
+  },
+  "bpatgunait3:WeaponDamageAlternate": {
+    "name": "AT Gun Garrison (Tier 3)",
+    "ammo": null,
+    "damage": 600.0,
+    "damageType": "ArmourPiercing",
+    "shelterBonus": false,
+    "source": "ai-nonInfantry"
+  },
+  "bpatpillbox:WeaponDamage": {
+    "name": "Anti-Tank Rifle Pillbox",
+    "ammo": null,
+    "damage": 81.25,
+    "damageType": "AntiTankKinetic",
+    "shelterBonus": false,
+    "source": "ai"
+  },
+  "bpcoastalgun:WeaponDamage": {
+    "name": "Coastal Gun",
+    "ammo": null,
+    "damage": 900.0,
+    "damageType": "HighExplosive",
+    "shelterBonus": true,
+    "source": "ai"
+  },
+  "bpcoastalgun:WeaponDamageAlternate": {
+    "name": "Coastal Gun",
+    "ammo": null,
+    "damage": 1000.0,
+    "damageType": "HighExplosive",
+    "shelterBonus": true,
+    "source": "ai-nonInfantry"
+  },
+  "bpisgpillbox:WeaponDamage": {
+    "name": "Infantry Support Gun Pillbox",
+    "ammo": null,
+    "damage": 400.0,
+    "damageType": "Explosive",
+    "shelterBonus": false,
+    "source": "ai"
+  },
+  "bplargeshipaiartillerygunturretcomponent:WeaponDamage": {
+    "name": "bplargeshipaiartillerygunturretcomponent",
+    "ammo": null,
+    "damage": 650.0,
+    "damageType": "HighExplosive",
+    "shelterBonus": true,
+    "source": "ai"
+  },
+  "bplargeshipaiartillerygunturretcomponent:WeaponDamageAlternate": {
+    "name": "bplargeshipaiartillerygunturretcomponent",
+    "ammo": null,
+    "damage": 650.0,
+    "damageType": "HighExplosive",
+    "shelterBonus": true,
+    "source": "ai-nonInfantry"
+  },
+  "bpmgaibase:WeaponDamage": {
+    "name": "bpmgaibase",
+    "ammo": null,
+    "damage": 20.0,
+    "damageType": null,
+    "shelterBonus": false,
+    "source": "ai"
+  },
+  "bpmgaibase:WeaponDamageAlternate": {
+    "name": "bpmgaibase",
+    "ammo": null,
+    "damage": 50.0,
+    "damageType": null,
+    "shelterBonus": false,
+    "source": "ai-nonInfantry"
+  },
+  "bpmgait1:WeaponDamage": {
+    "name": "Machine Gun Garrison (Tier 1)",
+    "ammo": null,
+    "damage": 55.0,
+    "damageType": null,
+    "shelterBonus": false,
+    "source": "ai"
+  },
+  "bpmgait2:WeaponDamage": {
+    "name": "Machine Gun Garrison (Tier 2)",
+    "ammo": null,
+    "damage": 55.0,
+    "damageType": null,
+    "shelterBonus": false,
+    "source": "ai"
+  },
+  "bpmgait3:WeaponDamage": {
+    "name": "Machine Gun Garrison (Tier 3)",
+    "ammo": null,
+    "damage": 55.0,
+    "damageType": null,
+    "shelterBonus": false,
+    "source": "ai"
+  },
+  "bpmgait3:WeaponDamageAlternate": {
+    "name": "Machine Gun Garrison (Tier 3)",
+    "ammo": null,
+    "damage": 50.0,
+    "damageType": null,
+    "shelterBonus": false,
+    "source": "ai-nonInfantry"
+  },
+  "bpmgpillbox:WeaponDamage": {
+    "name": "Machine Gun Pillbox",
+    "ammo": null,
+    "damage": 55.0,
+    "damageType": null,
+    "shelterBonus": false,
+    "source": "ai"
+  },
+  "bpmgpillbox:WeaponDamageAlternate": {
+    "name": "Machine Gun Pillbox",
+    "ammo": null,
+    "damage": 50.0,
+    "damageType": null,
+    "shelterBonus": false,
+    "source": "ai-nonInfantry"
+  },
+  "bprifleait1:WeaponDamage": {
+    "name": "Rifle Garrison (Tier 1)",
+    "ammo": null,
+    "damage": 40.0,
+    "damageType": null,
+    "shelterBonus": false,
+    "source": "ai"
+  },
+  "bprifleait1:WeaponDamageAlternate": {
+    "name": "Rifle Garrison (Tier 1)",
+    "ammo": null,
+    "damage": 50.0,
+    "damageType": null,
+    "shelterBonus": false,
+    "source": "ai-nonInfantry"
+  },
+  "bprifleait2:WeaponDamage": {
+    "name": "Rifle Garrison (Tier 2)",
+    "ammo": null,
+    "damage": 40.0,
+    "damageType": null,
+    "shelterBonus": false,
+    "source": "ai"
+  },
+  "bprifleait2:WeaponDamageAlternate": {
+    "name": "Rifle Garrison (Tier 2)",
+    "ammo": null,
+    "damage": 50.0,
+    "damageType": null,
+    "shelterBonus": false,
+    "source": "ai-nonInfantry"
+  },
+  "bprifleait3:WeaponDamage": {
+    "name": "Rifle Garrison (Tier 3)",
+    "ammo": null,
+    "damage": 40.0,
+    "damageType": null,
+    "shelterBonus": false,
+    "source": "ai"
+  },
+  "bprifleait3:WeaponDamageAlternate": {
+    "name": "Rifle Garrison (Tier 3)",
+    "ammo": null,
+    "damage": 50.0,
+    "damageType": null,
+    "shelterBonus": false,
+    "source": "ai-nonInfantry"
+  },
+  "bpriflepillbox:WeaponDamage": {
+    "name": "Rifle Pillbox",
+    "ammo": null,
+    "damage": 56.25,
+    "damageType": "LightKinetic",
+    "shelterBonus": false,
+    "source": "ai"
+  },
+  "bpriflepillbox:WeaponDamageAlternate": {
+    "name": "Rifle Pillbox",
+    "ammo": null,
+    "damage": 62.5,
+    "damageType": "LightKinetic",
+    "shelterBonus": false,
+    "source": "ai-nonInfantry"
+  }
+}

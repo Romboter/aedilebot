@@ -1,0 +1,282 @@
+{
+  "AircraftBomberCFuselage": {
+    "name": "V-1 Tzykalia Fuselage",
+    "armourType": "Tier1Aircraft",
+    "health": 1845,
+    "disableLevel": 0.6,
+    "repairCost": 150
+  },
+  "AircraftBomberCEngine": {
+    "name": "V-1 Tzykalia Engine",
+    "armourType": "Tier1Aircraft",
+    "health": 1800,
+    "disableLevel": 0.6,
+    "repairCost": 150
+  },
+  "AircraftBomberCWing": {
+    "name": "V-1 Tzykalia Wing",
+    "armourType": "Tier1Aircraft",
+    "health": 1485,
+    "disableLevel": 0.8,
+    "repairCost": 150
+  },
+  "AircraftBomberCTail": {
+    "name": "V-1 Tzykalia Tail",
+    "armourType": "Tier1Aircraft",
+    "health": 1485,
+    "disableLevel": 0.8,
+    "repairCost": 150
+  },
+  "AircraftDiveCFuselage": {
+    "name": "Mergo-4 “Myrmidon” Fuselage",
+    "armourType": "Tier1Aircraft",
+    "health": 1450,
+    "disableLevel": 0.6,
+    "repairCost": 100
+  },
+  "AircraftDiveCEngine": {
+    "name": "Mergo-4 “Myrmidon” Engine",
+    "armourType": "Tier1Aircraft",
+    "health": 500,
+    "disableLevel": 0.6,
+    "repairCost": 100
+  },
+  "AircraftDiveCWing": {
+    "name": "Mergo-4 “Myrmidon” Wing",
+    "armourType": "Tier1Aircraft",
+    "health": 750,
+    "disableLevel": 0.8,
+    "repairCost": 100
+  },
+  "AircraftDiveCTail": {
+    "name": "Mergo-4 “Myrmidon” Tail",
+    "armourType": "Tier1Aircraft",
+    "health": 750,
+    "disableLevel": 0.8,
+    "repairCost": 100
+  },
+  "AircraftWaterWFuselage": {
+    "name": "Tulka I1.9 White Raven Fuselage",
+    "armourType": "Tier1Aircraft",
+    "health": 1375,
+    "disableLevel": 0.6,
+    "repairCost": 75
+  },
+  "AircraftWaterWEngine": {
+    "name": "Tulka I1.9 White Raven Engine",
+    "armourType": "Tier1Aircraft",
+    "health": 500,
+    "disableLevel": 0.6,
+    "repairCost": 75
+  },
+  "AircraftWaterWWing": {
+    "name": "Tulka I1.9 White Raven Wing",
+    "armourType": "Tier1Aircraft",
+    "health": 750,
+    "disableLevel": 0.8,
+    "repairCost": 75
+  },
+  "AircraftWaterWTail": {
+    "name": "Tulka I1.9 White Raven Tail",
+    "armourType": "Tier1Aircraft",
+    "health": 750,
+    "disableLevel": 0.8,
+    "repairCost": 75
+  },
+  "AircraftFighterWFuselage": {
+    "name": "Luminary Mk. II Harbinger Fuselage",
+    "armourType": "Tier1Aircraft",
+    "health": 1250,
+    "disableLevel": 0.6,
+    "repairCost": 75
+  },
+  "AircraftFighterWEngine": {
+    "name": "Luminary Mk. II Harbinger Engine",
+    "armourType": "Tier1Aircraft",
+    "health": 500,
+    "disableLevel": 0.6,
+    "repairCost": 75
+  },
+  "AircraftFighterWWing": {
+    "name": "Luminary Mk. II Harbinger Wing",
+    "armourType": "Tier1Aircraft",
+    "health": 650,
+    "disableLevel": 0.8,
+    "repairCost": 75
+  },
+  "AircraftFighterWTail": {
+    "name": "Luminary Mk. II Harbinger Tail",
+    "armourType": "Tier1Aircraft",
+    "health": 650,
+    "disableLevel": 0.8,
+    "repairCost": 75
+  },
+  "AircraftFighterCFuselage": {
+    "name": "Toxot-902 “Blind Silver” Fuselage",
+    "armourType": "Tier1Aircraft",
+    "health": 1250,
+    "disableLevel": 0.6,
+    "repairCost": 75
+  },
+  "AircraftFighterCEngine": {
+    "name": "Toxot-902 “Blind Silver” Engine",
+    "armourType": "Tier1Aircraft",
+    "health": 500,
+    "disableLevel": 0.6,
+    "repairCost": 75
+  },
+  "AircraftFighterCWing": {
+    "name": "Toxot-902 “Blind Silver” Wing",
+    "armourType": "Tier1Aircraft",
+    "health": 650,
+    "disableLevel": 0.8,
+    "repairCost": 75
+  },
+  "AircraftFighterCTail": {
+    "name": "Toxot-902 “Blind Silver” Tail",
+    "armourType": "Tier1Aircraft",
+    "health": 650,
+    "disableLevel": 0.8,
+    "repairCost": 75
+  },
+  "AircraftTorpedoWFuselage": {
+    "name": "M925 Austringer Man-O-War Fuselage",
+    "armourType": "Tier1Aircraft",
+    "health": 1450,
+    "disableLevel": 0.6,
+    "repairCost": 100
+  },
+  "AircraftTorpedoWEngine": {
+    "name": "M925 Austringer Man-O-War Engine",
+    "armourType": "Tier1Aircraft",
+    "health": 500,
+    "disableLevel": 0.6,
+    "repairCost": 100
+  },
+  "AircraftTorpedoWWing": {
+    "name": "M925 Austringer Man-O-War Wing",
+    "armourType": "Tier1Aircraft",
+    "health": 750,
+    "disableLevel": 0.8,
+    "repairCost": 100
+  },
+  "AircraftTorpedoWTail": {
+    "name": "M925 Austringer Man-O-War Tail",
+    "armourType": "Tier1Aircraft",
+    "health": 750,
+    "disableLevel": 0.8,
+    "repairCost": 100
+  },
+  "AircraftParatrooperCFuselage": {
+    "name": "V-5b Pegasus Fuselage",
+    "armourType": "Tier1Aircraft",
+    "health": 1450,
+    "disableLevel": 0.6,
+    "repairCost": 125
+  },
+  "AircraftParatrooperCEngine": {
+    "name": "V-5b Pegasus Engine",
+    "armourType": "Tier1Aircraft",
+    "health": 650,
+    "disableLevel": 0.6,
+    "repairCost": 125
+  },
+  "AircraftParatrooperCWing": {
+    "name": "V-5b Pegasus Wing",
+    "armourType": "Tier1Aircraft",
+    "health": 880,
+    "disableLevel": 0.8,
+    "repairCost": 125
+  },
+  "AircraftParatrooperCTail": {
+    "name": "V-5b Pegasus Tail",
+    "armourType": "Tier1Aircraft",
+    "health": 880,
+    "disableLevel": 0.8,
+    "repairCost": 125
+  },
+  "AircraftParatrooperWFuselage": {
+    "name": "Rinnspeir Mk. I Zealot Fuselage",
+    "armourType": "Tier1Aircraft",
+    "health": 1450,
+    "disableLevel": 0.6,
+    "repairCost": 125
+  },
+  "AircraftParatrooperWEngine": {
+    "name": "Rinnspeir Mk. I Zealot Engine",
+    "armourType": "Tier1Aircraft",
+    "health": 650,
+    "disableLevel": 0.6,
+    "repairCost": 125
+  },
+  "AircraftParatrooperWWing": {
+    "name": "Rinnspeir Mk. I Zealot Wing",
+    "armourType": "Tier1Aircraft",
+    "health": 880,
+    "disableLevel": 0.8,
+    "repairCost": 125
+  },
+  "AircraftParatrooperWTail": {
+    "name": "Rinnspeir Mk. I Zealot Tail",
+    "armourType": "Tier1Aircraft",
+    "health": 880,
+    "disableLevel": 0.8,
+    "repairCost": 125
+  },
+  "AircraftBomberWFuselage": {
+    "name": "Tulka P4 Welkinrive Fuselage",
+    "armourType": "Tier1Aircraft",
+    "health": 1845,
+    "disableLevel": 0.6,
+    "repairCost": 150
+  },
+  "AircraftBomberWEngine": {
+    "name": "Tulka P4 Welkinrive Engine",
+    "armourType": "Tier1Aircraft",
+    "health": 1800,
+    "disableLevel": 0.6,
+    "repairCost": 150
+  },
+  "AircraftBomberWWing": {
+    "name": "Tulka P4 Welkinrive Wing",
+    "armourType": "Tier1Aircraft",
+    "health": 1485,
+    "disableLevel": 0.8,
+    "repairCost": 150
+  },
+  "AircraftBomberWTail": {
+    "name": "Tulka P4 Welkinrive Tail",
+    "armourType": "Tier1Aircraft",
+    "health": 1485,
+    "disableLevel": 0.8,
+    "repairCost": 150
+  },
+  "AircraftFighter2CFuselage": {
+    "name": "Daimon aK-5 “Harpy” Fuselage",
+    "armourType": "Tier1Aircraft",
+    "health": 1450,
+    "disableLevel": 0.6,
+    "repairCost": 75
+  },
+  "AircraftFighter2CEngine": {
+    "name": "Daimon aK-5 “Harpy” Engine",
+    "armourType": "Tier1Aircraft",
+    "health": 800,
+    "disableLevel": 0.6,
+    "repairCost": 75
+  },
+  "AircraftFighter2CWing": {
+    "name": "Daimon aK-5 “Harpy” Wing",
+    "armourType": "Tier1Aircraft",
+    "health": 800,
+    "disableLevel": 0.8,
+    "repairCost": 75
+  },
+  "AircraftFighter2CTail": {
+    "name": "Daimon aK-5 “Harpy” Tail",
+    "armourType": "Tier1Aircraft",
+    "health": 800,
+    "disableLevel": 0.8,
+    "repairCost": 75
+  }
+}

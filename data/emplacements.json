@@ -1,0 +1,292 @@
+{
+  "EmplacedAAC": {
+    "name": "DAE 5b “Zeal”",
+    "armourType": "Tier1Structure",
+    "health": 1250,
+    "emplaced": {
+      "healthMultiplier": 1,
+      "trackingMultiplier": 1.0
+    },
+    "repairCost": 100,
+    "weapon": {
+      "weapon": "EmplacedAACGunner:AAAmmo",
+      "count": 1,
+      "range": 40.0,
+      "reach": 40.0,
+      "firingTime": 0.0,
+      "reload": 3.5,
+      "magazine": 1
+    },
+    "cost": [
+      {
+        "code": "Wood",
+        "qty": 175
+      }
+    ]
+  },
+  "EmplacedAAW": {
+    "name": "Leary AA-70 Bolas",
+    "armourType": "Tier1Structure",
+    "health": 1250,
+    "emplaced": {
+      "healthMultiplier": 1,
+      "trackingMultiplier": 1.0
+    },
+    "repairCost": 100,
+    "weapon": {
+      "weapon": "EmplacedAAWGunner:AAAmmo",
+      "count": 1,
+      "range": 40.0,
+      "reach": 40.0,
+      "firingTime": 0.0,
+      "reload": 3.5,
+      "magazine": 1
+    },
+    "cost": [
+      {
+        "code": "Wood",
+        "qty": 175
+      }
+    ]
+  },
+  "EmplacedATLargeW": {
+    "name": "Huber Starbreaker 94.5mm",
+    "armourType": "Tier1Structure",
+    "health": 2650,
+    "emplaced": {
+      "healthMultiplier": 4.0,
+      "trackingMultiplier": 2.0
+    },
+    "repairCost": 300,
+    "weapon": {
+      "weapon": "EmplacedATLargeWGunner:ATLargeAmmo",
+      "count": 1,
+      "range": 45.0,
+      "reach": 45.0,
+      "firingTime": 0.0,
+      "reload": 3.0,
+      "magazine": 1
+    },
+    "cost": []
+  },
+  "EmplacedATW": {
+    "name": "Leary Shellbore 68mm",
+    "armourType": "Tier1Structure",
+    "health": 1500,
+    "emplaced": {
+      "healthMultiplier": 4.0,
+      "trackingMultiplier": 2.0
+    },
+    "repairCost": 100,
+    "weapon": {
+      "weapon": "EmplacedATWGunner:ATAmmo",
+      "count": 1,
+      "range": 45.0,
+      "reach": 45.0,
+      "firingTime": 0.0,
+      "reload": 2.5,
+      "magazine": 1
+    },
+    "cost": [
+      {
+        "code": "Cloth",
+        "qty": 150
+      }
+    ]
+  },
+  "EmplacedCannonLargeC": {
+    "name": "DAE 2a-1 “Ruptura”",
+    "armourType": "Tier1Structure",
+    "health": 2650,
+    "emplaced": {
+      "healthMultiplier": 4.0,
+      "trackingMultiplier": 2.0
+    },
+    "repairCost": 300,
+    "weapon": {
+      "weapon": "EmplacedCannonLargeCGunner:BattleTankAmmo",
+      "count": 1,
+      "range": 45.0,
+      "reach": 45.0,
+      "firingTime": 0.0,
+      "reload": 3.0,
+      "magazine": 1
+    },
+    "cost": []
+  },
+  "EmplacedHeavyArtilleryC": {
+    "name": "50-500 “Thunderbolt” Cannon",
+    "armourType": "Tier1Structure",
+    "health": 1000,
+    "emplaced": {
+      "healthMultiplier": 4.0,
+      "trackingMultiplier": 2.0
+    },
+    "repairCost": 100,
+    "weapon": {
+      "weapon": "EmplacedHeavyArtilleryCGunner:HeavyArtilleryAmmo",
+      "count": 1,
+      "range": 350.0,
+      "reach": 350.0,
+      "firingTime": 0.0,
+      "reload": 5.5,
+      "magazine": 1
+    },
+    "cost": [
+      {
+        "code": "Wood",
+        "qty": 195
+      }
+    ]
+  },
+  "EmplacedHeavyArtilleryW": {
+    "name": "Huber Exalt 150mm",
+    "armourType": "Tier1Structure",
+    "health": 1250,
+    "emplaced": {
+      "healthMultiplier": 4.0,
+      "trackingMultiplier": 2.0
+    },
+    "repairCost": 100,
+    "weapon": {
+      "weapon": "EmplacedHeavyArtilleryWGunner:HeavyArtilleryAmmo",
+      "count": 1,
+      "range": 300.0,
+      "reach": 300.0,
+      "firingTime": 0.0,
+      "reload": 4.5,
+      "magazine": 1
+    },
+    "cost": [
+      {
+        "code": "Wood",
+        "qty": 175
+      }
+    ]
+  },
+  "EmplacedIndirectC": {
+    "name": "DAE 1o-3 “Polybolos”",
+    "armourType": "Tier1Structure",
+    "health": 1500,
+    "emplaced": {
+      "healthMultiplier": 4.0,
+      "trackingMultiplier": 2.0
+    },
+    "repairCost": 115,
+    "weapon": {
+      "weapon": "EmplacedIndirectCGunner:ATRPGIndirectAmmo",
+      "count": 1,
+      "range": 50.0,
+      "reach": 50.0,
+      "firingTime": 0.0,
+      "reload": 3.0,
+      "magazine": 2
+    },
+    "cost": [
+      {
+        "code": "Cloth",
+        "qty": 125
+      }
+    ]
+  },
+  "EmplacedInfantryC": {
+    "name": "DAE 1b-2 “Serra”",
+    "armourType": "Tier1Structure",
+    "health": 1650,
+    "emplaced": {
+      "healthMultiplier": 4.0,
+      "trackingMultiplier": 2.0
+    },
+    "repairCost": 100,
+    "weapon": {
+      "weapon": "EmplacedInfantryCGunner:AircraftAmmo",
+      "count": 1,
+      "range": 40.0,
+      "reach": 45.0,
+      "firingTime": 0.0,
+      "reload": 6.0,
+      "magazine": 300
+    },
+    "cost": [
+      {
+        "code": "Cloth",
+        "qty": 100
+      }
+    ]
+  },
+  "EmplacedInfantryW": {
+    "name": "Leary Snare Trap 20",
+    "armourType": "Tier1Structure",
+    "health": 1500,
+    "emplaced": {
+      "healthMultiplier": 4.0,
+      "trackingMultiplier": 2.0
+    },
+    "repairCost": 100,
+    "weapon": {
+      "weapon": "EmplacedInfantryWGunner:AircraftAmmo",
+      "count": 1,
+      "range": 40.0,
+      "reach": 45.0,
+      "firingTime": 0.0,
+      "reload": 3.5,
+      "magazine": 200
+    },
+    "cost": [
+      {
+        "code": "Cloth",
+        "qty": 75
+      }
+    ]
+  },
+  "EmplacedLightArtilleryW": {
+    "name": "Huber Lariat 120mm",
+    "armourType": "Tier1Structure",
+    "health": 750,
+    "emplaced": {
+      "healthMultiplier": 4.0,
+      "trackingMultiplier": 2.0
+    },
+    "repairCost": 100,
+    "weapon": {
+      "weapon": "EmplacedLightArtilleryWGunner:LightArtilleryAmmo",
+      "count": 1,
+      "range": 300.0,
+      "reach": 300.0,
+      "firingTime": 0.0,
+      "reload": 4.5,
+      "magazine": 1
+    },
+    "cost": [
+      {
+        "code": "Wood",
+        "qty": 35
+      }
+    ]
+  },
+  "EmplacedMultiC": {
+    "name": "DAE 3b-2 “Hades’ Net”",
+    "armourType": "Tier1Structure",
+    "health": 750,
+    "emplaced": {
+      "healthMultiplier": 4.0,
+      "trackingMultiplier": 2.0
+    },
+    "repairCost": 100,
+    "weapon": {
+      "weapon": "EmplacedMultiCGunner:HERocketAmmo",
+      "count": 1,
+      "range": 575.0,
+      "reach": 575.0,
+      "firingTime": 0.4,
+      "reload": 3.5,
+      "magazine": 8
+    },
+    "cost": [
+      {
+        "code": "Wood",
+        "qty": 35
+      }
+    ]
+  }
+}
