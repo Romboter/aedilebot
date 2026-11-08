@@ -1,0 +1,3994 @@
+{
+ "targets": {
+  "00MS “Stinger” (MG bike)": {
+   "from": "vehicles:MotorcycleOffensiveC",
+   "type": "Vehicles",
+   "name": "00MS “Stinger”",
+   "aliases": "MG Bike;"
+  },
+  "03MM “Caster” (bike)": {
+   "from": "vehicles:MotorcycleC",
+   "type": "Vehicles",
+   "name": "03MM “Caster”",
+   "aliases": "Colonial Bike;"
+  },
+  "120-68 “Koronides” Field Gun (FA)": {
+   "from": "vehicles:LargeFieldLightArtilleryC",
+   "type": "Vehicles",
+   "name": "120-68 “Koronides” Field Gun",
+   "aliases": "collie 120;fa;colonial 120;push 120"
+  },
+  "40-250 “Alekto“ Heavy Cannon": {
+   "from": "vehicles:LargeFieldMortarC",
+   "type": "Vehicles",
+   "name": "40-250 “Alekto” Heavy Cannon",
+   "aliases": "alekto"
+  },
+  "AU-A150 Taurine Rigger (Heavy Truck)": {
+   "from": "vehicles:HeavyTruckC",
+   "type": "Vehicles",
+   "name": "AU-A150 Taurine Rigger",
+   "aliases": "heavy truck"
+  },
+  "Cnute Cliffwrest (Heavy Truck)": {
+   "from": "vehicles:HeavyTruckW",
+   "type": "Vehicles",
+   "name": "Cnute Cliffwrest",
+   "aliases": "warden heavy truck;cnute"
+  },
+  "40-45 “Smelter” Heavy Field Gun (HVFAT)": {
+   "from": "vehicles:FieldCannonDamageC",
+   "type": "Vehicles",
+   "name": "40-45 “Smelter”",
+   "aliases": "hv40;hv40mm;smelter"
+  },
+  "BMS - Fabricator (Advanced CV)": {
+   "from": "vehicles:ConstructionUtility",
+   "type": "Vehicles",
+   "name": "BMS - Fabricator",
+   "aliases": "acv;advanced cv;fabricator"
+  },
+  "BMS - Mineseeker (Small Locomotive)": {
+   "from": "vehicles:SmallTrainEngine",
+   "type": "Vehicles",
+   "name": "BMS Mineseeker",
+   "aliases": "mineseeker"
+  },
+  "BMS - Tinderbox (Fuel Container Car)": {
+   "from": "vehicles:SmallTrainLiquid",
+   "type": "Vehicles",
+   "name": "BMS Tinderbox",
+   "aliases": "tinderbox;oil container cart;fuel container cart;liquid container cart"
+  },
+  "BMS - Linerunner (Material Container Car)": {
+   "from": "vehicles:SmallTrainMaterial",
+   "type": "Vehicles",
+   "name": "BMS Linerunner",
+   "aliases": "linerunner;pallet cart"
+  },
+  "BMS - Railtruck (Resource Container Car)": {
+   "from": "vehicles:SmallTrainResource",
+   "type": "Vehicles",
+   "name": "BMS Railtruck",
+   "aliases": "railtruck;resource cart"
+  },
+  "74b-1 Ronan Gunship (GB)": {
+   "from": "vehicles:GunboatW",
+   "type": "Vehicles",
+   "name": "74b-1 Ronan Gunship",
+   "aliases": "gb;warden gb;gunboat;ronan;warden gunboat"
+  },
+  "Titan Class Battleship": {
+   "from": "vehicles:LargeShipBattleshipC",
+   "type": "Vehicles",
+   "name": "Titan",
+   "aliases": "titan;colonial battleship;collie battleship"
+  },
+  "Callahan Class Battleship": {
+   "from": "vehicles:LargeShipBattleshipW",
+   "type": "Vehicles",
+   "name": "Callahan",
+   "aliases": "callahan;warden battleship"
+  },
+  "Nakki Class Submarine": {
+   "from": "vehicles:LargeShipSubmarineW",
+   "type": "Vehicles",
+   "name": "Nakki",
+   "aliases": "nakki;warden submarine;warden sub"
+  },
+  "MacConmara ShoreRunner (Warden Landing Craft)": {
+   "from": "vehicles:LandingShipW",
+   "type": "Vehicles",
+   "name": "MacConmara Shorerunner",
+   "aliases": "warden landing craft;shorerunner"
+  },
+  "PA-12 Interceptor (Colonial Landing Craft)": {
+   "from": "vehicles:LandingShipC",
+   "type": "Vehicles",
+   "name": "Interceptor PA-12",
+   "aliases": "colonial landing craft;interceptor;collie landing craft"
+  },
+  "BMS Longhook (Base Ship)": {
+   "from": "vehicles:LargeShipBaseShip",
+   "type": "Vehicles",
+   "name": "BMS - Longhook",
+   "aliases": "base ship;long hook"
+  },
+  "BMS Bowhead (Resource Ship)": {
+   "from": "vehicles:LargeShipResourceShip",
+   "type": "Vehicles",
+   "name": "BMS - Bowhead",
+   "aliases": "resource ship; scrap ship"
+  },
+  "BMS Bluefin (Storage Ship)": {
+   "from": "vehicles:LargeShipStorageShip",
+   "type": "Vehicles",
+   "name": "BMS - Bluefin",
+   "aliases": "storage ship;bluefin;supply ship"
+  },
+  "Conqueror Class Destroyer": {
+   "from": "vehicles:LargeShipDestroyerC",
+   "type": "Vehicles",
+   "name": "Conqueror",
+   "aliases": "conqeuror;destroyer;dd"
+  },
+  "90T-v “Nemesis”": {
+   "from": "vehicles:MediumTank3C",
+   "type": "Vehicles",
+   "name": "90T-v “Nemesis”",
+   "aliases": "nemesis"
+  },
+  "85K-a “Spatha”": {
+   "from": "vehicles:MediumTankOffensiveC",
+   "type": "Vehicles",
+   "name": "85K-a “Spatha”",
+   "aliases": "spatha"
+  },
+  "85K-b “Falchion” (MPT)": {
+   "from": "vehicles:MediumTankC",
+   "type": "Vehicles",
+   "name": "85K-b “Falchion”",
+   "aliases": "mpt;falch;falchion"
+  },
+  "86K-a “Bardiche”": {
+   "from": "vehicles:MediumTank2C",
+   "type": "Vehicles",
+   "name": "86K-a “Bardiche”",
+   "aliases": "bard;"
+  },
+  "86K-c “Ranseur” (Quadiche)": {
+   "from": "vehicles:MediumTank2TwinC",
+   "type": "Vehicles",
+   "name": "86K-c “Ranseur”",
+   "aliases": "quadiche;lord farquad;rpg bard;ranseur"
+  },
+  "AA-2 Battering Ram (FAT)": {
+   "from": "vehicles:FieldATC",
+   "type": "Vehicles",
+   "name": "AA-2 \"Battering Ram\"",
+   "aliases": "fat;collie fat;"
+  },
+  "AB-11 “Doru” (MGAPC)": {
+   "from": "vehicles:LandingCraftOffensiveC",
+   "type": "Vehicles",
+   "name": "AB-11 “Doru”",
+   "aliases": "mgapc;doru"
+  },
+  "AB-8 “Acheron” (APC)": {
+   "from": "vehicles:LandingCraftC",
+   "type": "Vehicles",
+   "name": "AB-8 “Acheron”",
+   "aliases": "apc;collie apc;"
+  },
+  "Balfour Falconer 250mm": {
+   "from": "vehicles:FieldMortarW",
+   "type": "Vehicles",
+   "name": "Balfour Falconer 250mm",
+   "aliases": "fm250;fm;push 250;falconer"
+  },
+  "30-250 “Tisiphone“ Field Cannon": {
+   "from": "vehicles:FieldMortarC",
+   "type": "Vehicles",
+   "name": "30-250 “Tisiphone” Field Cannon",
+   "aliases": "colonial fm250;colonial fm;tisiphone"
+  },
+  "Balfour Rampart 68mm (HVFC)": {
+   "from": "vehicles:FieldATDamageW",
+   "type": "Vehicles",
+   "name": "Balfour Rampart 68mm",
+   "aliases": "hvfat"
+  },
+  "Balfour Wolfhound 40mm (FC)": {
+   "from": "vehicles:FieldCannonW",
+   "type": "Vehicles",
+   "name": "Balfour Wolfhound 40mm",
+   "aliases": "40fc;40mmfc;push40;40mm pushgun"
+  },
+  "BMS - Aquatipper (Barge)": {
+   "from": "vehicles:Barge",
+   "type": "Vehicles",
+   "name": "BMS - Aquatipper",
+   "aliases": "Barge;"
+  },
+  "BMS - Class 2 Mobile Auto-Crane": {
+   "from": "vehicles:Crane",
+   "type": "Vehicles",
+   "name": "BMS - Class 2 Mobile Auto-Crane",
+   "aliases": "crane;mobile crane"
+  },
+  "Motorboat": {
+   "from": "vehicles:Motorboat",
+   "type": "Vehicles",
+   "name": "BMS - Grouper",
+   "aliases": "Rowboat;Boat"
+  },
+  "Ironship (freighter)": {
+   "from": "vehicles:Freighter",
+   "type": "Vehicles",
+   "name": "BMS - Ironship",
+   "aliases": "freighter;ironship"
+  },
+  "Flatbed": {
+   "from": "vehicles:FlatbedTruck",
+   "type": "Vehicles",
+   "name": "BMS - Packmule Flatbed",
+   "aliases": "fb"
+  },
+  "Harvester": {
+   "from": "vehicles:Harvester",
+   "type": "Vehicles",
+   "name": "BMS - Scrap Hauler",
+   "aliases": ""
+  },
+  "Construction Vehicle (CV)": {
+   "from": "vehicles:Construction",
+   "type": "Vehicles",
+   "name": "BMS - Universal Assembly Rig",
+   "aliases": "cv"
+  },
+  "Collins Cannon 68mm (FAT)": {
+   "from": "vehicles:FieldATW",
+   "type": "Vehicles",
+   "name": "Collins Cannon 68mm",
+   "aliases": "warden fat;collins;"
+  },
+  "Devitt Ironhide Mk. IV": {
+   "from": "vehicles:LightTankDefensiveW",
+   "type": "Vehicles",
+   "name": "Devitt Ironhide Mk. IV",
+   "aliases": "ironhide"
+  },
+  "Devitt Mark III (LT)": {
+   "from": "vehicles:LightTankW",
+   "type": "Vehicles",
+   "name": "Devitt Mk. III",
+   "aliases": "warden lt;warden light tank;devitt"
+  },
+  "Devitt-Caine Mk. IV (Mortar Light Tank)": {
+   "from": "vehicles:LightTankArtilleryW",
+   "type": "Vehicles",
+   "name": "Devitt-Caine Mk. IV MMR",
+   "aliases": "mlt"
+  },
+  "Drummond Loscann 55c (ALUV)": {
+   "from": "vehicles:ScoutVehicleUtilityW",
+   "type": "Vehicles",
+   "name": "Drummond Loscann 55c",
+   "aliases": "aluv;duck jeep;duck car;"
+  },
+  "Drummond Spitfire 100d (MG Jeep)": {
+   "from": "vehicles:ScoutVehicleOffensiveW",
+   "type": "Vehicles",
+   "name": "Drummond Spitfire 100d",
+   "aliases": ""
+  },
+  "Dunne Caravaner 2f (Bus)": {
+   "from": "vehicles:BusW",
+   "type": "Vehicles",
+   "name": "Dunne Caravaner 2f",
+   "aliases": "bus"
+  },
+  "Dunne Fuelrunner 2d (Fuel tanker)": {
+   "from": "vehicles:TruckLiquidW",
+   "type": "Vehicles",
+   "name": "Dunne Fuelrunner 2d",
+   "aliases": "fuel truck;warden fuel truck"
+  },
+  "Dunne Landrunner 12c (Tracked)": {
+   "from": "vehicles:TruckMobilityW",
+   "type": "Vehicles",
+   "name": "Dunne Landrunner 12c",
+   "aliases": ""
+  },
+  "Dunne Leatherback 2a (Armored)": {
+   "from": "vehicles:TruckDefensiveW",
+   "type": "Vehicles",
+   "name": "Dunne Leatherback 2a",
+   "aliases": ""
+  },
+  "Dunne Loadlugger 3c (Raw Materials truck)": {
+   "from": "vehicles:TruckResourceW",
+   "type": "Vehicles",
+   "name": "Dunne Loadlugger 3c",
+   "aliases": ""
+  },
+  "Dunne Responder 3e (Ambulance)": {
+   "from": "vehicles:AmbulanceW",
+   "type": "Vehicles",
+   "name": "Dunne Responder 3e",
+   "aliases": "warden ambulance"
+  },
+  "Dunne Transport (Truck)": {
+   "from": "vehicles:TruckW",
+   "type": "Vehicles",
+   "name": "Dunne Transport",
+   "aliases": "warden truck;dunne;truck"
+  },
+  "G40 “Sagittarii” (FMG)": {
+   "from": "vehicles:FieldMGC",
+   "type": "Vehicles",
+   "name": "G40 “Sagittarii”",
+   "aliases": "collie fmg;fmg;field machine gun"
+  },
+  "Gallagher Brigand Mk. I": {
+   "from": "vehicles:MediumTank2W",
+   "type": "Vehicles",
+   "name": "Gallagher Brigand Mk. I",
+   "aliases": "brig"
+  },
+  "Gallagher Highwayman Mk. III": {
+   "from": "vehicles:MediumTank2MultiW",
+   "type": "Vehicles",
+   "name": "Gallagher Highwayman Mk. III",
+   "aliases": "hwm;highwayman"
+  },
+  "Gallagher Outlaw Mk. II (Cruiser)": {
+   "from": "vehicles:MediumTank2RangeW",
+   "type": "Vehicles",
+   "name": "Gallagher Outlaw Mk. II",
+   "aliases": "outlaw;shitlaw"
+  },
+  "H-10 “Pelekys” (LTD)": {
+   "from": "vehicles:LightTankOffensiveC",
+   "type": "Vehicles",
+   "name": "H-10 “Pelekys”",
+   "aliases": "ltd"
+  },
+  "H-8 “Kranesca” (Fastboi)": {
+   "from": "vehicles:LightTankMobilityC",
+   "type": "Vehicles",
+   "name": "H-8 “Kranesca”",
+   "aliases": "kran;kranesca;kranny"
+  },
+  "H5 \"Hatchet\" (LT)": {
+   "from": "vehicles:LightTankC",
+   "type": "Vehicles",
+   "name": "H-5 \"Hatchet\"",
+   "aliases": "lt;collie lt;colonial lt;colonial light tank"
+  },
+  "Half-Track (Javelin, HT/MGHT)": {
+   "from": "vehicles:HalfTrackC",
+   "type": "Vehicles",
+   "name": "HH-a “Javelin”",
+   "aliases": "jav;javelin;collie halftrack"
+  },
+  "Niska Mk. III Scar Twin (Warden Heavy HT)": {
+   "from": "vehicles:HalftrackTwinW",
+   "type": "Vehicles",
+   "name": "Niska Mk. III Scar Twin",
+   "aliases": "scar twin;warden heavy ht;warden heavy halftrack"
+  },
+  "Rooster Lamploader (Fuel Trailer)": {
+   "from": "vehicles:TrailerLiquid",
+   "type": "Vehicles",
+   "name": "Rooster - Lamploader",
+   "aliases": "lamploader;fuel trailer"
+  },
+  "Rooster Tumblebox (Material Trailer)": {
+   "from": "vehicles:TrailerMaterial",
+   "type": "Vehicles",
+   "name": "Rooster - Tumblebox",
+   "aliases": "tumblebox;material trailer"
+  },
+  "Rooster Junkwagon (Resource Trailer)": {
+   "from": "vehicles:TrailerResource",
+   "type": "Vehicles",
+   "name": "Rooster - Junkwagon",
+   "aliases": "junkwagon;resource trailer"
+  },
+  "Duncan's Coin (ATR Field Gun)": {
+   "from": "vehicles:FieldAT2W",
+   "type": "Vehicles",
+   "name": "Duncan’s Coin 14.5mm",
+   "aliases": "warden anti tank field gun;warden atr field gun;duncans Coin"
+  },
+  "GA-6 Cestus (Double ATR Field Gun)": {
+   "from": "vehicles:FieldAT2C",
+   "type": "Vehicles",
+   "name": "GA6 “Cestus”",
+   "aliases": "collie anti tank field gun;colonial anti tank field gun;collie atr field gun;cestus"
+  },
+  "HC-2 “Scorpion” (IST)": {
+   "from": "vehicles:LightTank2InfantryC",
+   "type": "Vehicles",
+   "name": "HC-2 “Scorpion”",
+   "aliases": "ist"
+  },
+  "HA-1 “Sagaris”": {
+   "from": "vehicles:LightTank3C",
+   "type": "Vehicles",
+   "name": "HA-1 “Sagaris”",
+   "aliases": "Sagaris;colonial AA tank;colonial AA LT;colonial mobile AA"
+  },
+  "Sharkey-Devitt Birdeater Mk. I": {
+   "from": "vehicles:LightTank3W",
+   "type": "Vehicles",
+   "name": "Sharkey-Devitt Birdeater Mk. I",
+   "aliases": "Birdeater;warden AA tank;warden AA LT;warden mobile AA"
+  },
+  "HC-7 \"Ballista\"": {
+   "from": "vehicles:MortarTankC",
+   "type": "Vehicles",
+   "name": "HC-7 \"Ballista\"",
+   "aliases": "ballista"
+  },
+  "HH-b “Hoplite” (AHT)": {
+   "from": "vehicles:HalfTrackDefensiveC",
+   "type": "Vehicles",
+   "name": "HH-b “Hoplite”",
+   "aliases": "hoplite;collie heavy halftrack;colonial heavy halftrack"
+  },
+  "HH-d “Peltast” (MHT)": {
+   "from": "vehicles:HalfTrackArtilleryC",
+   "type": "Vehicles",
+   "name": "HH-d “Peltast”",
+   "aliases": "mht;mortar halftrack"
+  },
+  "King Gallant Mk. II (30mm ST)": {
+   "from": "vehicles:ScoutTankOffensiveW",
+   "type": "Vehicles",
+   "name": "King Gallant Mk. II",
+   "aliases": "30mmST;30mm scout tank;"
+  },
+  "King Spire Mk. I (MGST)": {
+   "from": "vehicles:ScoutTankW",
+   "type": "Vehicles",
+   "name": "King Spire Mk. I",
+   "aliases": "mgst;scout tank;kingspire;king spire"
+  },
+  "King Jester - Mk. I-1 (rocket ST)": {
+   "from": "vehicles:ScoutTankMultiW",
+   "type": "Vehicles",
+   "name": "King Jester Mk. I-1",
+   "aliases": "rocket st;rocket scout tank;jester"
+  },
+  "Kivela Power Wheel 80-1 (bike)": {
+   "from": "vehicles:MotorcycleW",
+   "type": "Vehicles",
+   "name": "Kivela Power Wheel 80-1",
+   "aliases": ""
+  },
+  "Mulloy LPC (APC)": {
+   "from": "vehicles:LandingCraftW",
+   "type": "Vehicles",
+   "name": "Mulloy LPC",
+   "aliases": "warden apc"
+  },
+  "Niska Mk. I Gun Motor Carriage (HT/MGHT)": {
+   "from": "vehicles:HalfTrackW",
+   "type": "Vehicles",
+   "name": "Niska Mk. I Gun Motor Carriage",
+   "aliases": "warden ht;warden halftrack"
+  },
+  "Niska Mk. II Blinder (ATHT)": {
+   "from": "vehicles:HalfTrackOffensiveW",
+   "type": "Vehicles",
+   "name": "Niska Mk. II Blinder",
+   "aliases": "atht"
+  },
+  "Noble Widow MK. XIV (HTD)": {
+   "from": "vehicles:DestroyerTankW",
+   "type": "Vehicles",
+   "name": "Noble Widow MK. XIV",
+   "aliases": "htd;widow"
+  },
+  "O'Brien V.113 Gravekeeper (Bonecar/BAC)": {
+   "from": "vehicles:ArmoredCarATW",
+   "type": "Vehicles",
+   "name": "O’Brien V.113 Gravekeeper",
+   "aliases": "bonecar;bac;bonewagon"
+  },
+  "O’Brien V.101 Freeman (HAC)": {
+   "from": "vehicles:ArmoredCar2LargeW",
+   "type": "Vehicles",
+   "name": "O’Brien V.101 Freeman",
+   "aliases": "hac"
+  },
+  "O’Brien v.110 (AC)": {
+   "from": "vehicles:ArmoredCarW",
+   "type": "Vehicles",
+   "name": "O’Brien V.110",
+   "aliases": "warden armoured car;warden ac"
+  },
+  "O’Brien v.121 Highlander (TAC)": {
+   "from": "vehicles:ArmoredCarMobilityW",
+   "type": "Vehicles",
+   "name": "O’Brien V.121 Highlander",
+   "aliases": "tac"
+  },
+  "R-1 Hauler (Truck)": {
+   "from": "vehicles:TruckC",
+   "type": "Vehicles",
+   "name": "R-1 Hauler",
+   "aliases": "collie truck;colonial truck;hauler;r1"
+  },
+  "R-12 - “Salus” Ambulance": {
+   "from": "vehicles:AmbulanceC",
+   "type": "Vehicles",
+   "name": "R-12 - “Salus” Ambulance",
+   "aliases": "collie ambulance;"
+  },
+  "R-15 - “Chariot” (Bus)": {
+   "from": "vehicles:BusC",
+   "type": "Vehicles",
+   "name": "R-15 - “Chariot”",
+   "aliases": ""
+  },
+  "R-5 “Atlas” Hauler (Raw Materials Truck)": {
+   "from": "vehicles:TruckResourceC",
+   "type": "Vehicles",
+   "name": "R-5 “Atlas” Hauler",
+   "aliases": ""
+  },
+  "R-5b “Sisyphus” Hauler (Fast)": {
+   "from": "vehicles:TruckMobilityC",
+   "type": "Vehicles",
+   "name": "R-5b “Sisyphus” Hauler",
+   "aliases": "boost truck"
+  },
+  "R-9 “Speartip” Escort (MG Truck)": {
+   "from": "vehicles:TruckOffensiveC",
+   "type": "Vehicles",
+   "name": "R-9 “Speartip” Escort",
+   "aliases": "mg truck"
+  },
+  "RR-3 “Stolon” Tanker (Fuel Tanker)": {
+   "from": "vehicles:TruckLiquidC",
+   "type": "Vehicles",
+   "name": "RR-3 “Stolon” Tanker",
+   "aliases": "collie fuel truck;colonial fuel truck"
+  },
+  "Silverhand - Mk. IV (SvH)": {
+   "from": "vehicles:MediumTankW",
+   "type": "Vehicles",
+   "name": "Silverhand - Mk. IV",
+   "aliases": "svh; silverhand"
+  },
+  "Silverhand Chieftain - Mk. VI (SvB)": {
+   "from": "vehicles:MediumTankSiegeW",
+   "type": "Vehicles",
+   "name": "Silverhand Chieftain - Mk. VI",
+   "aliases": "chieftain;svb;chief;"
+  },
+  "Swallowtail 988/127-2 (FMG)": {
+   "from": "vehicles:FieldMGW",
+   "type": "Vehicles",
+   "name": "Swallowtail 988/127-2",
+   "aliases": "warden fmg"
+  },
+  "T12 “Actaeon” Tankette (MG Tankette)": {
+   "from": "vehicles:TanketteC",
+   "type": "Vehicles",
+   "name": "T12 “Actaeon” Tankette",
+   "aliases": "tankette"
+  },
+  "T20 “Ixion” Tankette (Roofette)": {
+   "from": "vehicles:TanketteOffensiveC",
+   "type": "Vehicles",
+   "name": "T20 “Ixion” Tankette",
+   "aliases": "30mm tankette;roofette;"
+  },
+  "T3 “Xiphos” (AC)": {
+   "from": "vehicles:ArmoredCarC",
+   "type": "Vehicles",
+   "name": "T3 “Xiphos”",
+   "aliases": "colonial ac;ac;armoured car"
+  },
+  "T5 “Percutio” (ATAC)": {
+   "from": "vehicles:ArmoredCarOffensiveC",
+   "type": "Vehicles",
+   "name": "T5 “Percutio”",
+   "aliases": "atac"
+  },
+  "T8 Gemini (RPGAC)": {
+   "from": "vehicles:ArmoredCarTwinC",
+   "type": "Vehicles",
+   "name": "T8 “Gemini”",
+   "aliases": ""
+  },
+  "Type C - “Charon” (GB)": {
+   "from": "vehicles:GunboatC",
+   "type": "Vehicles",
+   "name": "Type C - “Charon”",
+   "aliases": "collie gb;colonial gb;colonial gunboat;collie gunboat"
+  },
+  "UV-05a “Argonaut” (Jeep)": {
+   "from": "vehicles:ScoutVehicleMobilityC",
+   "type": "Vehicles",
+   "name": "UV-05a “Argonaut”",
+   "aliases": "argo"
+  },
+  "UV-24 “Icarus” (RPG Jeep)": {
+   "from": "vehicles:ScoutVehicleOffensiveC",
+   "type": "Vehicles",
+   "name": "UV-24 “Icarus”",
+   "aliases": "icarus;rpjeep"
+  },
+  "UV-5c “Odyssey”": {
+   "from": "vehicles:ScoutVehicleUtilityC",
+   "type": "Vehicles",
+   "name": "UV-5c “Odyssey”",
+   "aliases": "ody;collie luv"
+  },
+  "Drummond 100a (Warden LUV)": {
+   "from": "vehicles:ScoutVehicleW",
+   "type": "Vehicles",
+   "name": "Drummond 100a",
+   "aliases": "drummond;warden luv"
+  },
+  "Noble Firebrand Mk. XVII": {
+   "from": "vehicles:DestroyerTankFlameW",
+   "type": "Vehicles",
+   "name": "Noble Firebrand Mk. XVII",
+   "aliases": "flame htd"
+  },
+  "T14 “Vesta” Tankette": {
+   "from": "vehicles:TanketteFlameC",
+   "type": "Vehicles",
+   "name": "T14 “Vesta” Tankette",
+   "aliases": "flame tankette"
+  },
+  "O’Brien V.130 Wild Jack (Flame AC)": {
+   "from": "vehicles:ArmoredCarFlameW",
+   "type": "Vehicles",
+   "name": "O’Brien V.130 Wild Jack",
+   "aliases": "flame ac;flame armoured car;wild jack;wildjack"
+  },
+  "H-19 “Vulcan”": {
+   "from": "vehicles:LightTankFlameC",
+   "type": "Vehicles",
+   "name": "H-19 “Vulcan”",
+   "aliases": "flame lt"
+  },
+  "DAE 3b-2 “Hades Net” (Unemplaced)": {
+   "from": "emplacements:EmplacedMultiC",
+   "type": "Emplacements",
+   "name": "DAE 3b-2 “Hades’ Net” (Unemplaced)",
+   "variant": "unemplaced",
+   "aliases": "rocket emplacement;hades net;hades net unemplaced;emplaced rocket artillery"
+  },
+  "DAE 3b-2 Hades Net (Emplaced)": {
+   "from": "emplacements:EmplacedMultiC",
+   "type": "Emplacements",
+   "name": "DAE 3b-2 “Hades’ Net” (Emplaced)",
+   "variant": "emplaced",
+   "aliases": "hades net (emplaced)"
+  },
+  "85V-g \"Talos\"": {
+   "from": "vehicles:MediumTankLargeC",
+   "type": "Vehicles",
+   "name": "85V-g \"Talos\"",
+   "aliases": "kv2"
+  },
+  "Cullen Predator Mk. III": {
+   "from": "vehicles:SuperTankW",
+   "type": "Vehicles",
+   "name": "Cullen Predator Mk. III",
+   "aliases": "warden sht;sht;predator;warden super heavy tank;super heavy tank"
+  },
+  "945g “Stygian Bolt”": {
+   "from": "vehicles:LargeFieldATC",
+   "type": "Vehicles",
+   "name": "945g “Stygian Bolt”",
+   "aliases": "styg;stygian"
+  },
+  "Balfour Stockade 75mm": {
+   "from": "vehicles:LargeFieldCannonW",
+   "type": "Vehicles",
+   "name": "Balfour Stockade 75mm",
+   "aliases": ""
+  },
+  "Gallagher Thornfall Mk. VI": {
+   "from": "vehicles:MediumTank2IndirectW",
+   "type": "Vehicles",
+   "name": "Gallagher Thornfall Mk. VI",
+   "aliases": "bonelaw;"
+  },
+  "Niska-Rycker Mk. IX Skycaller": {
+   "from": "vehicles:HalfTrackMultiW",
+   "type": "Vehicles",
+   "name": "Niska-Rycker Mk. IX Skycaller",
+   "aliases": "rocket halftrack;rocket ht"
+  },
+  "T13 “Deioneus” Rocket Battery": {
+   "from": "vehicles:TanketteMultiC",
+   "type": "Vehicles",
+   "name": "T13 “Deioneus” Rocket Battery",
+   "aliases": "rocket tankette;fire rocket tankette;rockette"
+  },
+  "R-17 “Retiarius” Skirmisher": {
+   "from": "vehicles:TruckMultiC",
+   "type": "Vehicles",
+   "name": "R-17 “Retiarius” Skirmisher",
+   "aliases": "rocket truck;katyusha;retariatus;retairus"
+  },
+  "Rycker 4/3-F Wasp Nest": {
+   "from": "vehicles:LargeFieldMultiW",
+   "type": "Vehicles",
+   "name": "Rycker 4/3-F Wasp Nest",
+   "aliases": "field rocket artillery"
+  },
+  "O-75b \"Ares\"": {
+   "from": "vehicles:SuperTankC",
+   "type": "Vehicles",
+   "name": "O-75b \"Ares\"",
+   "aliases": "colonial sht;collie sht"
+  },
+  "Aegis Steelbreaker K5a": {
+   "from": "vehicles:TrainCombatCarC",
+   "type": "Vehicles",
+   "name": "Aegis Steelbreaker K5a",
+   "aliases": ""
+  },
+  "Flood Mk. IX Stain": {
+   "from": "vehicles:BattleTankHeavyArtilleryW",
+   "type": "Vehicles",
+   "name": "Flood Mk. IX Stain",
+   "aliases": "warden spg;stain;spg"
+  },
+  "Battle Tank Flood": {
+   "from": "vehicles:BattleTankW",
+   "type": "Vehicles",
+   "name": "Flood Mk. I",
+   "aliases": "warden bt;flood bt;flood;bt"
+  },
+  "Battle Tank Lance": {
+   "from": "vehicles:BattleTankC",
+   "type": "Vehicles",
+   "name": "Lance-36",
+   "aliases": "collie bt;colonial bt;lance;lance-36"
+  },
+  "Lance-46 Sarissa": {
+   "from": "vehicles:BattleTankHeavyArtilleryC",
+   "type": "Vehicles",
+   "name": "Lance-46 “Sarissa”",
+   "aliases": "collie spg;colonial spg;sarissa"
+  },
+  "O’Brien Warsmith v.215": {
+   "from": "vehicles:TrainCombatCarW",
+   "type": "Vehicles",
+   "name": "O’Brien Warsmith v.215",
+   "aliases": ""
+  },
+  "BMS Black Bolt": {
+   "from": "vehicles:TrainEngine",
+   "type": "Vehicles",
+   "name": "BMS Black Bolt",
+   "aliases": "train;locomotive;train head"
+  },
+  "BMS Holdout": {
+   "from": "vehicles:TrainInfantry",
+   "type": "Vehicles",
+   "name": "BMS Holdout",
+   "aliases": ""
+  },
+  "Tempest Cannon RA-2": {
+   "from": "vehicles:TrainLRArtillery",
+   "type": "Vehicles",
+   "name": "Tempest Cannon RA-2",
+   "aliases": "rsc;rail cannon;rail sc"
+  },
+  "BMS Rockhold": {
+   "from": "vehicles:TrainCoal",
+   "type": "Vehicles",
+   "name": "BMS Rockhold",
+   "aliases": "coal cart"
+  },
+  "BMS Longrider": {
+   "from": "vehicles:TrainFlatbed",
+   "type": "Vehicles",
+   "name": "BMS Longrider",
+   "aliases": "train flatbed;train cart;flatbed car;longrider"
+  },
+  "BMS Bloodtender (medical train car)": {
+   "from": "vehicles:TrainHospital",
+   "type": "Vehicles",
+   "name": "BMS Bloodtender",
+   "aliases": "medical train car;train hospital;blood tender"
+  },
+  "OilTanker": {
+   "static": {
+    "Name": "OilTanker",
+    "Additional Names": "",
+    "Cost": "-",
+    "Health": "1125",
+    "Armour Health": "0",
+    "Min Base Penetration Chance": "1",
+    "Max Base Penetration Chance": "1",
+    "Mitigation Type": "LightVehicle",
+    "Disable Level": "0.875",
+    "Repair Cost": "100",
+    "Speed": "",
+    "Slots": "2",
+    "Main Weapon (damage bonus)(max range, reach)(artillery range)": "",
+    "Reload time (pre-reload+reload) (magazine size) (artillery spread?)": "",
+    "Secondary Weapon": "",
+    "Tracks Disable Chance": "",
+    "Engine Disable Chance": "",
+    "Main Gun Disable Chance": "",
+    "Secondary Gun Disable Chance": "",
+    "": "",
+    "ObjectType": "Vehicles"
+   }
+  },
+  "BMS Stowheel (small shipping container cart)": {
+   "from": "vehicles:SmallTrainShipping",
+   "type": "Vehicles",
+   "name": "BMS Stowheel",
+   "aliases": "small container cart;container cart"
+  },
+  "SmallTrainEngine": {
+   "from": "vehicles:SmallTrainEngine",
+   "type": "Vehicles",
+   "name": "SmallTrainEngine",
+   "aliases": "small gauge train;small train"
+  },
+  "BMS Roadhouse": {
+   "from": "vehicles:TrainCaboose",
+   "type": "Vehicles",
+   "name": "BMS Roadhouse",
+   "aliases": "caboose"
+  },
+  "SmallTrainDump": {
+   "static": {
+    "Name": "SmallTrainDump",
+    "Additional Names": "",
+    "Cost": "-",
+    "Health": "900",
+    "Armour Health": "0",
+    "Min Base Penetration Chance": "1",
+    "Max Base Penetration Chance": "1",
+    "Mitigation Type": "Tier1Tank",
+    "Disable Level": "0.75",
+    "Repair Cost": "100",
+    "Speed": "",
+    "Slots": "25",
+    "Main Weapon (damage bonus)(max range, reach)(artillery range)": "",
+    "Reload time (pre-reload+reload) (magazine size) (artillery spread?)": "",
+    "Secondary Weapon": "",
+    "Tracks Disable Chance": "",
+    "Engine Disable Chance": "",
+    "Main Gun Disable Chance": "",
+    "Secondary Gun Disable Chance": "",
+    "": "",
+    "ObjectType": "Vehicles"
+   }
+  },
+  "SmallTrainResourcePlatform": {
+   "static": {
+    "Name": "SmallTrainResourcePlatform",
+    "Additional Names": "",
+    "Cost": "-",
+    "Health": "900",
+    "Armour Health": "0",
+    "Min Base Penetration Chance": "1",
+    "Max Base Penetration Chance": "1",
+    "Mitigation Type": "Tier1Tank",
+    "Disable Level": "0.75",
+    "Repair Cost": "100",
+    "Speed": "",
+    "Slots": "1",
+    "Main Weapon (damage bonus)(max range, reach)(artillery range)": "",
+    "Reload time (pre-reload+reload) (magazine size) (artillery spread?)": "",
+    "Secondary Weapon": "",
+    "Tracks Disable Chance": "",
+    "Engine Disable Chance": "",
+    "Main Gun Disable Chance": "",
+    "Secondary Gun Disable Chance": "",
+    "": "",
+    "ObjectType": "Vehicles"
+   }
+  },
+  "BMS - Overseer Sky-Hauler (Large Crane)": {
+   "from": "vehicles:LargeCrane",
+   "type": "Vehicles",
+   "name": "BMS - Overseer Sky-Hauler",
+   "aliases": "large crane;sky hauler;big facility crane"
+  },
+  "Battle Tank Destoyer Hasta": {
+   "from": "vehicles:BattleTankATC",
+   "type": "Vehicles",
+   "name": "Lance-25 “Hasta”",
+   "aliases": "btd;hasta;lance-25"
+  },
+  "O'Brien V.190 Knave (GAC)": {
+   "from": "vehicles:ArmoredCar2TwinW",
+   "type": "Vehicles",
+   "name": "O’Brien V.190 Knave",
+   "aliases": "gac;grenade launcher armoured car;knave"
+  },
+  "O'Brien v.200 Squire": {
+   "from": "vehicles:ArmoredCar2MultiW",
+   "type": "Vehicles",
+   "name": "O’Brien v.200 Squire",
+   "aliases": "rocket armored car"
+  },
+  "Silverhand Lordscar Mk. X": {
+   "from": "vehicles:MediumTankATW",
+   "type": "Vehicles",
+   "name": "Silverhand Lordscar - Mk. X",
+   "aliases": "lordscar;std"
+  },
+  "Grenade Launcher Tripod": {
+   "from": "tripods:DeployedGrenadeLauncherTC",
+   "type": "Tripods",
+   "name": "Grenade Launcher Tripod",
+   "aliases": ""
+  },
+  "Deployed Air Raid Siren": {
+   "from": "tripods:DeployedAirSirenT",
+   "type": "Tripods",
+   "name": "Deployed Air Raid Siren",
+   "aliases": ""
+  },
+  "Battle Tank Juggernaut": {
+   "from": "vehicles:BattleTankDefensiveW",
+   "type": "Vehicles",
+   "name": "Flood Juggernaut Mk. VII",
+   "aliases": "jugg;flame bt;juggernaut"
+  },
+  "20mm Anti Infantry Flak Gun (EMG) (Unemplaced)": {
+   "from": "emplacements:EmplacedInfantryW",
+   "type": "Emplacements",
+   "name": "20mm Anti Infantry Flak Gun (EMG) (Unemplaced)",
+   "variant": "unemplaced",
+   "aliases": "warden emg;emg;leary snare trap;warden emg unemplaced;emg unemplaced;leary snare trap unemplaced"
+  },
+  "20mm Anti Infantry Flak Gun (EMG) (Emplaced)": {
+   "from": "emplacements:EmplacedInfantryW",
+   "type": "Emplacements",
+   "name": "20mm Anti Infantry Flak Gun (EMG) (Emplaced)",
+   "variant": "emplaced",
+   "aliases": "warden emg emplaced;emg emplaced"
+  },
+  "50-500 \"Thunderbolt\" Cannon (Unemplaced)": {
+   "from": "emplacements:EmplacedHeavyArtilleryC",
+   "type": "Emplacements",
+   "name": "50-500 \"Thunderbolt\" Cannon (Unemplaced)",
+   "variant": "unemplaced",
+   "aliases": "collie 150;thunderbolt 150mm;thunderbolt"
+  },
+  "50-500 \"Thunderbolt\" Cannon (Emplaced)": {
+   "from": "emplacements:EmplacedHeavyArtilleryC",
+   "type": "Emplacements",
+   "name": "50-500 \"Thunderbolt\" Cannon (Emplaced)",
+   "variant": "emplaced",
+   "aliases": "collie 150 emplaced;thunderbolt 150mm emplaced"
+  },
+  "DAE 5b \"Zeal\" (Unemplaced)": {
+   "from": "emplacements:EmplacedAAC",
+   "type": "Emplacements",
+   "name": "DAE 5b \"Zeal\" (Unemplaced)",
+   "variant": "unemplaced",
+   "aliases": "colonial flak;Zeal;"
+  },
+  "DAE 5b \"Zeal\" (Emplaced)": {
+   "from": "emplacements:EmplacedAAC",
+   "type": "Emplacements",
+   "name": "DAE 5b \"Zeal\" (Emplaced)",
+   "variant": "emplaced",
+   "aliases": "colonial flak Emplaced;Zeal emplaced"
+  },
+  "68mm Anti-Tank Cannon (EAT) (Unemplaced)": {
+   "from": "emplacements:EmplacedATW",
+   "type": "Emplacements",
+   "name": "68mm Anti-Tank Cannon (EAT) (Unemplaced)",
+   "variant": "unemplaced",
+   "aliases": "eat;"
+  },
+  "68mm Anti-Tank Cannon (EAT) (Emplaced)": {
+   "from": "emplacements:EmplacedATW",
+   "type": "Emplacements",
+   "name": "68mm Anti-Tank Cannon (EAT) (Emplaced)",
+   "variant": "emplaced",
+   "aliases": "eat emplaced"
+  },
+  "Huber Exalt 150mm (Unemplaced)": {
+   "from": "emplacements:EmplacedHeavyArtilleryW",
+   "type": "Emplacements",
+   "name": "Huber Exalt 150mm (Unemplaced)",
+   "variant": "unemplaced",
+   "aliases": "warden 150;exalt;exalt;huber"
+  },
+  "Huber Exalt 150mm (Emplaced)": {
+   "from": "emplacements:EmplacedHeavyArtilleryW",
+   "type": "Emplacements",
+   "name": "Huber Exalt 150mm (Emplaced)",
+   "variant": "emplaced",
+   "aliases": "warden 150 emplaced;exalt emplaced;huber emplaced"
+  },
+  "Leary AA-70 Bolas (Unemplaced)": {
+   "from": "emplacements:EmplacedAAW",
+   "type": "Emplacements",
+   "name": "Leary AA-70 Bolas (Unemplaced)",
+   "variant": "unemplaced",
+   "aliases": "warden flak;leary bolas;Bolas;"
+  },
+  "Leary AA-70 Bolas (Emplaced)": {
+   "from": "emplacements:EmplacedAAW",
+   "type": "Emplacements",
+   "name": "Leary AA-70 Bolas (Emplaced)",
+   "variant": "emplaced",
+   "aliases": "warden flak Emplaced;leary bolas;Bolas Emplaced;"
+  },
+  "Huber Lariat 120mm (Unemplaced)": {
+   "from": "emplacements:EmplacedLightArtilleryW",
+   "type": "Emplacements",
+   "name": "Huber Lariat 120mm (Unemplaced)",
+   "variant": "unemplaced",
+   "aliases": "warden 120;lariat"
+  },
+  "Huber Lariat 120mm (Emplaced)": {
+   "from": "emplacements:EmplacedLightArtilleryW",
+   "type": "Emplacements",
+   "name": "Huber Lariat 120mm (Emplaced)",
+   "variant": "emplaced",
+   "aliases": "warden 120 emplaced;lariat emplaced"
+  },
+  "DAE 1o-3 “Polybolos” (Unemplaced)": {
+   "from": "emplacements:EmplacedIndirectC",
+   "type": "Emplacements",
+   "name": "DAE 1o-3 “Polybolos” (Unemplaced)",
+   "variant": "unemplaced",
+   "aliases": "beat;polybolos;beat unemplaced;polybolos unemplaced"
+  },
+  "DAE 1o-3 “Polybolos” (Emplaced)": {
+   "from": "emplacements:EmplacedIndirectC",
+   "type": "Emplacements",
+   "name": "DAE 1o-3 “Polybolos” (Emplaced)",
+   "variant": "emplaced",
+   "aliases": "beat emplaced;polybolos emplaced"
+  },
+  "DAE 2a-1 “Ruptura” (Unemplaced)": {
+   "from": "emplacements:EmplacedCannonLargeC",
+   "type": "Emplacements",
+   "name": "DAE 2a-1 “Ruptura” (Unemplaced)",
+   "variant": "unemplaced",
+   "aliases": "ruptura"
+  },
+  "DAE 2a-1 “Ruptura” (Emplaced)": {
+   "from": "emplacements:EmplacedCannonLargeC",
+   "type": "Emplacements",
+   "name": "DAE 2a-1 “Ruptura” (Emplaced)",
+   "variant": "emplaced",
+   "aliases": "ruptura emplaced"
+  },
+  "Huber Starbreaker 94.5mm (Unemplaced)": {
+   "from": "emplacements:EmplacedATLargeW",
+   "type": "Emplacements",
+   "name": "Huber Starbreaker 94.5mm (Unemplaced)",
+   "variant": "unemplaced",
+   "aliases": "starbreaker"
+  },
+  "Huber Starbreaker 94.5mm (Emplaced)": {
+   "from": "emplacements:EmplacedATLargeW",
+   "type": "Emplacements",
+   "name": "Huber Starbreaker 94.5mm (Emplaced)",
+   "variant": "emplaced",
+   "aliases": "starbreaker emplaced"
+  },
+  "DAE 1b-2 “Serra” (Unemplaced)": {
+   "from": "emplacements:EmplacedInfantryC",
+   "type": "Emplacements",
+   "name": "DAE 1b-2 “Serra” (Unemplaced)",
+   "variant": "unemplaced",
+   "aliases": "collie emg;triple emg;collie emg unemplaced;triple emg unemplaced;serra unemplaced;serra"
+  },
+  "DAE 1b-2 “Serra” (Emplaced)": {
+   "from": "emplacements:EmplacedInfantryC",
+   "type": "Emplacements",
+   "name": "DAE 1b-2 “Serra” (Emplaced)",
+   "variant": "emplaced",
+   "aliases": "collie emg emplaced;triple emg emplaced;serra emplaced"
+  },
+  "Cutler Foebreaker (Double RPG)": {
+   "from": "tripods:DeployedRPGTW",
+   "type": "Tripods",
+   "name": "Cutler Foebreaker (Double RPG)",
+   "aliases": ""
+  },
+  "Infantry Support Gun (ISG)": {
+   "from": "tripods:DeployedISG",
+   "type": "Tripods",
+   "name": "Infantry Support Gun (ISG)",
+   "aliases": "30mmgun;moidawg gun;"
+  },
+  "Lamentum (HMG)": {
+   "from": "tripods:DeployedMGTC",
+   "type": "Tripods",
+   "name": "Lamentum (HMG)",
+   "aliases": ""
+  },
+  "Malone Ratcatcher (HMG)": {
+   "from": "tripods:DeployedMGTW",
+   "type": "Tripods",
+   "name": "Malone Ratcatcher (HMG)",
+   "aliases": ""
+  },
+  "Mounted Bonesaw (MBSAW)": {
+   "from": "tripods:DeployedATRPGTW",
+   "type": "Tripods",
+   "name": "Mounted Bonesaw (MBSAW)",
+   "aliases": ""
+  },
+  "Typhon ra.VII (HVATR)": {
+   "from": "tripods:DeployedATRifleTC",
+   "type": "Tripods",
+   "name": "Typhon ra.VII (HVATR)",
+   "aliases": ""
+  },
+  "Wind Sock": {
+   "from": "tripods:DeployedWindsockT",
+   "type": "Tripods",
+   "name": "Wind Sock",
+   "aliases": "windsock"
+  },
+  "Anti-Tank Rifle Pillbox": {
+   "from": "structures:ATPillbox",
+   "type": "Structures",
+   "name": "Anti-Tank Rifle Pillbox",
+   "aliases": "at pillbox"
+  },
+  "Aircraft Crate (packaged frame)": {
+   "from": "structures:AircraftCrate",
+   "type": "Structures",
+   "name": "Aircraft Crate",
+   "aliases": "packaged aircraft frame;aircraft crate"
+  },
+  "Barbed Wire Wall": {
+   "from": "structures:BarbedWireWallSpline",
+   "type": "Structures",
+   "name": "Barbed Wire Wall",
+   "aliases": "wire fence"
+  },
+  "Border base": {
+   "from": "structures:BorderBase",
+   "type": "Structures",
+   "name": "Border base",
+   "aliases": "borderbase"
+  },
+  "Anti-Air Gun": {
+   "from": "structures:AAGunAI",
+   "type": "Structures",
+   "name": "Anti-Air Gun",
+   "aliases": ""
+  },
+  "Coastal Gun": {
+   "from": "structures:CoastalGun",
+   "type": "Structures",
+   "name": "Coastal Gun",
+   "aliases": ""
+  },
+  "Component Mine": {
+   "from": "structures:ComponentMine",
+   "type": "Structures",
+   "name": "Component Mine",
+   "aliases": ""
+  },
+  "Concrete Mixer": {
+   "from": "structures:ConcreteMixer",
+   "type": "Structures",
+   "name": "Concrete Mixer",
+   "aliases": ""
+  },
+  "Construction Equipment": {
+   "from": "structures:ConstructionEquipment",
+   "type": "Structures",
+   "name": "Construction Equipment",
+   "aliases": ""
+  },
+  "Construction Yard": {
+   "from": "structures:ConstructionYard",
+   "type": "Structures",
+   "name": "Construction Yard",
+   "aliases": ""
+  },
+  "Deployed Listening Kit": {
+   "from": "tripods:DeployedListeningKit",
+   "type": "Tripods",
+   "name": "Deployed Listening Kit",
+   "aliases": ""
+  },
+  "Deployed Tripod": {
+   "from": "tripods:DeployedTripod",
+   "type": "Tripods",
+   "name": "Deployed Tripod",
+   "aliases": "tripod"
+  },
+  "Forward Base (Husk) (T1)": {
+   "from": "structures:DestroyedForwardBase1",
+   "type": "Structures",
+   "name": "Forward Base (Husk) (T1)",
+   "aliases": "fob husk;encampment husk"
+  },
+  "Bridge": {
+   "from": "structures:DrawbridgeB",
+   "type": "Structures",
+   "name": "Bridge",
+   "aliases": ""
+  },
+  "Engineering Center": {
+   "from": "structures:EngineeringCenter",
+   "type": "Structures",
+   "name": "Engineering Center",
+   "aliases": "ec"
+  },
+  "Factory": {
+   "from": "structures:Factory",
+   "type": "Structures",
+   "name": "Factory",
+   "aliases": ""
+  },
+  "Large Bridge": {
+   "from": "structures:DrawbridgeC",
+   "type": "Structures",
+   "name": "Large Bridge",
+   "aliases": "large bridge;big bridge;concrete bridge"
+  },
+  "Field Bridge": {
+   "from": "structures:FieldBridge",
+   "type": "Structures",
+   "name": "Field Bridge",
+   "aliases": ""
+  },
+  "Field Hospital": {
+   "from": "structures:FieldHospital",
+   "type": "Structures",
+   "name": "Field Hospital",
+   "aliases": ""
+  },
+  "Fire Pit": {
+   "from": "structures:FirePitT1",
+   "type": "Structures",
+   "name": "Fire Pit",
+   "aliases": ""
+  },
+  "Field Range (T2 fire pit)": {
+   "from": "structures:FirePitT2",
+   "type": "Structures",
+   "name": "Field Range (T2 fire pit)",
+   "aliases": "trashcan; T2 fire pit"
+  },
+  "Forward Base (T1)": {
+   "from": "structures:ForwardBase1",
+   "type": "Structures",
+   "name": "Forward Base",
+   "aliases": "fob;encampment"
+  },
+  "Garage": {
+   "static": {
+    "Name": "Garage",
+    "Additional Names": "",
+    "Dev Name": "Garage",
+    "Health": "2000",
+    "Mitigation Type": "Tier3Structure",
+    "Rmat cost": "0",
+    "Bmat cost": "400",
+    "Concrete cost": "0",
+    "Shovel digs": "0",
+    "Sandbag cost": "0",
+    "Barbed wire cost": "0",
+    "Metal beam cost": "0",
+    "DecayStartHours": "0",
+    "DecayDurationHours": "0",
+    "RepairCost": "400",
+    "StructuralIntegrity": "1",
+    "StoredItemCapacity": "15",
+    "RamDamageReceivedFlags": "0",
+    "bCanBeHarvested": "FALSE",
+    "IsVaultable": "TRUE",
+    "bIsDamagedWhileDrivingOver": "FALSE",
+    "ObjectType": "Structures"
+   }
+  },
+  "Gate (T1)": {
+   "from": "structures:GateT1",
+   "type": "Structures",
+   "name": "Gate (T1)",
+   "aliases": "gate t1"
+  },
+  "Gate (T2)": {
+   "from": "structures:GateT2",
+   "type": "Structures",
+   "name": "Gate (T2)",
+   "aliases": "gate t2"
+  },
+  "Gate (T3)": {
+   "from": "structures:GateT3",
+   "type": "Structures",
+   "name": "Gate (T3)",
+   "aliases": "gate t3"
+  },
+  "Crow’s Foot Minefield (AP minefield)": {
+   "from": "structures:InfantryMineSpline",
+   "type": "Structures",
+   "name": "Crow’s Foot Minefield (AP minefield)",
+   "aliases": "ap mine field;ap minefield;infantry minefield"
+  },
+  "Abisme AT-99 Minefield (AT minefield)": {
+   "from": "structures:InfantryMineSpline",
+   "type": "Structures",
+   "name": "Abisme AT-99 Minefield (AT minefield)",
+   "aliases": "at mine field;at minefield;antitank minefield"
+  },
+  "Crespine Netting": {
+   "from": "structures:WaterWallSplineT1",
+   "type": "Structures",
+   "name": "Crespine Netting",
+   "aliases": "crespine netting;torpedo netting;torpedo net;torp net"
+  },
+  "E680-S Rudder Lock Minefield (deep water minefield)": {
+   "from": "structures:WaterMineSpline",
+   "type": "Structures",
+   "name": "E680-S Rudder Lock Minefield",
+   "aliases": "Rudder Lock minefield;Rudder Lock mine field;deep water mine field;deep water minefield;deep seamine field"
+  },
+  "E681-B Hullbreaker Minefield (surface water minefield)": {
+   "from": "structures:SurfaceWaterMineSpline",
+   "type": "Structures",
+   "name": "E681-B Hullbreaker Minefield",
+   "aliases": "hullbreaker minefield;hullbreaker mine field;surface water mine field;surface water minefield;surface seamine field"
+  },
+  "Hospital": {
+   "from": "structures:Hospital",
+   "type": "Structures",
+   "name": "Hospital",
+   "aliases": ""
+  },
+  "Keep": {
+   "from": "structures:Keep",
+   "type": "Structures",
+   "name": "Keep",
+   "aliases": ""
+  },
+  "Mass Production Factory": {
+   "from": "structures:MassProduction",
+   "type": "Structures",
+   "name": "Mass Production Factory",
+   "aliases": "mpf"
+  },
+  "Machine Gun Pillbox": {
+   "from": "structures:MGPillbox",
+   "type": "Structures",
+   "name": "Machine Gun Pillbox",
+   "aliases": "mg pillbox;mg pill;"
+  },
+  "Observation Tower": {
+   "from": "structures:ObservationTower",
+   "type": "Structures",
+   "name": "Observation Tower",
+   "aliases": "obs tower"
+  },
+  "Oil Well": {
+   "static": {
+    "Name": "Oil Well",
+    "Additional Names": "",
+    "Dev Name": "OilWell",
+    "Health": "1000",
+    "Mitigation Type": "Tier2Structure",
+    "Rmat cost": "0",
+    "Bmat cost": "200",
+    "Concrete cost": "0",
+    "Shovel digs": "0",
+    "Sandbag cost": "0",
+    "Barbed wire cost": "0",
+    "Metal beam cost": "0",
+    "DecayStartHours": "0",
+    "DecayDurationHours": "0",
+    "RepairCost": "200",
+    "StructuralIntegrity": "1",
+    "StoredItemCapacity": "15",
+    "RamDamageReceivedFlags": "0",
+    "bCanBeHarvested": "FALSE",
+    "IsVaultable": "FALSE",
+    "bIsDamagedWhileDrivingOver": "FALSE",
+    "ObjectType": "Structures"
+   }
+  },
+  "Refinery": {
+   "from": "structures:Refinery",
+   "type": "Structures",
+   "name": "Refinery",
+   "aliases": ""
+  },
+  "Small Relic Base": {
+   "from": "structures:RelicBase1",
+   "type": "Structures",
+   "name": "Small Relic Base",
+   "aliases": "small relic"
+  },
+  "Medium Relic Base": {
+   "from": "structures:RelicBase2",
+   "type": "Structures",
+   "name": "Medium Relic Base",
+   "aliases": "medium relic;med relic"
+  },
+  "Large Relic Base": {
+   "from": "structures:RelicBase3",
+   "type": "Structures",
+   "name": "Large Relic Base",
+   "aliases": "large relic"
+  },
+  "Resource Container": {
+   "from": "structures:ResourceContainer",
+   "type": "Structures",
+   "name": "Resource Container",
+   "aliases": ""
+  },
+  "Rifle Pillbox": {
+   "from": "structures:RiflePillbox",
+   "type": "Structures",
+   "name": "Rifle Pillbox",
+   "aliases": ""
+  },
+  "A0E-9 Rocket Platform": {
+   "from": "structures:RocketSite",
+   "type": "Structures",
+   "name": "A0E-9 Rocket Platform",
+   "aliases": "nuke site;nuke platform;nuke;rocket"
+  },
+  "A0E-9 Rocket Platform Husk": {
+   "from": "structures:RocketSiteDestroyed",
+   "type": "Structures",
+   "name": "A0E-9 Rocket Platform Husk",
+   "aliases": "nuke site husk;nuke platform husk;"
+  },
+  "Navy Pier": {
+   "static": {
+    "Name": "Navy Pier",
+    "Additional Names": "pier",
+    "Dev Name": "",
+    "Health": "1500",
+    "Mitigation Type": "Tier2BStructure",
+    "Rmat cost": "",
+    "Bmat cost": "0",
+    "Concrete cost": "0",
+    "Shovel digs": "0",
+    "Sandbag cost": "0",
+    "Barbed wire cost": "0",
+    "Metal beam cost": "0",
+    "DecayStartHours": "0",
+    "DecayDurationHours": "0",
+    "RepairCost": "",
+    "StructuralIntegrity": "1",
+    "StoredItemCapacity": "",
+    "RamDamageReceivedFlags": "0",
+    "bCanBeHarvested": "FALSE",
+    "IsVaultable": "TRUE",
+    "bIsDamagedWhileDrivingOver": "FALSE",
+    "ObjectType": "Structures"
+   }
+  },
+  "Sandbag Wall": {
+   "from": "structures:SandbagFullSpline",
+   "type": "Structures",
+   "name": "Sandbag Wall",
+   "aliases": ""
+  },
+  "Dragon's Teeth": {
+   "from": "structures:TankStopSplineT3",
+   "type": "Structures",
+   "name": "Dragon's Teeth",
+   "aliases": ""
+  },
+  "Sandbag Cover": {
+   "from": "structures:SandbagHalfSpline",
+   "type": "Structures",
+   "name": "Sandbag Cover",
+   "aliases": ""
+  },
+  "Salvage Mine": {
+   "from": "structures:ScrapMine",
+   "type": "Structures",
+   "name": "Salvage Mine",
+   "aliases": "scrap mine"
+  },
+  "Seaport": {
+   "from": "structures:Seaport",
+   "type": "Structures",
+   "name": "Seaport",
+   "aliases": ""
+  },
+  "Naval Hull Segments": {
+   "from": "structures:ShippingContainer",
+   "type": "Structures",
+   "name": "Naval Hull Segments",
+   "aliases": "hull segment"
+  },
+  "Naval Shell Plating": {
+   "from": "structures:ShippingContainer",
+   "type": "Structures",
+   "name": "Naval Shell Plating",
+   "aliases": "shell plating"
+  },
+  "Naval Turbine Components": {
+   "from": "structures:ShippingContainer",
+   "type": "Structures",
+   "name": "Naval Turbine Components",
+   "aliases": "turbine Component;turbine"
+  },
+  "A0E-9 Rocket Booster": {
+   "from": "structures:RocketPartBottom",
+   "type": "Structures",
+   "name": "A0E-9 Rocket Booster",
+   "aliases": "nuke booster"
+  },
+  "A0E-9 Rocket Body": {
+   "from": "structures:RocketPartCenter",
+   "type": "Structures",
+   "name": "A0E-9 Rocket Body",
+   "aliases": "nuke body"
+  },
+  "A0E-9 Rocket Warhead": {
+   "from": "structures:RocketPartTop",
+   "type": "Structures",
+   "name": "A0E-9 Rocket Warhead",
+   "aliases": "nuke warhead"
+  },
+  "Construction Parts": {
+   "from": "structures:FortConstructionPart",
+   "type": "Structures",
+   "name": "Construction Parts",
+   "aliases": ""
+  },
+  "Underground Fortress Parts": {
+   "from": "structures:FortGarrisonStationPart",
+   "type": "Structures",
+   "name": "Underground Fortress Parts",
+   "aliases": ""
+  },
+  "Intelligence Center Parts": {
+   "from": "structures:FortIntelCenterPart",
+   "type": "Structures",
+   "name": "Intelligence Center Parts",
+   "aliases": ""
+  },
+  "Storm Cannon Parts": {
+   "from": "structures:FortLRArtilleryPart",
+   "type": "Structures",
+   "name": "Storm Cannon Parts",
+   "aliases": ""
+  },
+  "Aircraft Radar Parts": {
+   "from": "structures:FortLargeRadarPart",
+   "type": "Structures",
+   "name": "Aircraft Radar Parts",
+   "aliases": ""
+  },
+  "Structure Parts": {
+   "from": "structures:FortStructurePart",
+   "type": "Structures",
+   "name": "Structure Parts",
+   "aliases": ""
+  },
+  "Weather Station Parts": {
+   "from": "structures:FortWeatherStationPart",
+   "type": "Structures",
+   "name": "Weather Station Parts",
+   "aliases": ""
+  },
+  "Shipping Container": {
+   "from": "structures:ShippingContainer",
+   "type": "Structures",
+   "name": "Shipping Container",
+   "aliases": ""
+  },
+  "Liquid Container": {
+   "from": "structures:LiquidContainer",
+   "type": "Structures",
+   "name": "Liquid Container",
+   "aliases": "fuel container"
+  },
+  "Shipyard": {
+   "from": "structures:Shipyard",
+   "type": "Structures",
+   "name": "Shipyard",
+   "aliases": ""
+  },
+  "Dry Dock": {
+   "from": "structures:FacilityVehicleFactory3",
+   "type": "Structures",
+   "name": "Dry Dock",
+   "aliases": "drydock"
+  },
+  "Dry Dock Husk": {
+   "from": "structures:FacilityVehicleFactory3Destroyed",
+   "type": "Structures",
+   "name": "Dry Dock Husk",
+   "aliases": "drydock husk"
+  },
+  "Offshore Platform": {
+   "from": "structures:FacilityMineOilRig",
+   "type": "Structures",
+   "name": "Offshore Platform",
+   "aliases": ""
+  },
+  "Small Shipping Container": {
+   "from": "structures:ShippingContainer",
+   "type": "Structures",
+   "name": "Small Shipping Container",
+   "aliases": ""
+  },
+  "Depot Crane": {
+   "from": "structures:StaticCrane",
+   "type": "Structures",
+   "name": "Depot Crane",
+   "aliases": ""
+  },
+  "Storage Box": {
+   "from": "structures:StorageBox",
+   "type": "Structures",
+   "name": "Storage Box",
+   "aliases": ""
+  },
+  "Storage Depot": {
+   "from": "structures:StorageFacility",
+   "type": "Structures",
+   "name": "Storage Depot",
+   "aliases": ""
+  },
+  "Aircraft Depot": {
+   "from": "structures:AircraftDepot",
+   "type": "Structures",
+   "name": "Aircraft Depot",
+   "aliases": ""
+  },
+  "Aircraft Hangar": {
+   "from": "structures:AircraftFactory",
+   "type": "Structures",
+   "name": "Aircraft Hangar",
+   "aliases": ""
+  },
+  "Aircraft Runway (Tier 1)": {
+   "from": "structures:AircraftRunwayT1",
+   "type": "Structures",
+   "name": "Aircraft Runway (Tier 1)",
+   "aliases": "t1 runway;runway t1;airfield t1;t1 airfield"
+  },
+  "Aircraft Runway (Tier 2)": {
+   "from": "structures:AircraftRunwayT2",
+   "type": "Structures",
+   "name": "Aircraft Runway (Tier 2)",
+   "aliases": "t2 runway;runway t2;runway;airfield t2;t2 airfield;airfield"
+  },
+  "Infantry Support Gun Pillbox (ISG Pill)": {
+   "from": "structures:ISGPillbox",
+   "type": "Structures",
+   "name": "Infantry Support Gun Pillbox (ISG Pill)",
+   "aliases": "isg pillbox;isg pill"
+  },
+  "Sulfur Mine": {
+   "from": "structures:SulfurMine",
+   "type": "Structures",
+   "name": "Sulfur Mine",
+   "aliases": ""
+  },
+  "Vehicle Crate": {
+   "from": "structures:VehicleCrate",
+   "type": "Structures",
+   "name": "Vehicle Crate",
+   "aliases": ""
+  },
+  "Vehicle Factory": {
+   "from": "structures:VehicleFactory",
+   "type": "Structures",
+   "name": "Vehicle Factory",
+   "aliases": ""
+  },
+  "Wall (T1)": {
+   "from": "structures:WallSplineT1",
+   "type": "Structures",
+   "name": "Wall (T1)",
+   "aliases": "wall t1"
+  },
+  "Wall (T2)": {
+   "from": "structures:WallSplineT2",
+   "type": "Structures",
+   "name": "Wall (T2)",
+   "aliases": "wall t2"
+  },
+  "Wall (T3)": {
+   "from": "structures:WallSplineT3",
+   "type": "Structures",
+   "name": "Wall (T3)",
+   "aliases": "wall t3"
+  },
+  "Watchtower": {
+   "from": "structures:WatchTower",
+   "type": "Structures",
+   "name": "Watchtower",
+   "aliases": "wt;watch tower"
+  },
+  "Wood bridge": {
+   "static": {
+    "Name": "Wood bridge",
+    "Additional Names": "",
+    "Dev Name": "WoodBridge",
+    "Health": "1200",
+    "Mitigation Type": "Tier2BStructure",
+    "Rmat cost": "0",
+    "Bmat cost": "150",
+    "Concrete cost": "0",
+    "Shovel digs": "0",
+    "Sandbag cost": "0",
+    "Barbed wire cost": "0",
+    "Metal beam cost": "0",
+    "DecayStartHours": "0",
+    "DecayDurationHours": "0",
+    "RepairCost": "150",
+    "StructuralIntegrity": "1",
+    "StoredItemCapacity": "0",
+    "RamDamageReceivedFlags": "0",
+    "bCanBeHarvested": "FALSE",
+    "IsVaultable": "TRUE",
+    "bIsDamagedWhileDrivingOver": "FALSE",
+    "ObjectType": "Structures"
+   }
+  },
+  "TrainBridge": {
+   "from": "structures:TrainBridgeA",
+   "type": "Structures",
+   "name": "Train Bridge",
+   "aliases": "rail bridge;trainbridge;train bridge"
+  },
+  "Maintenance Tunnel": {
+   "from": "structures:MaintenanceTunnel",
+   "type": "Structures",
+   "name": "Maintenance Tunnel",
+   "aliases": "maintenance tunnel"
+  },
+  "FacilityPipe": {
+   "from": "structures:FacilityPipe",
+   "type": "Structures",
+   "name": "Facility Pipe",
+   "aliases": "pipe"
+  },
+  "Liquid Silo": {
+   "from": "structures:FacilitySiloOil",
+   "type": "Structures",
+   "name": "Liquid Silo",
+   "aliases": "oil silo;fuel silo"
+  },
+  "FacilityPipeUnderground": {
+   "from": "structures:FacilityPipeUnderground",
+   "type": "Structures",
+   "name": "FacilityPipeUnderground",
+   "aliases": "underground pipe"
+  },
+  "Railway Track": {
+   "from": "structures:RailTrackSpline",
+   "type": "Structures",
+   "name": "Railway Track",
+   "aliases": "rail;train track;large rail"
+  },
+  "PowerPole": {
+   "from": "structures:PowerPole",
+   "type": "Structures",
+   "name": "PowerPole",
+   "aliases": "power pole"
+  },
+  "Concrete Foundation (all sizes)": {
+   "from": "structures:Foundation012x2T3",
+   "type": "Structures",
+   "name": "Concrete Foundation (all sizes)",
+   "aliases": "concrete foundation;concrete foundation 2x2;conc foundation"
+  },
+  "Material Pallet": {
+   "from": "structures:MaterialPlatform",
+   "type": "Structures",
+   "name": "Material Pallet",
+   "aliases": "pallet"
+  },
+  "Materials Factory": {
+   "from": "structures:FacilityRefinery1",
+   "type": "Structures",
+   "name": "Materials Factory",
+   "aliases": ""
+  },
+  "Oil Refinery": {
+   "from": "structures:FacilityRefineryOil",
+   "type": "Structures",
+   "name": "Oil Refinery",
+   "aliases": ""
+  },
+  "Coal Refinery": {
+   "from": "structures:FacilityRefineryCoal",
+   "type": "Structures",
+   "name": "Coal Refinery",
+   "aliases": ""
+  },
+  "Metalworks Factory": {
+   "from": "structures:FacilityRefinery2",
+   "type": "Structures",
+   "name": "Metalworks Factory",
+   "aliases": "metalworks factory;"
+  },
+  "Metalworks Factory Husk": {
+   "from": "structures:FacilityRefinery2Destroyed",
+   "type": "Structures",
+   "name": "Metalworks Factory Husk",
+   "aliases": ""
+  },
+  "Light Vehicle Assembly Station": {
+   "from": "structures:FacilityVehicleFactory1",
+   "type": "Structures",
+   "name": "Light Vehicle Assembly Station",
+   "aliases": "small pad"
+  },
+  "Light Vehicle Assembly Station Husk": {
+   "from": "structures:FacilityVehicleFactory1Destroyed",
+   "type": "Structures",
+   "name": "Light Vehicle Assembly Station Husk",
+   "aliases": "small pad husk"
+  },
+  "Heavy Assembly Station": {
+   "from": "structures:FacilityVehicleFactory2",
+   "type": "Structures",
+   "name": "Heavy Assembly Station",
+   "aliases": "bt pad;sht pad;large assembly station;large pad"
+  },
+  "Heavy Assembly Station Husk": {
+   "from": "structures:FacilityVehicleFactory2Destroyed",
+   "type": "Structures",
+   "name": "Heavy Assembly Station Husk",
+   "aliases": "bt pad husk;sht pad husk;large assembly station husk;large pad husk"
+  },
+  "Stationary Harvester (Scrap)": {
+   "from": "structures:FacilityMineResource1",
+   "type": "Structures",
+   "name": "Stationary Harvester (Scrap)",
+   "aliases": ""
+  },
+  "Stationary Harvester (Components)": {
+   "from": "structures:FacilityMineResource2",
+   "type": "Structures",
+   "name": "Stationary Harvester (Components)",
+   "aliases": ""
+  },
+  "Stationary Harvester (Sulfur)": {
+   "from": "structures:FacilityMineResource3",
+   "type": "Structures",
+   "name": "Stationary Harvester (Sulfur)",
+   "aliases": ""
+  },
+  "Stationary Harvester (Coal)": {
+   "from": "structures:FacilityMineResource4",
+   "type": "Structures",
+   "name": "Stationary Harvester (Coal)",
+   "aliases": ""
+  },
+  "Facility Oil Well": {
+   "from": "structures:FacilityMineOil",
+   "type": "Structures",
+   "name": "Facility Oil Well",
+   "aliases": ""
+  },
+  "Water Pump": {
+   "from": "structures:FacilityMineWater",
+   "type": "Structures",
+   "name": "Water Pump",
+   "aliases": ""
+  },
+  "Power Plant": {
+   "from": "structures:FacilityPowerDiesel",
+   "type": "Structures",
+   "name": "Power Plant",
+   "aliases": "diesel power plant;oil power plant;coal power plant"
+  },
+  "Power Plant Husk": {
+   "from": "structures:FacilityPowerDieselDestroyed",
+   "type": "Structures",
+   "name": "Power Plant Husk",
+   "aliases": "diesel power plant husk;oil power plant husk;coal power plant husk"
+  },
+  "Power Station": {
+   "from": "structures:FacilityPowerOil",
+   "type": "Structures",
+   "name": "Power Station",
+   "aliases": ""
+  },
+  "Power Station Husk": {
+   "from": "structures:FacilityPowerOilDestroyed",
+   "type": "Structures",
+   "name": "Power Station Husk",
+   "aliases": ""
+  },
+  "Ammunition Factory": {
+   "from": "structures:FacilityFactoryAmmo",
+   "type": "Structures",
+   "name": "Ammunition Factory",
+   "aliases": "ammo fac;large shell factory;lsf;Rocket Battery Workshop"
+  },
+  "Ammunition Factory Husk": {
+   "from": "structures:FacilityFactoryAmmoDestroyed",
+   "type": "Structures",
+   "name": "Ammunition Factory Husk",
+   "aliases": "ammo fac husk;large shell factory husk;lsf husk;Rocket Battery Workshop husk"
+  },
+  "Aircraft Maintenance Factory": {
+   "from": "structures:FacilityFactoryAircraft",
+   "type": "Structures",
+   "name": "Aircraft Maintenance Factory",
+   "aliases": "aircraft fac"
+  },
+  "Aircraft Maintenance Factory Husk": {
+   "from": "structures:FacilityFactoryAircraftDestroyed",
+   "type": "Structures",
+   "name": "Aircraft Maintenance Factory Husk",
+   "aliases": "aircraft fac husk"
+  },
+  "Infantry Kit Factory": {
+   "from": "structures:FacilityFactorySmallArms",
+   "type": "Structures",
+   "name": "Infantry Kit Factory",
+   "aliases": "IKF;infantry arms factory"
+  },
+  "Infantry Kit Factory Husk": {
+   "from": "structures:FacilityFactorySmallArmsDestroyed",
+   "type": "Structures",
+   "name": "Infantry Kit Factory Husk",
+   "aliases": "IKF husk;infantry arms factory husk"
+  },
+  "Resource Transfer Station": {
+   "from": "structures:FacilityTransferResource",
+   "type": "Structures",
+   "name": "Resource Transfer Station",
+   "aliases": "RTS"
+  },
+  "Resource Transfer Station Husk": {
+   "from": "structures:FacilityTransferResourceDestroyed",
+   "type": "Structures",
+   "name": "Resource Transfer Station Husk",
+   "aliases": "RTS husk"
+  },
+  "Material Transfer Station": {
+   "from": "structures:FacilityTransferMaterial",
+   "type": "Structures",
+   "name": "Material Transfer Station",
+   "aliases": "MTS"
+  },
+  "Material Transfer Station Husk": {
+   "from": "structures:FacilityTransferMaterialDestroyed",
+   "type": "Structures",
+   "name": "Material Transfer Station Husk",
+   "aliases": "MTS husk"
+  },
+  "Field Modification Center": {
+   "from": "structures:FacilityModificationCenter",
+   "type": "Structures",
+   "name": "Field Modification Center",
+   "aliases": ""
+  },
+  "Field Modification Center Husk": {
+   "from": "structures:FacilityModificationCenterDestroyed",
+   "type": "Structures",
+   "name": "Field Modification Center Husk",
+   "aliases": ""
+  },
+  "Foundation (NOT concrete) (all sizes)": {
+   "from": "structures:Foundation012x2T1",
+   "type": "Structures",
+   "name": "Foundation (NOT concrete) (all sizes)",
+   "aliases": "foundation; foundation 2x2"
+  },
+  "Provisional Road": {
+   "from": "structures:FacilityRoad",
+   "type": "Structures",
+   "name": "Provisional Road",
+   "aliases": ""
+  },
+  "Small Gauge Railway Track": {
+   "from": "structures:SmallRailTrackSpline",
+   "type": "Structures",
+   "name": "Small Gauge Railway Track",
+   "aliases": "small rail;small train track"
+  },
+  "Small Gauge Railway Track (Biarc)": {
+   "from": "structures:SmallRailTrackSplineBiarc",
+   "type": "Structures",
+   "name": "Small Gauge Railway Track (Biarc)",
+   "aliases": ""
+  },
+  "BMS Foreman Stacker (Facility Crane)": {
+   "from": "structures:FacilityCrane",
+   "type": "Structures",
+   "name": "BMS Foreman Stacker (Facility Crane)",
+   "aliases": "facility crane;static crane;stationary crane;BMS Foreman Stacker;foreman stacker"
+  },
+  "Tank Trap": {
+   "from": "structures:TankStop",
+   "type": "Structures",
+   "name": "Tank Trap",
+   "aliases": ""
+  },
+  "CraneRailTrackSpline": {
+   "from": "structures:CraneRailTrackSpline",
+   "type": "Structures",
+   "name": "CraneRailTrackSpline",
+   "aliases": ""
+  },
+  "FacilityPipeOverhead": {
+   "from": "structures:FacilityPipeOverhead",
+   "type": "Structures",
+   "name": "Facility Overhead Pipe",
+   "aliases": ""
+  },
+  "Crate Transfer Station": {
+   "from": "structures:FacilityTransferCrate",
+   "type": "Structures",
+   "name": "Crate Transfer Station",
+   "aliases": "cts"
+  },
+  "Crate Transfer Station Husk": {
+   "from": "structures:FacilityTransferCrateDestroyed",
+   "type": "Structures",
+   "name": "Crate Transfer Station Husk",
+   "aliases": "cts husk"
+  },
+  "Liquid Transfer Station": {
+   "from": "structures:FacilityTransferLiquid",
+   "type": "Structures",
+   "name": "Liquid Transfer Station",
+   "aliases": "lts"
+  },
+  "Liquid Transfer Station Husk": {
+   "from": "structures:FacilityTransferLiquidDestroyed",
+   "type": "Structures",
+   "name": "Liquid Transfer Station Husk",
+   "aliases": "lts husk"
+  },
+  "FacilityPipeValve": {
+   "from": "structures:FacilityPipeValve",
+   "type": "Structures",
+   "name": "Facility Pipe Valve",
+   "aliases": ""
+  },
+  "FacilityCatwalkBridge": {
+   "from": "structures:FacilityCatwalkBridge",
+   "type": "Structures",
+   "name": "Facility Catwalk Bridge",
+   "aliases": ""
+  },
+  "RailTrackSplineFoundation": {
+   "from": "structures:RailTrackSplineFoundation",
+   "type": "Structures",
+   "name": "RailTrackSplineFoundation",
+   "aliases": ""
+  },
+  "FacilityCatwalkStairs": {
+   "from": "structures:FacilityCatwalkStairs",
+   "type": "Structures",
+   "name": "Facility Catwalk Stairs",
+   "aliases": ""
+  },
+  "FacilityCatwalkPlatform": {
+   "from": "structures:FacilityCatwalkPlatform",
+   "type": "Structures",
+   "name": "Facility Catwalk Platform",
+   "aliases": ""
+  },
+  "SmallRailTrackSplineFoundation": {
+   "from": "structures:SmallRailTrackSplineFoundation",
+   "type": "Structures",
+   "name": "SmallRailTrackSplineFoundation",
+   "aliases": ""
+  },
+  "Emplacement House (Mortar house)": {
+   "from": "structures:TownWSmall1",
+   "type": "Structures",
+   "name": "Mortar House",
+   "aliases": ""
+  },
+  "Safe House": {
+   "from": "structures:GarrisonStation",
+   "type": "Multitier_structures",
+   "name": "Safe House",
+   "aliases": "sh;safehouse"
+  },
+  "Town Base (Post Office)": {
+   "from": "structures:TownBase1",
+   "type": "Multitier_structures",
+   "name": "Town Base (Post Office)",
+   "aliases": "town hall;th;town hall post office;townhall;th post office"
+  },
+  "Town Base (School)": {
+   "from": "structures:TownBase2",
+   "type": "Multitier_structures",
+   "name": "Town Base (School)",
+   "aliases": "town hall school;th school"
+  },
+  "Town Base (Town Centre)": {
+   "from": "structures:TownBase3",
+   "type": "Multitier_structures",
+   "name": "Town Base (Town Centre)",
+   "aliases": "town hall town centre;th town centre;aw;gwd"
+  },
+  "Staff Car": {
+   "from": "vehicles:RelicScoutVehicle",
+   "type": "Vehicles",
+   "name": "Staff Car",
+   "aliases": "relic jeep"
+  },
+  "Repurposed Truck": {
+   "from": "vehicles:RelicTruck",
+   "type": "Vehicles",
+   "name": "Repurposed Truck",
+   "aliases": "relic truck"
+  },
+  "Armoured Fighting Tractor": {
+   "from": "vehicles:RelicArmouredCar",
+   "type": "Vehicles",
+   "name": "Armoured Fighting Tractor",
+   "aliases": "aft;armored ac"
+  },
+  "Storm Tank": {
+   "from": "vehicles:RelicLightTank",
+   "type": "Vehicles",
+   "name": "Storm Tank",
+   "aliases": ""
+  },
+  "PL-1 \"Phalanx\"": {
+   "from": "vehicles:RelicMediumTank",
+   "type": "Vehicles",
+   "name": "PL-1 “Phalanx”",
+   "aliases": "phalanx;toaster"
+  },
+  "Blacksteele": {
+   "from": "vehicles:LargeShipDestroyerW",
+   "type": "Vehicles",
+   "name": "Blacksteele",
+   "aliases": "frigate;warden frigate"
+  },
+  "AC-b \"Trident\"": {
+   "from": "vehicles:LargeShipSubmarineC",
+   "type": "Vehicles",
+   "name": "AC-b “Trident”",
+   "aliases": "trident;colonial submarine;colonial sub"
+  },
+  "Garrison House (Medium)": {
+   "from": "structures:TownCMedGarrisonG1",
+   "type": "Multitier_structures",
+   "name": "Medium Garrison House",
+   "aliases": "medium ghouse;ghouse"
+  },
+  "Garrison House (Small)": {
+   "from": "structures:TownCSmallG1",
+   "type": "Multitier_structures",
+   "name": "Small Garrison House",
+   "aliases": "small ghouse"
+  },
+  "Garrison House (Large)": {
+   "from": "structures:TownWLargeG2",
+   "type": "Multitier_structures",
+   "name": "Large Garrison House",
+   "aliases": "large ghouse"
+  },
+  "AT Gun Garrison (T1)": {
+   "from": "structures:ATGunAIT1",
+   "type": "Structures",
+   "name": "AT Gun Garrison (T1)",
+   "aliases": "atg t1"
+  },
+  "Bunker Base (T1)": {
+   "from": "structures:FortBaseT1",
+   "type": "Structures",
+   "name": "Bunker Base",
+   "aliases": "bb 1x1 t1;bob 1x1 t1;bob core 1x1 t1;bunker base 1x1 t1;bunker core 1x1 t1;bunker core t1;bunker base t1;t1 bunker core;t1 bunker base;t1 bob;bob t1"
+  },
+  "Bunker Base (T2)": {
+   "from": "structures:FortBaseT2",
+   "type": "Structures",
+   "name": "Bunker Base",
+   "aliases": "bb 1x1 t2;bob 1x1 t2;bob core 1x1 t2;bunker base 1x1 t2;bunker core 1x1 t2;bunker core t2;bunker base t2;t2 bunker core;t2 bunker base;t2 bob;bob t2"
+  },
+  "Bunker Base (T3)": {
+   "from": "structures:FortBaseT3",
+   "type": "Structures",
+   "name": "Bunker Base",
+   "aliases": "bb 1x1 t3;bob 1x1 t3;bob core 1x1 t3;bunker base 1x1 t3;bunker core 1x1 t3;bunker core t3;bunker base t3;t3 bunker core;t3 bunker base;t3 bob;bob t3"
+  },
+  "Bunker Base Core (T1) Destroyed Husk": {
+   "from": "structures:DestroyedFortForwardBaseT1",
+   "type": "Structures",
+   "name": "Bunker Base Core (T1) Destroyed Husk",
+   "aliases": "bunker base husk t1;bunker core husk t1;t1 bunker core husk;t1 bunker base husk;t1 bob husk;bob husk t1"
+  },
+  "Bunker Base Core (T2) Destroyed Husk": {
+   "from": "structures:DestroyedFortForwardBaseT2",
+   "type": "Structures",
+   "name": "Bunker Base Core (T2) Destroyed Husk",
+   "aliases": "bunker base husk t2;bunker core husk t2;t2 bunker core husk;t2 bunker base husk;t2 bob husk;bob husk t2"
+  },
+  "Bunker Base Core (T3) Destroyed Husk": {
+   "from": "structures:DestroyedFortForwardBaseT3",
+   "type": "Structures",
+   "name": "Bunker Base Core (T3) Destroyed Husk",
+   "aliases": "bunker base husk t3;bunker core husk t3;t3 bunker core husk;t3 bunker base husk;t3 bob husk;bob husk t3"
+  },
+  "AT Gun Garrison (T1) Breached Husk": {
+   "from": "structures:ATGunAIT1Breached",
+   "type": "Structures",
+   "name": "AT Gun Garrison (T1) Breached Husk",
+   "aliases": "atg t1 breached;t1 atg breached"
+  },
+  "AT Gun Garrison (T1) Destroyed Husk": {
+   "from": "structures:ATGunAIT1Destroyed",
+   "type": "Structures",
+   "name": "AT Gun Garrison (T1) Destroyed Husk",
+   "aliases": "atg t1 husk;t1 atg husk"
+  },
+  "AT Gun Garrison (T2)": {
+   "from": "structures:ATGunAIT2",
+   "type": "Structures",
+   "name": "AT Gun Garrison (T2)",
+   "aliases": "atg t2"
+  },
+  "AT Gun Garrison (T2) Breached Husk": {
+   "from": "structures:ATGunAIT2Breached",
+   "type": "Structures",
+   "name": "AT Gun Garrison (T2) Breached Husk",
+   "aliases": "atg t2 breached;t2 atg breached"
+  },
+  "AT Gun Garrison (T2) Destroyed Husk": {
+   "from": "structures:ATGunAIT2Destroyed",
+   "type": "Structures",
+   "name": "AT Gun Garrison (T2) Destroyed Husk",
+   "aliases": "atg t2 husk;t2 atg husk"
+  },
+  "AT Gun Garrison (T3)": {
+   "from": "structures:ATGunAIT3",
+   "type": "Structures",
+   "name": "AT Gun Garrison (T3)",
+   "aliases": "atg t3"
+  },
+  "AT Gun Garrison (T3) Breached Husk": {
+   "from": "structures:ATGunAIT3Breached",
+   "type": "Structures",
+   "name": "AT Gun Garrison (T3) Breached Husk",
+   "aliases": "atg t3 breached;t3 atg breached"
+  },
+  "AT Gun Garrison (T3) Destroyed Husk": {
+   "from": "structures:ATGunAIT3Destroyed",
+   "type": "Structures",
+   "name": "AT Gun Garrison (T3) Destroyed Husk",
+   "aliases": "atg t3 husk;t3 atg husk"
+  },
+  "Storage Room (T2)": {
+   "from": "structures:AmmoRoomT2",
+   "type": "Structures",
+   "name": "Storage Room (T2)",
+   "aliases": "ammo room t2;t2 ammo room"
+  },
+  "Storage Room (T3)": {
+   "from": "structures:AmmoRoomT3",
+   "type": "Structures",
+   "name": "Storage Room (T3)",
+   "aliases": "ammo room t3;t3 ammo room"
+  },
+  "Artillery Garrison (T1)": {
+   "from": "structures:ArtilleryAIT1",
+   "type": "Structures",
+   "name": "Artillery Garrison (T1)",
+   "aliases": "howi t1;t1 howi"
+  },
+  "Artillery Garrison (T1) Breached Husk": {
+   "from": "structures:ArtilleryAIT1Breached",
+   "type": "Structures",
+   "name": "Artillery Garrison (T1) Breached Husk",
+   "aliases": "howi t1 breached;t1 howi breached"
+  },
+  "Artillery Garrison (T1) Destroyed Husk": {
+   "from": "structures:ArtilleryAIT1Destroyed",
+   "type": "Structures",
+   "name": "Artillery Garrison (T1) Destroyed Husk",
+   "aliases": "howi t1 husk;t1 howi husk"
+  },
+  "Artillery Garrison (T2)": {
+   "from": "structures:ArtilleryAIT2",
+   "type": "Structures",
+   "name": "Artillery Garrison (T2)",
+   "aliases": "howi t2;t2 howi"
+  },
+  "Artillery Garrison (T2) Breached Husk": {
+   "from": "structures:ArtilleryAIT2Breached",
+   "type": "Structures",
+   "name": "Artillery Garrison (T2) Breached Husk",
+   "aliases": "howi t2 breached;t2 howi breached"
+  },
+  "Artillery Garrison (T2) Destroyed Husk": {
+   "from": "structures:ArtilleryAIT2Destroyed",
+   "type": "Structures",
+   "name": "Artillery Garrison (T2) Destroyed Husk",
+   "aliases": "howi t2 husk;t2 howi husk"
+  },
+  "Artillery Garrison (T3)": {
+   "from": "structures:ArtilleryAIT3",
+   "type": "Structures",
+   "name": "Artillery Garrison (T3)",
+   "aliases": "howi t3;t3 howi"
+  },
+  "Artillery Garrison (T3) Breached Husk": {
+   "from": "structures:ArtilleryAIT3Breached",
+   "type": "Structures",
+   "name": "Artillery Garrison (T3) Breached Husk",
+   "aliases": "howi t3 breached;t3 howi breached"
+  },
+  "Artillery Garrison (T3) Destroyed Husk": {
+   "from": "structures:ArtilleryAIT3Destroyed",
+   "type": "Structures",
+   "name": "Artillery Garrison (T3) Destroyed Husk",
+   "aliases": "howi t3 husk;t3 howi husk"
+  },
+  "Engine Room (T2)": {
+   "from": "structures:EngineRoomT2",
+   "type": "Structures",
+   "name": "Engine Room (T2)",
+   "aliases": "engine room t2;t2 engine room"
+  },
+  "Engine Room (T3)": {
+   "from": "structures:EngineRoomT3",
+   "type": "Structures",
+   "name": "Engine Room (T3)",
+   "aliases": "engine room t3;t3 engine room"
+  },
+  "Artillery Shelter Room (T1)": {
+   "from": "structures:FortArtilleryShelterT1",
+   "type": "Structures",
+   "name": "Artillery Shelter Room (T1)",
+   "aliases": "arty shelter t1;t1 arty shelter"
+  },
+  "Artillery Shelter Room (T2)": {
+   "from": "structures:FortArtilleryShelterT2",
+   "type": "Structures",
+   "name": "Artillery Shelter Room (T2)",
+   "aliases": "arty shelter t2;t2 arty shelter"
+  },
+  "Artillery Shelter Room (T3)": {
+   "from": "structures:FortArtilleryShelterT3",
+   "type": "Structures",
+   "name": "Artillery Shelter Room (T3)",
+   "aliases": "arty shelter t3;t3 arty shelter"
+  },
+  "Bunker Corner (T3) Breached Husk": {
+   "from": "structures:FortCornerBreachedT3",
+   "type": "Structures",
+   "name": "Bunker Corner (T3) Breached Husk",
+   "aliases": ""
+  },
+  "Bunker Corner (T1) Destroyed Husk": {
+   "from": "structures:FortCornerDestroyedT1",
+   "type": "Structures",
+   "name": "Bunker Corner (T1) Destroyed Husk",
+   "aliases": "bunker corner husk t1"
+  },
+  "Bunker Corner (T2) Destroyed Husk": {
+   "from": "structures:FortCornerDestroyedT2",
+   "type": "Structures",
+   "name": "Bunker Corner (T2) Destroyed Husk",
+   "aliases": "bunker corner husk t2"
+  },
+  "Bunker Corner (T3) Destroyed Husk": {
+   "from": "structures:FortCornerDestroyedT3",
+   "type": "Structures",
+   "name": "Bunker Corner (T3) Destroyed Husk",
+   "aliases": "bunker corner husk t3"
+  },
+  "Bunker Corner (T1)": {
+   "from": "structures:FortCornerT1",
+   "type": "Structures",
+   "name": "Bunker Corner (T1)",
+   "aliases": "bunker corner t1"
+  },
+  "Bunker Corner (T2)": {
+   "from": "structures:FortCornerT2",
+   "type": "Structures",
+   "name": "Bunker Corner (T2)",
+   "aliases": "bunker corner t2"
+  },
+  "Bunker Corner (T3)": {
+   "from": "structures:FortCornerT3",
+   "type": "Structures",
+   "name": "Bunker Corner (T3)",
+   "aliases": "bunker corner t3"
+  },
+  "Bunker Blank (T1) Destroyed Husk": {
+   "from": "structures:FortDestroyedT1",
+   "type": "Structures",
+   "name": "Bunker Blank (T1) Destroyed Husk",
+   "aliases": "bunker husk t1"
+  },
+  "Bunker Blank (T2) Destroyed Husk": {
+   "from": "structures:FortDestroyedT2",
+   "type": "Structures",
+   "name": "Bunker Blank (T2) Destroyed Husk",
+   "aliases": "bunker husk t2"
+  },
+  "Bunker Blank (T3) Destroyed Husk": {
+   "from": "structures:FortDestroyedT3",
+   "type": "Structures",
+   "name": "Bunker Blank (T3) Destroyed Husk",
+   "aliases": "bunker husk t3"
+  },
+  "Large Structure Foundation": {
+   "from": "structures:FortEmpT3",
+   "type": "Structures",
+   "name": "Large Structure Foundation",
+   "aliases": ""
+  },
+  "Bunker Hearth (T1)": {
+   "from": "structures:FortFirePitT1",
+   "type": "Structures",
+   "name": "Bunker Hearth (T1)",
+   "aliases": ""
+  },
+  "Bunker Hearth (T2)": {
+   "from": "structures:FortFirePitT2",
+   "type": "Structures",
+   "name": "Bunker Hearth (T2)",
+   "aliases": ""
+  },
+  "Bunker Hearth (T3)": {
+   "from": "structures:FortFirePitT3",
+   "type": "Structures",
+   "name": "Bunker Hearth (T3)",
+   "aliases": ""
+  },
+  "Fire Suppression Room (T2)": {
+   "from": "structures:FortFlameT2",
+   "type": "Structures",
+   "name": "Fire Suppression Room (T2)",
+   "aliases": ""
+  },
+  "Fire Suppression Room (T3)": {
+   "from": "structures:FortFlameT3",
+   "type": "Structures",
+   "name": "Fire Suppression Room (T3)",
+   "aliases": ""
+  },
+  "Underground Fortress": {
+   "from": "structures:FortGarrisonStation",
+   "type": "Structures",
+   "name": "Underground Fortress",
+   "aliases": "fortress;uf"
+  },
+  "SC-3 Aerial Interceptor Array 1x1": {
+   "from": "structures:FortLargeRadar",
+   "type": "Structures",
+   "name": "SC-3 Aerial Interceptor Array",
+   "aliases": "radar array;large radar;radar"
+  },
+  "SC-3 Aerial Interceptor Array Husk": {
+   "from": "structures:FortLargeRadarDestroyed",
+   "type": "Structures",
+   "name": "SC-3 Aerial Interceptor Array Husk",
+   "aliases": "radar array husk;large radar husk;radar husk"
+  },
+  "Bunker Ramp (T1)": {
+   "from": "structures:FortRampT1",
+   "type": "Structures",
+   "name": "Bunker Ramp (T1)",
+   "aliases": "bunker ramp t1"
+  },
+  "Bunker Ramp (T2)": {
+   "from": "structures:FortRampT2",
+   "type": "Structures",
+   "name": "Bunker Ramp (T2)",
+   "aliases": "bunker ramp t2"
+  },
+  "Bunker Ramp (T3)": {
+   "from": "structures:FortRampT3",
+   "type": "Structures",
+   "name": "Bunker Ramp (T3)",
+   "aliases": "bunker ramp t3"
+  },
+  "Bunker Square (T1)": {
+   "from": "structures:FortT1",
+   "type": "Structures",
+   "name": "Bunker (T1)",
+   "aliases": "blank bunker t1"
+  },
+  "Bunker Square (T2)": {
+   "from": "structures:FortT2",
+   "type": "Structures",
+   "name": "Bunker (T2)",
+   "aliases": "blank bunker t2"
+  },
+  "Bunker Square (T3)": {
+   "from": "structures:FortT3",
+   "type": "Structures",
+   "name": "Bunker (T3)",
+   "aliases": "blank bunker t3"
+  },
+  "Foxhole": {
+   "from": "structures:Foxhole",
+   "type": "Structures",
+   "name": "Foxhole",
+   "aliases": ""
+  },
+  "Intelligence Center 1x1": {
+   "from": "structures:IntelCenter",
+   "type": "Structures",
+   "name": "Intelligence Center",
+   "aliases": "intel center;ic"
+  },
+  "Storm Cannon 1x1": {
+   "from": "structures:LRArtillery",
+   "type": "Structures",
+   "name": "Storm Cannon",
+   "aliases": "stormcannon;sc"
+  },
+  "Storm Cannon Destroyed Husk": {
+   "from": "structures:LRArtilleryDestroyed",
+   "type": "Structures",
+   "name": "Storm Cannon Destroyed Husk",
+   "aliases": "stormcannon husk;sc husk;storm cannon husk"
+  },
+  "Machine Gun Garrison (T1)": {
+   "from": "structures:MGAIT1",
+   "type": "Structures",
+   "name": "Machine Gun Garrison (T1)",
+   "aliases": "mg garrison t1"
+  },
+  "Machine Gun Garrison (T1) Breached Husk": {
+   "from": "structures:MGAIT1Breached",
+   "type": "Structures",
+   "name": "Machine Gun Garrison (T1) Breached Husk",
+   "aliases": ""
+  },
+  "Machine Gun Garrison (T1) Destroyed Husk": {
+   "from": "structures:MGAIT1Destroyed",
+   "type": "Structures",
+   "name": "Machine Gun Garrison (T1) Destroyed Husk",
+   "aliases": "mg garrison husk t1;t1 mg garrison husk"
+  },
+  "Machine Gun Garrison (T2)": {
+   "from": "structures:MGAIT2",
+   "type": "Structures",
+   "name": "Machine Gun Garrison (T2)",
+   "aliases": "mg garrison t2"
+  },
+  "Machine Gun Garrison (T2) Breached Husk": {
+   "from": "structures:MGAIT2Breached",
+   "type": "Structures",
+   "name": "Machine Gun Garrison (T2) Breached Husk",
+   "aliases": ""
+  },
+  "Machine Gun Garrison (T2) Destroyed Husk": {
+   "from": "structures:MGAIT2Destroyed",
+   "type": "Structures",
+   "name": "Machine Gun Garrison (T2) Destroyed Husk",
+   "aliases": "mg garrison husk t2;t2 mg husk"
+  },
+  "Machine Gun Garrison (T3)": {
+   "from": "structures:MGAIT3",
+   "type": "Structures",
+   "name": "Machine Gun Garrison (T3)",
+   "aliases": "mg garrison t3"
+  },
+  "Machine Gun Garrison (T3) Breached Husk": {
+   "from": "structures:MGAIT3Breached",
+   "type": "Structures",
+   "name": "Machine Gun Garrison (T3) Breached Husk",
+   "aliases": ""
+  },
+  "Machine Gun Garrison (T3) Destroyed Husk": {
+   "from": "structures:MGAIT3Destroyed",
+   "type": "Structures",
+   "name": "Machine Gun Garrison (T3) Destroyed Husk",
+   "aliases": "mg garrison t3 husk;t3 mg husk"
+  },
+  "Medical Room (T1)": {
+   "from": "structures:MedicalRoomT1",
+   "type": "Structures",
+   "name": "Medical Room (T1)",
+   "aliases": "medical bunker t1;t1 medical bunker"
+  },
+  "Medical Room (T2)": {
+   "from": "structures:MedicalRoomT2",
+   "type": "Structures",
+   "name": "Medical Room (T2)",
+   "aliases": "medical bunker t2;t2 medical bunker"
+  },
+  "Medical Room (T3)": {
+   "from": "structures:MedicalRoomT3",
+   "type": "Structures",
+   "name": "Medical Room (T3)",
+   "aliases": "medical bunker t3;t3 medical bunker"
+  },
+  "Observation Bunker (T1)": {
+   "from": "structures:ObservationBunkerT1",
+   "type": "Structures",
+   "name": "Observation Bunker (T1)",
+   "aliases": "obs bunker t1;t1 obs bunker"
+  },
+  "Observation Bunker (T1) Breached Husk": {
+   "from": "structures:ObservationBunkerT1Breached",
+   "type": "Structures",
+   "name": "Observation Bunker (T1) Breached Husk",
+   "aliases": "obs bunker t1 breached;t1 obs bunker breached"
+  },
+  "Observation Bunker (T1) Destroyed Husk": {
+   "from": "structures:ObservationBunkerT1Destroyed",
+   "type": "Structures",
+   "name": "Observation Bunker (T1) Destroyed Husk",
+   "aliases": "obs bunker t1 husk;t1 obs bunker husk"
+  },
+  "Observation Bunker (T2)": {
+   "from": "structures:ObservationBunkerT2",
+   "type": "Structures",
+   "name": "Observation Bunker (T2)",
+   "aliases": "obs bunker t2;t2 obs bunker"
+  },
+  "Observation Bunker (T2) Breached Husk": {
+   "from": "structures:ObservationBunkerT2Breached",
+   "type": "Structures",
+   "name": "Observation Bunker (T2) Breached Husk",
+   "aliases": "obs bunker t2 breached;t2 obs bunker breached"
+  },
+  "Observation Bunker (T2) Destroyed Husk": {
+   "from": "structures:ObservationBunkerT2Destroyed",
+   "type": "Structures",
+   "name": "Observation Bunker (T2) Destroyed Husk",
+   "aliases": "obs bunker t2 husk;t2 obs husk"
+  },
+  "Observation Bunker (T3)": {
+   "from": "structures:ObservationBunkerT3",
+   "type": "Structures",
+   "name": "Observation Bunker (T3)",
+   "aliases": "obs bunker t3;t3 obs bunker"
+  },
+  "Observation Bunker (T3) Breached Husk": {
+   "from": "structures:ObservationBunkerT3Breached",
+   "type": "Structures",
+   "name": "Observation Bunker (T3) Breached Husk",
+   "aliases": "obs bunker t3 breached;t3 obs bunker breached"
+  },
+  "Observation Bunker (T3) Destroyed Husk": {
+   "from": "structures:ObservationBunkerT3Destroyed",
+   "type": "Structures",
+   "name": "Observation Bunker (T3) Destroyed Husk",
+   "aliases": "obs bunker t3 husk;t3 obs husk"
+  },
+  "Rifle Garrison (T1)": {
+   "from": "structures:RifleAIT1",
+   "type": "Structures",
+   "name": "Rifle Garrison (T1)",
+   "aliases": "rg t1;t1 rg"
+  },
+  "Rifle Garrison (T1) Breached Husk": {
+   "from": "structures:RifleAIT1Breached",
+   "type": "Structures",
+   "name": "Rifle Garrison (T1) Breached Husk",
+   "aliases": "rg t1 breached;t1 rg breached"
+  },
+  "Rifle Garrison (T1) Destroyed Husk": {
+   "from": "structures:RifleAIT1Destroyed",
+   "type": "Structures",
+   "name": "Rifle Garrison (T1) Destroyed Husk",
+   "aliases": "rg t1 husk;t1 rg husk"
+  },
+  "Rifle Garrison (T2)": {
+   "from": "structures:RifleAIT2",
+   "type": "Structures",
+   "name": "Rifle Garrison (T2)",
+   "aliases": "rg t2;t2 rg"
+  },
+  "Rifle Garrison (T2) Breached Husk": {
+   "from": "structures:RifleAIT2Breached",
+   "type": "Structures",
+   "name": "Rifle Garrison (T2) Breached Husk",
+   "aliases": "rg t2 breached;t2 rg breached"
+  },
+  "Rifle Garrison (T2) Destroyed Husk": {
+   "from": "structures:RifleAIT2Destroyed",
+   "type": "Structures",
+   "name": "Rifle Garrison (T2) Destroyed Husk",
+   "aliases": "rg t2 husk;t2 rg husk"
+  },
+  "Rifle Garrison (T3)": {
+   "from": "structures:RifleAIT3",
+   "type": "Structures",
+   "name": "Rifle Garrison (T3)",
+   "aliases": "rg t3;t3 rg"
+  },
+  "Rifle Garrison (T3) Breached Husk": {
+   "from": "structures:RifleAIT3Breached",
+   "type": "Structures",
+   "name": "Rifle Garrison (T3) Breached Husk",
+   "aliases": "rg t3 breached;t3 rg breached"
+  },
+  "Rifle Garrison (T3) Destroyed Husk": {
+   "from": "structures:RifleAIT3Destroyed",
+   "type": "Structures",
+   "name": "Rifle Garrison (T3) Destroyed Husk",
+   "aliases": "rg t3 husk;t3 rg husk"
+  },
+  "Destroyed Trench Connector (T1) Husk": {
+   "from": "structures:TrenchConnectorDestroyedT1",
+   "type": "Structures",
+   "name": "Destroyed Trench Connector (T1) Husk",
+   "aliases": "t1 tench connector husk;trench connector husk t1"
+  },
+  "Destroyed Trench Connector (T2) Husk": {
+   "from": "structures:TrenchConnectorDestroyedT2",
+   "type": "Structures",
+   "name": "Destroyed Trench Connector (T2) Husk",
+   "aliases": "t2 tench connector husk;trench connector husk t2"
+  },
+  "Destroyed Trench Connector (T3) Husk": {
+   "from": "structures:TrenchConnectorDestroyedT3",
+   "type": "Structures",
+   "name": "Destroyed Trench Connector (T3) Husk",
+   "aliases": "t3 tench connector husk;trench connector husk t3"
+  },
+  "Trench Connector (T1)": {
+   "from": "structures:TrenchConnectorT1",
+   "type": "Structures",
+   "name": "Trench Connector (T1)",
+   "aliases": ""
+  },
+  "Trench Connector (T2)": {
+   "from": "structures:TrenchConnectorT2",
+   "type": "Structures",
+   "name": "Trench Connector (T2)",
+   "aliases": ""
+  },
+  "Trench Connector (T3)": {
+   "from": "structures:TrenchConnectorT3",
+   "type": "Structures",
+   "name": "Trench Connector (T3)",
+   "aliases": ""
+  },
+  "Destroyed Trench (T1) Husk": {
+   "from": "structures:TrenchDestroyedT1",
+   "type": "Structures",
+   "name": "Destroyed Trench (T1) Husk",
+   "aliases": "trench husk;trench t1 husk"
+  },
+  "Destroyed Trench (T2) Destroyed Husk": {
+   "from": "structures:TrenchDestroyedT2",
+   "type": "Structures",
+   "name": "Destroyed Trench (T2) Destroyed Husk",
+   "aliases": "trench t2 husk"
+  },
+  "Destroyed Trench (T3) Destroyed Husk": {
+   "from": "structures:TrenchDestroyedT3",
+   "type": "Structures",
+   "name": "Destroyed Trench (T3) Destroyed Husk",
+   "aliases": "trench t3 husk"
+  },
+  "Trench Emplacement (Husk) (T1)": {
+   "from": "structures:TrenchEmpDestroyedT1",
+   "type": "Structures",
+   "name": "Trench Emplacement (Husk) (T1)",
+   "aliases": "trench hex husk;trench hexagon husk;trench octagon husk"
+  },
+  "Trench Emplacement (Husk) (T2)": {
+   "from": "structures:TrenchEmpDestroyedT2",
+   "type": "Structures",
+   "name": "Trench Emplacement (Husk) (T2)",
+   "aliases": "trench hex husk t2;trench hexagon husk t2;trench octagon husk t2"
+  },
+  "Trench Emplacement (Husk) (T3)": {
+   "from": "structures:TrenchEmpDestroyedT3",
+   "type": "Structures",
+   "name": "Trench Emplacement (Husk) (T3)",
+   "aliases": "trench hex husk t3;trench hexagon husk t3;trench octagon husk t3"
+  },
+  "Trench Emplacement (T1)": {
+   "from": "structures:TrenchEmpT1",
+   "type": "Structures",
+   "name": "Trench Emplacement (T1)",
+   "aliases": "octagon;trench emplacement t1;trench hex t1;trench hexagon t1;trench octagon t1"
+  },
+  "Trench Emplacement (T2)": {
+   "from": "structures:TrenchEmpT2",
+   "type": "Structures",
+   "name": "Trench Emplacement (T2)",
+   "aliases": "octagon t2;trench emplacement t2;trench hex t2;trench hexagon t2;trench octagon t2"
+  },
+  "Trench Emplacement (T3)": {
+   "from": "structures:TrenchEmpT3",
+   "type": "Structures",
+   "name": "Trench Emplacement (T3)",
+   "aliases": "hexagon t3;octagon t3;trench emplacement t3;trench hex t3;trench octagon t3"
+  },
+  "Trench Intersection (T1) Destroyed Husk": {
+   "from": "structures:TrenchIntDestroyedT1",
+   "type": "Structures",
+   "name": "Trench Intersection (T1) Destroyed Husk",
+   "aliases": ""
+  },
+  "Trench Intersection (T2) Destroyed Husk": {
+   "from": "structures:TrenchIntDestroyedT2",
+   "type": "Structures",
+   "name": "Trench Intersection (T2) Destroyed Husk",
+   "aliases": ""
+  },
+  "Trench Intersection (T3) Destroyed Husk": {
+   "from": "structures:TrenchIntDestroyedT3",
+   "type": "Structures",
+   "name": "Trench Intersection (T3) Destroyed Husk",
+   "aliases": ""
+  },
+  "Trench Intersection (T1)": {
+   "from": "structures:TrenchIntT1",
+   "type": "Structures",
+   "name": "Trench Intersection (T1)",
+   "aliases": ""
+  },
+  "Trench Intersection (T2)": {
+   "from": "structures:TrenchIntT2",
+   "type": "Structures",
+   "name": "Trench Intersection (T2)",
+   "aliases": ""
+  },
+  "Trench Intersection (T3)": {
+   "from": "structures:TrenchIntT3",
+   "type": "Structures",
+   "name": "Trench Intersection (T3)",
+   "aliases": ""
+  },
+  "Trench (T1)": {
+   "from": "structures:TrenchT1",
+   "type": "Structures",
+   "name": "Trench (T1)",
+   "aliases": "trench;trench t1"
+  },
+  "Trench (T2)": {
+   "from": "structures:TrenchT2",
+   "type": "Structures",
+   "name": "Trench (T2)",
+   "aliases": "trench t2"
+  },
+  "Trench (T3)": {
+   "from": "structures:TrenchT3",
+   "type": "Structures",
+   "name": "Trench (T3)",
+   "aliases": "trench t3"
+  },
+  "Weather Station 1x1": {
+   "from": "structures:WeatherStation",
+   "type": "Structures",
+   "name": "Weather Station",
+   "aliases": ""
+  },
+  "Warden": {
+   "static": {
+    "Name": "Warden",
+    "Additional Names": "blueberry;warden;player",
+    "Dev Name": "Player",
+    "Health": "100",
+    "Mitigation Type": "Nomitigation",
+    "Rmat cost": "0",
+    "Bmat cost": "0",
+    "Concrete cost": "0",
+    "Shovel digs": "0",
+    "Sandbag cost": "0",
+    "Barbed wire cost": "0",
+    "Metal beam cost": "0",
+    "DecayStartHours": "0",
+    "DecayDurationHours": "0",
+    "RepairCost": "0",
+    "StructuralIntegrity": "1",
+    "StoredItemCapacity": "7",
+    "RamDamageReceivedFlags": "0",
+    "bCanBeHarvested": "TRUE",
+    "IsVaultable": "TRUE",
+    "bIsDamagedWhileDrivingOver": "TRUE",
+    "ObjectType": "Structures"
+   }
+  },
+  "Colonial": {
+   "static": {
+    "Name": "Colonial",
+    "Additional Names": "collie;goblin;colonial",
+    "Dev Name": "Colonial Player",
+    "Health": "100",
+    "Mitigation Type": "Nomitigation",
+    "Rmat cost": "0",
+    "Bmat cost": "0",
+    "Concrete cost": "0",
+    "Shovel digs": "0",
+    "Sandbag cost": "0",
+    "Barbed wire cost": "0",
+    "Metal beam cost": "0",
+    "DecayStartHours": "0",
+    "DecayDurationHours": "0",
+    "RepairCost": "0",
+    "StructuralIntegrity": "1",
+    "StoredItemCapacity": "7",
+    "RamDamageReceivedFlags": "0",
+    "bCanBeHarvested": "TRUE",
+    "IsVaultable": "TRUE",
+    "bIsDamagedWhileDrivingOver": "TRUE",
+    "ObjectType": "Structures"
+   }
+  },
+  "V-1 Tzykalia": {
+   "from": "vehicles:AircraftBomberC",
+   "type": "Vehicles",
+   "name": "V-1 Tzykalia",
+   "aliases": "colonial bomber"
+  },
+  "Tulka P4 Welkinrive": {
+   "from": "vehicles:AircraftBomberW",
+   "type": "Vehicles",
+   "name": "Tulka P4 Welkinrive",
+   "aliases": "warden bomber;bomber"
+  },
+  "Mergo-4 “Myrmidon”": {
+   "from": "vehicles:AircraftDiveC",
+   "type": "Vehicles",
+   "name": "Mergo-4 “Myrmidon”",
+   "aliases": "colonial dive bomber;dive bomber"
+  },
+  "Toxot-902 “Blind Silver”": {
+   "from": "vehicles:AircraftFighterC",
+   "type": "Vehicles",
+   "name": "Toxot-902 “Blind Silver”",
+   "aliases": "colonial fighter"
+  },
+  "Daimon aK-5 “Harpy”": {
+   "from": "vehicles:AircraftFighter2C",
+   "type": "Vehicles",
+   "name": "Daimon aK-5 “Harpy”",
+   "aliases": "colonial heavy fighter;heavy fighter;harpy"
+  },
+  "Luminary Mk. II Harbinger": {
+   "from": "vehicles:AircraftFighterW",
+   "type": "Vehicles",
+   "name": "Luminary Mk. II Harbinger",
+   "aliases": "warden fighter"
+  },
+  "V-5b Pegasus": {
+   "from": "vehicles:AircraftParatrooperC",
+   "type": "Vehicles",
+   "name": "V-5b Pegasus",
+   "aliases": "colonial paratrooper;collie paratrooper;colonial paratrooper transport"
+  },
+  "Rinnspeir Mk. I Zealot": {
+   "from": "vehicles:AircraftParatrooperW",
+   "type": "Vehicles",
+   "name": "Rinnspeir Mk. I Zealot",
+   "aliases": "warden paratrooper;warden paratrooper transport"
+  },
+  "A59 Venti “Perdix”": {
+   "from": "vehicles:AircraftScout2C",
+   "type": "Vehicles",
+   "name": "A59 Venti “Perdix”",
+   "aliases": "Perdix;colonial torp scout;colonial torpedo scout plane"
+  },
+  "A51 Venti “Daedalus”": {
+   "from": "vehicles:AircraftScoutC",
+   "type": "Vehicles",
+   "name": "A51 Venti “Daedalus”",
+   "aliases": "Daedalus;colonial scout aircraft;collie scout aircraft;colonial scout plane;collie scout plane"
+  },
+  "Luminary Mk. IV Herald": {
+   "from": "vehicles:AircraftScoutW",
+   "type": "Vehicles",
+   "name": "Luminary Mk. IV Herald",
+   "aliases": "warden scout aircraft;warden scout plane;Herald"
+  },
+  "Luminary Mk. VI Emissary": {
+   "from": "vehicles:AircraftScout2W",
+   "type": "Vehicles",
+   "name": "Luminary Mk. VI Emissary",
+   "aliases": "Emissary;warden mine scout plane"
+  },
+  "M925 Austringer Man-O-War": {
+   "from": "vehicles:AircraftTorpedoW",
+   "type": "Vehicles",
+   "name": "M925 Austringer Man-O-War",
+   "aliases": "warden torpedo bomber;torpedo bomber"
+  },
+  "Tulka I1.9 White Raven": {
+   "from": "vehicles:AircraftWaterW",
+   "type": "Vehicles",
+   "name": "Tulka I1.9 White Raven",
+   "aliases": "warden light fighter aircraft;white raven;amphibious fighter;warden sea fighter"
+  },
+  "R-12b - “Salva” Flame Truck": {
+   "from": "vehicles:AmbulanceFlameC",
+   "type": "Vehicles",
+   "name": "R-12b - “Salva” Flame Truck",
+   "aliases": "colonial fire truck;colonial fire engine"
+  },
+  "Dunne Dousing Engine 3r": {
+   "from": "vehicles:AmbulanceFlameW",
+   "type": "Vehicles",
+   "name": "Dunne Dousing Engine 3r",
+   "aliases": "warden fire truck;warden fire engine"
+  },
+  "Das Krokodil by VAC": {
+   "from": "vehicles:FreighterLight",
+   "type": "Vehicles",
+   "name": "Das Krokodil by VAC",
+   "aliases": "krokodil;korkodil;Das Krokodil"
+  },
+  "Type B - “Lucian”": {
+   "from": "vehicles:Gunboat2C",
+   "type": "Vehicles",
+   "name": "Type B - “Lucian”",
+   "aliases": "colonial siege boat;lucian;rocket boat"
+  },
+  "81f-f Ronan Blackguard": {
+   "from": "vehicles:Gunboat2W",
+   "type": "Vehicles",
+   "name": "81f-f Ronan Blackguard",
+   "aliases": "warden siege boat;250 boat"
+  },
+  "Poseidon": {
+   "from": "vehicles:LargeShipAircraftC",
+   "type": "Vehicles",
+   "name": "Poseidon",
+   "aliases": "colonial aircraft carrier"
+  },
+  "Mercy": {
+   "from": "vehicles:LargeShipBattleshipAircraftW",
+   "type": "Vehicles",
+   "name": "Mercy",
+   "aliases": "warden aircraft carrier"
+  },
+  "K-81e “Sombre”": {
+   "from": "vehicles:LightBoatInfantryC",
+   "type": "Vehicles",
+   "name": "K-81e “Sombre”",
+   "aliases": "colonial infantry boat;colonial AA boat;Sombre"
+  },
+  "68A-4 Ronan Fathomer": {
+   "from": "vehicles:LightBoatInfantryW",
+   "type": "Vehicles",
+   "name": "68A-4 Ronan Fathomer",
+   "aliases": "warden infantry boat;warden AA boat;Fathomer;aa boat"
+  },
+  "Strider": {
+   "from": "vehicles:MediumBoatC",
+   "type": "Vehicles",
+   "name": "Strider",
+   "aliases": "colonial gunship;colonial medium boat"
+  },
+  "Rinnspeir Ornitier-Class Gunship": {
+   "from": "vehicles:MediumBoatW",
+   "type": "Vehicles",
+   "name": "Rinnspeir Ornitier-Class Gunship",
+   "aliases": "warden gunship;warden medium boat;medium boat"
+  },
+  "Bellweather by VAC": {
+   "from": "vehicles:MineBoat",
+   "type": "Vehicles",
+   "name": "Bellweather by VAC",
+   "aliases": "colonial mine boat;colonial mine layer"
+  },
+  "Blumfield LK205": {
+   "from": "vehicles:Bicycle",
+   "type": "Vehicles",
+   "name": "Blumfield LK205",
+   "aliases": ""
+  },
+  "Centurion MV-2": {
+   "from": "vehicles:Mech",
+   "type": "Vehicles",
+   "name": "Centurion MV-2",
+   "aliases": ""
+  },
+  "Herne QMW 1a Scourge Hunter": {
+   "from": "vehicles:MechW",
+   "type": "Vehicles",
+   "name": "Herne QMW 1a Scourge Hunter",
+   "aliases": ""
+  },
+  "Heavy Infantry Carrier": {
+   "from": "vehicles:RelicAPC",
+   "type": "Vehicles",
+   "name": "Heavy Infantry Carrier",
+   "aliases": ""
+  },
+  "V-1 Tzykalia Engine": {
+   "from": "aircraft_parts:AircraftBomberCEngine",
+   "type": "Aircraft_Parts",
+   "name": "V-1 Tzykalia Engine",
+   "aliases": "colonial bomber Engine"
+  },
+  "V-1 Tzykalia Fuselage": {
+   "from": "aircraft_parts:AircraftBomberCFuselage",
+   "type": "Aircraft_Parts",
+   "name": "V-1 Tzykalia Fuselage",
+   "aliases": "colonial bomber Fuselage"
+  },
+  "V-1 Tzykalia Tail": {
+   "from": "aircraft_parts:AircraftBomberCTail",
+   "type": "Aircraft_Parts",
+   "name": "V-1 Tzykalia Tail",
+   "aliases": "colonial bomber Tail"
+  },
+  "V-1 Tzykalia Wing": {
+   "from": "aircraft_parts:AircraftBomberCWing",
+   "type": "Aircraft_Parts",
+   "name": "V-1 Tzykalia Wing",
+   "aliases": "colonial bomber Wing"
+  },
+  "Tulka P4 Welkinrive Engine": {
+   "from": "aircraft_parts:AircraftBomberWEngine",
+   "type": "Aircraft_Parts",
+   "name": "Tulka P4 Welkinrive Engine",
+   "aliases": "warden bomber Engine"
+  },
+  "Tulka P4 Welkinrive Fuselage": {
+   "from": "aircraft_parts:AircraftBomberWFuselage",
+   "type": "Aircraft_Parts",
+   "name": "Tulka P4 Welkinrive Fuselage",
+   "aliases": "warden bomber Fuselage"
+  },
+  "Tulka P4 Welkinrive Tail": {
+   "from": "aircraft_parts:AircraftBomberWTail",
+   "type": "Aircraft_Parts",
+   "name": "Tulka P4 Welkinrive Tail",
+   "aliases": "warden bomber Tail"
+  },
+  "Tulka P4 Welkinrive Wing": {
+   "from": "aircraft_parts:AircraftBomberWWing",
+   "type": "Aircraft_Parts",
+   "name": "Tulka P4 Welkinrive Wing",
+   "aliases": "warden bomber Wing"
+  },
+  "Mergo-4 “Myrmidon” Engine": {
+   "from": "aircraft_parts:AircraftDiveCEngine",
+   "type": "Aircraft_Parts",
+   "name": "Mergo-4 “Myrmidon” Engine",
+   "aliases": "colonial dive bomber Engine"
+  },
+  "Mergo-4 “Myrmidon” Fuselage": {
+   "from": "aircraft_parts:AircraftDiveCFuselage",
+   "type": "Aircraft_Parts",
+   "name": "Mergo-4 “Myrmidon” Fuselage",
+   "aliases": "colonial dive bomber Fuselage"
+  },
+  "Mergo-4 “Myrmidon” Tail": {
+   "from": "aircraft_parts:AircraftDiveCTail",
+   "type": "Aircraft_Parts",
+   "name": "Mergo-4 “Myrmidon” Tail",
+   "aliases": "colonial dive bomber Tail"
+  },
+  "Mergo-4 “Myrmidon” Wing": {
+   "from": "aircraft_parts:AircraftDiveCWing",
+   "type": "Aircraft_Parts",
+   "name": "Mergo-4 “Myrmidon” Wing",
+   "aliases": "colonial dive bomber Wing"
+  },
+  "Toxot-902 “Blind Silver” Engine": {
+   "from": "aircraft_parts:AircraftFighterCEngine",
+   "type": "Aircraft_Parts",
+   "name": "Toxot-902 “Blind Silver” Engine",
+   "aliases": "colonial fighter Engine"
+  },
+  "Toxot-902 “Blind Silver” Fuselage": {
+   "from": "aircraft_parts:AircraftFighterCFuselage",
+   "type": "Aircraft_Parts",
+   "name": "Toxot-902 “Blind Silver” Fuselage",
+   "aliases": "colonial fighter Fuselage"
+  },
+  "Toxot-902 “Blind Silver” Tail": {
+   "from": "aircraft_parts:AircraftFighterCTail",
+   "type": "Aircraft_Parts",
+   "name": "Toxot-902 “Blind Silver” Tail",
+   "aliases": "colonial fighter Tail"
+  },
+  "Toxot-902 “Blind Silver” Wing": {
+   "from": "aircraft_parts:AircraftFighterCWing",
+   "type": "Aircraft_Parts",
+   "name": "Toxot-902 “Blind Silver” Wing",
+   "aliases": "colonial fighter Wing"
+  },
+  "Daimon aK-5 “Harpy” Engine": {
+   "from": "aircraft_parts:AircraftFighter2CEngine",
+   "type": "Aircraft_Parts",
+   "name": "Daimon aK-5 “Harpy” Engine",
+   "aliases": "colonial heavy fighter Engine"
+  },
+  "Daimon aK-5 “Harpy” Fuselage": {
+   "from": "aircraft_parts:AircraftFighter2CFuselage",
+   "type": "Aircraft_Parts",
+   "name": "Daimon aK-5 “Harpy” Fuselage",
+   "aliases": "colonial heavy fighter Fuselage"
+  },
+  "Daimon aK-5 “Harpy” Tail": {
+   "from": "aircraft_parts:AircraftFighter2CTail",
+   "type": "Aircraft_Parts",
+   "name": "Daimon aK-5 “Harpy” Tail",
+   "aliases": "colonial heavy fighter Tail"
+  },
+  "Daimon aK-5 “Harpy” Wing": {
+   "from": "aircraft_parts:AircraftFighter2CWing",
+   "type": "Aircraft_Parts",
+   "name": "Daimon aK-5 “Harpy” Wing",
+   "aliases": "colonial heavy fighter Wing"
+  },
+  "Luminary Mk. II Harbinger Engine": {
+   "from": "aircraft_parts:AircraftFighterWEngine",
+   "type": "Aircraft_Parts",
+   "name": "Luminary Mk. II Harbinger Engine",
+   "aliases": "warden fighter Engine"
+  },
+  "Luminary Mk. II Harbinger Fuselage": {
+   "from": "aircraft_parts:AircraftFighterWFuselage",
+   "type": "Aircraft_Parts",
+   "name": "Luminary Mk. II Harbinger Fuselage",
+   "aliases": "warden fighter Fuselage"
+  },
+  "Luminary Mk. II Harbinger Tail": {
+   "from": "aircraft_parts:AircraftFighterWTail",
+   "type": "Aircraft_Parts",
+   "name": "Luminary Mk. II Harbinger Tail",
+   "aliases": "warden fighter Tail"
+  },
+  "Luminary Mk. II Harbinger Wing": {
+   "from": "aircraft_parts:AircraftFighterWWing",
+   "type": "Aircraft_Parts",
+   "name": "Luminary Mk. II Harbinger Wing",
+   "aliases": "warden fighter Wing"
+  },
+  "V-5b Pegasus Engine": {
+   "from": "aircraft_parts:AircraftParatrooperCEngine",
+   "type": "Aircraft_Parts",
+   "name": "V-5b Pegasus Engine",
+   "aliases": "colonial paratrooper Engine;collie paratrooper Engine;colonial paratrooper transport Engine"
+  },
+  "V-5b Pegasus Fuselage": {
+   "from": "aircraft_parts:AircraftParatrooperCFuselage",
+   "type": "Aircraft_Parts",
+   "name": "V-5b Pegasus Fuselage",
+   "aliases": "colonial paratrooper Fuselage;collie paratrooper Fuselage;colonial paratrooper transport Fuselage"
+  },
+  "V-5b Pegasus Tail": {
+   "from": "aircraft_parts:AircraftParatrooperCTail",
+   "type": "Aircraft_Parts",
+   "name": "V-5b Pegasus Tail",
+   "aliases": "colonial paratrooper Tail;collie paratrooper Tail;colonial paratrooper transport Tail"
+  },
+  "V-5b Pegasus Wing": {
+   "from": "aircraft_parts:AircraftParatrooperCWing",
+   "type": "Aircraft_Parts",
+   "name": "V-5b Pegasus Wing",
+   "aliases": "colonial paratrooper Wing;collie paratrooper Wing;colonial paratrooper transport Wing"
+  },
+  "Rinnspeir Mk. I Zealot Engine": {
+   "from": "aircraft_parts:AircraftParatrooperWEngine",
+   "type": "Aircraft_Parts",
+   "name": "Rinnspeir Mk. I Zealot Engine",
+   "aliases": "warden paratrooper Engine;warden paratrooper transport Engine"
+  },
+  "Rinnspeir Mk. I Zealot Fuselage": {
+   "from": "aircraft_parts:AircraftParatrooperWFuselage",
+   "type": "Aircraft_Parts",
+   "name": "Rinnspeir Mk. I Zealot Fuselage",
+   "aliases": "warden paratrooper Fuselage;warden paratrooper transport Fuselage"
+  },
+  "Rinnspeir Mk. I Zealot Tail": {
+   "from": "aircraft_parts:AircraftParatrooperWTail",
+   "type": "Aircraft_Parts",
+   "name": "Rinnspeir Mk. I Zealot Tail",
+   "aliases": "warden paratrooper Tail;warden paratrooper transport Tail"
+  },
+  "Rinnspeir Mk. I Zealot Wing": {
+   "from": "aircraft_parts:AircraftParatrooperWWing",
+   "type": "Aircraft_Parts",
+   "name": "Rinnspeir Mk. I Zealot Wing",
+   "aliases": "warden paratrooper Wing;warden paratrooper transport Wing"
+  },
+  "M925 Austringer Man-O-War Engine": {
+   "from": "aircraft_parts:AircraftTorpedoWEngine",
+   "type": "Aircraft_Parts",
+   "name": "M925 Austringer Man-O-War Engine",
+   "aliases": "warden torpedo bomber Engine;torpedo bomber Engine"
+  },
+  "M925 Austringer Man-O-War Fuselage": {
+   "from": "aircraft_parts:AircraftTorpedoWFuselage",
+   "type": "Aircraft_Parts",
+   "name": "M925 Austringer Man-O-War Fuselage",
+   "aliases": "warden torpedo bomber Fuselage;torpedo bomber Fuselage"
+  },
+  "M925 Austringer Man-O-War Tail": {
+   "from": "aircraft_parts:AircraftTorpedoWTail",
+   "type": "Aircraft_Parts",
+   "name": "M925 Austringer Man-O-War Tail",
+   "aliases": "warden torpedo bomber Tail;torpedo bomber Tail"
+  },
+  "M925 Austringer Man-O-War Wing": {
+   "from": "aircraft_parts:AircraftTorpedoWWing",
+   "type": "Aircraft_Parts",
+   "name": "M925 Austringer Man-O-War Wing",
+   "aliases": "warden torpedo bomber Wing;torpedo bomber Wing"
+  },
+  "Tulka I1.9 White Raven Engine": {
+   "from": "aircraft_parts:AircraftWaterWEngine",
+   "type": "Aircraft_Parts",
+   "name": "Tulka I1.9 White Raven Engine",
+   "aliases": "warden light fighter aircraft Engine"
+  },
+  "Tulka I1.9 White Raven Fuselage": {
+   "from": "aircraft_parts:AircraftWaterWFuselage",
+   "type": "Aircraft_Parts",
+   "name": "Tulka I1.9 White Raven Fuselage",
+   "aliases": "warden light fighter aircraft Fuselage"
+  },
+  "Tulka I1.9 White Raven Tail": {
+   "from": "aircraft_parts:AircraftWaterWTail",
+   "type": "Aircraft_Parts",
+   "name": "Tulka I1.9 White Raven Tail",
+   "aliases": "warden light fighter aircraft Tail"
+  },
+  "Tulka I1.9 White Raven Wing": {
+   "from": "aircraft_parts:AircraftWaterWWing",
+   "type": "Aircraft_Parts",
+   "name": "Tulka I1.9 White Raven Wing",
+   "aliases": "warden light fighter aircraft Wing"
+  }
+ },
+ "weapons": {
+  "75mm": {
+   "from": "weapons:BattleTankGunner:BattleTankAmmo",
+   "name": "75mm",
+   "dev": "BattleTankAmmo",
+   "aliases": "bt;collie bt;collie sht;colonial bt;colonial sht;flame bt;flood;flood bt;jugg;juggernaut;kv2;lance;warden bt"
+  },
+  "40mm": {
+   "from": "weapons:ArmoredCar2LargeGunnerW:LightTankAmmo",
+   "name": "40mm",
+   "dev": "LightTankAmmo",
+   "aliases": "spatha;collie lt;colonial light tank;colonial lt;devitt;falch;falchion;hac;ironhide;kran;kranesca;kranny;lt;mpt;phalanx;silverhand;svh;toaster;warden light tank;warden lt"
+  },
+  "300mm": {
+   "from": "weapons:LongRangeArtillery:LRArtilleryAmmo",
+   "name": "300mm",
+   "dev": "LRArtilleryAmmo",
+   "aliases": "rail cannon;rail sc;rsc;sc"
+  },
+  "Mortar Shell": {
+   "from": "weapons:EmplacementMortarMount:MortarAmmo",
+   "name": "Mortar Shell",
+   "dev": "MortarAmmo",
+   "aliases": "collie gb;collie gunboat;colonial gb;colonial gunboat;gb;gunboat;he mortar;mht;mlt;mortar;mortar halftrack;ronan;warden gb;warden gunboat"
+  },
+  "Shrapnel Mortar Shell": {
+   "from": "weapons:EmplacementMortarMount:MortarAmmoSH",
+   "name": "Shrapnel Mortar Shell",
+   "dev": "MortarAmmoSH",
+   "aliases": ""
+  },
+  "250mm “Purity“ Shell": {
+   "from": "weapons:FieldMortarGunnerC:MortarTankAmmo",
+   "name": "250mm “Purity“ Shell",
+   "dev": "MortarTankAmmo",
+   "aliases": "ballista;chief;chieftain;fm;fm250;svb;250mm"
+  },
+  "250mm “Fury“ Shell": {
+   "from": "weapons:Gunboat2WMainGunner:MortarTankAmmoBR",
+   "name": "250mm “Fury“ Shell",
+   "dev": "MortarTankAmmoBR",
+   "aliases": "fury shell;fury;alekto"
+  },
+  "Shatter Missile": {
+   "from": "weapons:Gunboat2CGunner:DemolitionRocketAmmo",
+   "name": "Shatter Missile",
+   "dev": "DemolitionRocketAmmo",
+   "aliases": "King Jester - Mk. I-1;King Jester;rocket st;rocket scout tank;jester"
+  },
+  "Abisme AT-99 Mine": {
+   "from": "weapons:TankMine",
+   "name": "Abisme AT-99 Mine",
+   "dev": "TankMine",
+   "aliases": "at mine"
+  },
+  "Alligator Charge": {
+   "from": "weapons:SatchelChargeW",
+   "name": "Alligator Charge",
+   "dev": "SatchelChargeW",
+   "aliases": "satchel"
+  },
+  "Anti-Tank Sticky Bomb": {
+   "from": "weapons:StickyBomb",
+   "name": "Anti-Tank Sticky Bomb",
+   "dev": "StickyBomb",
+   "aliases": "sticky;stickies"
+  },
+  "A3 Harpa Fragmentation Grenade": {
+   "from": "weapons:ArmoredCar2TwinGunnerW:GrenadeW",
+   "name": "A3 Harpa Fragmentation Grenade",
+   "dev": "GrenadeW",
+   "aliases": "harpa"
+  },
+  "Mammon 91-b": {
+   "from": "weapons:HEGrenade",
+   "name": "Mammon 91-b",
+   "dev": "HEGrenade",
+   "aliases": "mammon;HE grenade"
+  },
+  "RPG": {
+   "from": "weapons:ArmoredCarTwinGunnerC:RPGAmmo",
+   "name": "RPG",
+   "dev": "RpgAmmo",
+   "aliases": "cutler;foebreaker;gemini;icarus;quadiche;ranseur;rpg;rpg bard;rpjeep"
+  },
+  "120mm": {
+   "from": "weapons:EmplacedLightArtilleryWGunner:LightArtilleryAmmo",
+   "name": "120mm",
+   "dev": "LightArtilleryAmmo",
+   "aliases": "collie 120;colonial 120;conqeuror;dd;destroyer;fa;frigate;lariat emplaced;push 120;warden 120 emplaced;warden frigate"
+  },
+  "30mm": {
+   "from": "weapons:InfantrySupportGun:MiniTankAmmo",
+   "name": "30mm",
+   "dev": "MiniTankAmmo",
+   "aliases": "30mm scout tank;30mm tankette;30mmST;brig;isg;roofette;ghouse;garrison house;ISG pill;ISG pillbox;infantry support gun pillbox"
+  },
+  "68mm": {
+   "from": "weapons:EmplacedATWGunner:ATAmmo",
+   "name": "68mm",
+   "dev": "ATAmmo",
+   "aliases": "Leary Shellbore 68mm;atht;bard;collie fat;collins;fat;ltd;nemesis;warden fat;at garrison;AT Garrison Shell"
+  },
+  "Anti-Tank Rifle Pillbox Ammo": {
+   "from": "weapons:bpatpillbox:WeaponDamage",
+   "name": "Anti-Tank Rifle Pillbox Ammo",
+   "dev": "ATPillboxAmmo",
+   "aliases": "AT pill;AT pillbox;anti-tank pillbox"
+  },
+  "T1 ATG Shell": {
+   "from": "weapons:bpatgunait1:WeaponDamage",
+   "name": "T1 ATG Shell",
+   "dev": "ATGT1Ammo",
+   "aliases": "t1 atg;t1 at garrison;t1 AT Garrison Shell;atg t1;at garrison t1;AT Garrison Shell t1"
+  },
+  "T2 ATG Shell": {
+   "from": "weapons:bpatgunait2:WeaponDamage",
+   "name": "T2 ATG Shell",
+   "dev": "ATGT2Ammo",
+   "aliases": "t2 atg;t2 at garrison;t2 AT Garrison Shell;atg t2;at garrison t2;AT Garrison Shell t2"
+  },
+  "T3 ATG Shell": {
+   "from": "weapons:bpatgunait3:WeaponDamage",
+   "name": "T3 ATG Shell",
+   "dev": "ATGT3Ammo",
+   "aliases": "atg;t3 atg;t3 at garrison;t3 AT Garrison Shell;atg t3;at garrison t3;AT Garrison Shell t3"
+  },
+  "Rifle Garrison ammo": {
+   "from": "weapons:bprifleait1:WeaponDamageAlternate",
+   "name": "Rifle Garrison ammo",
+   "dev": "RGammo",
+   "aliases": "rg;rifle garrison;rifle garrison ammo;rg ammo",
+   "damageType": "HeavyKinetic"
+  },
+  "Howitzer Garrison Shell": {
+   "from": "weapons:bpartilleryait1:DamageParams",
+   "name": "Howitzer Garrison Shell",
+   "dev": "HowitzerAmmo",
+   "aliases": "howi garrison shell;howie"
+  },
+  "7.62mm": {
+   "from": "weapons:RifleAutomaticC",
+   "name": "7.62mm",
+   "dev": "RifleAmmo",
+   "aliases": "762;Catena;Clancy Cinder;Omen;argenti;loughcaster"
+  },
+  "12.7mm": {
+   "from": "weapons:AircraftBomberCGunner:MGAmmo",
+   "name": "12.7mm",
+   "dev": "MGAmmo",
+   "aliases": "12.7;127;gast;hmg;ratcatcher;mg garrison;machine gun garrison"
+  },
+  "Ship 12.7mm (+20% HV)": {
+   "from": "weapons:BattleTankCMachineGunner:MGAmmo",
+   "name": "Ship 12.7mm (+20% HV)",
+   "dev": "MGAmmo",
+   "aliases": "hv 12.7;ship mg;ship 12.7;boat 12.7"
+  },
+  "7.92mm": {
+   "from": "weapons:ArmoredCarGunner:AssaultRifleAmmo",
+   "name": "7.92mm",
+   "dev": "AssaultRifleAmmo",
+   "aliases": "792;Aalto (Auto);ac;aft;armored ac;armoured car;colonial ac;dusk;scar twin;tac;warden ac;warden armoured car;warden heavy halftrack;warden heavy ht"
+  },
+  "AssaultRifleSingleShotAmmo": {
+   "from": "weapons:AssaultRifleSingleShotAmmo",
+   "name": "7.92mm",
+   "dev": "AssaultRifleSingleShotAmmo",
+   "aliases": "Aalto (Semi);Aalto (single)"
+  },
+  "14.5mm": {
+   "from": "weapons:ATRifleSniperC",
+   "name": "14.5mm",
+   "dev": "ATRifleAmmo",
+   "aliases": "14.5;atac;atr;cestus;collie anti tank field gun;collie atr field gun;colonial anti tank field gun;colonial sniper atr;rail rifle;quickhatch;highwayman;hwm;sniper atr;warden atr"
+  },
+  "20mm": {
+   "from": "weapons:AircraftFighterC_HMG:AircraftAmmo",
+   "name": "20mm",
+   "dev": "AircraftAmmo",
+   "aliases": "aircraft ammo;warden fighter 20mm;luminary harbinger 20mm;harbinger 20mm;harbringer;colonial fighter 20mm;blind silver 20mm;blind silver"
+  },
+  "Ship 20mm (+20% HV)": {
+   "from": "weapons:EmplacedInfantryCGunner:AircraftAmmo",
+   "name": "Ship 20mm (+20% HV)",
+   "dev": "AircraftAmmo",
+   "aliases": "ship 20mm;ship AA ammo;boat 20mm;hv20mm;HV 20mm"
+  },
+  "Daimon aK-5 “Harpy” 20mm (+25% HV)": {
+   "from": "weapons:AircraftFighter2CTopGunner:AircraftAmmo",
+   "name": "Daimon aK-5 “Harpy” 20mm (+25% HV)",
+   "dev": "AircraftAmmo",
+   "aliases": "harpy 20mm;harpy 20mm ammo;harpy mg ammo;colonial heavy fighter 20mm;heavy fighter 20mm"
+  },
+  "A51 Venti \"Daedalus\" 20mm (-33% LV)": {
+   "from": "weapons:AircraftScoutC_HMG:AircraftAmmo",
+   "name": "A51 Venti \"Daedalus\" 20mm (-33% LV)",
+   "dev": "AircraftAmmo",
+   "aliases": "colonial scout 20mm;Daedalus 20mm;lv 20mm;Daedalus"
+  },
+  "Luminary Mk. IV Herald 20mm (-33% LV)": {
+   "from": "weapons:AircraftScoutW_HMG:AircraftAmmo",
+   "name": "Luminary Mk. IV Herald 20mm (-33% LV)",
+   "dev": "AircraftAmmo",
+   "aliases": "warden scout 20mm;Herald 20mm;Herald"
+  },
+  "Tulka I1.9 White Raven 20mm (+25% HV)": {
+   "from": "weapons:AircraftFighter2CTopGunner:AircraftAmmo",
+   "name": "Tulka I1.9 White Raven 20mm (+25% HV)",
+   "dev": "AircraftAmmo",
+   "aliases": "warden sea fighter 20mm;White Raven 20mm;warden light fighter aircraft;white raven;amphibious fighter;warden sea fighter"
+  },
+  "Daimon aK-5 “Harpy” 14.5mm (+25% HV)": {
+   "from": "weapons:AircraftFighter2C_Cannon:ATRifleAmmo",
+   "name": "Daimon aK-5 “Harpy” 14.5mm (+25% HV)",
+   "dev": "ATRifleAmmo",
+   "aliases": "harpy 14.5mm;harpy 14.5mm ammo;harpy atr ammo;harpy at;colonial heavy fighter 14.5mm;heavy fighter 14.5mm"
+  },
+  "Luminary Mk. II Harbinger 14.5mm (+50% HV)": {
+   "from": "weapons:AircraftFighterW_Cannon:ATRifleAmmo",
+   "name": "Luminary Mk. II Harbinger 14.5mm (+50% HV)",
+   "dev": "ATRifleAmmo",
+   "aliases": "warden fighter 14.5mm;luminary harbinger 14.5mm;harbinger 14.5mm;harbinger 14.5;"
+  },
+  "Anti-Aircraft Shell": {
+   "from": "weapons:EmplacedAACGunner:AAAmmo",
+   "name": "Anti-Aircraft Shell",
+   "dev": "AAAmmo",
+   "aliases": "AA shell;zeal;bolas;flak shell;flak"
+  },
+  "Absol Anti-Aircraft Rounds": {
+   "from": "weapons:LightTank3CGunner:LightAAAmmo",
+   "name": "Absol Anti-Aircraft Rounds",
+   "dev": "LightAAAmmo",
+   "aliases": "light AA shell;light flak shell;light AA;mobile AA;Absol;Sagaris;colonial AA tank;colonial AA LT;colonial mobile AA;Birdeater;warden AA tank;warden AA LT;warden mobile AA;mobile AA;AA tank"
+  },
+  "Mark II Raidbreaker": {
+   "from": "weapons:AircraftBomberCBomber:BomberAmmo",
+   "name": "Mark II Raidbreaker",
+   "dev": "BomberAmmo",
+   "aliases": "bomber ammo;bomber shell;raidbreaker;raid breaker"
+  },
+  "912 Shrike Rounds": {
+   "from": "weapons:DiveBomberAmmo",
+   "name": "912 Shrike Rounds",
+   "dev": "DiveBomberAmmo",
+   "aliases": "dive bomb;dive bomber ammo;shrike rounds;divebomb"
+  },
+  "8mm": {
+   "from": "weapons:PistolC",
+   "name": "8mm",
+   "dev": "PistolAmmo",
+   "aliases": "Ahti;colonial pistol;ferro;warden pistol"
+  },
+  ".44": {
+   "from": "weapons:Revolver",
+   "name": ".44",
+   "dev": "RevolverAmmo",
+   "aliases": "44;cometa;revolver"
+  },
+  "Buckshot": {
+   "from": "weapons:ShotgunC",
+   "name": "Buckshot",
+   "dev": "ShotgunAmmo",
+   "aliases": "Dragonfly;colonial shotgun"
+  },
+  "9mm": {
+   "from": "weapons:SMGHeavyC",
+   "name": "9mm",
+   "dev": "SMGAmmo",
+   "aliases": "colonial heavy smg;colonial hsmg;fiddler;liar;lionclaw;warden heavy smg;warden hsmg;warden smg"
+  },
+  "Bomastone Grenade": {
+   "from": "weapons:GrenadeC",
+   "name": "Bomastone Grenade",
+   "dev": "GrenadeC",
+   "aliases": ""
+  },
+  "AP/RPG": {
+   "from": "weapons:ATRPGAmmo",
+   "name": "AP/RPG",
+   "dev": "ATRPGAmmo",
+   "aliases": "at rocket;atrpg;bane;venom;carnyx;aprpg"
+  },
+  "Ignifist 30": {
+   "from": "weapons:ATRPGLightCAmmo",
+   "name": "Ignifist 30",
+   "dev": "ATRPGLightCAmmo",
+   "aliases": "igni;ignifist"
+  },
+  "150mm": {
+   "from": "weapons:BattleTankHeavyArtilleryCGunner:HeavyArtilleryAmmo",
+   "name": "150mm",
+   "dev": "HeavyArtilleryAmmo",
+   "aliases": "callahan;collie 150 emplaced;collie battleship;collie spg;colonial battleship;colonial spg;exalt emplaced;huber emplaced;sarissa;stain;thunderbolt 150mm emplaced;titan;warden 150 emplaced;warden battleship;warden spg"
+  },
+  "ARC/RPG": {
+   "from": "weapons:ATRPGTW",
+   "name": "ARC/RPG",
+   "dev": "ATRPGIndirectAmmo",
+   "aliases": "arc;arcrpg;bac;beat emplaced;bonecar;bonelaw;bonesaw;bonewagon;mounted bonesaw;polybolos emplaced"
+  },
+  "Hydra’s Whisper": {
+   "from": "weapons:ExplosiveLightC",
+   "name": "Hydra’s Whisper",
+   "dev": "ExplosiveLightC",
+   "aliases": "hydra"
+  },
+  "BF5 White Ash Flask Grenade": {
+   "from": "weapons:ATGrenadeW",
+   "name": "BF5 White Ash Flask Grenade",
+   "dev": "ATGrenadeW",
+   "aliases": "flask"
+  },
+  "RifleAutomaticWSingleShotAmmo": {
+   "from": "weapons:RifleAutomaticWSingleShotAmmo",
+   "name": "7.62mm",
+   "dev": "RifleAutomaticWSingleShotAmmo",
+   "aliases": "sampo (semi);sampo (single)"
+  },
+  "Tremola Grenade GPb-1": {
+   "from": "weapons:ArmoredCar2TwinGunnerW:HELaunchedGrenade",
+   "name": "Tremola Grenade GPb-1",
+   "dev": "HELaunchedGrenade",
+   "aliases": "tremola;fissura;gac;grenade launcher armoured car;knave;lunaire"
+  },
+  "94.5mm": {
+   "from": "weapons:BattleTankATCGunner:ATLargeAmmo",
+   "name": "94.5mm",
+   "dev": "ATLargeAmmo",
+   "aliases": "btd;hasta"
+  },
+  "4C-Fire Rocket": {
+   "from": "weapons:HalftrackMultiWGunner:FireRocketAmmo",
+   "name": "4C-Fire Rocket",
+   "dev": "FireRocketAmmo",
+   "aliases": "rocket halftrack;rocket ht;fire rockets;4c rockets;4c"
+  },
+  "3C-High Explosive Rocket": {
+   "from": "weapons:ArmoredCar2MultiWGunner:HERocketAmmo",
+   "name": "3C-High Explosive Rocket",
+   "dev": "HERocketAmmo",
+   "aliases": "hades net (emplaced);katyusha;rocket scout tank;rocket st;rocket truck;3C rockets;3C;HE rockets"
+  },
+  "Flame Ammo": {
+   "from": "weapons:ArmoredCarFlameWGunner:FlameAmmo",
+   "name": "Flame Ammo",
+   "dev": "FlameAmmo",
+   "aliases": "flame lt;flame tankette"
+  },
+  "Flame Backpack Ammo": {
+   "from": "weapons:FlameTorchC",
+   "name": "Flame Backpack Ammo",
+   "dev": "FlameBackpackAmmo",
+   "aliases": "colonial flame thrower;warden flame thrower"
+  },
+  "Havoc Charge Detonator": {
+   "from": "weapons:SatchelChargeT",
+   "name": "Havoc Charge Detonator",
+   "dev": "SatchelChargeT",
+   "aliases": "havoc;havoc charge"
+  },
+  "Model-7 “Evie”": {
+   "from": "weapons:LargeShipDestroyerDepthChargeGunnerL:DepthChargeAmmo",
+   "name": "Model-7 “Evie”",
+   "dev": "DepthChargeAmmo",
+   "aliases": "depth charge"
+  },
+  "E680-S Rudder Lock": {
+   "from": "weapons:WaterMine",
+   "name": "E680-S Rudder Lock",
+   "dev": "WaterMine",
+   "aliases": "sea mine;water mine;rudderlock;seamine"
+  },
+  "E681-B Hullbreaker Mine": {
+   "from": "weapons:SurfaceWaterMine",
+   "name": "E681-B Hullbreaker Mine",
+   "dev": "SurfaceWaterMine",
+   "aliases": "surface mine;small sea mine;small water mine;Hullbreaker;Emissary;Daedalus"
+  },
+  "Moray Torpedo": {
+   "from": "weapons:LargeShipSubmarineWTorpedoGunner:TorpedoAmmo",
+   "name": "Moray Torpedo",
+   "dev": "TorpedoAmmo",
+   "aliases": "colonial sub;colonial submarine;nakki;trident;warden sub;warden submarine;moray;torps;torpedo"
+  },
+  "Tenta Torpedo": {
+   "from": "weapons:AircraftTorpedoAmmo",
+   "name": "Tenta Torpedo",
+   "dev": "AircraftTorpedoAmmo",
+   "aliases": "medium torpedo;med torp;medium torp;aircraft torp;air torp;aircraft torpedo;warden torpedo bomber;torpedo bomber;M925 Austringer Man-O-War;torp bomber"
+  },
+  "M925 Austringer Man-O-War Moray Torpedo (-30% LV)": {
+   "from": "weapons:AircraftTorpedoWDriver:AircraftTorpedoAmmo",
+   "name": "M925 Austringer Man-O-War Moray Torpedo (-30% LV)",
+   "dev": "TorpedoAmmo",
+   "aliases": "lv torpedo;lv torp;torpedo bomber;man-o-war;man of war"
+  },
+  "Quillback Torpedo": {
+   "from": "weapons:MiniTorpedoAmmo",
+   "name": "Quillback Torpedo",
+   "dev": "MiniTorpedoAmmo",
+   "aliases": "minitorpedo;mini torpedo;quillback;small torpedo;minitorp;mini torp;Perdix"
+  },
+  "Incendiary Mortar Shell": {
+   "from": "weapons:EmplacementMortarMount:MortarAmmoFlame",
+   "name": "Incendiary Mortar Shell",
+   "dev": "MortarAmmoFlame",
+   "aliases": "fire mortar;flame mortar"
+  },
+  "B2 Varsi Anti-Tank Grenade": {
+   "from": "weapons:ArmoredCar2TwinGunnerW:ATLaunchedGrenadeW",
+   "name": "B2 Varsi Anti-Tank Grenade",
+   "dev": "ATLaunchedGrenadeW",
+   "aliases": "varsi;varsis"
+  },
+  "Crow’s Foot Mine": {
+   "from": "weapons:InfantryMine",
+   "name": "Crow’s Foot Mine",
+   "dev": "InfantryMine",
+   "aliases": "ap mine;infantry mine;anti personnel mine"
+  },
+  "G40 “Sagittarii” (FMG) ammo": {
+   "from": "weapons:FieldMachineGunGunner:MGAmmo",
+   "name": "G40 “Sagittarii” (FMG)",
+   "dev": "MGAmmo",
+   "aliases": "collie fmg;fmg;field machine gun"
+  },
+  "Swallowtail 988/127-2 (FMG) ammo": {
+   "from": "weapons:FieldMachineGunGunner:MGAmmo",
+   "name": "Swallowtail 988/127-2 (FMG)",
+   "dev": "MGAmmo",
+   "aliases": "warden fmg"
+  },
+  "Noble Widow MK. XIV (HTD) ammo": {
+   "from": "weapons:DestroyerTankWGunner:ATAmmo",
+   "name": "Noble Widow MK. XIV (HTD)",
+   "dev": "ATAmmo",
+   "aliases": "htd;widow"
+  },
+  "40-45 “Smelter” Heavy Field Gun (HVFAT) ammo": {
+   "from": "weapons:FieldCannonDamageCGunGunner:LightTankAmmo",
+   "name": "40-45 “Smelter” Heavy Field Gun (HVFAT)",
+   "dev": "LightTankAmmo",
+   "aliases": "hv40;hv40mm"
+  },
+  "Balfour Rampart 68mm (HVFC) ammo": {
+   "from": "weapons:FieldATDamageWGunner:ATAmmo",
+   "name": "Balfour Rampart 68mm (HVFC)",
+   "dev": "ATAmmo",
+   "aliases": "hvfat"
+  },
+  "Gallagher Outlaw Mk. II (Cruiser) ammo": {
+   "from": "weapons:MediumTank2RangeWGunner:LightTankAmmo",
+   "name": "Gallagher Outlaw Mk. II (Cruiser)",
+   "dev": "LightTankAmmo",
+   "aliases": "outlaw"
+  },
+  "Cullen Predator Mk. III ammo": {
+   "from": "weapons:SuperTankWGunner:ATLargeAmmo",
+   "name": "Cullen Predator Mk. III",
+   "dev": "ATLargeAmmo",
+   "aliases": "warden sht;sht;predator"
+  },
+  "Silverhand Lordscar Mk. X ammo": {
+   "from": "weapons:MediumTankATWGunner:ATLargeAmmo",
+   "name": "Silverhand Lordscar Mk. X",
+   "dev": "ATLargeAmmo",
+   "aliases": "lordscar;std"
+  },
+  "Duncan's Coin (ATR Field Gun) ammo": {
+   "from": "weapons:FieldAT2WGunner:ATRifleAmmo",
+   "name": "Duncan's Coin (ATR Field Gun)",
+   "dev": "ATRifleAmmo",
+   "aliases": "warden anti tank field gun;warden atr field gun"
+  },
+  "945g “Stygian Bolt” ammo": {
+   "from": "weapons:LargeFieldATCGunner:ATLargeAmmo",
+   "name": "945g “Stygian Bolt”",
+   "dev": "ATLargeAmmo",
+   "aliases": "styg;stygian"
+  },
+  "Balfour Stockade 75mm ammo": {
+   "from": "weapons:LargeFieldCannonWGunner:BattleTankAmmo",
+   "name": "Balfour Stockade 75mm",
+   "dev": "BattleTankAmmo",
+   "aliases": "stockade"
+  },
+  "Blakerow 871 ammo": {
+   "from": "weapons:RifleLightW",
+   "name": "Blakerow 871",
+   "dev": "RifleAmmo",
+   "aliases": "Blakerow"
+  },
+  "Catara mo.II ammo": {
+   "from": "weapons:AssaultRifleC",
+   "name": "Catara mo.II",
+   "dev": "MGAmmo",
+   "aliases": "catara"
+  },
+  "Clancy-Raca M4 ammo": {
+   "from": "weapons:SniperRifleW",
+   "name": "Clancy-Raca M4",
+   "dev": "RifleAmmo",
+   "aliases": "Clancy-Raca;warden sniper"
+  },
+  "KRR3-792 Auger ammo": {
+   "from": "weapons:SniperRifleC",
+   "name": "KRR3-792 Auger",
+   "dev": "RifleAmmo",
+   "aliases": "Auger;colonial sniper"
+  },
+  "“The Pitch Gun” mc.V ammo": {
+   "from": "weapons:SMGC",
+   "name": "“The Pitch Gun” mc.V",
+   "dev": "SMGAmmo",
+   "aliases": "pitch gun;colonial smg"
+  },
+  "Fuscina pi.I ammo": {
+   "from": "weapons:RifleLightC",
+   "name": "Fuscina pi.I",
+   "dev": "RifleAmmo",
+   "aliases": "fuscina"
+  },
+  "Malone MK.2 ammo": {
+   "from": "weapons:MGW",
+   "name": "Malone MK.2",
+   "dev": "MGAmmo",
+   "aliases": "malone 12.7mm;malone12.7"
+  },
+  "Cascadier 873 ammo": {
+   "from": "weapons:PistolLightW",
+   "name": "Cascadier 873",
+   "dev": "PistolAmmo",
+   "aliases": "cascadier;burst pistol"
+  },
+  "Booker Storm Rifle Model 838 ammo": {
+   "from": "weapons:AssaultRifleHeavyW",
+   "name": "Booker Storm Rifle Model 838",
+   "dev": "AssaultRifleAmmo",
+   "aliases": "Hv792;booker"
+  },
+  "Volta r.I Repeater ammo": {
+   "from": "weapons:RifleHeavyC",
+   "name": "Volta r.I Repeater",
+   "dev": "RifleAmmo",
+   "aliases": "volta"
+  },
+  "The Hangman 757 ammo": {
+   "from": "weapons:RifleHeavyW",
+   "name": "The Hangman 757",
+   "dev": "RevolverAmmo",
+   "aliases": "hangman"
+  },
+  "Sampo Auto-Rifle 77 (Auto) ammo": {
+   "from": "weapons:RifleAutomaticW",
+   "name": "Sampo Auto-Rifle 77 (Auto)",
+   "dev": "RifleAmmo",
+   "aliases": "sampo (auto)"
+  },
+  "No.2B Hawthorne ammo": {
+   "from": "weapons:RifleShortW",
+   "name": "No.2B Hawthorne",
+   "dev": "RifleAmmo",
+   "aliases": "Howthorne"
+  },
+  "228 Satterley Heavy Storm Rifle ammo": {
+   "from": "weapons:ATRifleAssaultW",
+   "name": "228 Satterley Heavy Storm Rifle",
+   "dev": "ATRifleAmmo",
+   "aliases": "warden burst atr"
+  },
+  "Booker Greyhound Model 910 ammo": {
+   "from": "weapons:ATRifleAutomaticW",
+   "name": "Booker Greyhound Model 910",
+   "dev": "ATRifleAmmo",
+   "aliases": "warden storm atr;warden auto atr"
+  },
+  "“Dawn” Ve.II ammo": {
+   "from": "weapons:ATRifleLightC",
+   "name": "“Dawn” Ve.II",
+   "dev": "ATRifleAmmo",
+   "aliases": "dawn;colonial burst atr"
+  },
+  "No.4 The Pillory Scattergun ammo": {
+   "from": "weapons:ShotgunW",
+   "name": "No.4 The Pillory Scattergun",
+   "dev": "ShotgunAmmo",
+   "aliases": "Scattergun;warden shotgun;Pillory"
+  },
+  "Leary Snare Trap 20 ammo": {
+   "from": "weapons:EmplacedInfantryWGunner:AircraftAmmo",
+   "name": "Leary Snare Trap 20",
+   "dev": "AircraftAmmo",
+   "aliases": "warden emg;emg;leary snare trap;warden emg unemplaced;emg unemplaced;leary snare trap unemplaced"
+  },
+  "DAE 1b-2 “Serra” ammo": {
+   "from": "weapons:EmplacedInfantryCGunner:AircraftAmmo",
+   "name": "DAE 1b-2 “Serra”",
+   "dev": "AircraftAmmo",
+   "aliases": "collie emg emplaced;triple emg emplaced;serra emplaced"
+  },
+  "Huber Starbreaker 94.5mm ammo": {
+   "from": "weapons:EmplacedATLargeWGunner:ATLargeAmmo",
+   "name": "Huber Starbreaker 94.5mm",
+   "dev": "ATLargeAmmo",
+   "aliases": "starbreaker emplaced"
+  },
+  "DAE 2a-1 “Ruptura” ammo": {
+   "from": "weapons:EmplacedCannonLargeCGunner:BattleTankAmmo",
+   "name": "DAE 2a-1 “Ruptura”",
+   "dev": "BattleTankAmmo",
+   "aliases": "ruptura emplaced"
+  },
+  "Lamentum mm.IV ammo": {
+   "from": "weapons:MGTC:MGAmmo",
+   "name": "Lamentum mm.IV",
+   "dev": "MGAmmo",
+   "aliases": "lamentum"
+  },
+  "“Typhon” ra.XII ammo": {
+   "from": "weapons:ATRifleTC:ATRifleAmmo",
+   "name": "“Typhon” ra.XII",
+   "dev": "ATRifleAmmo",
+   "aliases": "typhon"
+  },
+  "Large Ship AI Shell": {
+   "from": "weapons:bplargeshipaiartillerygunturretcomponent:WeaponDamage",
+   "name": "Large Ship AI Shell",
+   "dev": "Large Ship AI Shell",
+   "aliases": "ship ai;ship ai mortar;large ship ai"
+  },
+  "AI Anti-Air Gun Shell": {
+   "from": "weapons:bpaagunai:WeaponDamage",
+   "name": "AI Anti-Air Gun Shell",
+   "dev": "AI Anti-Air Gun Shell",
+   "aliases": "anti air ai;ai aa gun;aa ai"
+  },
+  "Coastal Gun Shell": {
+   "from": "weapons:bpcoastalgun:WeaponDamage",
+   "name": "Coastal Gun Shell",
+   "dev": "Coastal Gun Shell",
+   "aliases": "coastal ai;coastal gun"
+  }
+ }
+}

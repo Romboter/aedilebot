@@ -4479,7 +4479,7 @@
     "Bridge": {
         "Name": "Bridge",
         "Additional Names": "",
-        "Dev Name": "Drawbridge",
+        "Dev Name": "DrawbridgeB",
         "Health": "4200",
         "Mitigation Type": "Tier2BStructure",
         "Rmat cost": "0",
@@ -5218,7 +5218,7 @@
     "A0E-9 Rocket Platform Husk": {
         "Name": "A0E-9 Rocket Platform Husk",
         "Additional Names": "nuke site husk;nuke platform husk;",
-        "Dev Name": "RocketSite",
+        "Dev Name": "RocketSiteDestroyed",
         "Health": "5400",
         "Mitigation Type": "Tier3Structure",
         "Rmat cost": "200",
@@ -5770,7 +5770,7 @@
     "Dry Dock": {
         "Name": "Dry Dock",
         "Additional Names": "drydock",
-        "Dev Name": "Shipyard",
+        "Dev Name": "FacilityVehicleFactory3",
         "Health": "4650",
         "Mitigation Type": "Tier3Structure",
         "Rmat cost": "0",
@@ -5794,7 +5794,7 @@
     "Dry Dock Husk": {
         "Name": "Dry Dock Husk",
         "Additional Names": "drydock husk",
-        "Dev Name": "Shipyard",
+        "Dev Name": "FacilityVehicleFactory3Destroyed",
         "Health": "6375",
         "Mitigation Type": "Tier3Structure",
         "Rmat cost": "0",
@@ -5818,7 +5818,7 @@
     "Offshore Platform": {
         "Name": "Offshore Platform",
         "Additional Names": "",
-        "Dev Name": "Shipyard",
+        "Dev Name": "FacilityMineOilRig",
         "Health": "1850",
         "Mitigation Type": "Tier3Structure",
         "Rmat cost": "0",
@@ -6034,7 +6034,7 @@
     "Infantry Support Gun Pillbox (ISG Pill)": {
         "Name": "Infantry Support Gun Pillbox (ISG Pill)",
         "Additional Names": "isg pillbox;isg pill",
-        "Dev Name": "ATPillbox",
+        "Dev Name": "ISGPillbox",
         "Health": "950",
         "Mitigation Type": "Tier2Structure",
         "Rmat cost": "0",
@@ -6562,7 +6562,7 @@
     "Metalworks Factory Husk": {
         "Name": "Metalworks Factory Husk",
         "Additional Names": "",
-        "Dev Name": "FacilityRefinery2",
+        "Dev Name": "FacilityRefinery2Destroyed",
         "Health": "6000",
         "Mitigation Type": "Tier2Structure",
         "Rmat cost": "",
@@ -6658,7 +6658,7 @@
     "Heavy Assembly Station Husk": {
         "Name": "Heavy Assembly Station Husk",
         "Additional Names": "bt pad husk;sht pad husk;large assembly station husk;large pad husk",
-        "Dev Name": "FacilityVehicleFactory2",
+        "Dev Name": "FacilityVehicleFactory2Destroyed",
         "Health": "4050",
         "Mitigation Type": "Tier3Structure",
         "Rmat cost": "",

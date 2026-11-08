@@ -1,0 +1,19 @@
+{
+  "core": ["FortBaseT1", "FortBaseT2", "FortBaseT3"],
+  "piece": ["FortT1", "FortT2", "FortT3"],
+  "ramp": ["FortRampT1", "FortRampT2", "FortRampT3"],
+  "med": ["MedicalRoomT1", "MedicalRoomT2", "MedicalRoomT3"],
+  "shelter": ["FortArtilleryShelterT1", "FortArtilleryShelterT2", "FortArtilleryShelterT3"],
+  "rg": ["RifleAIT1", "RifleAIT2", "RifleAIT3"],
+  "mg": ["MGAIT1", "MGAIT2", "MGAIT3"],
+  "obs": ["ObservationBunkerT1", "ObservationBunkerT2", "ObservationBunkerT3"],
+  "eng": [null, "EngineRoomT2", "EngineRoomT3"],
+  "atg": ["ATGunAIT1", "ATGunAIT2", "ATGunAIT3"],
+  "hg": ["ArtilleryAIT1", "ArtilleryAIT2", "ArtilleryAIT3"],
+  "ammo": [null, "AmmoRoomT2", "AmmoRoomT3"],
+  "ic": [null, null, "IntelCenter"],
+  "sc": [null, null, "LRArtillery"],
+  "ws": [null, null, "WeatherStation"],
+  "fortress": [null, null, "FortGarrisonStation"],
+  "radar": [null, null, "FortLargeRadar"]
+}
