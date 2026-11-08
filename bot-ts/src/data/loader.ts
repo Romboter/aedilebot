@@ -41,8 +41,8 @@ function parseLocationsCsv(raw: string): LocationRow[] {
 
 /** Map<locationName, locationType> — last row for a given name wins, matching
  * Python's dict[location_name] = location_type overwrite-on-duplicate. */
-export function loadLocationsFromCsv(dataDir: string): Map<string, string> {
-  const raw = readFileSync(path.join(dataDir, "Locations.csv"), "utf-8");
+export function loadLocationsFromCsv(dataDir: string, file = "Locations.csv"): Map<string, string> {
+  const raw = readFileSync(path.join(dataDir, file), "utf-8");
   const locations = new Map<string, string>();
   for (const row of parseLocationsCsv(raw)) {
     locations.set(row.locationName, row.locationType);

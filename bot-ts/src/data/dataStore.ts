@@ -12,8 +12,11 @@
 import type { PluginModule } from "../plugins/pluginHost.js";
 import type { DataSnapshot } from "./loader.js";
 import { defaultDataDir, loadDataSnapshot } from "./loader.js";
+import { loadNewSnapshot } from "./newLoader.js";
 
-const snapshot = loadDataSnapshot(defaultDataDir());
+// DATA_LAYOUT=new loads the generated files (data/vehicles.json, weapons.gen.json, ...) through the legacy-shape adapter;
+// the default stays the hand sheet until the generated data is accepted.
+const snapshot = process.env.DATA_LAYOUT === "new" ? loadNewSnapshot(defaultDataDir()) : loadDataSnapshot(defaultDataDir());
 
 const dataStorePlugin: PluginModule<DataSnapshot> = {
   version: new Date().toISOString(),
