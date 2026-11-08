@@ -184,3 +184,8 @@ error_log.txt
 
 # Versioned ESM module-graph snapshots (retain only while bot is running)
 bot-ts/dist-hotswap-*/
+
+# Local tooling / build output
+.claude/
+obj/
+bin/
