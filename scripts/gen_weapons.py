@@ -7,8 +7,10 @@ data_manual/weapon_multipliers.json ({weapon name: "Weapon:<row>" | "Mount:<row>
   gen_weapons.py STATS_DIR --seed    # (re)build the overlay from the current sheet
   gen_weapons.py STATS_DIR           # diff generated vs data/Weapons.json
   gen_weapons.py STATS_DIR --write   # apply
+  add --bp=BP_DIR (blueprint export) to also regenerate DamageType and ShelterBonus
 """
 import json
+import re
 import sys
 from pathlib import Path
 
@@ -64,20 +66,44 @@ def seed(sheet, ammo, mult):
     return overlay
 
 
+def damage_types(bp_dir):
+    """damage type class -> (EDamageType, bAffectedByShelterBonus), from Blueprints/DamageTypes."""
+    out = {}
+    for f in (Path(bp_dir) / "War/Content/Blueprints/DamageTypes").glob("BP*DamageType.json"):
+        text = f.read_text(encoding="utf-8")
+        t = re.search(r'"Type": "EDamageType::(\w+)"', text)
+        out[f.stem] = (t.group(1) if t else None, '"bAffectedByShelterBonus": true' in text)
+    return out
+
+
+def damage_type_of(w, ammo, dt):
+    a = ammo.get(w["Dev Name"])
+    return dt.get(re.search(r"'(BP\w+?)_C'", a["DamageType"]["ObjectName"]).group(1)) if a and a["Damage"] else None
+
+
 def fmt(x, old):
     return old if abs(float(old) - x) < 1e-6 * max(x, 1) else repr(round(x, 4))
 
 
 def main():
     stats, flags = sys.argv[1], sys.argv[2:]
+    bp = next((f[5:] for f in flags if f.startswith("--bp=")), None)
     sheet = json.loads(SHEET.read_text(encoding="utf-8"))
     ammo, mult = load(stats)
     if "--seed" in flags:
         OVERLAY.write_text(json.dumps(seed(sheet, ammo, mult), indent=4, ensure_ascii=False) + "\n", encoding="utf-8")
         return
     overlay = json.loads(OVERLAY.read_text(encoding="utf-8"))
+    dt = damage_types(bp) if bp else {}
     changed = 0
     for n, w in sheet.items():
+        t = damage_type_of(w, ammo, dt) if dt else None  # ponytail: rows with no ammo row (garrison/AI shells) keep hand values and get no flag; the bot falls back to its type-name rule
+        if t:
+            for k, v in (("DamageType", t[0]), ("ShelterBonus", "TRUE" if t[1] else "FALSE")):
+                if w.get(k) != v:
+                    print(f"{n}: {k} {w.get(k)} -> {v}")
+                    w[k] = v
+                    changed += 1
         d = damage(w, ammo, mult, overlay, n)
         if d is None:
             continue

@@ -192,7 +192,11 @@ export class DamageCalculator {
     if (realDamage === 0) {
       throw new NoDamageError(this.weaponName, this.targetName);
     }
-    if (this.shelters > 0 && (this.damageType.Name === "HighExplosive" || this.damageType.Name === "IncendiaryHighExplosive")) {
+    // The generated ShelterBonus flag is the game's own; rows without it (hand-entered shells) fall back to the type name.
+    const shelterBonus = this.weapon.ShelterBonus !== undefined
+      ? this.weapon.ShelterBonus === "TRUE"
+      : this.damageType.Name === "HighExplosive" || this.damageType.Name === "IncendiaryHighExplosive";
+    if (this.shelters > 0 && shelterBonus) {
       const mitigationBonus = getShelterBonus(this.shelters);
       const maxMitigationValue = parseFloat(this.damageType[mt]!) + mitigationBonus;
       this.minRealDamage = Math.ceil(this.damageValue * (1 - maxMitigationValue));

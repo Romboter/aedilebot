@@ -5,7 +5,8 @@
         "Damage": "1750.0",
         "DamageType": "Explosive",
         "ObjectType": "Weapons",
-        "Additional Names": "bt;collie bt;collie sht;colonial bt;colonial sht;flame bt;flood;flood bt;jugg;juggernaut;kv2;lance;warden bt"
+        "Additional Names": "bt;collie bt;collie sht;colonial bt;colonial sht;flame bt;flood;flood bt;jugg;juggernaut;kv2;lance;warden bt",
+        "ShelterBonus": "FALSE"
     },
     "40mm": {
         "Name": "40mm",
@@ -13,7 +14,8 @@
         "Damage": "600.0",
         "DamageType": "Explosive",
         "ObjectType": "Weapons",
-        "Additional Names": "spatha;collie lt;colonial light tank;colonial lt;devitt;falch;falchion;hac;ironhide;kran;kranesca;kranny;lt;mpt;phalanx;silverhand;svh;toaster;warden light tank;warden lt"
+        "Additional Names": "spatha;collie lt;colonial light tank;colonial lt;devitt;falch;falchion;hac;ironhide;kran;kranesca;kranny;lt;mpt;phalanx;silverhand;svh;toaster;warden light tank;warden lt",
+        "ShelterBonus": "FALSE"
     },
     "300mm": {
         "Name": "300mm",
@@ -21,7 +23,8 @@
         "Damage": "3000.0",
         "DamageType": "HighExplosive",
         "ObjectType": "Weapons",
-        "Additional Names": "rail cannon;rail sc;rsc;sc"
+        "Additional Names": "rail cannon;rail sc;rsc;sc",
+        "ShelterBonus": "FALSE"
     },
     "Mortar Shell": {
         "Name": "Mortar Shell",
@@ -29,7 +32,8 @@
         "Damage": "300.0",
         "DamageType": "HighExplosive",
         "ObjectType": "Weapons",
-        "Additional Names": "collie gb;collie gunboat;colonial gb;colonial gunboat;gb;gunboat;he mortar;mht;mlt;mortar;mortar halftrack;ronan;warden gb;warden gunboat"
+        "Additional Names": "collie gb;collie gunboat;colonial gb;colonial gunboat;gb;gunboat;he mortar;mht;mlt;mortar;mortar halftrack;ronan;warden gb;warden gunboat",
+        "ShelterBonus": "TRUE"
     },
     "Shrapnel Mortar Shell": {
         "Name": "Shrapnel Mortar Shell",
@@ -37,7 +41,8 @@
         "Damage": "125.0",
         "DamageType": "Shrapnel",
         "ObjectType": "Weapons",
-        "Additional Names": ""
+        "Additional Names": "",
+        "ShelterBonus": "FALSE"
     },
     "250mm \u201cPurity\u201c Shell": {
         "Name": "250mm \u201cPurity\u201c Shell",
@@ -45,7 +50,8 @@
         "Damage": "800.0",
         "DamageType": "Demolition",
         "ObjectType": "Weapons",
-        "Additional Names": "ballista;chief;chieftain;fm;fm250;svb;250mm"
+        "Additional Names": "ballista;chief;chieftain;fm;fm250;svb;250mm",
+        "ShelterBonus": "FALSE"
     },
     "250mm \u201cFury\u201c Shell": {
         "Name": "250mm \u201cFury\u201c Shell",
@@ -53,7 +59,8 @@
         "Damage": "800.0",
         "DamageType": "Demolition",
         "ObjectType": "Weapons",
-        "Additional Names": "fury shell;fury;alekto"
+        "Additional Names": "fury shell;fury;alekto",
+        "ShelterBonus": "FALSE"
     },
     "Shatter Missile": {
         "Name": "Shatter Missile",
@@ -61,7 +68,8 @@
         "Damage": "250.0",
         "DamageType": "Demolition",
         "ObjectType": "Weapons",
-        "Additional Names": "King Jester - Mk. I-1;King Jester;rocket st;rocket scout tank;jester"
+        "Additional Names": "King Jester - Mk. I-1;King Jester;rocket st;rocket scout tank;jester",
+        "ShelterBonus": "FALSE"
     },
     "Abisme AT-99 Mine": {
         "Name": "Abisme AT-99 Mine",
@@ -69,7 +77,8 @@
         "Damage": "850.0",
         "DamageType": "AntiTankExplosive",
         "ObjectType": "Weapons",
-        "Additional Names": "at mine"
+        "Additional Names": "at mine",
+        "ShelterBonus": "FALSE"
     },
     "Alligator Charge": {
         "Name": "Alligator Charge",
@@ -77,7 +86,8 @@
         "Damage": "550.0",
         "DamageType": "Demolition",
         "ObjectType": "Weapons",
-        "Additional Names": "satchel"
+        "Additional Names": "satchel",
+        "ShelterBonus": "FALSE"
     },
     "Anti-Tank Sticky Bomb": {
         "Name": "Anti-Tank Sticky Bomb",
@@ -85,7 +95,8 @@
         "Damage": "450.0",
         "DamageType": "AntiTankExplosive",
         "ObjectType": "Weapons",
-        "Additional Names": "sticky;stickies"
+        "Additional Names": "sticky;stickies",
+        "ShelterBonus": "FALSE"
     },
     "A3 Harpa Fragmentation Grenade": {
         "Name": "A3 Harpa Fragmentation Grenade",
@@ -93,7 +104,8 @@
         "Damage": "250.0",
         "DamageType": "LightKinetic",
         "ObjectType": "Weapons",
-        "Additional Names": "harpa"
+        "Additional Names": "harpa",
+        "ShelterBonus": "FALSE"
     },
     "Mammon 91-b": {
         "Name": "Mammon 91-b",
@@ -101,7 +113,8 @@
         "Damage": "240.0",
         "DamageType": "Explosive",
         "ObjectType": "Weapons",
-        "Additional Names": "mammon;HE grenade"
+        "Additional Names": "mammon;HE grenade",
+        "ShelterBonus": "FALSE"
     },
     "RPG": {
         "Name": "RPG",
@@ -109,7 +122,8 @@
         "Damage": "550.0",
         "DamageType": "Explosive",
         "ObjectType": "Weapons",
-        "Additional Names": "cutler;foebreaker;gemini;icarus;quadiche;ranseur;rpg;rpg bard;rpjeep"
+        "Additional Names": "cutler;foebreaker;gemini;icarus;quadiche;ranseur;rpg;rpg bard;rpjeep",
+        "ShelterBonus": "FALSE"
     },
     "120mm": {
         "Name": "120mm",
@@ -117,7 +131,8 @@
         "Damage": "400.0",
         "DamageType": "HighExplosive",
         "ObjectType": "Weapons",
-        "Additional Names": "collie 120;colonial 120;conqeuror;dd;destroyer;fa;frigate;lariat emplaced;push 120;warden 120 emplaced;warden frigate"
+        "Additional Names": "collie 120;colonial 120;conqeuror;dd;destroyer;fa;frigate;lariat emplaced;push 120;warden 120 emplaced;warden frigate",
+        "ShelterBonus": "TRUE"
     },
     "30mm": {
         "Name": "30mm",
@@ -125,7 +140,8 @@
         "Damage": "400.0",
         "DamageType": "Explosive",
         "ObjectType": "Weapons",
-        "Additional Names": "30mm scout tank;30mm tankette;30mmST;brig;isg;roofette;ghouse;garrison house;ISG pill;ISG pillbox;infantry support gun pillbox"
+        "Additional Names": "30mm scout tank;30mm tankette;30mmST;brig;isg;roofette;ghouse;garrison house;ISG pill;ISG pillbox;infantry support gun pillbox",
+        "ShelterBonus": "FALSE"
     },
     "68mm": {
         "Name": "68mm",
@@ -133,7 +149,8 @@
         "Damage": "600.0",
         "DamageType": "ArmourPiercing",
         "ObjectType": "Weapons",
-        "Additional Names": "Leary Shellbore 68mm;atht;bard;collie fat;collins;fat;ltd;nemesis;warden fat;at garrison;AT Garrison Shell"
+        "Additional Names": "Leary Shellbore 68mm;atht;bard;collie fat;collins;fat;ltd;nemesis;warden fat;at garrison;AT Garrison Shell",
+        "ShelterBonus": "FALSE"
     },
     "Anti-Tank Rifle Pillbox Ammo": {
         "Name": "Anti-Tank Rifle Pillbox Ammo",
@@ -180,7 +197,7 @@
         "Dev Name": "HowitzerAmmo",
         "Additional Names": "howi garrison shell;howie",
         "Damage": "500.0",
-        "DamageType":"HighExplosive",
+        "DamageType": "HighExplosive",
         "ObjectType": "Weapons"
     },
     "7.62mm": {
@@ -189,7 +206,8 @@
         "Damage": "56.25",
         "DamageType": "LightKinetic",
         "ObjectType": "Weapons",
-        "Additional Names": "762;Catena;Clancy Cinder;Omen;argenti;loughcaster"
+        "Additional Names": "762;Catena;Clancy Cinder;Omen;argenti;loughcaster",
+        "ShelterBonus": "FALSE"
     },
     "12.7mm": {
         "Name": "12.7mm",
@@ -197,7 +215,8 @@
         "Damage": "68.75",
         "DamageType": "HeavyKinetic",
         "ObjectType": "Weapons",
-        "Additional Names": "12.7;127;gast;hmg;ratcatcher;mg garrison;machine gun garrison"
+        "Additional Names": "12.7;127;gast;hmg;ratcatcher;mg garrison;machine gun garrison",
+        "ShelterBonus": "FALSE"
     },
     "Ship 12.7mm (+20% HV)": {
         "Name": "Ship 12.7mm (+20% HV)",
@@ -205,7 +224,8 @@
         "Damage": "82.5",
         "DamageType": "HeavyKinetic",
         "ObjectType": "Weapons",
-        "Additional Names": "hv 12.7;ship mg;ship 12.7;boat 12.7"
+        "Additional Names": "hv 12.7;ship mg;ship 12.7;boat 12.7",
+        "ShelterBonus": "FALSE"
     },
     "7.92mm": {
         "Name": "7.92mm",
@@ -213,7 +233,8 @@
         "Damage": "43.75",
         "DamageType": "LightKinetic",
         "ObjectType": "Weapons",
-        "Additional Names": "792;Aalto (Auto);ac;aft;armored ac;armoured car;colonial ac;dusk;scar twin;tac;warden ac;warden armoured car;warden heavy halftrack;warden heavy ht"
+        "Additional Names": "792;Aalto (Auto);ac;aft;armored ac;armoured car;colonial ac;dusk;scar twin;tac;warden ac;warden armoured car;warden heavy halftrack;warden heavy ht",
+        "ShelterBonus": "FALSE"
     },
     "AssaultRifleSingleShotAmmo": {
         "Name": "7.92mm",
@@ -221,7 +242,8 @@
         "Damage": "52.5",
         "DamageType": "LightKinetic",
         "ObjectType": "Weapons",
-        "Additional Names": "Aalto (Semi);Aalto (single)"
+        "Additional Names": "Aalto (Semi);Aalto (single)",
+        "ShelterBonus": "FALSE"
     },
     "14.5mm": {
         "Name": "14.5mm",
@@ -229,7 +251,8 @@
         "Damage": "187.5",
         "DamageType": "AntiTankKinetic",
         "ObjectType": "Weapons",
-        "Additional Names": "14.5;atac;atr;cestus;collie anti tank field gun;collie atr field gun;colonial anti tank field gun;colonial sniper atr;rail rifle;quickhatch;highwayman;hwm;sniper atr;warden atr"
+        "Additional Names": "14.5;atac;atr;cestus;collie anti tank field gun;collie atr field gun;colonial anti tank field gun;colonial sniper atr;rail rifle;quickhatch;highwayman;hwm;sniper atr;warden atr",
+        "ShelterBonus": "FALSE"
     },
     "20mm": {
         "Name": "20mm",
@@ -237,7 +260,8 @@
         "Damage": "81.25",
         "DamageType": "Shrapnel",
         "ObjectType": "Weapons",
-        "Additional Names": "aircraft ammo;warden fighter 20mm;luminary harbinger 20mm;harbinger 20mm;harbringer;colonial fighter 20mm;blind silver 20mm;blind silver"
+        "Additional Names": "aircraft ammo;warden fighter 20mm;luminary harbinger 20mm;harbinger 20mm;harbringer;colonial fighter 20mm;blind silver 20mm;blind silver",
+        "ShelterBonus": "FALSE"
     },
     "Ship 20mm (+20% HV)": {
         "Name": "Ship 20mm (+20% HV)",
@@ -245,15 +269,17 @@
         "Damage": "97.5",
         "DamageType": "Shrapnel",
         "ObjectType": "Weapons",
-        "Additional Names": "ship 20mm;ship AA ammo;boat 20mm;hv20mm;HV 20mm"
+        "Additional Names": "ship 20mm;ship AA ammo;boat 20mm;hv20mm;HV 20mm",
+        "ShelterBonus": "FALSE"
     },
-    "Daimon aK-5 “Harpy” 20mm (+25% HV)": {
-        "Name": "Daimon aK-5 “Harpy” 20mm (+25% HV)",
+    "Daimon aK-5 \u201cHarpy\u201d 20mm (+25% HV)": {
+        "Name": "Daimon aK-5 \u201cHarpy\u201d 20mm (+25% HV)",
         "Dev Name": "AircraftAmmo",
         "Damage": "101.5625",
         "DamageType": "Shrapnel",
         "ObjectType": "Weapons",
-        "Additional Names": "harpy 20mm;harpy 20mm ammo;harpy mg ammo;colonial heavy fighter 20mm;heavy fighter 20mm"
+        "Additional Names": "harpy 20mm;harpy 20mm ammo;harpy mg ammo;colonial heavy fighter 20mm;heavy fighter 20mm",
+        "ShelterBonus": "FALSE"
     },
     "A51 Venti \"Daedalus\" 20mm (-33% LV)": {
         "Name": "A51 Venti \"Daedalus\" 20mm (-33% LV)",
@@ -263,7 +289,8 @@
         "Damage": "53.625",
         "DamageType": "Shrapnel",
         "ObjectType": "Weapons",
-        "Additional Names": "colonial scout 20mm;Daedalus 20mm;lv 20mm;Daedalus"
+        "Additional Names": "colonial scout 20mm;Daedalus 20mm;lv 20mm;Daedalus",
+        "ShelterBonus": "FALSE"
     },
     "Luminary Mk. IV Herald 20mm (-33% LV)": {
         "Name": "Luminary Mk. IV Herald 20mm (-33% LV)",
@@ -273,7 +300,8 @@
         "Damage": "53.625",
         "DamageType": "Shrapnel",
         "ObjectType": "Weapons",
-        "Additional Names": "warden scout 20mm;Herald 20mm;Herald"
+        "Additional Names": "warden scout 20mm;Herald 20mm;Herald",
+        "ShelterBonus": "FALSE"
     },
     "Tulka I1.9 White Raven 20mm (+25% HV)": {
         "Name": "Tulka I1.9 White Raven 20mm (+25% HV)",
@@ -283,15 +311,17 @@
         "Damage": "101.5625",
         "DamageType": "Shrapnel",
         "ObjectType": "Weapons",
-        "Additional Names": "warden sea fighter 20mm;White Raven 20mm;warden light fighter aircraft;white raven;amphibious fighter;warden sea fighter"
+        "Additional Names": "warden sea fighter 20mm;White Raven 20mm;warden light fighter aircraft;white raven;amphibious fighter;warden sea fighter",
+        "ShelterBonus": "FALSE"
     },
-    "Daimon aK-5 “Harpy” 14.5mm (+25% HV)": {
-        "Name": "Daimon aK-5 “Harpy” 14.5mm (+25% HV)",
+    "Daimon aK-5 \u201cHarpy\u201d 14.5mm (+25% HV)": {
+        "Name": "Daimon aK-5 \u201cHarpy\u201d 14.5mm (+25% HV)",
         "Dev Name": "ATRifleAmmo",
         "Damage": "234.375",
         "DamageType": "AntiTankKinetic",
         "ObjectType": "Weapons",
-        "Additional Names": "harpy 14.5mm;harpy 14.5mm ammo;harpy atr ammo;harpy at;colonial heavy fighter 14.5mm;heavy fighter 14.5mm"
+        "Additional Names": "harpy 14.5mm;harpy 14.5mm ammo;harpy atr ammo;harpy at;colonial heavy fighter 14.5mm;heavy fighter 14.5mm",
+        "ShelterBonus": "FALSE"
     },
     "Luminary Mk. II Harbinger 14.5mm (+50% HV)": {
         "Name": "Luminary Mk. II Harbinger 14.5mm (+50% HV)",
@@ -301,7 +331,8 @@
         "Damage": "281.25",
         "DamageType": "AntiTankKinetic",
         "ObjectType": "Weapons",
-        "Additional Names": "warden fighter 14.5mm;luminary harbinger 14.5mm;harbinger 14.5mm;harbinger 14.5;"
+        "Additional Names": "warden fighter 14.5mm;luminary harbinger 14.5mm;harbinger 14.5mm;harbinger 14.5;",
+        "ShelterBonus": "FALSE"
     },
     "Anti-Aircraft Shell": {
         "Name": "Anti-Aircraft Shell",
@@ -309,7 +340,8 @@
         "Damage": "1200",
         "DamageType": "Shrapnel",
         "ObjectType": "Weapons",
-        "Additional Names": "AA shell;zeal;bolas;flak shell;flak"
+        "Additional Names": "AA shell;zeal;bolas;flak shell;flak",
+        "ShelterBonus": "FALSE"
     },
     "Absol Anti-Aircraft Rounds": {
         "Name": "Absol Anti-Aircraft Rounds",
@@ -317,7 +349,8 @@
         "Damage": "600",
         "DamageType": "Shrapnel",
         "ObjectType": "Weapons",
-        "Additional Names": "light AA shell;light flak shell;light AA;mobile AA;Absol;Sagaris;colonial AA tank;colonial AA LT;colonial mobile AA;Birdeater;warden AA tank;warden AA LT;warden mobile AA;mobile AA;AA tank"
+        "Additional Names": "light AA shell;light flak shell;light AA;mobile AA;Absol;Sagaris;colonial AA tank;colonial AA LT;colonial mobile AA;Birdeater;warden AA tank;warden AA LT;warden mobile AA;mobile AA;AA tank",
+        "ShelterBonus": "FALSE"
     },
     "Mark II Raidbreaker": {
         "Name": "Mark II Raidbreaker",
@@ -325,7 +358,8 @@
         "Damage": "1200",
         "DamageType": "BombHighExplosive",
         "ObjectType": "Weapons",
-        "Additional Names": "bomber ammo;bomber shell;raidbreaker;raid breaker"
+        "Additional Names": "bomber ammo;bomber shell;raidbreaker;raid breaker",
+        "ShelterBonus": "TRUE"
     },
     "912 Shrike Rounds": {
         "Name": "912 Shrike Rounds",
@@ -333,7 +367,8 @@
         "Damage": "950",
         "DamageType": "ArmourPiercing",
         "ObjectType": "Weapons",
-        "Additional Names": "dive bomb;dive bomber ammo;shrike rounds;divebomb"
+        "Additional Names": "dive bomb;dive bomber ammo;shrike rounds;divebomb",
+        "ShelterBonus": "FALSE"
     },
     "8mm": {
         "Name": "8mm",
@@ -341,7 +376,8 @@
         "Damage": "37.5",
         "DamageType": "LightKinetic",
         "ObjectType": "Weapons",
-        "Additional Names": "Ahti;colonial pistol;ferro;warden pistol"
+        "Additional Names": "Ahti;colonial pistol;ferro;warden pistol",
+        "ShelterBonus": "FALSE"
     },
     ".44": {
         "Name": ".44",
@@ -349,7 +385,8 @@
         "Damage": "75.0",
         "DamageType": "LightKinetic",
         "ObjectType": "Weapons",
-        "Additional Names": "44;cometa;revolver"
+        "Additional Names": "44;cometa;revolver",
+        "ShelterBonus": "FALSE"
     },
     "Buckshot": {
         "Name": "Buckshot",
@@ -357,7 +394,8 @@
         "Damage": "87.5",
         "DamageType": "LightKinetic",
         "ObjectType": "Weapons",
-        "Additional Names": "Dragonfly;colonial shotgun"
+        "Additional Names": "Dragonfly;colonial shotgun",
+        "ShelterBonus": "FALSE"
     },
     "9mm": {
         "Name": "9mm",
@@ -365,7 +403,8 @@
         "Damage": "33.75",
         "DamageType": "LightKinetic",
         "ObjectType": "Weapons",
-        "Additional Names": "colonial heavy smg;colonial hsmg;fiddler;liar;lionclaw;warden heavy smg;warden hsmg;warden smg"
+        "Additional Names": "colonial heavy smg;colonial hsmg;fiddler;liar;lionclaw;warden heavy smg;warden hsmg;warden smg",
+        "ShelterBonus": "FALSE"
     },
     "Bomastone Grenade": {
         "Name": "Bomastone Grenade",
@@ -373,7 +412,8 @@
         "Damage": "125.0",
         "DamageType": "Shrapnel",
         "ObjectType": "Weapons",
-        "Additional Names": ""
+        "Additional Names": "",
+        "ShelterBonus": "FALSE"
     },
     "AP/RPG": {
         "Name": "AP/RPG",
@@ -381,7 +421,8 @@
         "Damage": "550.0",
         "DamageType": "ArmourPiercing",
         "ObjectType": "Weapons",
-        "Additional Names": "at rocket;atrpg;bane;venom;carnyx;aprpg"
+        "Additional Names": "at rocket;atrpg;bane;venom;carnyx;aprpg",
+        "ShelterBonus": "FALSE"
     },
     "Ignifist 30": {
         "Name": "Ignifist 30",
@@ -389,7 +430,8 @@
         "Damage": "375.0",
         "DamageType": "ArmourPiercing",
         "ObjectType": "Weapons",
-        "Additional Names": "igni;ignifist"
+        "Additional Names": "igni;ignifist",
+        "ShelterBonus": "FALSE"
     },
     "150mm": {
         "Name": "150mm",
@@ -397,7 +439,8 @@
         "Damage": "900.0",
         "DamageType": "HighExplosive",
         "ObjectType": "Weapons",
-        "Additional Names": "callahan;collie 150 emplaced;collie battleship;collie spg;colonial battleship;colonial spg;exalt emplaced;huber emplaced;sarissa;stain;thunderbolt 150mm emplaced;titan;warden 150 emplaced;warden battleship;warden spg"
+        "Additional Names": "callahan;collie 150 emplaced;collie battleship;collie spg;colonial battleship;colonial spg;exalt emplaced;huber emplaced;sarissa;stain;thunderbolt 150mm emplaced;titan;warden 150 emplaced;warden battleship;warden spg",
+        "ShelterBonus": "TRUE"
     },
     "ARC/RPG": {
         "Name": "ARC/RPG",
@@ -405,7 +448,8 @@
         "Damage": "675.0",
         "DamageType": "ArmourPiercing",
         "ObjectType": "Weapons",
-        "Additional Names": "arc;arcrpg;bac;beat emplaced;bonecar;bonelaw;bonesaw;bonewagon;mounted bonesaw;polybolos emplaced"
+        "Additional Names": "arc;arcrpg;bac;beat emplaced;bonecar;bonelaw;bonesaw;bonewagon;mounted bonesaw;polybolos emplaced",
+        "ShelterBonus": "FALSE"
     },
     "Hydra\u2019s Whisper": {
         "Name": "Hydra\u2019s Whisper",
@@ -413,7 +457,8 @@
         "Damage": "550.0",
         "DamageType": "Demolition",
         "ObjectType": "Weapons",
-        "Additional Names": "hydra"
+        "Additional Names": "hydra",
+        "ShelterBonus": "FALSE"
     },
     "BF5 White Ash Flask Grenade": {
         "Name": "BF5 White Ash Flask Grenade",
@@ -421,7 +466,8 @@
         "Damage": "300.0",
         "DamageType": "AntiTankExplosive",
         "ObjectType": "Weapons",
-        "Additional Names": "flask"
+        "Additional Names": "flask",
+        "ShelterBonus": "FALSE"
     },
     "RifleAutomaticWSingleShotAmmo": {
         "Name": "7.62mm",
@@ -429,7 +475,8 @@
         "Damage": "56.25",
         "DamageType": "LightKinetic",
         "ObjectType": "Weapons",
-        "Additional Names": "sampo (semi);sampo (single)"
+        "Additional Names": "sampo (semi);sampo (single)",
+        "ShelterBonus": "FALSE"
     },
     "Tremola Grenade GPb-1": {
         "Name": "Tremola Grenade GPb-1",
@@ -437,7 +484,8 @@
         "Damage": "400.0",
         "DamageType": "Explosive",
         "ObjectType": "Weapons",
-        "Additional Names": "tremola;fissura;gac;grenade launcher armoured car;knave;lunaire"
+        "Additional Names": "tremola;fissura;gac;grenade launcher armoured car;knave;lunaire",
+        "ShelterBonus": "FALSE"
     },
     "94.5mm": {
         "Name": "94.5mm",
@@ -445,7 +493,8 @@
         "Damage": "1750.0",
         "DamageType": "ArmourPiercing",
         "ObjectType": "Weapons",
-        "Additional Names": "btd;hasta"
+        "Additional Names": "btd;hasta",
+        "ShelterBonus": "FALSE"
     },
     "4C-Fire Rocket": {
         "Name": "4C-Fire Rocket",
@@ -453,7 +502,8 @@
         "Damage": "145.0",
         "DamageType": "IncendiaryHighExplosive",
         "ObjectType": "Weapons",
-        "Additional Names": "rocket halftrack;rocket ht;fire rockets;4c rockets;4c"
+        "Additional Names": "rocket halftrack;rocket ht;fire rockets;4c rockets;4c",
+        "ShelterBonus": "TRUE"
     },
     "3C-High Explosive Rocket": {
         "Name": "3C-High Explosive Rocket",
@@ -461,23 +511,26 @@
         "Damage": "700.0",
         "DamageType": "HighExplosive",
         "ObjectType": "Weapons",
-        "Additional Names": "hades net (emplaced);katyusha;rocket scout tank;rocket st;rocket truck;3C rockets;3C;HE rockets"
+        "Additional Names": "hades net (emplaced);katyusha;rocket scout tank;rocket st;rocket truck;3C rockets;3C;HE rockets",
+        "ShelterBonus": "TRUE"
     },
     "Flame Ammo": {
         "Name": "Flame Ammo",
         "Dev Name": "FlameAmmo",
         "Damage": "25.0",
-        "DamageType": "IncendiaryHighExplosive",
+        "DamageType": "Incendiary",
         "ObjectType": "Weapons",
-        "Additional Names": "flame lt;flame tankette"
+        "Additional Names": "flame lt;flame tankette",
+        "ShelterBonus": "FALSE"
     },
     "Flame Backpack Ammo": {
         "Name": "Flame Backpack Ammo",
         "Dev Name": "FlameBackpackAmmo",
         "Damage": "15.0",
-        "DamageType": "IncendiaryHighExplosive",
+        "DamageType": "Incendiary",
         "ObjectType": "Weapons",
-        "Additional Names": "colonial flame thrower;warden flame thrower"
+        "Additional Names": "colonial flame thrower;warden flame thrower",
+        "ShelterBonus": "FALSE"
     },
     "Havoc Charge Detonator": {
         "Name": "Havoc Charge Detonator",
@@ -485,7 +538,8 @@
         "Damage": "1950.0",
         "DamageType": "Demolition",
         "ObjectType": "Weapons",
-        "Additional Names": "havoc;havoc charge"
+        "Additional Names": "havoc;havoc charge",
+        "ShelterBonus": "FALSE"
     },
     "Model-7 \u201cEvie\u201d": {
         "Name": "Model-7 \u201cEvie\u201d",
@@ -493,7 +547,8 @@
         "Damage": "900.0",
         "DamageType": "HighExplosive",
         "ObjectType": "Weapons",
-        "Additional Names": "depth charge"
+        "Additional Names": "depth charge",
+        "ShelterBonus": "TRUE"
     },
     "E680-S Rudder Lock": {
         "Name": "E680-S Rudder Lock",
@@ -501,7 +556,8 @@
         "Damage": "1350.0",
         "DamageType": "HighExplosive",
         "ObjectType": "Weapons",
-        "Additional Names": "sea mine;water mine;rudderlock;seamine"
+        "Additional Names": "sea mine;water mine;rudderlock;seamine",
+        "ShelterBonus": "TRUE"
     },
     "E681-B Hullbreaker Mine": {
         "Name": "E681-B Hullbreaker Mine",
@@ -509,7 +565,8 @@
         "Damage": "650.0",
         "DamageType": "ArmourPiercing",
         "ObjectType": "Weapons",
-        "Additional Names": "surface mine;small sea mine;small water mine;Hullbreaker;Emissary;Daedalus"
+        "Additional Names": "surface mine;small sea mine;small water mine;Hullbreaker;Emissary;Daedalus",
+        "ShelterBonus": "FALSE"
     },
     "Moray Torpedo": {
         "Name": "Moray Torpedo",
@@ -517,7 +574,8 @@
         "Damage": "3550.0",
         "DamageType": "HighExplosive",
         "ObjectType": "Weapons",
-        "Additional Names": "colonial sub;colonial submarine;nakki;trident;warden sub;warden submarine;moray;torps;torpedo"
+        "Additional Names": "colonial sub;colonial submarine;nakki;trident;warden sub;warden submarine;moray;torps;torpedo",
+        "ShelterBonus": "TRUE"
     },
     "Tenta Torpedo": {
         "Name": "Tenta Torpedo",
@@ -525,15 +583,17 @@
         "Damage": "1500.0",
         "DamageType": "HighExplosive",
         "ObjectType": "Weapons",
-        "Additional Names": "medium torpedo;med torp;medium torp;aircraft torp;air torp;aircraft torpedo;warden torpedo bomber;torpedo bomber;M925 Austringer Man-O-War;torp bomber"
+        "Additional Names": "medium torpedo;med torp;medium torp;aircraft torp;air torp;aircraft torpedo;warden torpedo bomber;torpedo bomber;M925 Austringer Man-O-War;torp bomber",
+        "ShelterBonus": "TRUE"
     },
     "M925 Austringer Man-O-War Moray Torpedo (-30% LV)": {
         "Name": "M925 Austringer Man-O-War Moray Torpedo (-30% LV)",
         "Dev Name": "TorpedoAmmo",
-        "Damage": "2458.0",
+        "Damage": "2485.0",
         "DamageType": "HighExplosive",
         "ObjectType": "Weapons",
-        "Additional Names": "lv torpedo;lv torp;torpedo bomber;man-o-war;man of war"
+        "Additional Names": "lv torpedo;lv torp;torpedo bomber;man-o-war;man of war",
+        "ShelterBonus": "TRUE"
     },
     "Quillback Torpedo": {
         "Name": "Quillback Torpedo",
@@ -541,7 +601,8 @@
         "Damage": "500.0",
         "DamageType": "ArmourPiercing",
         "ObjectType": "Weapons",
-        "Additional Names": "minitorpedo;mini torpedo;quillback;small torpedo;minitorp;mini torp;Perdix"
+        "Additional Names": "minitorpedo;mini torpedo;quillback;small torpedo;minitorp;mini torp;Perdix",
+        "ShelterBonus": "FALSE"
     },
     "Incendiary Mortar Shell": {
         "Name": "Incendiary Mortar Shell",
@@ -549,7 +610,8 @@
         "Damage": "55.0",
         "DamageType": "IncendiaryHighExplosive",
         "ObjectType": "Weapons",
-        "Additional Names": "fire mortar;flame mortar"
+        "Additional Names": "fire mortar;flame mortar",
+        "ShelterBonus": "TRUE"
     },
     "B2 Varsi Anti-Tank Grenade": {
         "Name": "B2 Varsi Anti-Tank Grenade",
@@ -557,7 +619,8 @@
         "Damage": "425.0",
         "DamageType": "AntiTankExplosive",
         "ObjectType": "Weapons",
-        "Additional Names": "varsi;varsis"
+        "Additional Names": "varsi;varsis",
+        "ShelterBonus": "FALSE"
     },
     "Crow\u2019s Foot Mine": {
         "Name": "Crow\u2019s Foot Mine",
@@ -565,7 +628,8 @@
         "Damage": "312.5",
         "DamageType": "LightKinetic",
         "ObjectType": "Weapons",
-        "Additional Names": "ap mine;infantry mine;anti personnel mine"
+        "Additional Names": "ap mine;infantry mine;anti personnel mine",
+        "ShelterBonus": "FALSE"
     },
     "G40 \u201cSagittarii\u201d (FMG) ammo": {
         "Name": "G40 \u201cSagittarii\u201d (FMG)",
@@ -575,7 +639,8 @@
         "Damage": "82.5",
         "DamageType": "HeavyKinetic",
         "ObjectType": "Weapons",
-        "Additional Names": "collie fmg;fmg;field machine gun"
+        "Additional Names": "collie fmg;fmg;field machine gun",
+        "ShelterBonus": "FALSE"
     },
     "Swallowtail 988/127-2 (FMG) ammo": {
         "Name": "Swallowtail 988/127-2 (FMG)",
@@ -585,7 +650,8 @@
         "Damage": "82.5",
         "DamageType": "HeavyKinetic",
         "ObjectType": "Weapons",
-        "Additional Names": "warden fmg"
+        "Additional Names": "warden fmg",
+        "ShelterBonus": "FALSE"
     },
     "Noble Widow MK. XIV (HTD) ammo": {
         "Name": "Noble Widow MK. XIV (HTD)",
@@ -595,7 +661,8 @@
         "Damage": "1050.0",
         "DamageType": "ArmourPiercing",
         "ObjectType": "Weapons",
-        "Additional Names": "htd;widow"
+        "Additional Names": "htd;widow",
+        "ShelterBonus": "FALSE"
     },
     "40-45 \u201cSmelter\u201d Heavy Field Gun (HVFAT) ammo": {
         "Name": "40-45 \u201cSmelter\u201d Heavy Field Gun (HVFAT)",
@@ -605,7 +672,8 @@
         "Damage": "810.0",
         "DamageType": "Explosive",
         "ObjectType": "Weapons",
-        "Additional Names": "hv40;hv40mm"
+        "Additional Names": "hv40;hv40mm",
+        "ShelterBonus": "FALSE"
     },
     "Balfour Rampart 68mm (HVFC) ammo": {
         "Name": "Balfour Rampart 68mm (HVFC)",
@@ -615,7 +683,8 @@
         "Damage": "750.0",
         "DamageType": "ArmourPiercing",
         "ObjectType": "Weapons",
-        "Additional Names": "hvfat"
+        "Additional Names": "hvfat",
+        "ShelterBonus": "FALSE"
     },
     "Gallagher Outlaw Mk. II (Cruiser) ammo": {
         "Name": "Gallagher Outlaw Mk. II (Cruiser)",
@@ -625,7 +694,8 @@
         "Damage": "720.0",
         "DamageType": "Explosive",
         "ObjectType": "Weapons",
-        "Additional Names": "outlaw"
+        "Additional Names": "outlaw",
+        "ShelterBonus": "FALSE"
     },
     "Cullen Predator Mk. III ammo": {
         "Name": "Cullen Predator Mk. III",
@@ -635,7 +705,8 @@
         "Damage": "2187.5",
         "DamageType": "ArmourPiercing",
         "ObjectType": "Weapons",
-        "Additional Names": "warden sht;sht;predator"
+        "Additional Names": "warden sht;sht;predator",
+        "ShelterBonus": "FALSE"
     },
     "Silverhand Lordscar Mk. X ammo": {
         "Name": "Silverhand Lordscar Mk. X",
@@ -645,7 +716,8 @@
         "Damage": "1200.5",
         "DamageType": "ArmourPiercing",
         "ObjectType": "Weapons",
-        "Additional Names": "lordscar;std"
+        "Additional Names": "lordscar;std",
+        "ShelterBonus": "FALSE"
     },
     "Duncan's Coin (ATR Field Gun) ammo": {
         "Name": "Duncan's Coin (ATR Field Gun)",
@@ -655,7 +727,8 @@
         "Damage": "234.375",
         "DamageType": "AntiTankKinetic",
         "ObjectType": "Weapons",
-        "Additional Names": "warden anti tank field gun;warden atr field gun"
+        "Additional Names": "warden anti tank field gun;warden atr field gun",
+        "ShelterBonus": "FALSE"
     },
     "945g \u201cStygian Bolt\u201d ammo": {
         "Name": "945g \u201cStygian Bolt\u201d",
@@ -665,7 +738,8 @@
         "Damage": "2625.0",
         "DamageType": "ArmourPiercing",
         "ObjectType": "Weapons",
-        "Additional Names": "styg;stygian"
+        "Additional Names": "styg;stygian",
+        "ShelterBonus": "FALSE"
     },
     "Balfour Stockade 75mm ammo": {
         "Name": "Balfour Stockade 75mm",
@@ -675,7 +749,8 @@
         "Damage": "2362.5",
         "DamageType": "Explosive",
         "ObjectType": "Weapons",
-        "Additional Names": "stockade"
+        "Additional Names": "stockade",
+        "ShelterBonus": "FALSE"
     },
     "Blakerow 871 ammo": {
         "Name": "Blakerow 871",
@@ -684,7 +759,8 @@
         "Damage": "49.95",
         "DamageType": "LightKinetic",
         "ObjectType": "Weapons",
-        "Additional Names": "Blakerow"
+        "Additional Names": "Blakerow",
+        "ShelterBonus": "FALSE"
     },
     "Catara mo.II ammo": {
         "Name": "Catara mo.II",
@@ -693,7 +769,8 @@
         "Damage": "44.0",
         "DamageType": "HeavyKinetic",
         "ObjectType": "Weapons",
-        "Additional Names": "catara"
+        "Additional Names": "catara",
+        "ShelterBonus": "FALSE"
     },
     "Clancy-Raca M4 ammo": {
         "Name": "Clancy-Raca M4",
@@ -702,7 +779,8 @@
         "Damage": "87.1875",
         "DamageType": "LightKinetic",
         "ObjectType": "Weapons",
-        "Additional Names": "Clancy-Raca;warden sniper"
+        "Additional Names": "Clancy-Raca;warden sniper",
+        "ShelterBonus": "FALSE"
     },
     "KRR3-792 Auger ammo": {
         "Name": "KRR3-792 Auger",
@@ -711,7 +789,8 @@
         "Damage": "87.1875",
         "DamageType": "LightKinetic",
         "ObjectType": "Weapons",
-        "Additional Names": "Auger;colonial sniper"
+        "Additional Names": "Auger;colonial sniper",
+        "ShelterBonus": "FALSE"
     },
     "\u201cThe Pitch Gun\u201d mc.V ammo": {
         "Name": "\u201cThe Pitch Gun\u201d mc.V",
@@ -720,7 +799,8 @@
         "Damage": "25.3125",
         "DamageType": "LightKinetic",
         "ObjectType": "Weapons",
-        "Additional Names": "pitch gun;colonial smg"
+        "Additional Names": "pitch gun;colonial smg",
+        "ShelterBonus": "FALSE"
     },
     "Fuscina pi.I ammo": {
         "Name": "Fuscina pi.I",
@@ -729,7 +809,8 @@
         "Damage": "49.95",
         "DamageType": "LightKinetic",
         "ObjectType": "Weapons",
-        "Additional Names": "fuscina"
+        "Additional Names": "fuscina",
+        "ShelterBonus": "FALSE"
     },
     "Malone MK.2 ammo": {
         "Name": "Malone MK.2",
@@ -738,7 +819,8 @@
         "Damage": "44.0",
         "DamageType": "HeavyKinetic",
         "ObjectType": "Weapons",
-        "Additional Names": "malone 12.7mm;malone12.7"
+        "Additional Names": "malone 12.7mm;malone12.7",
+        "ShelterBonus": "FALSE"
     },
     "Cascadier 873 ammo": {
         "Name": "Cascadier 873",
@@ -747,7 +829,8 @@
         "Damage": "33.3",
         "DamageType": "LightKinetic",
         "ObjectType": "Weapons",
-        "Additional Names": "cascadier;burst pistol"
+        "Additional Names": "cascadier;burst pistol",
+        "ShelterBonus": "FALSE"
     },
     "Booker Storm Rifle Model 838 ammo": {
         "Name": "Booker Storm Rifle Model 838",
@@ -756,7 +839,8 @@
         "Damage": "52.5",
         "DamageType": "LightKinetic",
         "ObjectType": "Weapons",
-        "Additional Names": "Hv792;booker"
+        "Additional Names": "Hv792;booker",
+        "ShelterBonus": "FALSE"
     },
     "Volta r.I Repeater ammo": {
         "Name": "Volta r.I Repeater",
@@ -765,7 +849,8 @@
         "Damage": "98.4375",
         "DamageType": "LightKinetic",
         "ObjectType": "Weapons",
-        "Additional Names": "volta"
+        "Additional Names": "volta",
+        "ShelterBonus": "FALSE"
     },
     "The Hangman 757 ammo": {
         "Name": "The Hangman 757",
@@ -774,7 +859,8 @@
         "Damage": "97.5",
         "DamageType": "LightKinetic",
         "ObjectType": "Weapons",
-        "Additional Names": "hangman"
+        "Additional Names": "hangman",
+        "ShelterBonus": "FALSE"
     },
     "Sampo Auto-Rifle 77 (Auto) ammo": {
         "Name": "Sampo Auto-Rifle 77 (Auto)",
@@ -783,7 +869,8 @@
         "Damage": "45.0",
         "DamageType": "LightKinetic",
         "ObjectType": "Weapons",
-        "Additional Names": "sampo (auto)"
+        "Additional Names": "sampo (auto)",
+        "ShelterBonus": "FALSE"
     },
     "No.2B Hawthorne ammo": {
         "Name": "No.2B Hawthorne",
@@ -792,7 +879,8 @@
         "Damage": "49.95",
         "DamageType": "LightKinetic",
         "ObjectType": "Weapons",
-        "Additional Names": "Howthorne"
+        "Additional Names": "Howthorne",
+        "ShelterBonus": "FALSE"
     },
     "228 Satterley Heavy Storm Rifle ammo": {
         "Name": "228 Satterley Heavy Storm Rifle",
@@ -801,7 +889,8 @@
         "Damage": "140.625",
         "DamageType": "AntiTankKinetic",
         "ObjectType": "Weapons",
-        "Additional Names": "warden burst atr"
+        "Additional Names": "warden burst atr",
+        "ShelterBonus": "FALSE"
     },
     "Booker Greyhound Model 910 ammo": {
         "Name": "Booker Greyhound Model 910",
@@ -810,7 +899,8 @@
         "Damage": "131.25",
         "DamageType": "AntiTankKinetic",
         "ObjectType": "Weapons",
-        "Additional Names": "warden storm atr;warden auto atr"
+        "Additional Names": "warden storm atr;warden auto atr",
+        "ShelterBonus": "FALSE"
     },
     "\u201cDawn\u201d Ve.II ammo": {
         "Name": "\u201cDawn\u201d Ve.II",
@@ -819,7 +909,8 @@
         "Damage": "131.25",
         "DamageType": "AntiTankKinetic",
         "ObjectType": "Weapons",
-        "Additional Names": "dawn;colonial burst atr"
+        "Additional Names": "dawn;colonial burst atr",
+        "ShelterBonus": "FALSE"
     },
     "No.4 The Pillory Scattergun ammo": {
         "Name": "No.4 The Pillory Scattergun",
@@ -828,7 +919,8 @@
         "Damage": "78.75",
         "DamageType": "LightKinetic",
         "ObjectType": "Weapons",
-        "Additional Names": "Scattergun;warden shotgun;Pillory"
+        "Additional Names": "Scattergun;warden shotgun;Pillory",
+        "ShelterBonus": "FALSE"
     },
     "Leary Snare Trap 20 ammo": {
         "Name": "Leary Snare Trap 20",
@@ -838,7 +930,8 @@
         "Damage": "97.5",
         "DamageType": "Shrapnel",
         "ObjectType": "Weapons",
-        "Additional Names": "warden emg;emg;leary snare trap;warden emg unemplaced;emg unemplaced;leary snare trap unemplaced"
+        "Additional Names": "warden emg;emg;leary snare trap;warden emg unemplaced;emg unemplaced;leary snare trap unemplaced",
+        "ShelterBonus": "FALSE"
     },
     "DAE 1b-2 \u201cSerra\u201d ammo": {
         "Name": "DAE 1b-2 \u201cSerra\u201d",
@@ -848,7 +941,8 @@
         "Damage": "97.5",
         "DamageType": "Shrapnel",
         "ObjectType": "Weapons",
-        "Additional Names": "collie emg emplaced;triple emg emplaced;serra emplaced"
+        "Additional Names": "collie emg emplaced;triple emg emplaced;serra emplaced",
+        "ShelterBonus": "FALSE"
     },
     "Huber Starbreaker 94.5mm ammo": {
         "Name": "Huber Starbreaker 94.5mm",
@@ -858,7 +952,8 @@
         "Damage": "2625.0",
         "DamageType": "ArmourPiercing",
         "ObjectType": "Weapons",
-        "Additional Names": "starbreaker emplaced"
+        "Additional Names": "starbreaker emplaced",
+        "ShelterBonus": "FALSE"
     },
     "DAE 2a-1 \u201cRuptura\u201d ammo": {
         "Name": "DAE 2a-1 \u201cRuptura\u201d",
@@ -868,7 +963,8 @@
         "Damage": "2362.5",
         "DamageType": "Explosive",
         "ObjectType": "Weapons",
-        "Additional Names": "ruptura emplaced"
+        "Additional Names": "ruptura emplaced",
+        "ShelterBonus": "FALSE"
     },
     "Lamentum mm.IV ammo": {
         "Name": "Lamentum mm.IV",
@@ -878,7 +974,8 @@
         "Damage": "103.125",
         "DamageType": "HeavyKinetic",
         "ObjectType": "Weapons",
-        "Additional Names": "lamentum"
+        "Additional Names": "lamentum",
+        "ShelterBonus": "FALSE"
     },
     "\u201cTyphon\u201d ra.XII ammo": {
         "Name": "\u201cTyphon\u201d ra.XII",
@@ -888,7 +985,8 @@
         "Damage": "225.0",
         "DamageType": "AntiTankKinetic",
         "ObjectType": "Weapons",
-        "Additional Names": "typhon"
+        "Additional Names": "typhon",
+        "ShelterBonus": "FALSE"
     },
     "Large Ship AI Shell": {
         "Name": "Large Ship AI Shell",

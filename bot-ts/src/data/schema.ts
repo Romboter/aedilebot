@@ -99,6 +99,8 @@ export interface WeaponEntry {
   "Dev Name": string;
   Damage: string;
   DamageType: string;
+  /** "TRUE" when the game's damage-type class has bAffectedByShelterBonus; absent on hand-entered rows. */
+  ShelterBonus?: string;
   "Additional Names"?: string;
 }
 
