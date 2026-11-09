@@ -1,3 +1,3 @@
-[submodule "tools/CUE4Parse"]
-	path = tools/CUE4Parse
+[submodule "tools/vendor/CUE4Parse"]
+	path = tools/vendor/CUE4Parse
 	url = https://github.com/FabianFG/CUE4Parse.git
