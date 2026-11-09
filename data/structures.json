@@ -1574,7 +1574,7 @@
   },
   "Keep": {
     "name": "Keep",
-    "armourType": "Tier3Structure",
+    "armourType": "Tier2Structure",
     "health": 3500,
     "repairCost": 300,
     "decay": {
@@ -2769,7 +2769,7 @@
   },
   "TownWSmall1": {
     "name": "Emplacement House",
-    "armourType": "Tier3GarrisonHouse",
+    "armourType": "Tier1GarrisonHouse",
     "health": 800,
     "repairCost": 200,
     "decay": {
@@ -4211,7 +4211,7 @@
   },
   "DrawbridgeB": {
     "name": "Drawbridge",
-    "armourType": "Tier2BStructure",
+    "armourType": "Tier3Structure",
     "health": 4200,
     "repairCost": 250,
     "decay": {
@@ -4233,7 +4233,7 @@
   },
   "DrawbridgeC": {
     "name": "Drawbridge",
-    "armourType": "Tier2BStructure",
+    "armourType": "Tier3Structure",
     "health": 7000,
     "repairCost": 350,
     "decay": {
@@ -5099,7 +5099,7 @@
   },
   "BarbedWireWallSpline": {
     "name": "Barbed Wire Fence",
-    "armourType": "Tier2BStructure",
+    "armourType": "Nomitigation",
     "health": 10000,
     "repairCost": 20,
     "decay": {
@@ -5292,7 +5292,7 @@
   },
   "TrainBridgeA": {
     "name": "Drawbridge",
-    "armourType": "Tier2BStructure",
+    "armourType": "Tier3Structure",
     "health": 3250,
     "repairCost": 250,
     "decay": {

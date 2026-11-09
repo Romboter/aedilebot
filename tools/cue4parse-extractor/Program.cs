@@ -64,6 +64,26 @@ if (args.Skip(2).FirstOrDefault() == "blueprints")   // every package under the 
     return;
 }
 
+if (args.Skip(2).FirstOrDefault() == "names")   // list packages whose name table contains every given substring; output is one path per line into args[1]
+{
+    var wanted2 = args.Skip(3).ToArray();
+    var found2 = new List<string>(); int scanned = 0, failed2 = 0;
+    foreach (var key in provider.Files.Keys.Where(k => k.EndsWith(".uasset", StringComparison.OrdinalIgnoreCase) || k.EndsWith(".umap", StringComparison.OrdinalIgnoreCase)))
+    {
+        scanned++;
+        try
+        {
+            if (!provider.TryLoadPackage(key, out var p)) { failed2++; continue; }
+            var names = ((CUE4Parse.UE4.Assets.Package)p).NameMap.Select(n => n.Name).ToList();
+            if (wanted2.All(w => names.Any(n => n.Contains(w, StringComparison.OrdinalIgnoreCase)))) found2.Add(key);
+        }
+        catch { failed2++; }
+    }
+    File.WriteAllLines(args[1], found2.OrderBy(x => x));
+    Console.WriteLine($"names: {found2.Count} of {scanned} packages match ({failed2} unreadable), {sw.Elapsed.TotalSeconds:F1}s");
+    return;
+}
+
 if (args.Skip(2).FirstOrDefault() == "stats")
 {
     // dump every DataTable-ish asset under Blueprints/Data as JSON into <outJson> (a directory)

@@ -27,7 +27,7 @@ dotnet run --project tools/cue4parse-extractor -- PAK_DIR /private/output/unused
 dotnet run --project tools/cue4parse-extractor -- PAK_DIR /private/output/dump dump BPAmmoDynamicData
 ```
 
-Modes: `blueprints` writes every package under the Blueprint folders the generators read (Structures, Vehicles, ItemPickups, Items, DamageTypes, Data), 3780 packages in ~25 seconds, content-identical to the luk-gg UnrealExporter output; `stats` writes DataTable assets under the requested output directory; `all` scans master map packages for relic/town-base positions; `find` prints selected asset names; `dump` exports selected packages to a folder. Some modes are an exploratory spike, not a stable CLI. Audit the parser/output and verify counts before using it to update any bot data.
+Modes: `blueprints` writes every package under the Blueprint folders the generators read (Structures, Vehicles, ItemPickups, Items, DamageTypes, Data), 3780 packages in ~25 seconds, content-identical to the luk-gg UnrealExporter output; `names SUBSTR...` lists every package whose name table contains the given substrings (e.g. `names ArmourType`, 59s over the whole PAK); `stats` writes DataTable assets under the requested output directory; `all` scans master map packages for relic/town-base positions; `find` prints selected asset names; `dump` exports selected packages to a folder. Some modes are an exploratory spike, not a stable CLI. Audit the parser/output and verify counts before using it to update any bot data.
 
 **Safety:** Do not use an unrestricted directory containing mod PAKs or credentials. Do not publish raw game assets. The `assetextract` / `steamfetch` / `foxrunner` VM accounts are intentionally separate.
 

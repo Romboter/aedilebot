@@ -39,7 +39,9 @@ describe("generated data layout parity", () => {
     // the documented sheet errors (docs/data-parity-scope.md); a new difference here is a regression or new sheet error
     expect(Object.fromEntries(Object.entries(diffs).map(([f, d]) => [f, d.length]))).toEqual({
       "Disable Level": 1, Health: 6, DecayStartHours: 45, DecayDurationHours: 43, RepairCost: 12, "Repair Cost": 1,
-      "Mitigation Type": 6, Slots: 6, "weapon Damage": 2,
+      // 6 game-data differences plus 6 native-class armour types corrected from the wiki structures table
+      // (Keep, Emplacement House, three bridges, Barbed Wire Fence); the game files do not hold these values
+      "Mitigation Type": 12, Slots: 6, "weapon Damage": 2,
     });
   });
 
