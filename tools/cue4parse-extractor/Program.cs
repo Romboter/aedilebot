@@ -47,6 +47,23 @@ if (args.Skip(2).FirstOrDefault() == "dump")   // dump packages whose path conta
     return;
 }
 
+if (args.Skip(2).FirstOrDefault() == "blueprints")   // every package under the folders the generators read, into dir args[1]
+{
+    string[] folders = ["Structures", "Vehicles", "ItemPickups", "Items", "DamageTypes", "Data"];
+    int n = 0, failed = 0;
+    foreach (var key in provider.Files.Keys.Where(k => k.EndsWith(".uasset", StringComparison.OrdinalIgnoreCase)
+        && folders.Any(f => k.StartsWith($"War/Content/Blueprints/{f}/", StringComparison.OrdinalIgnoreCase))))
+    {
+        if (!provider.TryLoadPackage(key, out var p)) { failed++; continue; }
+        var o = Path.Combine(args[1], Path.ChangeExtension(key, ".json"));
+        Directory.CreateDirectory(Path.GetDirectoryName(o)!);
+        File.WriteAllText(o, Newtonsoft.Json.JsonConvert.SerializeObject(p.GetExports(), Newtonsoft.Json.Formatting.Indented));
+        n++;
+    }
+    Console.WriteLine($"blueprints: {n} packages, {failed} failed, {sw.Elapsed.TotalSeconds:F1}s");
+    return;
+}
+
 if (args.Skip(2).FirstOrDefault() == "stats")
 {
     // dump every DataTable-ish asset under Blueprints/Data as JSON into <outJson> (a directory)
