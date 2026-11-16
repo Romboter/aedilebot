@@ -1,0 +1,23 @@
+# TypeScript bot. Run ONLY ONE of compose.yml (Python) or this file per bot
+# token: two instances on the same token double-reply.
+#   docker compose -f compose.node.yml up -d --build
+services:
+  aedile:
+    build:
+      context: .
+      dockerfile: Dockerfile.node
+    restart: unless-stopped
+    environment:
+      - DEPLOYMENT_TOKEN=${DEPLOYMENT_TOKEN}
+      # Self-hosters only: free-text chat parsing; needs the Message Content
+      # intent enabled for your app in the Discord Developer Portal.
+      - MESSAGE_CONTENT=${MESSAGE_CONTENT:-false}
+    # Data can be updated without a rebuild: edit ./data, then /admin_swap data.
+    volumes:
+      - ./data:/app/data:ro
+    # cap container logs
+    logging:
+      driver: json-file
+      options:
+        max-size: 10m
+        max-file: "3"
