@@ -62,9 +62,10 @@ def canon(t):
 
 def check(rows, weak):
     old = list(csv.reader(open(ROOT / "data" / "Locations.csv", encoding="utf-8-sig")))
-    by_hex = {key(r[0]): set() for r in old}
+    sheet_names = {"linnofmercy": "linnmercy", "moors": "mooringcounty", "oarbreakerisles": "oarbreaker"}  # the sheet's display names for three hexes (comparison only)
+    by_hex = {sheet_names.get(key(r[0]), key(r[0])): set() for r in old}
     for h, n, t in old:
-        by_hex[key(h)].add((n.strip().lower(), canon(t)))
+        by_hex[sheet_names.get(key(h), key(h))].add((n.strip().lower(), canon(t)))
     new = {}
     for h, n, t in rows:
         new.setdefault(key(h), set()).add((n.strip().lower(), t))

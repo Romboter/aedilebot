@@ -162,6 +162,22 @@ Two entry points feeding it:
   dependency-free) and the live `mapTextItems` for that map. Converts
   world→API coordinates with a ported pure function:
 
+  **Deployment note, decided during design:** the bot runs on AMP in a
+  Linux container. The pak-extraction step itself (`UnrealExporter.exe`,
+  a Windows .NET console app with native `CUE4Parse-Natives.dll`/
+  `libSkiaSharp.dll`, plus a bundled `steamcmd/` needing a full Foxhole
+  install to pull pak files) cannot run inside that container — wrong
+  platform, and tens-of-GB footprint for a bot host regardless. It
+  **is** a proper headless CLI already (`UnrealExporter.exe foxhole`,
+  config-driven via `configs/foxhole.json`, no GUI interaction, no AES
+  key needed for Foxhole's paks) — so "automate the extraction" means
+  automating it *on the admin's own machine* (a scheduled task or
+  script there), not inside the bot's container. The bot's role stays
+  exactly the hybrid already designed: receive the small JSON this
+  produces via `/admin-data-import`, combine with the live API for
+  naming. `warApi.ts`/the rest of this pipeline is plain `fetch` + JSON
+  and has no platform constraints of its own.
+
   ```ts
   // world bounds are a per-map constant, confirmed identical across the
   // 3 sampled hexes in batch_analyze_relics.py — hardcode as config,
