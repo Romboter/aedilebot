@@ -1,0 +1,58 @@
+# EXAMPLE ONLY. Copy this file to .github/workflows/foxhole-map-export.yml
+# in a PRIVATE automation repository. NEVER attach the authenticated runner
+# to the public Romboter/aedilebot repository or accept untrusted PR jobs.
+name: Extract Foxhole maps (private runner)
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: foxhole-map-extraction
+  cancel-in-progress: false
+
+jobs:
+  export:
+    runs-on: [self-hosted, linux, x64, foxhole-extract]
+    environment: foxhole-extraction
+    timeout-minutes: 240
+    env:
+      FOXHOLE_WORK_ROOT: ${{ vars.FOXHOLE_WORK_ROOT }}
+      FOXHOLE_STEAMCMD_PATH: ${{ vars.FOXHOLE_STEAMCMD_PATH }}
+      FOXHOLE_STEAM_USER: ${{ vars.FOXHOLE_STEAM_USER }}
+    steps:
+      - name: Checkout reviewed public source at a pinned SHA
+        uses: actions/checkout@v4
+        with:
+          repository: Romboter/aedilebot
+          ref: REPLACE_WITH_REVIEWED_COMMIT_SHA
+          persist-credentials: false
+      - uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: '10.0.x'
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install extractor Python dependencies
+        run: python -m pip install -r tools/map-extraction/requirements.txt
+      - name: Check prerequisites
+        shell: bash
+        run: |
+          command -v git
+          command -v python3
+          command -v dotnet
+          bash -n tools/map-extraction/steam_export.sh
+      - name: Download Foxhole Windows depot and export maps on Ubuntu
+        shell: bash
+        run: bash tools/map-extraction/steam_export.sh
+      - name: Publish small inventory report only
+        uses: actions/upload-artifact@v4
+        with:
+          name: foxhole-map-inventory-${{ github.run_id }}
+          path: |
+            ${{ vars.FOXHOLE_WORK_ROOT }}/outputs/map-inventory.json
+            ${{ vars.FOXHOLE_WORK_ROOT }}/outputs/map-inventory.csv
+          if-no-files-found: error
+          retention-days: 30

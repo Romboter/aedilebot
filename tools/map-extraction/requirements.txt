@@ -1,0 +1,2 @@
+# Lossless, streaming Zstandard compression for immutable map JSON archives.
+zstandard==0.25.0
