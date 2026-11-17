@@ -1,53 +1,59 @@
-import { afterEach, describe, expect, it, vi } from "vitest";
+import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 import { loadEnv } from "../../src/config/env.js";
 
-// process.loadEnvFile() reads the real bot-ts/.env from disk if present -
-// stubbed out here so these tests are deterministic regardless of whether a
-// real .env exists (it does, for live dev-server testing) or what it
-// contains.
+// loadEnvFile is stubbed so a real bot-ts/.env can't leak into the tests.
 describe("config/env", () => {
+  beforeEach(() => {
+    vi.spyOn(process, "loadEnvFile").mockImplementation(() => undefined);
+    vi.stubEnv("DEPLOYMENT_TOKEN", "deploy-token");
+    vi.stubEnv("DEV_SERVER_TOKEN", "dev-token");
+    vi.stubEnv("https_proxy", undefined);
+    vi.stubEnv("TEST_GUILD_ID", undefined);
+    vi.stubEnv("MESSAGE_CONTENT", undefined);
+  });
   afterEach(() => {
     vi.unstubAllEnvs();
     vi.restoreAllMocks();
   });
 
-  it("reads DEPLOYMENT_TOKEN, DEV_SERVER_TOKEN, https_proxy, and TEST_GUILD_ID from process.env", () => {
-    vi.spyOn(process, "loadEnvFile").mockImplementation(() => undefined);
-    vi.stubEnv("DEPLOYMENT_TOKEN", "deploy-token");
-    vi.stubEnv("DEV_SERVER_TOKEN", "dev-token");
-    vi.stubEnv("https_proxy", "http://proxy.example");
-    vi.stubEnv("TEST_GUILD_ID", "123456789");
-
-    expect(loadEnv()).toEqual({
-      deploymentToken: "deploy-token",
-      devServerToken: "dev-token",
-      httpsProxy: "http://proxy.example",
-      testGuildId: "123456789",
-    });
+  it("uses DEV_SERVER_TOKEN outside production, even when DEPLOYMENT_TOKEN is set", () => {
+    vi.stubEnv("NODE_ENV", "development");
+    expect(loadEnv()).toMatchObject({ token: "dev-token", production: false });
   });
 
-  it("returns undefined for unset vars rather than throwing", () => {
-    vi.spyOn(process, "loadEnvFile").mockImplementation(() => undefined);
+  it("uses DEPLOYMENT_TOKEN in production, even when DEV_SERVER_TOKEN is set", () => {
+    vi.stubEnv("NODE_ENV", "production");
+    expect(loadEnv()).toMatchObject({ token: "deploy-token", production: true });
+  });
+
+  it("throws naming the missing token; never falls back to the other one", () => {
+    vi.stubEnv("NODE_ENV", "production");
     vi.stubEnv("DEPLOYMENT_TOKEN", undefined);
+    expect(() => loadEnv()).toThrow("DEPLOYMENT_TOKEN is not set");
+    vi.stubEnv("NODE_ENV", "development");
     vi.stubEnv("DEV_SERVER_TOKEN", undefined);
-    vi.stubEnv("https_proxy", undefined);
-    vi.stubEnv("TEST_GUILD_ID", undefined);
-
-    expect(loadEnv()).toEqual({
-      deploymentToken: undefined,
-      devServerToken: undefined,
-      httpsProxy: undefined,
-      testGuildId: undefined,
-    });
+    expect(() => loadEnv()).toThrow("DEV_SERVER_TOKEN is not set");
   });
 
-  it("swallows a missing/unreadable .env file instead of throwing", () => {
-    vi.spyOn(process, "loadEnvFile").mockImplementation(() => {
-      throw new Error("ENOENT: no such file");
-    });
-    vi.stubEnv("DEV_SERVER_TOKEN", undefined);
+  it("messageContent is off unless MESSAGE_CONTENT=true", () => {
+    vi.stubEnv("NODE_ENV", "development");
+    expect(loadEnv().messageContent).toBe(false);
+    vi.stubEnv("MESSAGE_CONTENT", "true");
+    expect(loadEnv().messageContent).toBe(true);
+  });
 
+  it("reads TEST_GUILD_ID and https_proxy", () => {
+    vi.stubEnv("NODE_ENV", "development");
+    vi.stubEnv("TEST_GUILD_ID", "123");
+    vi.stubEnv("https_proxy", "http://proxy.example");
+    expect(loadEnv()).toMatchObject({ testGuildId: "123", httpsProxy: "http://proxy.example" });
+  });
+
+  it("swallows a missing .env file", () => {
+    vi.spyOn(process, "loadEnvFile").mockImplementation(() => {
+      throw new Error("ENOENT");
+    });
+    vi.stubEnv("NODE_ENV", "development");
     expect(() => loadEnv()).not.toThrow();
-    expect(loadEnv().devServerToken).toBeUndefined();
   });
 });

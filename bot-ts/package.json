@@ -11,6 +11,7 @@
     "start": "node dist/main.js",
     "dev": "tsx src/main.ts",
     "test": "vitest run",
+    "test:regression": "vitest run --config vitest.regression.config.ts",
     "test:watch": "vitest",
     "typecheck": "tsc --noEmit"
   },

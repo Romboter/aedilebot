@@ -144,6 +144,13 @@ export function commandBunkerKillHandler(ctx: CalculatorContext, weaponFuzzyName
 /** Port of statsheet_handler's own quirk: a bare `except` returns the
  * EntityNotFoundError instance instead of raising it, so this returns a union
  * rather than throwing on the not-found path — callers must check the type. */
+/** Python wraps int(float(x) * 100) in try/except -> "" for missing or blank
+ * values; parseFloat("") is NaN, which must not leak out as "NaN%". */
+function pct(raw: string | undefined): number | "" {
+  const n = raw === undefined ? NaN : parseFloat(raw);
+  return Number.isNaN(n) ? "" : Math.trunc(n * 100);
+}
+
 export function statsheetHandler(ctx: CalculatorContext, entityName: string): Array<string | number> | EntityNotFoundError {
   try {
     const entity = ctx.fuzzy.fuzzyMatchAny(entityName, ctx.allDictionary, ctx.data.all);
@@ -174,9 +181,9 @@ export function statsheetHandler(ctx: CalculatorContext, entityName: string): Ar
       target.ObjectType === "Tripods"
     ) {
       const minPenRaw = target["Min Base Penetration Chance"];
-      const minPen = minPenRaw !== undefined ? Math.trunc(parseFloat(minPenRaw) * 100) : "";
+      const minPen = pct(minPenRaw);
       const maxPenRaw = target["Max Base Penetration Chance"];
-      const maxPen = maxPenRaw !== undefined ? Math.trunc(parseFloat(maxPenRaw) * 100) : "";
+      const maxPen = pct(maxPenRaw);
       // "Armour Health" and "Reload time..." are read without a guard in the
       // Python original (a missing key there raises KeyError, caught by the
       // function's own outer except -> EntityNotFoundError) — replicated via
@@ -188,9 +195,9 @@ export function statsheetHandler(ctx: CalculatorContext, entityName: string): Ar
       const reload = target["Reload time (pre-reload+reload) (magazine size) (artillery spread?)"];
       const main = target["Main Weapon (damage bonus)(max range, reach)(artillery range)"] ?? "";
       const mainDisableRaw = target["Main Gun Disable Chance"];
-      const mainDisable = mainDisableRaw !== undefined ? Math.trunc(parseFloat(mainDisableRaw) * 100) : "";
+      const mainDisable = pct(mainDisableRaw);
       const trackDisableRaw = target["Tracks Disable Chance"];
-      const trackDisable = trackDisableRaw !== undefined ? Math.trunc(parseFloat(trackDisableRaw) * 100) : "";
+      const trackDisable = pct(trackDisableRaw);
       return [target.ObjectType, target.Name, target.Health, target["Mitigation Type"], minPen, maxPen, armourHp, reload, main, mainDisable, trackDisable];
     }
 

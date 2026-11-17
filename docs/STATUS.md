@@ -6,9 +6,10 @@
 |---|---|---|
 | Python bot | Existing implementation | Root Dockerfile and compose.yml run Python; production runtime has not been inspected |
 | Node/TypeScript calculator and nine slash commands | Implemented, previously dev-bot-tested | bot-ts/src and GitHub CI; 193 tests recorded after #11; not evidence of current production deployment |
-| Node free-text message listener | Coded but inactive | gateway/client.ts config uses intents: []; /how remains available |
-| Node dev login | Implemented | bot-ts/src/main.ts requires DEV_SERVER_TOKEN; DEPLOYMENT_TOKEN is read but not used |
-| Node release/container cutover | **Not implemented/verified** | Root Dockerfile remains Python-only; issues #23–#27 |
+| Node free-text message listener | Opt-in | Off by default (no intents; Discord denied Message Content for the public bot, so /how is the public path). Self-hosters set `MESSAGE_CONTENT=true` and enable the intent in the Developer Portal |
+| Node token selection | Implemented | config/env.ts: `NODE_ENV=production` uses DEPLOYMENT_TOKEN, otherwise DEV_SERVER_TOKEN; never falls back to the other; unit-tested |
+| Node container | Written, **not yet built/run on a target host** | `Dockerfile.node` + `compose.node.yml` (restart policy, log cap, data volume); root Dockerfile/compose still Python. Cutover itself: #27 |
+| Python-vs-TS regression matrix | Implemented | `scripts/generate_regression_matrix.py` -> `test/fixtures/regression-matrix.json`, replayed by `bot-ts/test/regression/matrix.spec.ts` (#23) |
 | Data/calculator/fuzzy hot-swap | Implemented and CI smoke-tested | PluginHost; calculator/fuzzy isolate compiled dist; data re-imports entry; real Discord command click-through not verified (#12) |
 | Admin swap authorization | Implemented, deny-by-default | ADMIN_GUILD_ID + ADMIN_USER_IDS both required; command disabled by default in Discord integrations |
 | Permanent Node CI | Implemented | .github/workflows/typescript-ci.yml: Node 22 tests/build and Python golden fixture drift |

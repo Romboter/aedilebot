@@ -2,27 +2,23 @@
 // on_ready (sync commands), interactionCreate (slash commands +
 // autocomplete), and messageCreate (free-text parsing).
 //
-// Intents: deliberately requesting ZERO gateway intents right now (user
-// decision, dev-bot testing) — slash-command interactions are delivered
-// regardless of intents (they're not gated by GatewayIntentBits at all), so
-// /help, /kill, /how, etc. all keep working. The cost: no Guilds intent
-// means readyClient.guilds.cache stays empty (the "Current discords:"
-// logging below prints nothing), and no GuildMessages/MessageContent means
-// messageCreate events never arrive, so createMessageListener's free-text
-// "how many X to kill Y" chat parsing is wired below but effectively inert
-// until intents are restored. To bring it back: add
-// GatewayIntentBits.Guilds, GuildMessages, and MessageContent (the last one
-// is privileged — must also be toggled on in the Discord Developer Portal's
-// Bot settings for this application before Discord will allow it).
-import { Client, Events } from "discord.js";
+// Intents: none by default. Slash commands and autocomplete are delivered
+// regardless of intents. messageContent=true (MESSAGE_CONTENT=true in env)
+// adds Guilds/GuildMessages/MessageContent so the free-text chat listener
+// works; MessageContent is privileged, so the app must also have it enabled
+// in the Developer Portal (Discord has not granted it to the public bot).
+import { Client, Events, GatewayIntentBits } from "discord.js";
 import type { LiveHosts } from "./liveContext.js";
 import { commands } from "../commands/index.js";
 import { createCommandRouter } from "./commandRouter.js";
 import { syncCommands } from "./commandSync.js";
 import { createMessageListener } from "./messageListener.js";
 
-export function createClient(): Client {
-  return new Client({ intents: [] });
+export function createClient(messageContent = false): Client {
+  const intents = messageContent
+    ? [GatewayIntentBits.Guilds, GatewayIntentBits.GuildMessages, GatewayIntentBits.MessageContent]
+    : [];
+  return new Client({ intents });
 }
 
 export function wireClient(client: Client, hosts: LiveHosts, testGuildId?: string): void {
