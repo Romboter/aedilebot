@@ -60,6 +60,11 @@ export const help: SlashCommand = {
             "``How much|many [weapon] to destroy|kill|disable [target]``\nHere are some examples to try:\n\nHow much 150mm to kill Patridia?\nHow many satchels to kill t3 bunker core husk?\nHow many 68mm to disable HTD?\nHow many satchels to kill Victa?\nHow much 40mm to destroy bt pad?",
           inline: false,
         },
+        {
+          name: "Source code",
+          value: "AedileBot is free software under the AGPL-3.0. Source: https://github.com/Romboter/aedilebot",
+          inline: false,
+        },
       )
       .setFooter({ text: "Good luck on the front!", iconURL: THUMBNAIL_URL });
 
