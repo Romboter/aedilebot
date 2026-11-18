@@ -1,5 +1,6 @@
 import { describe, expect, it, vi } from "vitest";
 import { presentError } from "../../src/gateway/errorPresenter.js";
+import { runWithOutcome } from "../../src/stats/outcome.js";
 import {
   BunkerSpecParseError,
   EntityNotFoundError,
@@ -68,4 +69,25 @@ describe("gateway/errorPresenter", () => {
     expect(logger).toHaveBeenCalledWith("Exception", "q");
     consoleSpy.mockRestore();
   });
+});
+
+describe("gateway/errorPresenter outcome marks", () => {
+  const cases: Array<[string, () => Error, string, string | undefined]> = [
+    ["TargetNotFoundError", () => new TargetNotFoundError("xyz"), "not_found", "TargetNotFoundError"],
+    ["WeaponNotFoundError", () => new WeaponNotFoundError("xyz"), "not_found", "WeaponNotFoundError"],
+    ["InvalidTypeError", () => new InvalidTypeError("a", "b"), "not_found", "InvalidTypeError"],
+    ["EntityNotFoundError", () => new EntityNotFoundError("x"), "not_found", "EntityNotFoundError"],
+    ["plain Error", () => new Error("boom"), "error", "Exception"],
+    ["NoDamageError", () => new NoDamageError("w", "t"), "ok", undefined],
+  ];
+  for (const [name, make, outcome, errorType] of cases) {
+    it(`${name} marks ${outcome}`, async () => {
+      vi.spyOn(console, "error").mockImplementation(() => undefined);
+      const r = await runWithOutcome(async () => {
+        presentError(make(), "q", vi.fn());
+      });
+      expect(r.outcome).toBe(outcome);
+      expect(r.errorType).toBe(errorType);
+    });
+  }
 });

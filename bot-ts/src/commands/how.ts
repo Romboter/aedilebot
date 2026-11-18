@@ -1,6 +1,7 @@
 import { SlashCommandBuilder } from "discord.js";
 import type { SlashCommand } from "../gateway/command.js";
 import { parseFreeTextQuery } from "../domain/textParsing/freeTextQuery.js";
+import { markOutcome } from "../stats/outcome.js";
 import { dispatchFreeTextQuery } from "../gateway/freeTextDispatch.js";
 
 const NO_MATCH_REPLY =
@@ -18,6 +19,18 @@ export const how: SlashCommand = {
         .setRequired(true),
     ) as SlashCommandBuilder,
 
+  recordedOptions(interaction) {
+    // Parsed pieces only: the raw typed query is never stored.
+    const parsed = parseFreeTextQuery(`how ${interaction.options.getString("query") ?? ""}`);
+    const options: Record<string, string> = {};
+    if (parsed !== null) {
+      options.weapon = parsed.weapon;
+      options.target = parsed.target;
+      options.operation = parsed.operation;
+    }
+    return options;
+  },
+
   async execute(interaction, ctx) {
     const query = interaction.options.getString("query", true);
     // The command name IS "how" — the user only supplies what comes after
@@ -25,6 +38,7 @@ export const how: SlashCommand = {
     // free-text parser on_message uses.
     const parsed = parseFreeTextQuery(`how ${query}`);
     if (parsed === null) {
+      markOutcome("not_found", "NoMatch");
       await interaction.reply(NO_MATCH_REPLY);
       return;
     }

@@ -5,6 +5,7 @@ import { MessageFlags, SlashCommandBuilder } from "discord.js";
 import type { ChatInputCommandInteraction } from "discord.js";
 import type { SlashCommand } from "../gateway/command.js";
 import type { SwapTarget } from "../gateway/liveContext.js";
+import { markOutcome } from "../stats/outcome.js";
 import { hostFor } from "../gateway/liveContext.js";
 
 const SWAP_TARGETS: SwapTarget[] = ["data", "calculator", "fuzzy"];
@@ -68,6 +69,7 @@ export const adminSwap: SlashCommand = {
   async execute(interaction, _ctx, hosts) {
     if (!isAuthorizedSwapOperator(interaction.user.id, interaction.guildId)) {
       audit(interaction, "denied", "none", "unauthorized");
+      markOutcome("denied");
       await interaction.reply({ content: "Not authorized for this operation.", flags: MessageFlags.Ephemeral });
       return;
     }
@@ -76,6 +78,7 @@ export const adminSwap: SlashCommand = {
     const target = SWAP_TARGETS.find((value) => value === inputTarget);
     if (target === undefined) {
       audit(interaction, "denied", "invalid", "invalid_target");
+      markOutcome("denied");
       await interaction.reply({ content: "Invalid swap target.", flags: MessageFlags.Ephemeral });
       return;
     }
@@ -100,6 +103,7 @@ export const adminSwap: SlashCommand = {
       );
     } else {
       audit(interaction, action, target, "failed", host.version);
+      markOutcome("error", "SwapFailed");
       // Errors can contain server-side absolute paths. Log details only on
       // the operator's server, never in replies to a Discord interaction.
       console.error("admin_swap " + action + " failed for " + target, result.error);

@@ -189,3 +189,6 @@ bot-ts/dist-hotswap-*/
 .claude/
 obj/
 bin/
+
+# /admin_status command-run records and salt (bot-ts)
+bot-ts/stats/

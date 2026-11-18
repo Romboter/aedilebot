@@ -2,6 +2,7 @@ import { EmbedBuilder, SlashCommandBuilder } from "discord.js";
 import type { SlashCommand } from "../gateway/command.js";
 import { statsheetHandler } from "../domain/calculator/handlers.js";
 import { EntityNotFoundError } from "../domain/errors.js";
+import { markOutcome } from "../stats/outcome.js";
 import { respondStatsheetAutocomplete } from "./autocompleteHandlers.js";
 
 const THUMBNAIL_URL =
@@ -85,6 +86,7 @@ export const statsheet: SlashCommand = {
     // since Discord shows "This interaction failed"). Replying with the
     // error message instead is a deliberate, minimal fix.
     if (result instanceof EntityNotFoundError) {
+      markOutcome("not_found", result.name);
       await interaction.reply(result.message);
       return;
     }

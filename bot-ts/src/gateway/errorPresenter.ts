@@ -4,6 +4,7 @@
 // chain that domain/textParsing/freeTextQuery.ts deliberately left out
 // (presentation + logging, not parsing) — see its file header.
 import { appendFileSync } from "node:fs";
+import { markOutcome } from "../stats/outcome.js";
 import { EntityNotFoundError, InvalidTypeError, NoDamageError, TargetNotFoundError, WeaponNotFoundError } from "../domain/errors.js";
 
 export type ErrorLogger = (errorClassName: string, query: string | undefined) => void;
@@ -31,21 +32,26 @@ export function presentError(error: unknown, query?: string, logger: ErrorLogger
     return error.message;
   }
   if (error instanceof TargetNotFoundError) {
+    markOutcome("not_found", error.name);
     logger(error.name, query);
     return error.message;
   }
   if (error instanceof InvalidTypeError) {
+    markOutcome("not_found", error.name);
     logger(error.name, query);
     return error.message;
   }
   if (error instanceof WeaponNotFoundError) {
+    markOutcome("not_found", error.name);
     logger(error.name, query);
     return error.message;
   }
   if (error instanceof EntityNotFoundError) {
+    markOutcome("not_found", error.name);
     logger(error.name, query);
     return error.message;
   }
+  markOutcome("error", "Exception");
   console.error(error);
   logger("Exception", query);
   return "Inner error happened during processing of your request. Please, contact bot's devs about this.";

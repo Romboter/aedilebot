@@ -2,6 +2,7 @@ import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 import { MessageFlags } from "discord.js";
 import type { ChatInputCommandInteraction } from "discord.js";
 import { adminSwap, isAuthorizedSwapOperator } from "../../src/commands/adminSwap.js";
+import { runWithOutcome } from "../../src/stats/outcome.js";
 import type { LiveHosts } from "../../src/gateway/liveContext.js";
 import type { CalculatorContext } from "../../src/domain/calculator/handlers.js";
 
@@ -168,5 +169,19 @@ describe("admin_swap authorization and safe candidate selection", () => {
       event: "admin_swap", actorId: OWNER, guildId: GUILD, action: "swap", target: "calculator", outcome: "failed",
     });
     expect(JSON.stringify(log)).not.toContain("/opt/service");
+  });
+
+  it("marks outcomes: denied when unauthorized, error on failed swap, ok on success", async () => {
+    const denied = await runWithOutcome(() => invoke(interaction(), hosts()));
+    expect(denied.outcome).toBe("denied");
+
+    allowOperator();
+    const hFail = hosts();
+    hFail.calculatorHost.swap.mockResolvedValue({ ok: false, error: new Error("x") });
+    const failed = await runWithOutcome(() => invoke(interaction(), hFail));
+    expect(failed.outcome).toBe("error");
+
+    const ok = await runWithOutcome(() => invoke(interaction(), hosts()));
+    expect(ok.outcome).toBe("ok");
   });
 });

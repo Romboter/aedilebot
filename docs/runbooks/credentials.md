@@ -6,6 +6,7 @@
 
 - Discord DEV_SERVER_TOKEN; an older DEPLOYMENT_TOKEN exists in Python/Node config but **Node main.ts currently logs in only with DEV_SERVER_TOKEN**.
 - ADMIN_USER_IDS and ADMIN_GUILD_ID enable bot-global /admin_swap only if **both** match the caller/guild; no arbitrary module paths allowed.
+- ADMIN_USER_IDS also gates the operator-only /admin_status (user check only, ephemeral reply). STATS_DIR optionally relocates bot-ts/stats, which holds the command-run records and a hash salt; keep that folder private and out of git.
 - TEST_GUILD_ID scopes slash command updates during testing; omit only when deliberately intending global registration.
 - Steam login and persistent Steam Guard session on the isolated extraction runner.
 - GitHub private automation repository access, runner registration credentials, environment settings and private archive storage.
