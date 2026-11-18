@@ -4,7 +4,7 @@
 
 ## Gate: before any production action
 
-1. Confirm which service is really handling production Discord. Root Dockerfile/compose.yml currently run Python; bot-ts/main.ts logs into DEV_SERVER_TOKEN, not DEPLOYMENT_TOKEN. This is an explicit blocker: do not substitute a production token casually.
+1. Confirm which service is really handling production Discord. Root Dockerfile/compose.yml run Python. Node selects its token by `NODE_ENV` (DEPLOYMENT_TOKEN in production, DEV_SERVER_TOKEN otherwise, no fallback). As of 2026-11-18 the TypeScript bot is live on the luxvps AMP instance Aedile01 (see [AMP Deno deployment](amp-deno-deployment.md)); the formal gates below were not completed before that cutover, so treat them as outstanding evidence, not as a block on operating it.
 2. Complete and link evidence for side-by-side Python parity (#24), message intents (#23), secrets/log review (#25), container/service deployment and backup/rollback verification (#26), and a signed-off operator runbook.
 3. Record an approved maintenance window, responsible operator, rollback owner, prior deployed commit SHA, current data version and Discord application identity.
 4. Back up the actual service environment and data outside the repository; verify the backup can be read. Capture currently running image/tag or process unit.
