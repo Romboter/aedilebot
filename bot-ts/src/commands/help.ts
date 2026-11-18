@@ -29,13 +29,33 @@ export const help: SlashCommand = {
           inline: false,
         },
         {
+          name: "/disable [target] [weapon]",
+          value: "How many hits of a weapon it takes to disable a vehicle.",
+          inline: false,
+        },
+        {
+          name: "/dehusk [target] [weapon]",
+          value: "How many hits of a weapon it takes to dehusk a husk.",
+          inline: false,
+        },
+        {
+          name: "/custom_kill [target] [weapon1] [num1] [weapon2]",
+          value: "Hits to kill a target when weapon1 has already landed num1 hits and weapon2 finishes the job.",
+          inline: false,
+        },
+        {
+          name: "/how [query]",
+          value: "Same as the prompt below without typing \"how\", e.g. ``/how many mammons to kill a ghouse``.",
+          inline: false,
+        },
+        {
           name: "/bunker_kill",
           value:
             "Specify the bunker island you want to kill with detailed parameters. (If a modification is not an option, it means it has the same stat as a blank bunker such as engine room)",
           inline: false,
         },
         {
-          name: "**Damage Calculator Prompt**",
+          name: "**Damage Calculator Prompt** (also via /how)",
           value:
             "``How much|many [weapon] to destroy|kill|disable [target]``\nHere are some examples to try:\n\nHow much 150mm to kill Patridia?\nHow many satchels to kill t3 bunker core husk?\nHow many 68mm to disable HTD?\nHow many satchels to kill Victa?\nHow much 40mm to destroy bt pad?",
           inline: false,
