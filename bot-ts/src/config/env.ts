@@ -44,3 +44,14 @@ export function loadEnv(): EnvConfig {
     messageContent: process.env.MESSAGE_CONTENT === "true",
   };
 }
+
+/** Misconfigurations that are legal but almost certainly unintended. */
+export function envWarnings(env: EnvConfig): string[] {
+  const warnings: string[] = [];
+  if (env.production && env.testGuildId !== undefined && env.testGuildId !== "") {
+    warnings.push(
+      `NODE_ENV=production but TEST_GUILD_ID=${env.testGuildId} is set: slash commands will sync to that one guild only, not globally. Unset TEST_GUILD_ID for a live bot.`,
+    );
+  }
+  return warnings;
+}

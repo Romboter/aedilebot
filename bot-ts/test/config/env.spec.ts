@@ -1,5 +1,5 @@
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
-import { loadEnv } from "../../src/config/env.js";
+import { envWarnings, loadEnv } from "../../src/config/env.js";
 
 // loadEnvFile is stubbed so a real bot-ts/.env can't leak into the tests.
 describe("config/env", () => {
@@ -55,5 +55,20 @@ describe("config/env", () => {
     });
     vi.stubEnv("NODE_ENV", "development");
     expect(() => loadEnv()).not.toThrow();
+  });
+});
+
+describe("config/env envWarnings", () => {
+  const cfg = (over: object) => ({ token: "t", production: false, httpsProxy: undefined, testGuildId: undefined, messageContent: false, ...over });
+
+  it("warns when production still has TEST_GUILD_ID, because commands would sync to one guild only", () => {
+    const w = envWarnings(cfg({ production: true, testGuildId: "1002992031506898954" }));
+    expect(w).toHaveLength(1);
+    expect(w[0]).toContain("TEST_GUILD_ID");
+    expect(w[0]).toContain("1002992031506898954");
+  });
+  it("is silent for production without a test guild, and for dev with one", () => {
+    expect(envWarnings(cfg({ production: true }))).toEqual([]);
+    expect(envWarnings(cfg({ production: false, testGuildId: "1" }))).toEqual([]);
   });
 });
