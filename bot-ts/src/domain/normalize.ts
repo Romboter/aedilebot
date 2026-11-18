@@ -4,6 +4,7 @@
 // slang/typo'd user input matches consistently against the same normalized
 // key space the alias index was built with.
 import pluralize from "pluralize";
+import { moveStringToRear } from "./textParsing/moveStringToRear.js";
 
 const STOPWORDS = new Set(["a", "an", "the"]);
 
@@ -11,6 +12,12 @@ const STOPWORDS = new Set(["a", "an", "the"]);
 // found in Foxhole names), unlike JS's ASCII-only `\w` — needs \p{L}/\p{N}.
 const NON_WORD_OR_SPACE = /[^\p{L}\p{N}_\s]/gu;
 const EXTRA_WHITESPACE = /\s+/g;
+
+/** Normalize an entity name the way alias keys are built: canonicalize
+ * tier/emplacement phrasing, then normalize. Port of utils.normalize_alias. */
+export function normalizeAlias(text: string): string {
+  return normalize(moveStringToRear(text));
+}
 
 // Python used @lru_cache(maxsize=128); the real alias vocabulary here is a
 // small, static, startup-loaded set (hundreds of strings at most), so a
@@ -25,7 +32,8 @@ export function normalize(text: string): string {
   }
 
   let cleaned = text.toLowerCase().trim().replace(NON_WORD_OR_SPACE, "");
-  cleaned = cleaned.replace(EXTRA_WHITESPACE, " ");
+  // trim again: stripping punctuation can leave edge spaces; Python's split() drops them.
+  cleaned = cleaned.replace(EXTRA_WHITESPACE, " ").trim();
 
   let words = cleaned.length > 0 ? cleaned.split(" ") : [];
   if (words.length > 0 && STOPWORDS.has(words[0]!)) {

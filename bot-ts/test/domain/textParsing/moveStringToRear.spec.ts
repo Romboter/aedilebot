@@ -11,6 +11,11 @@ describe("domain/textParsing/moveStringToRear parity with Python", () => {
     ["bunker concrete", "bunker  t3"],
     ["infantry gun t3", "infantry gun  t3"],
     ["entrenched howitzer", " howitzer emplaced"],
+    // Whole-phrase matching (upstream olted/aedilebot fix, not old-Python parity):
+    ["cart1 base", "cart1 base"],
+    ["Bunker Base (T1)", "Bunker Base () t1"],
+    ["Aircraft Runway (Tier 2)", "Aircraft Runway () t2"],
+    ["Flak Gun (Unemplaced)", "Flak Gun ()"],
   ];
 
   it.each(cases)("moveStringToRear(%j) === %j", (input, expected) => {

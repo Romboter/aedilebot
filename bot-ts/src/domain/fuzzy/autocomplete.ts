@@ -24,7 +24,7 @@
 // map lookup is used instead. Revisit only if real alias data is found to
 // collide this way.
 import * as fuzzball from "fuzzball";
-import { normalize } from "../normalize.js";
+import { normalize, normalizeAlias } from "../normalize.js";
 
 export interface AutocompleteChoice {
   name: string;
@@ -52,7 +52,7 @@ export function autocompleteCandidates(
   dictionary: Map<string, string>,
   perfectRescanThreshold?: number,
 ): AutocompleteChoice[] {
-  const name = normalize(query);
+  const name = normalizeAlias(query);
   const matches: ScoredCandidate[] = [];
   let perfectCount = 0;
 

@@ -2,8 +2,9 @@
 // phrasing (e.g. "tier 3" -> trailing "t3", "entrenched" -> trailing
 // "emplaced") so alias/lookup matching treats these phrasings consistently.
 // First-match-wins against an ORDERED list — preserved as-is, order matters.
-// Uses replaceAll (Python's str.replace replaces every occurrence, unlike
-// JS's string-pattern .replace which only replaces the first).
+// Phrases match as whole words only, case-insensitively (upstream fix: a bare
+// substring test let "t1" fire inside other words). Every occurrence is
+// removed, as in Python's str.replace.
 
 const MOVE_TO_REAR_STRINGS = [
   "t1",
@@ -26,23 +27,33 @@ const TIER_WORDS: Record<string, string> = {
   concrete: "t3",
 };
 
+// Unicode-aware word boundary, matching Python's `(?<!\w)...(?!\w)`.
+const PATTERNS = new Map<string, RegExp>(
+  MOVE_TO_REAR_STRINGS.map((phrase) => [
+    phrase,
+    new RegExp(`(?<![\\p{L}\\p{N}_])${phrase.replace(" ", "\\s+")}(?![\\p{L}\\p{N}_])`, "giu"),
+  ]),
+);
+
 export function moveStringToRear(input: string): string {
   for (const replacement of MOVE_TO_REAR_STRINGS) {
-    if (!input.includes(replacement)) {
+    const pattern = PATTERNS.get(replacement)!;
+    pattern.lastIndex = 0;
+    if (!pattern.test(input)) {
       continue;
     }
+    const stripped = input.replace(pattern, "");
     if (replacement === "tier 1" || replacement === "tier 2" || replacement === "tier 3" || replacement === "concrete") {
-      const tier = TIER_WORDS[replacement];
-      return input.replaceAll(replacement, "") + " " + tier;
+      return stripped + " " + TIER_WORDS[replacement];
     }
     if (replacement === "unemplaced" || replacement === "unentrenched") {
-      return input.replaceAll(replacement, "");
+      return stripped;
     }
     if (replacement === "emplaced" || replacement === "entrenched") {
-      return input.replaceAll(replacement, "") + " emplaced";
+      return stripped + " emplaced";
     }
     // t1/t2/t3
-    return input.replaceAll(replacement, "") + " " + replacement;
+    return stripped + " " + replacement;
   }
   return input;
 }

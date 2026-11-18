@@ -3,8 +3,7 @@
 // maps from the "Name" + ";"-split "Additional Names" fields. Straight
 // behavior-preserving port, including the exact (asymmetric) collision rule
 // below — not a redesign.
-import { normalize } from "../domain/normalize.js";
-import { moveStringToRear } from "../domain/textParsing/moveStringToRear.js";
+import { normalize, normalizeAlias } from "../domain/normalize.js";
 import type { Entity, TargetEntry } from "./schema.js";
 
 /** Every current entity type carries this field (optionally); the Python
@@ -33,7 +32,7 @@ export function getAllNames(dictionary: Record<string, Entity>): Map<string, str
   const namesDictionary = new Map<string, string>();
   for (const [key, value] of Object.entries(dictionary)) {
     for (const rawName of collectAliasCandidates(key, value)) {
-      const name = normalize(moveStringToRear(rawName));
+      const name = normalizeAlias(rawName);
       if (name === "") {
         continue;
       }
@@ -52,8 +51,11 @@ export function getHuskNames(namesDictionary: Map<string, string>): Map<string, 
   const huskNamesDictionary = new Map<string, string>();
   for (const [key, value] of namesDictionary) {
     if (key.toLowerCase().includes("husk")) {
-      huskNamesDictionary.set(key, value);
-      huskNamesDictionary.set(key.replaceAll("husk", ""), value);
+      huskNamesDictionary.set(normalizeAlias(key), value);
+      const huskAlias = normalizeAlias(key.replaceAll("husk", ""));
+      if (huskAlias !== "") {
+        huskNamesDictionary.set(huskAlias, value);
+      }
     }
   }
   return huskNamesDictionary;
@@ -74,7 +76,7 @@ export function getVehicleNames(targets: Record<string, TargetEntry>): Map<strin
       candidates.push(...extra.split(";"));
     }
     for (const rawName of candidates) {
-      const name = normalize(moveStringToRear(rawName));
+      const name = normalizeAlias(rawName);
       if (name === "" || namesDictionary.has(name)) {
         continue;
       }

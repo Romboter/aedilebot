@@ -19,7 +19,7 @@ import {
   TargetOfTypeNotFoundError,
   WeaponNotFoundError,
 } from "../errors.js";
-import { normalize } from "../normalize.js";
+import { normalize, normalizeAlias } from "../normalize.js";
 import { isLocationName } from "../../data/aliasIndex.js";
 import type { Entity } from "../../data/schema.js";
 
@@ -42,7 +42,12 @@ export function fuzzyMatchTargetName(
   locationNameIndex: Set<string>,
   isDefaultDictionary: boolean,
 ): TargetMatchResult {
-  const name = normalize(rawName);
+  const name = normalizeAlias(rawName);
+  // Exact alias hit: skip fuzzy scoring (upstream fast path).
+  const exact = targetsDictionary.get(name);
+  if (exact !== undefined) {
+    return { canonical: exact, tokens: isLocationName(name, locationNameIndex) ? { locationName: name } : {} };
+  }
   let maxScore = 0;
   let maxValue: string | undefined;
   let tieCount = 0;
@@ -88,7 +93,11 @@ export function fuzzyMatchTargetName(
 }
 
 export function fuzzyMatchWeaponName(rawName: string, weaponsDictionary: Map<string, string>): string {
-  const name = normalize(rawName);
+  const name = normalizeAlias(rawName);
+  const exact = weaponsDictionary.get(name);
+  if (exact !== undefined) {
+    return exact;
+  }
   let maxScore = 0;
   let maxValue: string | undefined;
   let tieCount = 0;
@@ -140,7 +149,11 @@ export function fuzzyMatchAny(
   allDictionary: Map<string, string>,
   allEntities: Record<string, Entity>,
 ): AnyMatchResult {
-  const name = normalize(rawName);
+  const name = normalizeAlias(rawName);
+  const exact = allDictionary.get(name);
+  if (exact !== undefined) {
+    return { canonical: exact, type: allEntities[exact]!.ObjectType };
+  }
   let maxScore = 0;
   let maxValue: string | undefined;
   let perfectCount = 0;
@@ -172,7 +185,7 @@ export function fuzzyPerfectMatchAny(
   allDictionary: Map<string, string>,
   allEntities: Record<string, Entity>,
 ): AnyMatchResult {
-  const name = normalize(rawName);
+  const name = normalizeAlias(rawName);
   let maxScore = 0;
   let maxValue: string | undefined;
 
